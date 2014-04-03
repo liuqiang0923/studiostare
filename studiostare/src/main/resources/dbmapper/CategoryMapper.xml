@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 这里的namespace名字必须为执行该sql的dao地址 -->
+<mapper namespace="com.flamingo.studiostare.dao.ICategoryDao">
+
+	<resultMap type="CategoryEntity" id="categoryResultMap">
+		<id property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="description" column="description" />
+		<result property="updateTime" column="update_time" javaType="Date" />
+	</resultMap>
+
+	<select id="selectCategoryById" parameterType="int" resultType="CategoryEntity" resultMap="categoryResultMap">
+		select * from category where id = #{id}
+	</select>
+	
+	<insert id="insertCategory" parameterType="CategoryEntity">
+		insert into category (name, description)
+		values (#{name}, #{description})
+	</insert>
+	
+	<update id="updateCategory" parameterType="CategoryEntity">
+		update category set 
+			name = #{name}, 
+			description = #{description}, 
+			update_time = #{updateTime}
+		where id = #{id}
+	</update>
+	
+	<delete id="deleteCategoryById" parameterType="int">
+		delete from category where id = #{id}
+	</delete>
+	
+	<select id="selectCategory" parameterType="AboutEntity" resultType="AboutEntity" resultMap="categoryResultMap">
+		select * from category where 1 = 1 
+		<if test="name != null and name != ''">
+			and name like '%${name}%' 
+		</if>
+		<if test="description != null and description != ''">
+			and description like '%{description}%'
+		</if>
+	</select>
+	
+	<delete id="deleteCategory" parameterType="AboutEntity">
+		delete from category where 1 = 1 
+		<if test="name != null and name != ''">
+			and name like '%${name}%' 
+		</if>
+		<if test="description != null and description != ''">
+			and description like '%{description}%'
+		</if>
+	</delete>
+
+</mapper>
