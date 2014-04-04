@@ -228,7 +228,7 @@
 														</label>
 														<div class="col-md-4">
 															<!-- <input type="text" class="form-control" name="phone" /> -->
-															<textarea class="form-control" rows="3" style="width: 400px; height: 300px" name="aboutus"></textarea>
+															<textarea class="form-control" rows="3" style="width: 300px; height: 200px" name="aboutus"></textarea>
 															<span class="help-block"> Input about us infomation. </span>
 														</div>
 													</div>
@@ -292,7 +292,7 @@
 														<div class="col-md-4">
 															<!-- <input type="text" class="form-control" name="card_name" />
 															<span class="help-block"> </span> -->
-															<textarea class="form-control" rows="3" style="width: 400px; height: 300px" name="manifesto"></textarea>
+															<textarea class="form-control" rows="3" style="width: 300px; height: 200px" name="manifesto"></textarea>
 															<span class="help-block"> Input manifesto. </span>
 														</div>
 													</div>

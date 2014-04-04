@@ -149,7 +149,7 @@
 							<div class="portlet-title">
 								<div class="caption">
 									<i class="fa fa-reorder"></i> Edit Client Wizard - <span
-										class="step-title"> Step 1 of 3 </span>
+										class="step-title"> Step 1 of 2 </span>
 								</div>
 							</div>
 							<div class="portlet-body form">
@@ -164,11 +164,6 @@
 												</a></li>
 												<li><a href="#tab2" data-toggle="tab" class="step">
 														<span class="number"> 2 </span> <span class="desc">
-															<i class="fa fa-check"></i> Client Category Setup
-													</span>
-												</a></li>
-												<li><a href="#tab4" data-toggle="tab" class="step">
-														<span class="number"> 3 </span> <span class="desc">
 															<i class="fa fa-check"></i> Confirm
 													</span>
 												</a></li>
@@ -189,139 +184,56 @@
 												<div class="tab-pane active" id="tab1">
 													<h3 class="block">Provide client details</h3>
 													<div class="form-group">
-														<label class="control-label col-md-3">Username <span
-															class="required"> * </span>
+														<label class="control-label col-md-3">Name 
+															<span class="required"> * </span>
 														</label>
 														<div class="col-md-4">
-															<input type="text" class="form-control" name="username" />
-															<span class="help-block"> Input username </span>
+															<input type="text" class="form-control" name="name" value="${(client.name)!""}" />
+															<span class="help-block"> Input name </span>
 														</div>
 													</div>
 													<div class="form-group">
-														<label class="control-label col-md-3">PhoneNum <span
-															class="required"> * </span>
+														<label class="control-label col-md-3">Phone 
+															<span class="required"> * </span>
 														</label>
 														<div class="col-md-4">
-															<input type="password" class="form-control"
-																name="password" id="submit_form_password" /> <span
-																class="help-block"> Input phoneNum. </span>
+															<input type="text" class="form-control" name="phone" value="${(client.phone)!""}" />
+															<span class="help-block"> Input phone. </span>
 														</div>
 													</div>
 													<div class="form-group">
-														<label class="control-label col-md-3">Email <span
-															class="required"> * </span>
+														<label class="control-label col-md-3">Email 
+															<span class="required"> * </span>
 														</label>
 														<div class="col-md-4">
-															<input type="text" class="form-control" name="email" />
+															<input type="text" class="form-control" name="email" value="${(client.email)!""}"/>
 															<span class="help-block"> Input email address </span>
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="control-label col-md-3">Description 
+															<span class="required"> * </span>
+														</label>
+														<div class="col-md-4">
+															<input type="text" class="form-control" name="description" value="${(client.description)!""}"/>
+															<span class="help-block"> Input description </span>
 														</div>
 													</div>
 												</div>
 												<div class="tab-pane" id="tab2">
-													<h3 class="block">Provide client category details</h3>
-													<div class="portlet box blue">
-														<div class="portlet-title">
-															<div class="caption">
-																<i class="fa fa-edit"></i>client categories
-															</div>
-														</div>
-														<div class="portlet-body">
-															<div class="table-toolbar">
-																<div class="btn-group">
-																	<button id="sample_editable_1_new" class="btn green">
-																		Add New <i class="fa fa-plus"></i>
-																	</button>
-																</div>
-															</div>
-															<table class="table table-striped table-hover table-bordered" id="sample_editable_1">
-																<thead>
-																	<tr>
-																		<th>Name</th>
-																		<th>Description</th>
-																		<th>Edit</th>
-																		<th>Delete</th>
-																	</tr>
-																</thead>
-																<tbody>
-																	<tr>
-																		<td>a category</td>
-																		<td>a category description</td>
-																		<td><a class="edit" href="javascript:;"> Edit
-																		</a></td>
-																		<td><a class="delete" href="javascript:;">
-																				Delete </a></td>
-																	</tr>
-																</tbody>
-															</table>
-														</div>
-													</div>
-												</div>
-												<div class="tab-pane" id="tab3">
-													<h3 class="block">Provide your billing and credit card
-														details</h3>
-													<div class="form-group">
-														<label class="control-label col-md-3">Card Holder
-															Name <span class="required"> * </span>
-														</label>
-														<div class="col-md-4">
-															<input type="text" class="form-control" name="card_name" />
-															<span class="help-block"> </span>
-														</div>
-													</div>
-													<div class="form-group">
-														<label class="control-label col-md-3">Card Number
-															<span class="required"> * </span>
-														</label>
-														<div class="col-md-4">
-															<input type="text" class="form-control"
-																name="card_number" /> <span class="help-block">
-															</span>
-														</div>
-													</div>
-													<div class="form-group">
-														<label class="control-label col-md-3">CVC <span
-															class="required"> * </span>
-														</label>
-														<div class="col-md-4">
-															<input type="text" placeholder="" class="form-control"
-																name="card_cvc" /> <span class="help-block"> </span>
-														</div>
-													</div>
-													<div class="form-group">
-														<label class="control-label col-md-3">Expiration(MM/YYYY)
-															<span class="required"> * </span>
-														</label>
-														<div class="col-md-4">
-															<input type="text" placeholder="MM/YYYY" maxlength="7"
-																class="form-control" name="card_expiry_date" /> <span
-																class="help-block"> e.g 11/2020 </span>
-														</div>
-													</div>
-													<div class="form-group">
-														<label class="control-label col-md-3">Payment
-															Options <span class="required"> * </span>
-														</label>
-														<div class="col-md-4">
-															<div class="checkbox-list">
-																<label> <input type="checkbox" name="payment[]"
-																	value="1" data-title="Auto-Pay with this Credit Card." />
-																	Auto-Pay with this Credit Card
-																</label> <label> <input type="checkbox" name="payment[]"
-																	value="2" data-title="Email me monthly billing." />
-																	Email me monthly billing
-																</label>
-															</div>
-															<div id="form_payment_error"></div>
-														</div>
-													</div>
-												</div>
-												<div class="tab-pane" id="tab4">
 													<h3 class="block">Confirm your account</h3>
 													<h4 class="form-section">Client Info</h4>
 													<div class="form-group">
-														<label class="control-label col-md-3">Username:</label>
+														<label class="control-label col-md-3">Name:</label>
 														<div class="col-md-4">
-															<p class="form-control-static" data-display="username">
+															<p class="form-control-static" data-display="name">
+															</p>
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="control-label col-md-3">Phone:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="phone">
 															</p>
 														</div>
 													</div>
@@ -332,13 +244,11 @@
 															</p>
 														</div>
 													</div>
-													<h4 class="form-section">Client Categories</h4>
 													<div class="form-group">
-														<label class="control-label col-md-3">a category :
-														</label>
+														<label class="control-label col-md-3">Description:</label>
 														<div class="col-md-4">
-															<p class="form-control-static" data-display="fullname">
-																a category description.</p>
+															<p class="form-control-static" data-display="description">
+															</p>
 														</div>
 													</div>
 												</div>
@@ -396,9 +306,13 @@
 	<script src="/studiostare/manage-resource/assets/plugins/uniform/jquery.uniform.min.js"></script>
 	<!-- END CORE PLUGINS -->
 	<!-- BEGIN PAGE LEVEL PLUGINS -->
+	<script type="text/javascript" src="/studiostare/manage-resource/assets/plugins/bootstrap-wizard/jquery.bootstrap.wizard.min.js"></script>
+	<script type="text/javascript" src="/studiostare/manage-resource/assets/plugins/bootstrap-fileinput/bootstrap-fileinput.js"></script>
 	<script type="text/javascript" src="/studiostare/manage-resource/assets/plugins/jquery-validation/dist/jquery.validate.min.js"></script>
 	<script type="text/javascript" src="/studiostare/manage-resource/assets/plugins/jquery-validation/dist/additional-methods.min.js"></script>
-	<script type="text/javascript" src="/studiostare/manage-resource/assets/plugins/bootstrap-wizard/jquery.bootstrap.wizard.min.js"></script>
+	<script type="text/javascript" src="/studiostare/manage-resource/assets/plugins/select2/select2.min.js"></script>
+	<script type="text/javascript" src="/studiostare/manage-resource/assets/plugins/data-tables/jquery.dataTables.js"></script>
+	<script type="text/javascript" src="/studiostare/manage-resource/assets/plugins/data-tables/DT_bootstrap.js"></script>
 	<!-- END PAGE LEVEL PLUGINS -->
 	<!-- BEGIN PAGE LEVEL PLUGINS -->
 	<script type="text/javascript" src="/studiostare/manage-resource/assets/plugins/select2/select2.min.js"></script>
@@ -407,7 +321,7 @@
 	<!-- END PAGE LEVEL PLUGINS -->
 	<!-- BEGIN PAGE LEVEL SCRIPTS -->
 	<script src="/studiostare/manage-resource/assets/scripts/core/app.js"></script>
-	<script src="/studiostare/manage-resource/assets/scripts/custom/form-wizard.js"></script>
+	<script src="/studiostare/manage-resource/assets/scripts/form-wizard-client.js"></script>
 	<script src="/studiostare/manage-resource/assets/scripts/custom/table-editable.js"></script>
 	<!-- END PAGE LEVEL SCRIPTS -->
 	<script>

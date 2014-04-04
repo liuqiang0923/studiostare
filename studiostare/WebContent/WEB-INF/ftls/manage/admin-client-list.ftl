@@ -65,7 +65,7 @@
 						<div class="sidebar-toggler hidden-phone"></div> <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
 					</li>
 					<li class="last ">
-						<a href="admin-video-list.html" >
+						<a href="/studiostare/manage/admin-video-list.html" >
 							<i class="fa fa-bar-chart-o"></i>
 							<span class="title">
 								Video
@@ -73,7 +73,7 @@
 						</a>
 					</li>
 					<li class="last ">
-						<a href="admin-client-list.html"> 
+						<a href="/studiostare/manage/admin-client-list.html"> 
 							<i class="fa fa-bar-chart-o"></i> 
 							<span class="title"> 
 								Client 
@@ -81,7 +81,7 @@
 						</a>
 					</li>
 					<li class="last ">
-						<a href="admin-category-list.html"> 
+						<a href="/studiostare/manage/admin-category-list.html"> 
 							<i class="fa fa-bar-chart-o"></i> 
 							<span class="title"> 
 								Category 
@@ -89,7 +89,7 @@
 						</a>
 					</li>
 					<li class="last ">
-						<a href="admin-news-list.html" >
+						<a href="/studiostare/manage/admin-news-list.html" >
 							<i class="fa fa-bar-chart-o"></i>
 							<span class="title">
 								News
@@ -97,7 +97,7 @@
 						</a>
 					</li>
 					<li class="last ">
-						<a href="admin-about-edit.html" >
+						<a href="/studiostare/manage/admin-about-edit.html" >
 							<i class="fa fa-bar-chart-o"></i>
 							<span class="title">
 								Edit About
@@ -193,7 +193,7 @@
 							<#list clientList as client>
 							<tr class="odd gradeX">
 								<td>
-									<input type="checkbox" class="checkboxes" value=${(client.name)!""}/>
+									<input name="clientId" type="checkbox" class="checkboxes" value=${(client.id)!""} />
 								</td>
 								<td>${(client.name)!""}</td>
 								<td>${(client.phone)!""}</td>
