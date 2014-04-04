@@ -12,13 +12,12 @@ import com.flamingo.studiostare.entity.ClientEntity;
 import com.flamingo.studiostare.service.IClientService;
 
 @Controller
-@RequestMapping("client")
 public class ClientList {
 	
 	@Autowired
 	private IClientService clientService;
 	
-	@RequestMapping("manage")
+	@RequestMapping("admin-client-list.html")
 	public ModelAndView clientList() {
 		ModelAndView m = new ModelAndView();
 		ClientEntity clientEntity = new ClientEntity();

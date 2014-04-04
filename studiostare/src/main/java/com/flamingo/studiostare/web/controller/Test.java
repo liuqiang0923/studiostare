@@ -25,7 +25,6 @@ import com.flamingo.studiostare.service.IVideoRefService;
 import com.flamingo.studiostare.service.IVideoService;
 
 @Controller
-@RequestMapping("manage")
 public class Test {
 	
 	@Autowired
@@ -69,7 +68,7 @@ public class Test {
 		return m;
 	}
 	
-	@RequestMapping("test-client")
+	@RequestMapping("test-client.html")
 	public ModelAndView testClient() {
 		ModelAndView m = new ModelAndView();
 		ClientEntity clientEntity = new ClientEntity();

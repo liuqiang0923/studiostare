@@ -8,13 +8,12 @@ import org.springframework.web.servlet.ModelAndView;
 import com.flamingo.studiostare.service.IClientService;
 
 @Controller
-@RequestMapping("news")
 public class NewsList {
 	
 	@Autowired
 	private IClientService clientService;
 	
-	@RequestMapping("list")
+	@RequestMapping("admin-news-list.html")
 	public ModelAndView newsList() {
 		ModelAndView m = new ModelAndView();
 		m.setViewName("manage/admin-news-list");

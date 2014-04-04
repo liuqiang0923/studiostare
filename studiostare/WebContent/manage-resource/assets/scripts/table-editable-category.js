@@ -57,11 +57,11 @@ var TableEditable = function () {
                         "sNext": "Next"
                     }
                 },
-                "aoColumnDefs": [{
-                        'bSortable': false,
-                        'aTargets': [0]
-                    }
-                ]
+//                "aoColumnDefs": [{
+//                        'bSortable': false,
+//                        'aTargets': [0]
+//                    }
+//                ]
             });
 
             jQuery('#editable_category_wrapper .dataTables_filter input').addClass("form-control input-medium input-inline"); // modify table search input
