@@ -8,13 +8,13 @@ import org.springframework.web.servlet.ModelAndView;
 import com.flamingo.studiostare.service.IClientService;
 
 @Controller
-@RequestMapping("manage")
+@RequestMapping("about")
 public class AboutEdit {
 	
 	@Autowired
 	private IClientService clientService;
 	
-	@RequestMapping("admin-about-edit.html")
+	@RequestMapping("edit")
 	public ModelAndView aboutEdit() {
 		ModelAndView m = new ModelAndView();
 		m.setViewName("manage/admin-about-edit");

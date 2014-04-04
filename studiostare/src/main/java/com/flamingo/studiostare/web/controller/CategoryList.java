@@ -8,13 +8,13 @@ import org.springframework.web.servlet.ModelAndView;
 import com.flamingo.studiostare.service.IClientService;
 
 @Controller
-@RequestMapping("manage")
+@RequestMapping("category")
 public class CategoryList {
 	
 	@Autowired
 	private IClientService clientService;
 	
-	@RequestMapping("admin-category-list.html")
+	@RequestMapping("manage")
 	public ModelAndView categoryList() {
 		ModelAndView m = new ModelAndView();
 		m.setViewName("manage/admin-category-list");

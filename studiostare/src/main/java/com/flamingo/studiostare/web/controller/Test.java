@@ -69,7 +69,7 @@ public class Test {
 		return m;
 	}
 	
-	@RequestMapping("test-client.html")
+	@RequestMapping("test-client")
 	public ModelAndView testClient() {
 		ModelAndView m = new ModelAndView();
 		ClientEntity clientEntity = new ClientEntity();

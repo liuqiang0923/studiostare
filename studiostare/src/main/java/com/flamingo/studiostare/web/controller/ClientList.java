@@ -1,5 +1,6 @@
 package com.flamingo.studiostare.web.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,17 +12,19 @@ import com.flamingo.studiostare.entity.ClientEntity;
 import com.flamingo.studiostare.service.IClientService;
 
 @Controller
-@RequestMapping("manage")
+@RequestMapping("client")
 public class ClientList {
 	
 	@Autowired
 	private IClientService clientService;
 	
-	@RequestMapping("admin-client-list.html")
+	@RequestMapping("manage")
 	public ModelAndView clientList() {
 		ModelAndView m = new ModelAndView();
 		ClientEntity clientEntity = new ClientEntity();
 		List<ClientEntity> clientList = clientService.getClient(clientEntity);
+		if(clientList == null)
+			clientList = new ArrayList<ClientEntity>();
 		m.addObject("clientList", clientList);
 		m.setViewName("manage/admin-client-list");
 		return m;

@@ -10,23 +10,22 @@
 <meta content="" name="author" />
 
 <!-- BEGIN GLOBAL MANDATORY STYLES -->
-<link href="../../../fonts.googleapis.com/css-family=Open+Sans-400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
-<link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-<link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-<link href="assets/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css" />
+<link href="../../manage-resource/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<link href="../../manage-resource/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="../../manage-resource/assets/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css" />
 <!-- END GLOBAL MANDATORY STYLES -->
 <!-- BEGIN PAGE LEVEL STYLES -->
-<link rel="stylesheet" type="text/css" href="assets/plugins/select2/select2.css" />
-<link rel="stylesheet" type="text/css" href="assets/plugins/select2/select2-metronic.css" />
+<link rel="stylesheet" type="text/css" href="../../manage-resource/assets/plugins/select2/select2.css" />
+<link rel="stylesheet" type="text/css" href="../../manage-resource/assets/plugins/select2/select2-metronic.css" />
 <!-- END PAGE LEVEL SCRIPTS -->
 <!-- BEGIN THEME STYLES -->
-<link href="assets/css/style-metronic.css" rel="stylesheet" type="text/css" />
-<link href="assets/css/style.css" rel="stylesheet" type="text/css" />
-<link href="assets/css/style-responsive.css" rel="stylesheet" type="text/css" />
-<link href="assets/css/plugins.css" rel="stylesheet" type="text/css" />
-<link href="assets/css/themes/default.css" rel="stylesheet" type="text/css" id="style_color" />
-<link href="assets/css/bootstrap-fileinput.css" rel="stylesheet" type="text/css" />
-<link href="assets/css/custom.css" rel="stylesheet" type="text/css" />
+<link href="../../manage-resource/assets/css/style-metronic.css" rel="stylesheet" type="text/css" />
+<link href="../../manage-resource/assets/css/style.css" rel="stylesheet" type="text/css" />
+<link href="../../manage-resource/assets/css/style-responsive.css" rel="stylesheet" type="text/css" />
+<link href="../../manage-resource/assets/css/plugins.css" rel="stylesheet" type="text/css" />
+<link href="../../manage-resource/assets/css/themes/default.css" rel="stylesheet" type="text/css" id="style_color" />
+<link href="../../manage-resource/assets/css/bootstrap-fileinput.css" rel="stylesheet" type="text/css" />
+<link href="../../manage-resource/assets/css/custom.css" rel="stylesheet" type="text/css" />
 <!-- END THEME STYLES -->
 <link rel="shortcut icon" href="favicon.ico" />
 </head>
@@ -44,7 +43,7 @@
 		<!-- END LOGO -->
 		<!-- BEGIN RESPONSIVE MENU TOGGLER -->
 		<a href="javascript:;" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-			<img src="assets/img/menu-toggler.png" alt=""/>
+			<img src="../../manage-resource/assets/img/menu-toggler.png" alt=""/>
 		</a>
 		<!-- END RESPONSIVE MENU TOGGLER -->
 	</div>
@@ -319,33 +318,33 @@
 	<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
 	<!-- BEGIN CORE PLUGINS -->
 	<!--[if lt IE 9]>
-<script src="assets/plugins/respond.min.js"></script>
-<script src="assets/plugins/excanvas.min.js"></script> 
+<script src="../../manage-resource/assets/plugins/respond.min.js"></script>
+<script src="../../manage-resource/assets/plugins/excanvas.min.js"></script> 
 <![endif]-->
-	<script src="assets/plugins/jquery-1.10.2.min.js"></script>
-	<script src="assets/plugins/jquery-migrate-1.2.1.min.js"></script>
-	<script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-	<script src="assets/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js"></script>
-	<script src="assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-	<script src="assets/plugins/jquery.blockui.min.js"></script>
-	<script src="assets/plugins/jquery.cokie.min.js"></script>
-	<script src="assets/plugins/uniform/jquery.uniform.min.js"></script>
+	<script src="../../manage-resource/assets/plugins/jquery-1.10.2.min.js"></script>
+	<script src="../../manage-resource/assets/plugins/jquery-migrate-1.2.1.min.js"></script>
+	<script src="../../manage-resource/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../../manage-resource/assets/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js"></script>
+	<script src="../../manage-resource/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="../../manage-resource/assets/plugins/jquery.blockui.min.js"></script>
+	<script src="../../manage-resource/assets/plugins/jquery.cokie.min.js"></script>
+	<script src="../../manage-resource/assets/plugins/uniform/jquery.uniform.min.js"></script>
 	<!-- END CORE PLUGINS -->
 	<!-- BEGIN PAGE LEVEL PLUGINS -->
-	<script type="text/javascript" src="assets/plugins/jquery-validation/dist/jquery.validate.min.js"></script>
-	<script type="text/javascript" src="assets/plugins/jquery-validation/dist/additional-methods.min.js"></script>
-	<script type="text/javascript" src="assets/plugins/bootstrap-wizard/jquery.bootstrap.wizard.min.js"></script>
+	<script type="text/javascript" src="../../manage-resource/assets/plugins/jquery-validation/dist/jquery.validate.min.js"></script>
+	<script type="text/javascript" src="../../manage-resource/assets/plugins/jquery-validation/dist/additional-methods.min.js"></script>
+	<script type="text/javascript" src="../../manage-resource/assets/plugins/bootstrap-wizard/jquery.bootstrap.wizard.min.js"></script>
 	<!-- END PAGE LEVEL PLUGINS -->
 	<!-- BEGIN PAGE LEVEL PLUGINS -->
-	<script type="text/javascript" src="assets/plugins/bootstrap-fileinput/bootstrap-fileinput.js"></script>
-	<script type="text/javascript" src="assets/plugins/select2/select2.min.js"></script>
-	<script type="text/javascript" src="assets/plugins/data-tables/jquery.dataTables.js" ></script>
-	<script type="text/javascript" src="assets/plugins/data-tables/DT_bootstrap.js"></script>
+	<script type="text/javascript" src="../../manage-resource/assets/plugins/bootstrap-fileinput/bootstrap-fileinput.js"></script>
+	<script type="text/javascript" src="../../manage-resource/assets/plugins/select2/select2.min.js"></script>
+	<script type="text/javascript" src="../../manage-resource/assets/plugins/data-tables/jquery.dataTables.js" ></script>
+	<script type="text/javascript" src="../../manage-resource/assets/plugins/data-tables/DT_bootstrap.js"></script>
 	<!-- END PAGE LEVEL PLUGINS -->
 	<!-- BEGIN PAGE LEVEL SCRIPTS -->
-	<script src="assets/scripts/core/app.js"></script>
-	<script src="assets/scripts/form-wizard-news.js"></script>
-	<script src="assets/scripts/table-editable-news.js"></script>
+	<script src="../../manage-resource/assets/scripts/core/app.js"></script>
+	<script src="../../manage-resource/assets/scripts/form-wizard-news.js"></script>
+	<script src="../../manage-resource/assets/scripts/table-editable-news.js"></script>
 	<!-- END PAGE LEVEL SCRIPTS -->
 	<script>
 jQuery(document).ready(function() {       

@@ -8,13 +8,13 @@ import org.springframework.web.servlet.ModelAndView;
 import com.flamingo.studiostare.service.IClientService;
 
 @Controller
-@RequestMapping("manage")
+@RequestMapping("video")
 public class VideoList {
 	
 	@Autowired
 	private IClientService clientService;
 	
-	@RequestMapping("admin-video-list.html")
+	@RequestMapping("list")
 	public ModelAndView videoList() {
 		ModelAndView m = new ModelAndView();
 		m.setViewName("manage/admin-video-list");

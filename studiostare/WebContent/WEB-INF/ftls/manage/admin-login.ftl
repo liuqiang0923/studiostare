@@ -10,23 +10,22 @@
 <meta content="" name="author"/>
 
 <!-- BEGIN GLOBAL MANDATORY STYLES -->
-<link href="../../../fonts.googleapis.com/css-family=Open+Sans-400,300,600,700&subset=all" rel="stylesheet" type="text/css"/>
-<link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-<link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-<link href="assets/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+<link href="../../manage-resource/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+<link href="../../manage-resource/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+<link href="../../manage-resource/assets/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
 <!-- END GLOBAL MANDATORY STYLES -->
 <!-- BEGIN PAGE LEVEL STYLES -->
-<link rel="stylesheet" type="text/css" href="assets/plugins/select2/select2.css" />
-<link rel="stylesheet" type="text/css" href="assets/plugins/select2/select2-metronic.css" />
+<link rel="stylesheet" type="text/css" href="../../manage-resource/assets/plugins/select2/select2.css" />
+<link rel="stylesheet" type="text/css" href="../../manage-resource/assets/plugins/select2/select2-metronic.css" />
 <!-- END PAGE LEVEL SCRIPTS -->
 <!-- BEGIN THEME STYLES -->
-<link href="assets/css/style-metronic.css" rel="stylesheet" type="text/css"/>
-<link href="assets/css/style.css" rel="stylesheet" type="text/css"/>
-<link href="assets/css/style-responsive.css" rel="stylesheet" type="text/css"/>
-<link href="assets/css/plugins.css" rel="stylesheet" type="text/css"/>
-<link href="assets/css/themes/default.css" rel="stylesheet" type="text/css" id="style_color"/>
-<link href="assets/css/pages/login.css" rel="stylesheet" type="text/css"/>
-<link href="assets/css/custom.css" rel="stylesheet" type="text/css"/>
+<link href="../../manage-resource/assets/css/style-metronic.css" rel="stylesheet" type="text/css"/>
+<link href="../../manage-resource/assets/css/style.css" rel="stylesheet" type="text/css"/>
+<link href="../../manage-resource/assets/css/style-responsive.css" rel="stylesheet" type="text/css"/>
+<link href="../../manage-resource/assets/css/plugins.css" rel="stylesheet" type="text/css"/>
+<link href="../../manage-resource/assets/css/themes/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+<link href="../../manage-resource/assets/css/pages/login.css" rel="stylesheet" type="text/css"/>
+<link href="../../manage-resource/assets/css/custom.css" rel="stylesheet" type="text/css"/>
 <!-- END THEME STYLES -->
 <link rel="shortcut icon" href="favicon.ico" />
 </head>
@@ -35,7 +34,7 @@
 <!-- BEGIN LOGO -->
 <div class="logo">
 	<a href="index.html" >
-		<img src="assets/img/logo.png" alt=""/>
+		<img src="../../manage-resource/assets/img/logo.png" alt=""/>
 	</a>
 </div>
 <!-- END LOGO -->
@@ -92,22 +91,22 @@
 <!-- END COPYRIGHT -->
 <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
 <!-- BEGIN CORE PLUGINS -->
-<script src="assets/plugins/jquery-1.10.2.min.js" type="text/javascript"></script>
-<script src="assets/plugins/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
-<script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="assets/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
-<script src="assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-<script src="assets/plugins/jquery.blockui.min.js" type="text/javascript"></script>
-<script src="assets/plugins/jquery.cokie.min.js" type="text/javascript"></script>
-<script src="assets/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
+<script src="../../manage-resource/assets/plugins/jquery-1.10.2.min.js" type="text/javascript"></script>
+<script src="../../manage-resource/assets/plugins/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+<script src="../../manage-resource/assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="../../manage-resource/assets/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
+<script src="../../manage-resource/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+<script src="../../manage-resource/assets/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+<script src="../../manage-resource/assets/plugins/jquery.cokie.min.js" type="text/javascript"></script>
+<script src="../../manage-resource/assets/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
 <!-- END CORE PLUGINS -->
 <!-- BEGIN PAGE LEVEL PLUGINS -->
-<script src="assets/plugins/jquery-validation/dist/jquery.validate.min.js" type="text/javascript"></script>
-<script type="text/javascript" src="assets/plugins/select2/select2.min.js" ></script>
+<script src="../../manage-resource/assets/plugins/jquery-validation/dist/jquery.validate.min.js" type="text/javascript"></script>
+<script src="../../manage-resource/assets/plugins/select2/select2.min.js" type="text/javascript" ></script>
 <!-- END PAGE LEVEL PLUGINS -->
 <!-- BEGIN PAGE LEVEL SCRIPTS -->
-<script src="assets/scripts/core/app.js" type="text/javascript"></script>
-<script src="assets/scripts/custom/login.js" type="text/javascript"></script>
+<script src="../../manage-resource/assets/scripts/core/app.js" type="text/javascript"></script>
+<script src="../../manage-resource/assets/scripts/custom/login.js" type="text/javascript"></script>
 <!-- END PAGE LEVEL SCRIPTS -->
 <script>
 		jQuery(document).ready(function() {     

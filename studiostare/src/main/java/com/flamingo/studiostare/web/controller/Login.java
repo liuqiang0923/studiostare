@@ -8,13 +8,13 @@ import org.springframework.web.servlet.ModelAndView;
 import com.flamingo.studiostare.service.IClientService;
 
 @Controller
-@RequestMapping("manage")
+@RequestMapping("login")
 public class Login {
 	
 	@Autowired
 	private IClientService clientService;
 	
-	@RequestMapping("admin-login.html")
+	@RequestMapping("login")
 	public ModelAndView login() {
 		ModelAndView m = new ModelAndView();
 		m.setViewName("manage/admin-login");
