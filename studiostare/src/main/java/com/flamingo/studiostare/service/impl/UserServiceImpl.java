@@ -20,7 +20,7 @@ public class UserServiceImpl implements IUserService {
 
 	@Override
 	public boolean checkLogin(UserEntity userEntity) {
-		return false;
+		return true;
 	}
 
 }
