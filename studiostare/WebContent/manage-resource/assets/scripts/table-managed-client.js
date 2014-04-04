@@ -64,36 +64,38 @@ var TableManaged = function () {
             //jQuery('#managetable_client_wrapper .dataTables_length select').select2(); // initialize select2 dropdown
 
             $('#managetable_client_new').click(function (e) {
-            	var client = new Object();
-            	client.name = "asdf";
-            	client.phone = "asdf";
-            	client.email = "asdf";
-            	client.description = "asdf";
-            	var tmpjsonstr = '{"name":"hmkcode","id":2}';
-            	var jj = $.parseJSON(tmpjsonstr);
-//            	var da = $.parseJSON(client);
-            	editClient();
+            	addClient();
+            });
+            
+            $('#managetable_client a.edit').live('click', function (e) {
+            	var id = $(this).parents('tr')[0].getElementsByTagName("input")[0].value;
+            	window.location.href="/studiostare/manage/editClient/" + id;
+            });
+            
+            $('#managetable_client a.delete').live('click', function (e) {
+            	window.location.href="/studiostare/manage/deleteClient/";
             });
             
             function addClient(){
-            	
+            	window.location.href="/studiostare/manage/addClient";
             }
             
             function editClient(id){
-            	$.ajax({
-            	    url: 'admin-client-edit.html',
-            	    type: 'POST',
-            	    dataType: 'json',
-            	    data: "{\"name\":\"hmkcode\",\"id\":2}", 
-            	    contentType: 'application/json;',
-            	    mimeType: 'application/json;',
-            	    success: function(res) {
-            	        alert("scccess." + res.name);
-            	    },
-            	    error:function(data,status,er) {
-            	        alert("error: "+data+" status: "+status+" er:"+er);
-            	    }
-            	});
+            	window.location.href="/studiostare/manage/editClient/{id}";
+//            	$.ajax({
+//            	    url: 'admin-client-edit.html',
+//            	    type: 'POST',
+//            	    dataType: 'json',
+//            	    data: "{\"name\":\"hmkcode\",\"id\":2}", 
+//            	    contentType: 'application/json;',
+//            	    mimeType: 'application/json;',
+//            	    success: function(res) {
+//            	        alert("scccess." + res.name);
+//            	    },
+//            	    error:function(data,status,er) {
+//            	        alert("error: "+data+" status: "+status+" er:"+er);
+//            	    }
+//            	});
             }
             
         }
