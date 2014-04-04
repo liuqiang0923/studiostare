@@ -1,10 +1,9 @@
 <html>
-<!DOCTYPE html>
 <html lang="en" class="no-js">
 <!-- BEGIN HEAD -->
 <head>
 <meta charset="utf-8" />
-<title>Studio Stare | Edit Video</title>
+<title>Studio Stare | editClient</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 <meta content="" name="description" />
@@ -25,7 +24,6 @@
 <link href="/studiostare/manage-resource/assets/css/style-responsive.css" rel="stylesheet" type="text/css" />
 <link href="/studiostare/manage-resource/assets/css/plugins.css" rel="stylesheet" type="text/css" />
 <link href="/studiostare/manage-resource/assets/css/themes/default.css" rel="stylesheet" type="text/css" id="style_color" />
-<link href="/studiostare/manage-resource/assets/css/bootstrap-fileinput.css" rel="stylesheet" type="text/css" />
 <link href="/studiostare/manage-resource/assets/css/custom.css" rel="stylesheet" type="text/css" />
 <!-- END THEME STYLES -->
 <link rel="shortcut icon" href="favicon.ico" />
@@ -39,7 +37,7 @@
 	<div class="header-inner">
 		<!-- BEGIN LOGO -->
 		<a class="navbar-brand" href="index.html">
-			<img src="/studiostare/manage-resource/favicon.png" alt="logo" class="img-responsive"/>
+			<img src="favicon.png" alt="logo" class="img-responsive"/>
 		</a>
 		<!-- END LOGO -->
 		<!-- BEGIN RESPONSIVE MENU TOGGLER -->
@@ -139,7 +137,7 @@
 				<div class="row">
 					<div class="col-md-12">
 						<!-- BEGIN PAGE TITLE & BREADCRUMB-->
-						<h3 class="page-title">Edit Video Wizard</h3>
+						<h3 class="page-title">Edit Client Wizard</h3>
 						<!-- END PAGE TITLE & BREADCRUMB-->
 					</div>
 				</div>
@@ -150,8 +148,8 @@
 						<div class="portlet box blue" id="form_wizard_1">
 							<div class="portlet-title">
 								<div class="caption">
-									<i class="fa fa-reorder"></i> Edit Video Wizard - <span
-										class="step-title"> Step 1 of 4 </span>
+									<i class="fa fa-reorder"></i> Edit Client Wizard - <span
+										class="step-title"> Step 1 of 3 </span>
 								</div>
 							</div>
 							<div class="portlet-body form">
@@ -161,21 +159,16 @@
 											<ul class="nav nav-pills nav-justified steps">
 												<li><a href="#tab1" data-toggle="tab" class="step">
 														<span class="number"> 1 </span> <span class="desc">
-															<i class="fa fa-check"></i> Video Info Setup
+															<i class="fa fa-check"></i> Client Info Setup
 													</span>
 												</a></li>
 												<li><a href="#tab2" data-toggle="tab" class="step">
 														<span class="number"> 2 </span> <span class="desc">
-															<i class="fa fa-check"></i> Video Client Setup
-													</span>
-												</a></li>
-												<li><a href="#tab3" data-toggle="tab" class="step">
-														<span class="number"> 3 </span> <span class="desc">
-															<i class="fa fa-check"></i> Video Category Setup
+															<i class="fa fa-check"></i> Client Category Setup
 													</span>
 												</a></li>
 												<li><a href="#tab4" data-toggle="tab" class="step">
-														<span class="number"> 4 </span> <span class="desc">
+														<span class="number"> 3 </span> <span class="desc">
 															<i class="fa fa-check"></i> Confirm
 													</span>
 												</a></li>
@@ -194,72 +187,56 @@
 													Your form validation is successful!
 												</div>
 												<div class="tab-pane active" id="tab1">
-													<h3 class="block">Provide Video details</h3>
+													<h3 class="block">Provide client details</h3>
 													<div class="form-group">
-														<label class="control-label col-md-3">Video name <span
+														<label class="control-label col-md-3">Username <span
 															class="required"> * </span>
 														</label>
 														<div class="col-md-4">
-															<input type="text" class="form-control" name="videoname" />
-															<span class="help-block"> Input video name </span>
+															<input type="text" class="form-control" name="username" />
+															<span class="help-block"> Input username </span>
 														</div>
 													</div>
 													<div class="form-group">
-														<label class="control-label col-md-3"> 
-															Video Img 
-															<span class="required"> * </span>
-														</label>
-														<div class="fileinput fileinput-new col-md-4" data-provides="fileinput">
-															<div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 400px; height: 300px;" id="videoimgdiv">
-															</div>
-															<input type="file" name="videoimg"/>
-															<span class="help-block"> Upload video img. </span>	
-														</div>
-													</div>
-													<div class="form-group">
-														<label class="control-label col-md-3"> 
-															Video 
-															<span class="required"> * </span>
-														</label>
-														<div class="fileinput fileinput-new col-md-4" data-provides="fileinput">
-															<div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 400px; height: 300px;" id="videodiv">
-															</div>
-															<input type="file" name="video"/>
-															<span class="help-block"> Upload video. </span>	
-														</div>
-													</div>
-													<div class="form-group">
-														<label class="control-label col-md-3">Description <span
+														<label class="control-label col-md-3">PhoneNum <span
 															class="required"> * </span>
 														</label>
 														<div class="col-md-4">
-															<textarea class="form-control" rows="3" style="width: 400px; height: 300px" name="description"></textarea>
-															<span class="help-block"> Input video description </span>
+															<input type="password" class="form-control"
+																name="password" id="submit_form_password" /> <span
+																class="help-block"> Input phoneNum. </span>
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="control-label col-md-3">Email <span
+															class="required"> * </span>
+														</label>
+														<div class="col-md-4">
+															<input type="text" class="form-control" name="email" />
+															<span class="help-block"> Input email address </span>
 														</div>
 													</div>
 												</div>
 												<div class="tab-pane" id="tab2">
-													<h3 class="block">Provide video client details</h3>
+													<h3 class="block">Provide client category details</h3>
 													<div class="portlet box blue">
 														<div class="portlet-title">
 															<div class="caption">
-																<i class="fa fa-edit"></i>video clients
+																<i class="fa fa-edit"></i>client categories
 															</div>
 														</div>
 														<div class="portlet-body">
 															<div class="table-toolbar">
 																<div class="btn-group">
-																	<button id="editable_client_new" class="btn green">
+																	<button id="sample_editable_1_new" class="btn green">
 																		Add New <i class="fa fa-plus"></i>
 																	</button>
 																</div>
 															</div>
-															<table class="table table-striped table-hover table-bordered" id="editable_client">
+															<table class="table table-striped table-hover table-bordered" id="sample_editable_1">
 																<thead>
 																	<tr>
-																		<th>Client name</th>
-																		<th>Phone</th>
-																		<th>Email</th>
+																		<th>Name</th>
 																		<th>Description</th>
 																		<th>Edit</th>
 																		<th>Delete</th>
@@ -267,16 +244,12 @@
 																</thead>
 																<tbody>
 																	<tr>
-																		<td>client 1</td>
-																		<td>1234</td>
-																		<td>
-																			<!-- <a href="mailto:aa@gmail.com"> -->
-																				aa@gmail.com
-																			<!-- </a> -->
-																		</td>
-																		<td>description 1</td>
-																		<td><a class="edit" href="javascript:;"> Edit </a></td>
-																		<td><a class="delete" href="javascript:;"> Delete </a></td>
+																		<td>a category</td>
+																		<td>a category description</td>
+																		<td><a class="edit" href="javascript:;"> Edit
+																		</a></td>
+																		<td><a class="delete" href="javascript:;">
+																				Delete </a></td>
 																	</tr>
 																</tbody>
 															</table>
@@ -284,101 +257,84 @@
 													</div>
 												</div>
 												<div class="tab-pane" id="tab3">
-													<h3 class="block">Provide video categories details</h3>
-													<div class="portlet box blue">
-														<div class="portlet-title">
-															<div class="caption">
-																<i class="fa fa-edit"></i>video categories
-															</div>
+													<h3 class="block">Provide your billing and credit card
+														details</h3>
+													<div class="form-group">
+														<label class="control-label col-md-3">Card Holder
+															Name <span class="required"> * </span>
+														</label>
+														<div class="col-md-4">
+															<input type="text" class="form-control" name="card_name" />
+															<span class="help-block"> </span>
 														</div>
-														<div class="portlet-body">
-															<div class="table-toolbar">
-																<div class="btn-group">
-																	<button id="editable_category_new" class="btn green">
-																		Add New <i class="fa fa-plus"></i>
-																	</button>
-																</div>
-															</div>
-															<table class="table table-striped table-hover table-bordered" id="editable_category">
-																<thead>
-																	<tr>
-																		<th>Category name</th>
-																		<th>Description</th>
-																		<th>Edit</th>
-																		<th>Delete</th>
-																	</tr>
-																</thead>
-																<tbody>
-																	<tr>
-																		<td>category 1</td>
-																		<td>description 1</td>
-																		<td><a class="edit" href="javascript:;"> Edit </a></td>
-																		<td><a class="delete" href="javascript:;"> Delete </a></td>
-																	</tr>
-																</tbody>
-															</table>
+													</div>
+													<div class="form-group">
+														<label class="control-label col-md-3">Card Number
+															<span class="required"> * </span>
+														</label>
+														<div class="col-md-4">
+															<input type="text" class="form-control"
+																name="card_number" /> <span class="help-block">
+															</span>
 														</div>
-													</div>													
+													</div>
+													<div class="form-group">
+														<label class="control-label col-md-3">CVC <span
+															class="required"> * </span>
+														</label>
+														<div class="col-md-4">
+															<input type="text" placeholder="" class="form-control"
+																name="card_cvc" /> <span class="help-block"> </span>
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="control-label col-md-3">Expiration(MM/YYYY)
+															<span class="required"> * </span>
+														</label>
+														<div class="col-md-4">
+															<input type="text" placeholder="MM/YYYY" maxlength="7"
+																class="form-control" name="card_expiry_date" /> <span
+																class="help-block"> e.g 11/2020 </span>
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="control-label col-md-3">Payment
+															Options <span class="required"> * </span>
+														</label>
+														<div class="col-md-4">
+															<div class="checkbox-list">
+																<label> <input type="checkbox" name="payment[]"
+																	value="1" data-title="Auto-Pay with this Credit Card." />
+																	Auto-Pay with this Credit Card
+																</label> <label> <input type="checkbox" name="payment[]"
+																	value="2" data-title="Email me monthly billing." />
+																	Email me monthly billing
+																</label>
+															</div>
+															<div id="form_payment_error"></div>
+														</div>
+													</div>
 												</div>
 												<div class="tab-pane" id="tab4">
-													<h3 class="block">Confirm your video</h3>
-													<h4 class="form-section">Video Info</h4>
+													<h3 class="block">Confirm your account</h3>
+													<h4 class="form-section">Client Info</h4>
 													<div class="form-group">
-														<label class="control-label col-md-3">Video name:</label>
+														<label class="control-label col-md-3">Username:</label>
 														<div class="col-md-4">
-															<p class="form-control-static" data-display="videoname">
+															<p class="form-control-static" data-display="username">
 															</p>
 														</div>
 													</div>
 													<div class="form-group">
-														<label class="control-label col-md-3">Video img:</label>
+														<label class="control-label col-md-3">Email:</label>
 														<div class="col-md-4">
-															<p class="form-control-static" data-display="videoname">
+															<p class="form-control-static" data-display="email">
 															</p>
 														</div>
 													</div>
+													<h4 class="form-section">Client Categories</h4>
 													<div class="form-group">
-														<label class="control-label col-md-3">Video:</label>
-														<div class="col-md-4">
-															<p class="form-control-static" data-display="videoname">
-															</p>
-														</div>
-													</div>
-													<div class="form-group">
-														<label class="control-label col-md-3">Video description:</label>
-														<div class="col-md-4">
-															<p class="form-control-static" data-display="description">
-															</p>
-														</div>
-													</div>
-													<h4 class="form-section">Video Clients</h4>
-													<div class="form-group">
-														<label class="control-label col-md-3">client: client 1
-														</label>
-														<div class="col-md-4">
-															<p class="form-control-static" data-display="fullname">
-																a category description.</p>
-														</div>
-													</div>
-													<div class="form-group">
-														<label class="control-label col-md-3">client: client 2
-														</label>
-														<div class="col-md-4">
-															<p class="form-control-static" data-display="fullname">
-																a category description.</p>
-														</div>
-													</div>
-													<h4 class="form-section">Video Categories</h4>
-													<div class="form-group">
-														<label class="control-label col-md-3">category: category 1
-														</label>
-														<div class="col-md-4">
-															<p class="form-control-static" data-display="fullname">
-																a category description.</p>
-														</div>
-													</div>
-													<div class="form-group">
-														<label class="control-label col-md-3">category: category 2
+														<label class="control-label col-md-3">a category :
 														</label>
 														<div class="col-md-4">
 															<p class="form-control-static" data-display="fullname">
@@ -440,7 +396,6 @@
 	<script src="/studiostare/manage-resource/assets/plugins/uniform/jquery.uniform.min.js"></script>
 	<!-- END CORE PLUGINS -->
 	<!-- BEGIN PAGE LEVEL PLUGINS -->
-	<script type="text/javascript" src="/studiostare/manage-resource/assets/plugins/bootstrap-fileinput/bootstrap-fileinput.js"></script>
 	<script type="text/javascript" src="/studiostare/manage-resource/assets/plugins/jquery-validation/dist/jquery.validate.min.js"></script>
 	<script type="text/javascript" src="/studiostare/manage-resource/assets/plugins/jquery-validation/dist/additional-methods.min.js"></script>
 	<script type="text/javascript" src="/studiostare/manage-resource/assets/plugins/bootstrap-wizard/jquery.bootstrap.wizard.min.js"></script>
@@ -452,8 +407,8 @@
 	<!-- END PAGE LEVEL PLUGINS -->
 	<!-- BEGIN PAGE LEVEL SCRIPTS -->
 	<script src="/studiostare/manage-resource/assets/scripts/core/app.js"></script>
-	<script src="/studiostare/manage-resource/assets/scripts/form-wizard-video.js"></script>
-	<script src="/studiostare/manage-resource/assets/scripts/table-editable-video.js"></script>
+	<script src="/studiostare/manage-resource/assets/scripts/custom/form-wizard.js"></script>
+	<script src="/studiostare/manage-resource/assets/scripts/custom/table-editable.js"></script>
 	<!-- END PAGE LEVEL SCRIPTS -->
 	<script>
 jQuery(document).ready(function() {       

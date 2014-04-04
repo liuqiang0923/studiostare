@@ -157,16 +157,16 @@
 						<div class="portlet-body">
 							<div class="table-toolbar">
 								<div class="btn-group">
-									<button id="sample_editable_1_new" class="btn green" onclick="location='admin-news-edit.html'">
+									<button id="managetable_news_new" class="btn green" onclick="location='admin-news-edit.html'">
 									Add New <i class="fa fa-plus"></i>
 									</button>
 								</div>
 							</div>
-							<table class="table table-striped table-bordered table-hover" id="sample_1">
+							<table class="table table-striped table-bordered table-hover" id="managetable_news">
 							<thead>
 							<tr>
 								<th class="table-checkbox">
-									<input type="checkbox" class="group-checkable" data-set="#sample_1 .checkboxes"/>
+									<input type="checkbox" class="group-checkable" data-set="#managetable_news .checkboxes"/>
 								</th>
 								<th>
 									 Title

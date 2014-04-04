@@ -46,7 +46,7 @@ var TableEditable = function () {
                 oTable.fnUpdate('<a class="edit" href="">Edit</a>', nRow, 4, false);
                 oTable.fnDraw();
             }
-
+            
             var oTable = $('#editable_client').dataTable({
                 "aLengthMenu": [
                     [5, 15, 20, -1],
@@ -125,15 +125,16 @@ var TableEditable = function () {
                 } else if (nEditing == nRow && this.innerHTML == "Save") {
                     /* Editing this row and want to save it */
                     saveRow(oTable, nEditing);
+                    
+                    // update database
+                    var name = nEditing.children[0].innerHTML;
+                    var phone = nEditing.children[1].innerHTML;
+                    var email = nEditing.children[2].innerHTML;
+                    var description = nEditing.children[3].innerHTML;
+                    
                     nEditing = null;
                     alert("Updated! Do not forget to do some ajax to sync with backend :)");
-                    // update database
-                    var tds = nRow.getElementsByTagName('td');
-//                    var a = nRow.
-                    var name = nRow.getElementsByTagName('td')[0].getElementsByTagName('input')[0].value;
-                    var phone = nRow.getElementsByTagName('td')[1].getElementsByTagName('input')[0].value;
-                    var email = nRow.getElementsByTagName('td')[2].getElementsByTagName('input')[0].value;
-                    var description = nRow.getElementsByTagName('td')[3].getElementsByTagName('input')[0].value;
+                    
                 } else {
                     /* No edit in progress - let's start one */
                     editRow(oTable, nRow);

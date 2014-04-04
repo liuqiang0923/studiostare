@@ -10,7 +10,7 @@ var TableManaged = function () {
             }
 
             // begin first table
-            $('#sample_1').dataTable({
+            $('#managetable_news').dataTable({
                 "aoColumns": [
                   { "bSortable": false },
                   null,
@@ -39,7 +39,7 @@ var TableManaged = function () {
                 ]
             });
 
-            jQuery('#sample_1 .group-checkable').change(function () {
+            jQuery('#managetable_news .group-checkable').change(function () {
                 var set = jQuery(this).attr("data-set");
                 var checked = jQuery(this).is(":checked");
                 jQuery(set).each(function () {
@@ -54,91 +54,13 @@ var TableManaged = function () {
                 jQuery.uniform.update(set);
             });
 
-            jQuery('#sample_1').on('change', 'tbody tr .checkboxes', function(){
+            jQuery('#managetable_news').on('change', 'tbody tr .checkboxes', function(){
                  $(this).parents('tr').toggleClass("active");
             });
 
-            jQuery('#sample_1_wrapper .dataTables_filter input').addClass("form-control input-medium input-inline"); // modify table search input
-            jQuery('#sample_1_wrapper .dataTables_length select').addClass("form-control input-xsmall"); // modify table per page dropdown
-            //jQuery('#sample_1_wrapper .dataTables_length select').select2(); // initialize select2 dropdown
-
-            // begin second table
-            $('#sample_2').dataTable({
-                "aLengthMenu": [
-                    [5, 15, 20, -1],
-                    [5, 15, 20, "All"] // change per page values here
-                ],
-                // set the initial value
-                "iDisplayLength": 5,
-                "sPaginationType": "bootstrap",
-                "oLanguage": {
-                    "sLengthMenu": "_MENU_ records",
-                    "oPaginate": {
-                        "sPrevious": "Prev",
-                        "sNext": "Next"
-                    }
-                },
-               "aoColumnDefs": [
-                    { 'bSortable': false, 'aTargets': [0] },
-                    { "bSearchable": false, "aTargets": [ 0 ] }
-                ]
-            });
-
-            jQuery('#sample_2 .group-checkable').change(function () {
-                var set = jQuery(this).attr("data-set");
-                var checked = jQuery(this).is(":checked");
-                jQuery(set).each(function () {
-                    if (checked) {
-                        $(this).attr("checked", true);
-                    } else {
-                        $(this).attr("checked", false);
-                    }
-                });
-                jQuery.uniform.update(set);
-            });
-
-            jQuery('#sample_2_wrapper .dataTables_filter input').addClass("form-control input-small input-inline"); // modify table search input
-            jQuery('#sample_2_wrapper .dataTables_length select').addClass("form-control input-xsmall"); // modify table per page dropdown
-            jQuery('#sample_2_wrapper .dataTables_length select').select2(); // initialize select2 dropdown
-
-            // begin: third table
-            $('#sample_3').dataTable({
-                "aLengthMenu": [
-                    [5, 15, 20, -1],
-                    [5, 15, 20, "All"] // change per page values here
-                ],
-                // set the initial value
-                "iDisplayLength": 5,
-                "sPaginationType": "bootstrap",
-                "oLanguage": {
-                    "sLengthMenu": "_MENU_ records",
-                    "oPaginate": {
-                        "sPrevious": "Prev",
-                        "sNext": "Next"
-                    }
-                },
-                "aoColumnDefs": [
-                    { 'bSortable': false, 'aTargets': [0] },
-                    { "bSearchable": false, "aTargets": [ 0 ] }
-                ]
-            });
-
-            jQuery('#sample_3 .group-checkable').change(function () {
-                var set = jQuery(this).attr("data-set");
-                var checked = jQuery(this).is(":checked");
-                jQuery(set).each(function () {
-                    if (checked) {
-                        $(this).attr("checked", true);
-                    } else {
-                        $(this).attr("checked", false);
-                    }
-                });
-                jQuery.uniform.update(set);
-            });
-
-            jQuery('#sample_3_wrapper .dataTables_filter input').addClass("form-control input-small input-inline"); // modify table search input
-            jQuery('#sample_3_wrapper .dataTables_length select').addClass("form-control input-xsmall"); // modify table per page dropdown
-            jQuery('#sample_3_wrapper .dataTables_length select').select2(); // initialize select2 dropdown
+            jQuery('#managetable_news_wrapper .dataTables_filter input').addClass("form-control input-medium input-inline"); // modify table search input
+            jQuery('#managetable_news_wrapper .dataTables_length select').addClass("form-control input-xsmall"); // modify table per page dropdown
+            //jQuery('#managetable_news_wrapper .dataTables_length select').select2(); // initialize select2 dropdown
 
         }
 

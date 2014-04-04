@@ -3,7 +3,7 @@
 <!-- BEGIN HEAD -->
 <head>
 <meta charset="utf-8"/>
-<title>Studio Stare | Clients Manage</title>
+<title>Studio Stare | Client List</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta content="" name="description"/>
@@ -54,175 +54,178 @@
 </div>
 <!-- BEGIN CONTAINER -->
 <div class="page-container">
-<!-- BEGIN SIDEBAR -->
-<div class="page-sidebar-wrapper">
-<div class="page-sidebar navbar-collapse collapse">
-<!-- BEGIN SIDEBAR MENU -->
-<ul class="page-sidebar-menu" data-auto-scroll="true"
-data-slide-speed="200">
-<li class="sidebar-toggler-wrapper">
-<!-- BEGIN SIDEBAR TOGGLER BUTTON -->
-<div class="sidebar-toggler hidden-phone"></div> <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
-</li>
-<li class="last ">
-<a href="admin-video-list.html" >
-<i class="fa fa-bar-chart-o"></i>
-<span class="title">
-Video
-</span>
-</a>
-</li>
-<li class="last ">
-<a href="admin-client-list.html">
-<i class="fa fa-bar-chart-o"></i>
-<span class="title">
-Client
-</span>
-</a>
-</li>
-<li class="last ">
-<a href="admin-category-list.html">
-<i class="fa fa-bar-chart-o"></i>
-<span class="title">
-Category
-</span>
-</a>
-</li>
-<li class="last ">
-<a href="admin-news-list.html" >
-<i class="fa fa-bar-chart-o"></i>
-<span class="title">
-News
-</span>
-</a>
-</li>
-<li class="last ">
-<a href="admin-about-edit.html" >
-<i class="fa fa-bar-chart-o"></i>
-<span class="title">
-Edit About
-</span>
-</a>
-</li>
-</ul>
-<!-- END SIDEBAR MENU -->
-</div>
-</div>
-<!-- END SIDEBAR -->
-<!-- BEGIN CONTENT -->
-<div class="page-content-wrapper">
-<div class="page-content">
-<!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
-<div class="modal fade" id="portlet-config" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-<div class="modal-dialog">
-<div class="modal-content">
-<div class="modal-header">
-<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-<h4 class="modal-title">Modal title</h4>
-</div>
-<div class="modal-body">
-Widget settings form goes here
-</div>
-<div class="modal-footer">
-<button type="button" class="btn blue">Save changes</button>
-<button type="button" class="btn default" data-dismiss="modal">Close</button>
-</div>
-</div>
-<!-- /.modal-content -->
-</div>
-<!-- /.modal-dialog -->
-</div>
-<!-- /.modal -->
-<!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
-<!-- BEGIN PAGE HEADER-->
-<div class="row">
-<div class="col-md-12">
-<!-- BEGIN PAGE TITLE & BREADCRUMB-->
-<h3 class="page-title">
-Client List
-</h3>
-</div>
-</div>
-<!-- END PAGE HEADER-->
-<!-- BEGIN PAGE CONTENT-->
-<div class="row">
-<div class="col-md-12">
-<!-- BEGIN EXAMPLE TABLE PORTLET-->
-<div class="portlet box light-grey">
-<div class="portlet-title">
-<div class="caption">
-<i class="fa fa-globe"></i>Client List
-</div>
-</div>
-<div class="portlet-body">
-<div class="table-toolbar">
-<div class="btn-group">
-<button id="editable_client_new" class="btn green">
-Add New <i class="fa fa-plus"></i>
-</button>
-</div>
-</div>
-<table class="table table-striped table-hover table-bordered" id="editable_client">
-<thead>
-<tr>
-<!-- <th class="table-checkbox"><input type="checkbox" class="group-checkable" data-set="#editble_client .checkboxes"/></th> -->
-<th>Name</th>
-<th>Phone</th>
-<th>Email</th>
-<th>Description</th>
-<th>Edit</th>
-<th>Delete</th>
-</tr>
-</thead>
-<tbody>
-<!--
-<tr>
-<td>client 1</td>
-<td>1234</td>
-<td>
-<a href="mailto:aa@gmail.com">
-aa@gmail.com
-</a>
-</td>
-<td>description 1</td>
-<td><a class="edit" href="javascript:;"> Edit </a></td>
-<td><a class="delete" href="javascript:;"> Delete </a></td>
-</tr>
--->
-<#list clientList as client>
-<tr>
-<!-- <td><input type="checkbox" class="checkboxes" value=${(client.id)!"0"}/></td> -->
-<td>${(client.name)!""}</td>
-<td>${(client.phone)!""}</td>
-<td>${(client.email)!""}</td>
-<td>${(client.description)!""}</td>
-<td><a class="edit" href="javascript:;"> Edit </a></td>
-<td><a class="delete" href="javascript:;"> Delete </a></td>
-</tr>
-</#list>
-</tbody>
-</table>
-</div>
-</div>
-<!-- END EXAMPLE TABLE PORTLET-->
-</div>
-</div>
-<!-- END PAGE CONTENT-->
-</div>
-</div>
-<!-- END CONTENT -->
+	<!-- BEGIN SIDEBAR -->
+	<div class="page-sidebar-wrapper">
+		<div class="page-sidebar navbar-collapse collapse">
+			<!-- BEGIN SIDEBAR MENU -->
+			<ul class="page-sidebar-menu" data-auto-scroll="true"
+					data-slide-speed="200">
+					<li class="sidebar-toggler-wrapper">
+						<!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+						<div class="sidebar-toggler hidden-phone"></div> <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+					</li>
+					<li class="last ">
+						<a href="admin-video-list.html" >
+							<i class="fa fa-bar-chart-o"></i>
+							<span class="title">
+								Video
+							</span>
+						</a>
+					</li>
+					<li class="last ">
+						<a href="admin-client-list.html"> 
+							<i class="fa fa-bar-chart-o"></i> 
+							<span class="title"> 
+								Client 
+							</span>
+						</a>
+					</li>
+					<li class="last ">
+						<a href="admin-category-list.html"> 
+							<i class="fa fa-bar-chart-o"></i> 
+							<span class="title"> 
+								Category 
+							</span>
+						</a>
+					</li>
+					<li class="last ">
+						<a href="admin-news-list.html" >
+							<i class="fa fa-bar-chart-o"></i>
+							<span class="title">
+								News
+							</span>
+						</a>
+					</li>
+					<li class="last ">
+						<a href="admin-about-edit.html" >
+							<i class="fa fa-bar-chart-o"></i>
+							<span class="title">
+								Edit About
+							</span>
+						</a>
+					</li>
+				</ul>
+			<!-- END SIDEBAR MENU -->
+		</div>
+	</div>
+	<!-- END SIDEBAR -->
+	<!-- BEGIN CONTENT -->
+	<div class="page-content-wrapper">
+		<div class="page-content">
+			<!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+			<div class="modal fade" id="portlet-config" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+							<h4 class="modal-title">Modal title</h4>
+						</div>
+						<div class="modal-body">
+							 Widget settings form goes here
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn blue">Save changes</button>
+							<button type="button" class="btn default" data-dismiss="modal">Close</button>
+						</div>
+					</div>
+					<!-- /.modal-content -->
+				</div>
+				<!-- /.modal-dialog -->
+			</div>
+			<!-- /.modal -->
+			<!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+			<!-- BEGIN PAGE HEADER-->
+			<div class="row">
+				<div class="col-md-12">
+					<!-- BEGIN PAGE TITLE & BREADCRUMB-->
+					<h3 class="page-title">
+					Client List
+					</h3>
+				</div>
+			</div>
+			<!-- END PAGE HEADER-->
+			<!-- BEGIN PAGE CONTENT-->
+			<div class="row">
+				<div class="col-md-12">
+					<!-- BEGIN EXAMPLE TABLE PORTLET-->
+					<div class="portlet box light-grey">
+						<div class="portlet-title">
+							<div class="caption">
+								<i class="fa fa-globe"></i>Client List
+							</div>
+						</div>
+						<div class="portlet-body">
+							<div class="table-toolbar">
+								<div class="btn-group">
+									<!-- <button id="managetable_client_new" class="btn green" onclick="location='admin-client-edit.html'"> -->
+									<button id="managetable_client_new" class="btn green">
+									Add New <i class="fa fa-plus"></i>
+									</button>
+								</div>
+							</div>
+							<table class="table table-striped table-bordered table-hover" id="managetable_client">
+							<thead>
+							<tr>
+								<th class="table-checkbox">
+									<input type="checkbox" class="group-checkable" data-set="#managetable_client .checkboxes"/>
+								</th>
+								<th>
+									 Name
+								</th>
+								<th>
+									 Phone
+								</th>
+								<th>
+									 Email
+								</th>
+								<th>
+									 Description
+								</th>
+								<th>
+									 Edit
+								</th>
+								<th> 
+									 Delete
+								</th>
+							</tr>
+							</thead>
+							<tbody>
+							<#list clientList as client>
+							<tr class="odd gradeX">
+								<td>
+									<input type="checkbox" class="checkboxes" value=${(client.name)!""}/>
+								</td>
+								<td>${(client.name)!""}</td>
+								<td>${(client.phone)!""}</td>
+								<td><a href="mailto:${(client.email)!""}">${(client.email)!""}</a></td>
+								<td>${(client.description)!""}</td>
+								<td><a class="edit" href="javascript:;"> Edit </a></td>
+								<td><a class="delete" href="javascript:;"> Delete </a></td>
+							</tr>
+							</#list>
+							</tbody>
+							</table>
+						</div>
+					</div>
+					<!-- END EXAMPLE TABLE PORTLET-->
+				</div>
+			</div>
+			<!-- END PAGE CONTENT-->
+		</div>
+	</div>
+	<!-- END CONTENT -->
 </div>
 <!-- END CONTAINER -->
 <!-- BEGIN FOOTER -->
 <div class="footer">
-<div class="footer-inner">
-2014 &copy; Studio Stare
-</div>
-<div class="footer-tools">
-<span class="go-top">
-<i class="fa fa-angle-up"></i>
-</span>
-</div>
+	<div class="footer-inner">
+		 2014 &copy; Studio Stare
+	</div>
+	<div class="footer-tools">
+		<span class="go-top">
+			<i class="fa fa-angle-up"></i>
+		</span>
+	</div>
 </div>
 <!-- END FOOTER -->
 <script src="/studiostare/manage-resource/assets/plugins/jquery-1.10.2.min.js" ></script>
@@ -241,13 +244,13 @@ aa@gmail.com
 <!-- END PAGE LEVEL PLUGINS -->
 <!-- BEGIN PAGE LEVEL SCRIPTS -->
 <script src="/studiostare/manage-resource/assets/scripts/core/app.js" ></script>
-<script src="/studiostare/manage-resource/assets/scripts/table-editable-client.js" ></script>
+<script src="/studiostare/manage-resource/assets/scripts/table-managed-client.js" ></script>
 <script>
-jQuery(document).ready(function() {
+jQuery(document).ready(function() {       
    App.init();
-   TableEditable.init();
+   TableManaged.init();
 });
 </script>
-<script type="text/javascript"> var _gaq = _gaq || []; _gaq.push(['_setAccount', 'UA-37564768-1']); _gaq.push(['_setDomainName', 'keenthemes.com']); _gaq.push(['_setAllowLinker', true]); _gaq.push(['_trackPageview']); (function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true; ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s); })();</script></body>
+<script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-37564768-1']);  _gaq.push(['_setDomainName', 'keenthemes.com']);  _gaq.push(['_setAllowLinker', true]);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script></body>
 <!-- END BODY -->
 </html>
