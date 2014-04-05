@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * ÅÐ¶Ï¹ÜÀíÒ³ÃæÊÇ·ñÐèÒªµÇÂ½£¬Èç¹ûÐèÒª£¬ÔòÅÐ¶ÏÊÇ·ñÒÑ¾­µÇÂ½£¬Èç¹ûÎ´µÇÂ½£¬ÔòÌø×ªµ½µÇÂ½Ò³
+ * ï¿½Ð¶Ï¹ï¿½ï¿½ï¿½Ò³ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½Â½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½Ç·ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½Â½ï¿½ï¿½ï¿½ï¿½ï¿½Î´ï¿½ï¿½Â½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½Â½Ò³
  * @author liuqiang
  *
  */
@@ -24,7 +24,7 @@ public class SystemFilter implements Filter {
 	private static final String[] checkPages = { "admin" };
 
 	/**
-	 * ²»ÄÜ¼ÇÂ¼ÈÕÖ¾µÄservletPath
+	 * ï¿½ï¿½ï¿½Ü¼ï¿½Â¼ï¿½ï¿½Ö¾ï¿½ï¿½servletPath
 	 */
 	public static final String[] cannotLogServletPaths = { "/login!logout.action" };
 
@@ -38,7 +38,7 @@ public class SystemFilter implements Filter {
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
 		httpRequest.setCharacterEncoding(encoding);
 
-		// Èç¹û»á»°¹ýÆÚ£¬×ªµ½µÇÂ¼Ò³
+		// ï¿½ï¿½ï¿½á»°ï¿½ï¿½ï¿½Ú£ï¿½×ªï¿½ï¿½ï¿½ï¿½Â¼Ò³
 		if (isCheck(httpRequest) && !isValid(httpRequest)) {
 			HttpServletResponse httpResponse = (HttpServletResponse) response;
 			httpResponse.sendRedirect(httpRequest.getContextPath() + "/manage/admin-login.html");
@@ -59,8 +59,8 @@ public class SystemFilter implements Filter {
 	}
 	
 	/**
-	 * ÅÐ¶Ïµ±Ç°ÇëÇóÊÇ·ñÓÐÐ§£¬
-	 * trueÎªÓÐÐ§£»falseÎªÎÞÐ§
+	 * ï¿½Ð¶Ïµï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Ð§ï¿½ï¿½
+	 * trueÎªï¿½ï¿½Ð§ï¿½ï¿½falseÎªï¿½ï¿½Ð§
 	 * 
 	 * @param httpRequest
 	 * @return
@@ -82,10 +82,10 @@ public class SystemFilter implements Filter {
 	}
 
 	/**
-	 * ÄÚÈÝÕªÒª£ºÅÐ¶ÏÊÇ·ñÐèÒªÅÐ¶Ïsession¹ýÆÚ. Á÷³ÌËµÃ÷£º. 1¡¢. 2¡¢.
+	 * ï¿½ï¿½ï¿½ï¿½ÕªÒªï¿½ï¿½ï¿½Ð¶ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½Ð¶ï¿½sessionï¿½ï¿½ï¿½ï¿½. ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½. 1ï¿½ï¿½. 2ï¿½ï¿½.
 	 * 
 	 * @param httpRequest
-	 * @return trueÎªÐèÒª£¬falseÎª²»ÐèÒª
+	 * @return trueÎªï¿½ï¿½Òªï¿½ï¿½falseÎªï¿½ï¿½ï¿½ï¿½Òª
 	 */
 	private boolean isCheck(HttpServletRequest httpRequest) {
 		boolean ret = false;
@@ -96,11 +96,11 @@ public class SystemFilter implements Filter {
 
 		for (int i = 0; i < checkPages.length; i++) {
 
-			// Èç¹ûÊÇµÇÂ½Ò³£¬Ôò²»ÐèÒªÑéÖ¤ 
+			// ï¿½ï¿½ï¿½ï¿½Çµï¿½Â½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½Ö¤ 
 			if (uri.indexOf("admin-login") != -1) 
 				return false;
 			
-			// Èç¹ûÊÇÆäËü¹ÜÀíÒ³Ãæ£¬ÔòÐèÒª½øÐÐÑéÖ¤
+			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò³ï¿½æ£¬ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤
 			if (uri.indexOf(checkPages[i]) != -1) {
 				ret = true;
 				break;
