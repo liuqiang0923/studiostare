@@ -16,6 +16,8 @@ var TableManaged = function () {
                   null,
                   { "bSortable": false, "sType": "text" },
                   null,
+                  null,
+                  null,
                   { "bSortable": false },
                   { "bSortable": false }
                 ],
@@ -62,6 +64,36 @@ var TableManaged = function () {
             jQuery('#managetable_news_wrapper .dataTables_length select').addClass("form-control input-xsmall"); // modify table per page dropdown
             //jQuery('#managetable_news_wrapper .dataTables_length select').select2(); // initialize select2 dropdown
 
+            $('#managetable_news a.edit').live('click', function (e) {
+            	var id = $(this).parents('tr')[0].getElementsByTagName("input")[0].value;
+            	window.location.href="editNews?newsId=" + id;
+            });
+            
+            $('#managetable_news a.delete').live('click', function (e) {
+            	var id = $(this).parents('tr')[0].getElementsByTagName("input")[0].value;
+            	
+	            $.ajax({
+	        	    url: "deleteNews/" + id,
+	        	    type: 'GET',
+	        	    //dataType: 'json',
+	        	    //data: "{\"name\":\"hmkcode\",\"id\":2}", 
+	        	    contentType: 'application/json;',
+	        	    mimeType: 'application/json;',
+	        	    success: function(res) {
+	        	        if (res.result == "ok") {
+	        	        	alert("Is deleted successfully!");
+	        	        	window.location.href="admin-news-list.html";
+	        	        } else {
+	        	        	alert("Is deleted failed!");
+	        	        }
+	        	    },
+	        	    error:function(data,status,er) {
+	        	        alert("error: "+data+" status: "+status+" er:"+er);
+	        	    }
+	        	});
+            	
+            });
+            
         }
 
     };

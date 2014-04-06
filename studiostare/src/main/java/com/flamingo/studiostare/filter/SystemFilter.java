@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * �жϹ���ҳ���Ƿ���Ҫ��½�������Ҫ�����ж��Ƿ��Ѿ���½�����δ��½������ת����½ҳ
+ * 判断管理页面是否需要登陆，如果需要，则判断是否已经登陆，如果未登陆，则跳转到登陆页
  * @author liuqiang
  *
  */
@@ -21,12 +21,7 @@ public class SystemFilter implements Filter {
 
 	private static String encoding = "UTF-8";
 
-	private static final String[] checkPages = { "admin" };
-
-	/**
-	 * ���ܼ�¼��־��servletPath
-	 */
-	public static final String[] cannotLogServletPaths = { "/login!logout.action" };
+	private static final String[] checkPages = { "admin", "manage/" };
 
 	@Override
 	public void destroy() { }
@@ -38,7 +33,7 @@ public class SystemFilter implements Filter {
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
 		httpRequest.setCharacterEncoding(encoding);
 
-		// ���Ự���ڣ�ת����¼ҳ
+		// 如果会话过期，转到登录页
 		if (isCheck(httpRequest) && !isValid(httpRequest)) {
 			HttpServletResponse httpResponse = (HttpServletResponse) response;
 			httpResponse.sendRedirect(httpRequest.getContextPath() + "/manage/admin-login.html");
@@ -59,8 +54,8 @@ public class SystemFilter implements Filter {
 	}
 	
 	/**
-	 * �жϵ�ǰ�����Ƿ���Ч��
-	 * trueΪ��Ч��falseΪ��Ч
+	 * 判断当前请求是否有效，
+	 * true为有效；false为无效
 	 * 
 	 * @param httpRequest
 	 * @return
@@ -82,10 +77,10 @@ public class SystemFilter implements Filter {
 	}
 
 	/**
-	 * ����ժҪ���ж��Ƿ���Ҫ�ж�session����. ����˵����. 1��. 2��.
+	 * 内容摘要：判断是否需要判断session过期. 流程说明：. 1、. 2、.
 	 * 
 	 * @param httpRequest
-	 * @return trueΪ��Ҫ��falseΪ����Ҫ
+	 * @return true为需要，false为不需要
 	 */
 	private boolean isCheck(HttpServletRequest httpRequest) {
 		boolean ret = false;
@@ -96,11 +91,11 @@ public class SystemFilter implements Filter {
 
 		for (int i = 0; i < checkPages.length; i++) {
 
-			// ����ǵ�½ҳ������Ҫ��֤ 
-			if (uri.indexOf("admin-login") != -1) 
+			// 如果是登陆，则不需要验证 
+			if (uri.indexOf("login") != -1) 
 				return false;
 			
-			// ������������ҳ�棬����Ҫ������֤
+			// 如果是其它管理页面，则需要进行验证
 			if (uri.indexOf(checkPages[i]) != -1) {
 				ret = true;
 				break;

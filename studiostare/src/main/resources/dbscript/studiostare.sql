@@ -29,6 +29,7 @@ CREATE TABLE IF NOT EXISTS `studiostare`.`role` (
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
+insert into `studiostare`.`role` values (1, '超级管理员', '超级管理员');
 
 -- -----------------------------------------------------
 -- Table `studiostare`.`user`
@@ -46,11 +47,12 @@ CREATE TABLE IF NOT EXISTS `studiostare`.`user` (
   `update_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_user_to_role_role_id`
-    FOREIGN KEY (`id`)
+    FOREIGN KEY (`role_id`)
     REFERENCES `studiostare`.`role` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
+insert into `studiostare`.`user` values (1, 'admin', '123456', 'admin@studiostare.com', 1, 1, '', now());
 
 -- -----------------------------------------------------
 -- Table `studiostare`.`client`
@@ -154,7 +156,7 @@ CREATE TABLE IF NOT EXISTS `studiostare`.`news` (
   `update_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_news_to_user_user_id`
-    FOREIGN KEY (`id`)
+    FOREIGN KEY (`user_id`)
     REFERENCES `studiostare`.`user` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);

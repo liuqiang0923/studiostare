@@ -30,7 +30,7 @@ public class Login {
 		if (!userService.checkLogin(user)) {
 			return "manage/admin-login";
 		}
-		// Ìí¼Ósession
+		// set session
 		session.setAttribute("userid", 1);
 		return "redirect:admin-video-list.html";
 	}

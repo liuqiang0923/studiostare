@@ -3,6 +3,9 @@ package com.flamingo.studiostare.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import com.flamingo.studiostare.common.FileUtils;
+import com.flamingo.studiostare.common.StringUtils;
+
 public class NewsEntity implements Serializable {
 	private static final long serialVersionUID = 1L; 
 	private int id;
@@ -62,5 +65,18 @@ public class NewsEntity implements Serializable {
 	}
 	public void setUpdateTime(Date updateTime) {
 		this.updateTime = updateTime;
+	}
+	
+	public String getPhotoName() {
+		if (!StringUtils.isNull(photoPath)) {
+			return FileUtils.getFileName(photoPath);
+		}
+		return "";
+	}
+	public String getVideoName() {
+		if (!StringUtils.isNull(videoPath)) {
+			return FileUtils.getFileName(videoPath);
+		}
+		return "";
 	}
 }

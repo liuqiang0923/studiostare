@@ -154,7 +154,8 @@
 								</div>
 							</div>
 							<div class="portlet-body form">
-								<form action="#" class="form-horizontal" id="submit_form">
+								<form action="saveNews" class="form-horizontal" id="submit_form" method="post" enctype="multipart/form-data">
+									<input type="hidden" name="id" value="${(news.id)!"0"}"></input>
 									<div class="form-wizard">
 										<div class="form-body">
 											<ul class="nav nav-pills nav-justified steps">
@@ -199,7 +200,7 @@
 															class="required"> * </span>
 														</label>
 														<div class="col-md-4">
-															<input type="text" class="form-control" name="title" />
+															<input type="text" class="form-control" name="title" value="${(news.title)!""}"/>
 															<span class="help-block"> Input news title </span>
 														</div>
 													</div>
@@ -208,7 +209,7 @@
 															class="required"> * </span>
 														</label>
 														<div class="col-md-4">
-															<textarea class="form-control" rows="3" style="width: 400px; height: 300px" name="content"></textarea>
+															<textarea class="form-control" rows="3" style="width: 400px; height: 300px" name="content">${(news.content)!""}</textarea>
 															<span class="help-block"> Input new content. </span>
 														</div>
 													</div>
@@ -222,6 +223,9 @@
 														</label>
 														<div class="fileinput fileinput-new col-md-4" data-provides="fileinput">
 															<div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 400px; height: 300px;" id="newsimgdiv">
+															<#if news.photoPath!="">
+																<img alt="image" src="down?view=1&url=${(news.photoPath)}" />
+															</#if>
 															</div>
 															<input type="file" name="newsimg"/>
 															<span class="help-block"> Upload news photo. </span>	
@@ -237,6 +241,9 @@
 														</label>
 														<div class="fileinput fileinput-new col-md-4" data-provides="fileinput">
 															<div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 400px; height: 300px;" id="newsvideodiv">
+															<#if news.videoPath!="" >
+																<span>${(news.videoName)!""}</span>
+															</#if>
 															</div>
 															<input type="file" name="newsvideo"/>
 															<span class="help-block"> Upload news video. </span>	
@@ -265,7 +272,7 @@
 														<label class="control-label col-md-3">news photo :
 														</label>
 														<div class="col-md-4">
-															<p class="form-control-static" data-display="fullname"> news photo.</p>
+															<p class="form-control-static" data-display="fullname"> ${(news.photoName)!"news photo."}</p>
 														</div>
 													</div>
 													<h4 class="form-section">News video</h4>
@@ -273,7 +280,7 @@
 														<label class="control-label col-md-3">news video :
 														</label>
 														<div class="col-md-4">
-															<p class="form-control-static" data-display="fullname"> news video.</p>
+															<p class="form-control-static" data-display="fullname"> ${(news.videoName)!"news video."}</p>
 														</div>
 													</div>
 												</div>
