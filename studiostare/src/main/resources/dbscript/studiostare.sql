@@ -153,6 +153,7 @@ CREATE TABLE IF NOT EXISTS `studiostare`.`news` (
   `photo_path` VARCHAR(1024) NULL COMMENT '新闻照片地址，非必填',
   `video_path` VARCHAR(1024) NULL COMMENT '新闻视频地址，非必填',
   `user_id` INT NULL COMMENT '新闻所属用户',
+  `twitter_id` BIGINT DEFAULT NULL COMMENT '从Twitter抓取来的新闻',
   `update_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_news_to_user_user_id`

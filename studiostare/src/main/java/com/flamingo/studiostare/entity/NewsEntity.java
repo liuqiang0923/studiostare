@@ -14,6 +14,7 @@ public class NewsEntity implements Serializable {
 	private String photoPath;
 	private String videoPath;
 	private int userId;
+	private long twitterId;
 	private Date updateTime;
 	public NewsEntity(){
 		id = 0;
@@ -65,6 +66,12 @@ public class NewsEntity implements Serializable {
 	}
 	public void setUpdateTime(Date updateTime) {
 		this.updateTime = updateTime;
+	}
+	public long getTwitterId() {
+		return twitterId;
+	}
+	public void setTwitterId(long twitterId) {
+		this.twitterId = twitterId;
 	}
 	
 	public String getPhotoName() {

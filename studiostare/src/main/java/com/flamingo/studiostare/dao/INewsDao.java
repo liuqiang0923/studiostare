@@ -23,4 +23,5 @@ public interface INewsDao {
 
 	void deleteNews(NewsEntity newsEntity);
 
+	public Long getMaxTwitterId();
 }

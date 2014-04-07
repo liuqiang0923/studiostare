@@ -18,4 +18,7 @@ public interface INewsService {
 
 	void delete(int id);
 	
+	long getMaxTwitterId();
+
+	void add(NewsEntity news);
 }

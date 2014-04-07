@@ -32,6 +32,10 @@ public class NewsServiceImpl implements INewsService {
 		newsDao.deleteNewsById(id);
 	}
 	
+	public void add(NewsEntity news) {
+		newsDao.insertNews(news);
+	}
+	
 	public void save(NewsEntity news, MultipartFile newsimg, MultipartFile newsvideo) throws IOException {
 		if (news.getId() == 0) {
 			news.setUpdateTime(new Date());
@@ -65,6 +69,13 @@ public class NewsServiceImpl implements INewsService {
 	private String saveFile(MultipartFile file) throws IOException {
 		if (file == null) return "";
 		return FileUtils.saveFile(file.getOriginalFilename(), file.getBytes());
+	}
+
+	@Override
+	public long getMaxTwitterId() {
+		Long maxTwitterId = newsDao.getMaxTwitterId();
+		if (maxTwitterId == null) return 0;
+		return maxTwitterId.longValue();
 	}
 	
 }

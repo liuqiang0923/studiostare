@@ -23,6 +23,13 @@
 	<!-- 对包中的所有类进行扫描，以完成Bean创建和自动依赖注入的功能 -->
 	<context:component-scan base-package="com.flamingo.studiostare" />
 
+	<!-- 自动扫描dao -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="annotationClass" value="org.springframework.stereotype.Repository" />
+		<property name="basePackage" value="com.flamingo.studiostare.dao" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+
 	<!-- 启动JSON格式的配置 -->
 	<bean id="jacksonMessageConverter" class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
 		<!--解决 HttpMediaTypeNotAcceptableException: Could not find acceptable representation -->
@@ -33,18 +40,6 @@
 		</property>
 	</bean>
 
-	<!-- 自动扫描dao -->
-	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="annotationClass" value="org.springframework.stereotype.Repository" />
-		<property name="basePackage" value="com.flamingo.studiostare.dao" />
-		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
-	</bean>
-
-	<!-- bean方式配置dao <bean id="userDao" class="org.mybatis.spring.mapper.MapperFactoryBean"> 
-		<property name="mapperInterface" value="com.flamingo.studiostare.dao.IUserDao" 
-		/> <property name="sqlSessionFactory" ref="sqlSessionFactory" /> </bean> -->
-
-	<!-- 设置freeMarker的配置文件路径 -->
 	<bean id="freemarkerConfiguration"
 		class="org.springframework.beans.factory.config.PropertiesFactoryBean">
 		<property name="location" value="classpath:prop/freemarker.properties" />
@@ -80,5 +75,7 @@
 
 	<bean id="multipartResolver" 
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver"></bean>
+
+	<import resource="application-quartz.xml"/>
 
 </beans>
