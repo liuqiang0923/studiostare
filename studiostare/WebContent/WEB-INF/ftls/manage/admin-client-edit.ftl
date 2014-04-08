@@ -153,10 +153,10 @@
 								</div>
 							</div>
 							<div class="portlet-body form">
-								<form action="saveClient" class="form-horizontal" id="submit_form">
+								<form action="/studiostare/manage/saveClient" class="form-horizontal" method="post" id="submit_form">
 									<div class="form-wizard">
 										<div class="form-body">
-											<input type="hidden" value="${(client.id)!"0"}"></input>
+											<input type="hidden" name="id" value="${(client.id)!"0"}"></input>
 											<ul class="nav nav-pills nav-justified steps">
 												<li><a href="#tab1" data-toggle="tab" class="step">
 														<span class="number"> 1 </span> <span class="desc">
