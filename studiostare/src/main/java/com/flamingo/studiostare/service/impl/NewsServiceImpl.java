@@ -54,7 +54,7 @@ public class NewsServiceImpl implements INewsService {
 				old.setContent(news.getContent());
 				old.setUpdateTime(new Date());
 				if (newsimg != null && newsimg.getSize() > 0) old.setPhotoPath(saveFile(newsimg));
-				if (newsvideo != null && newsvideo.getSize() > 0) news.setVideoPath(saveFile(newsvideo));
+				if (newsvideo != null && newsvideo.getSize() > 0) old.setVideoPath(saveFile(newsvideo));
 				newsDao.updateNews(old);
 			}
 		}
