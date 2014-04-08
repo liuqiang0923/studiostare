@@ -98,6 +98,7 @@ public class FileUtils {
 	 * @return
 	 */
 	public static String getFileName(String filename) {
+		if (StringUtils.isNull(filename)) return "";
 		int i = filename.lastIndexOf("_");
 		int j = filename.lastIndexOf(".");
 		if (i == -1 || j == -1) return filename;
@@ -112,6 +113,7 @@ public class FileUtils {
 	 * @return
 	 */
 	public static String createFileName(String filename) {
+		if (StringUtils.isNull(filename)) return "";
 		String prefix = filename.substring(0, filename.lastIndexOf("."));
 		String suffix = filename.substring(filename.lastIndexOf("."));
 		return prefix + "_" + System.currentTimeMillis() + suffix;
