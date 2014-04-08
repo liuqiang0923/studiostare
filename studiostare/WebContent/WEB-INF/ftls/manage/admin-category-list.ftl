@@ -157,27 +157,35 @@
 						<div class="portlet-body">
 							<div class="table-toolbar">
 								<div class="btn-group">
-									<button id="editable_category_new" class="btn green">
+									<button id="managetable_category_new" class="btn green">
 										Add New <i class="fa fa-plus"></i>
 									</button>
 								</div>
 							</div>
-							<table class="table table-striped table-hover table-bordered" id="editable_category">
+							<table class="table table-striped table-hover table-bordered" id="managetable_category">
 								<thead>
 									<tr>
-										<th>Category name</th>
+										<th class="table-checkbox">
+											<input type="checkbox" class="group-checkable" data-set="#managetable_category .checkboxes"/>
+										</th>
+										<th>Name</th>
 										<th>Description</th>
 										<th>Edit</th>
 										<th>Delete</th>
 									</tr>
 								</thead>
 								<tbody>
+									<#list categoryList as category>
 									<tr>
-										<td>category 1</td>
-										<td>description 1</td>
+										<td>
+											<input name="categoryId" type="checkbox" class="checkboxes" value=${(category.id)!""} />
+										</td>
+										<td>${(category.name)!""}</td>
+										<td>${(category.description)!""}</td>
 										<td><a class="edit" href="javascript:;"> Edit </a></td>
 										<td><a class="delete" href="javascript:;"> Delete </a></td>
 									</tr>
+									</#list>
 								</tbody>
 							</table>
 						</div>
@@ -219,11 +227,11 @@
 <!-- END PAGE LEVEL PLUGINS -->
 <!-- BEGIN PAGE LEVEL SCRIPTS -->
 <script src="/studiostare/manage-resource/assets/scripts/core/app.js" ></script>
-<script src="/studiostare/manage-resource/assets/scripts/table-editable-category.js" ></script>
+<script src="/studiostare/manage-resource/assets/scripts/table-managed-category.js" ></script>
 <script>
 jQuery(document).ready(function() {       
    App.init();
-   TableEditable.init();
+   TableManaged.init();
 });
 </script>
 <script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-37564768-1']);  _gaq.push(['_setDomainName', 'keenthemes.com']);  _gaq.push(['_setAllowLinker', true]);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script></body>

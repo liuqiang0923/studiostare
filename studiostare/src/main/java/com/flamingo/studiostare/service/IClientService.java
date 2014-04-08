@@ -6,16 +6,12 @@ import com.flamingo.studiostare.entity.ClientEntity;
 
 public interface IClientService {
 	
-	ClientEntity getClientById(int id);
+	ClientEntity getById(int id);
 	
-	List<ClientEntity> getClient(ClientEntity clientEntity);
+	List<ClientEntity> getAll();
 	
-	List<ClientEntity> getAllClient();
+	void delById(int id);
 	
-	void addClient(ClientEntity clientEntity);
-	
-	void updClient(ClientEntity clientEntity);
-	
-	void delClient(ClientEntity clientEntity);
+	void save(ClientEntity clientEntity);
 	
 }

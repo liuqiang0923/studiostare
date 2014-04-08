@@ -16,15 +16,6 @@ public class NewsEntity implements Serializable {
 	private int userId;
 	private long twitterId;
 	private Date updateTime;
-	public NewsEntity(){
-		id = 0;
-		title = "";
-		content = "";
-		photoPath = "";
-		videoPath = "";
-		userId = 0;
-		updateTime = new Date();
-	}
 	public int getId() {
 		return id;
 	}

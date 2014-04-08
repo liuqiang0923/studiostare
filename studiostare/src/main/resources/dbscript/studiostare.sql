@@ -91,7 +91,9 @@ CREATE TABLE IF NOT EXISTS `studiostare`.`video` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(255) NOT NULL COMMENT '名称',
   `img_path` VARCHAR(1024) NOT NULL COMMENT '视频预览图片地址',
-  `video_path` VARCHAR(1024) NOT NULL COMMENT '视频地址',
+  `video_path_webm` VARCHAR(1024) COMMENT 'webm视频地址',
+  `video_path_ogg` VARCHAR(1024) COMMENT 'ogg视频地址',
+  `video_path_mp4` VARCHAR(1024) COMMENT 'mp4视频地址',
   `description` VARCHAR(1024) NOT NULL COMMENT '视频描述',
   `update_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id`));

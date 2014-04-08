@@ -23,4 +23,6 @@ public interface IUserDao {
 
 	void deleteUser(UserEntity userEntity);
 
+	List<UserEntity> selectUserByRoleId(int type);
+
 }

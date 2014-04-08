@@ -97,10 +97,10 @@
 						</a>
 					</li>
 					<li class="last ">
-						<a href="admin-about-edit.html" >
+						<a href="admin-about.html" >
 							<i class="fa fa-bar-chart-o"></i>
 							<span class="title">
-								Edit About
+								About
 							</span>
 						</a>
 					</li>
@@ -169,7 +169,19 @@
 									<input type="checkbox" class="group-checkable" data-set="#managetable_video .checkboxes"/>
 								</th>
 								<th>
-									 Video Name
+									 Name
+								</th>
+								<th>
+									 Img
+								</th>
+								<th>
+									 Webm
+								</th>
+								<th>
+									 Ogg
+								</th>
+								<th>
+									 Mp4
 								</th>
 								<th>
 									 Client
@@ -181,31 +193,31 @@
 									 Description
 								</th>
 								<th>
-									 Created at
+									 Edit
+								</th>
+								<th> 
+									 Delete
 								</th>
 							</tr>
 							</thead>
 							<tbody>
+							<#list videoList as video>
 							<tr class="odd gradeX">
 								<td>
-									<input type="checkbox" class="checkboxes" value="1"/>
+									<input type="checkbox" class="checkboxes" value=${(video.id)!""} />
 								</td>
-								<td>
-									video 1
-								</td>
-								<td>
-									client 1
-								</td>
-								<td>
-									category 1
-								</td>
-								<td>
-									description of video 1
-								</td>
-								<td class="center">
-									 12 Jan 2012
-								</td>
+								<td>${(video.video.name)!""}</td>
+								<td><img src='${video.video.imgPath}!""'></img></td>
+								<td><video src='${video.video.videoPathWebm}!""'></video></td>
+								<td><video src='${video.video.videoPathOgg}!""'></video></td>
+								<td><video src='${video.video.videoPathMp4}!""'></video></td>
+								<td>${(video.client.name)!""}</td>
+								<td>${(video.category.name)!""}</td>
+								<td>${(video.description)!""}</td>
+								<td><a class="edit" href="javascript:;"> Edit </a></td>
+								<td><a class="delete" href="javascript:;"> Delete </a></td>
 							</tr>
+							</#list>
 							</tbody>
 							</table>
 						</div>

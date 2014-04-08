@@ -10,13 +10,6 @@ public class AboutEntity implements Serializable {
 	private String aboutUsInfo;
 	private String manifesto;
 	private Date updateTime;
-	public AboutEntity(){
-		id = 0;
-		officeImgPath = "";
-		aboutUsInfo = "";
-		manifesto = "";
-		updateTime = new Date();
-	}
 	public int getId() {
 		return id;
 	}

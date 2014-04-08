@@ -1,5 +1,7 @@
 package com.flamingo.studiostare.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,11 @@ public class VideoRefServiceImpl implements IVideoRefService {
 	@Override
 	public VideoRefEntity getById(int id) {
 		return videoRefDao.selectVideoRefById(id);
+	}
+
+	@Override
+	public List<VideoRefEntity> getAll() {
+		return videoRefDao.selectVideoRef(new VideoRefEntity());
 	}
 
 }

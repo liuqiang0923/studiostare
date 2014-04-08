@@ -1,5 +1,8 @@
 package com.flamingo.studiostare.service.impl;
 
+import java.util.Date;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +24,27 @@ public class UserServiceImpl implements IUserService {
 	@Override
 	public boolean checkLogin(UserEntity userEntity) {
 		return true;
+	}
+
+	@Override
+	public List<UserEntity> getUserByType(int type) {
+		return userDao.selectUserByRoleId(type);
+	}
+
+	@Override
+	public void delById(int id) {
+		userDao.deleteUserById(id);
+	}
+
+	@Override
+	public void save(UserEntity userEntity) {
+		int id = userEntity.getId();
+		Date now = new Date();
+		userEntity.setUpdateTime(now);
+		if(id == 0 || getById(id) == null)
+			userDao.insertUser(userEntity);
+		else
+			userDao.updateUser(userEntity);
 	}
 
 }

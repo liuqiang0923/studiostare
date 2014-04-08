@@ -11,14 +11,6 @@ public class ClientEntity implements Serializable {
 	private String email;
 	private String description;
 	private Date updateTime;
-	public ClientEntity(){
-		id = 0;
-		name = "";
-		phone = "";
-		email = "";
-		description = "";
-		updateTime = new Date();
-	}
 	public int getId() {
 		return id;
 	}

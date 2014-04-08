@@ -9,10 +9,15 @@
 		<result property="name" column="name" />
 		<result property="password" column="password" />
 		<result property="email" column="email" />
-		<result property="roleId" column="role_id" />
 		<result property="captureNewsFlag" column="capture_news_flag" />
 		<result property="twitterUser" column="twitter_user" />
 		<result property="updateTime" column="update_time" javaType="Date" />
+		
+		<association property="role" javaType="RoleEntity">
+			<id property="id" column="r_id" />
+			<result property="name" column="r_name" />
+			<result property="description" column="r_description" />
+		</association>
 	</resultMap>
 
 	<select id="selectUserById" parameterType="int" resultType="UserEntity" resultMap="userResultMap">
@@ -21,7 +26,7 @@
 	
 	<insert id="insertUser" parameterType="UserEntity">
 		insert into user (name, password, email, role_id, capture_news_flag, twitter_user)
-		values (#{name}, #{password}, #{email}, #{roleId}, #{captureNewsFlag}, #{twitterUser})
+		values (#{name}, #{password}, #{email}, #{role.id}, #{captureNewsFlag}, #{twitterUser})
 	</insert>
 	
 	<update id="updateUser" parameterType="UserEntity">
@@ -39,6 +44,10 @@
 		delete from user where id = #{id}
 	</delete>
 	
+	<select id="selectUserByRoleId" parameterType="int" resultType="UserEntity" resultMap="userResultMap">
+		select * from user where role_id = #{roleId}
+	</select>
+	
 	<select id="selectUser" parameterType="UserEntity" resultType="UserEntity" resultMap="userResultMap">
 		select * from user where 1 = 1 
 		<if test="name != null and name != ''">
@@ -50,7 +59,7 @@
 		<if test="twitterUser != null and twitterUser != ''">
 			and twitter_user like '%${twitterUser}%' 
 		</if>
-		<if test="roleId != null and roleId != 0">
+		<if test="role != null and role.id != null and role.id != 0">
 			and role_id = #{roleId} 
 		</if>
 		<if test="captureNewsFlag != null and captureNewsFlag != 0">

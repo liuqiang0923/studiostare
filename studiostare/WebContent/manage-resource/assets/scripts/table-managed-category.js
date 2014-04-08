@@ -10,15 +10,13 @@ var TableManaged = function () {
             }
 
             // begin first table
-            $('#managetable_client').dataTable({
+            $('#managetable_category').dataTable({
                 "aoColumns": [
-					{ "bSortable": false, "bSearchable": false },
-					null,
-					null, // { "bSortable": false, "sType": "text" },
-					null,
-					{ "bSearchable": false},
-					{ "bSortable": false, "bSearchable": false },
-					{ "bSortable": false, "bSearchable": false }
+                  { "bSortable": false, "bSearchable": false },
+                  null,
+                  null, // { "bSortable": false, "sType": "text" },
+                  { "bSortable": false, "bSearchable": false},
+                  { "bSortable": false, "bSearchable": false},
                 ],
                 "aLengthMenu": [
                     [5, 15, 20, -1],
@@ -40,7 +38,7 @@ var TableManaged = function () {
                 ]
             });
 
-            jQuery('#managetable_client .group-checkable').change(function () {
+            jQuery('#managetable_category .group-checkable').change(function () {
                 var set = jQuery(this).attr("data-set");
                 var checked = jQuery(this).is(":checked");
                 jQuery(set).each(function () {
@@ -55,41 +53,41 @@ var TableManaged = function () {
                 jQuery.uniform.update(set);
             });
 
-            jQuery('#managetable_client').on('change', 'tbody tr .checkboxes', function(){
+            jQuery('#managetable_category').on('change', 'tbody tr .checkboxes', function(){
                  $(this).parents('tr').toggleClass("active");
             });
 
-            jQuery('#managetable_client_wrapper .dataTables_filter input').addClass("form-control input-medium input-inline"); // modify table search input
-            jQuery('#managetable_client_wrapper .dataTables_length select').addClass("form-control input-xsmall"); // modify table per page dropdown
-            //jQuery('#managetable_client_wrapper .dataTables_length select').select2(); // initialize select2 dropdown
+            jQuery('#managetable_category_wrapper .dataTables_filter input').addClass("form-control input-medium input-inline"); // modify table search input
+            jQuery('#managetable_category_wrapper .dataTables_length select').addClass("form-control input-xsmall"); // modify table per page dropdown
+            //jQuery('#managetable_category_wrapper .dataTables_length select').select2(); // initialize select2 dropdown
 
-            $('#managetable_client_new').click(function (e) {
-            	addClient();
+            $('#managetable_category_new').click(function (e) {
+            	addCategory();
             });
             
-            $('#managetable_client a.edit').live('click', function (e) {
+            $('#managetable_category a.edit').live('click', function (e) {
             	var id = $(this).parents('tr')[0].getElementsByTagName("input")[0].value;
-            	// window.location.href="/studiostare/manage/editClient/" + id;
-            	editClient(id);
+            	// window.location.href="/studiostare/manage/editcategory/" + id;
+            	editCategory(id);
             });
             
-            $('#managetable_client a.delete').live('click', function (e) {
-            	// window.location.href="/studiostare/manage/deleteClient/{id}";
+            $('#managetable_category a.delete').live('click', function (e) {
+            	// window.location.href="/studiostare/manage/deletecategory/{id}";
             	var id = $(this).parents('tr')[0].getElementsByTagName("input")[0].value;
-            	deleteClient(id);
+            	deleteCategory(id);
             });
             
-            function addClient(){
-            	window.location.href="/studiostare/manage/addClient";
+            function addCategory(){
+            	window.location.href="/studiostare/manage/addCategory";
             }
             
-            function editClient(id){
-            	window.location.href="/studiostare/manage/editClient/" + id;
+            function editCategory(id){
+            	window.location.href="/studiostare/manage/editCategory/" + id;
             }
             
-            function deleteClient(id){
+            function deleteCategory(id){
             	$.ajax({
-            	    url: '/studiostare/manage/deleteClient/' + id,
+            	    url: '/studiostare/manage/deleteCategory/' + id,
             	    type: 'GET',
 //            	    dataType: 'json',
 //            	    data: "{\"name\":\"hmkcode\",\"id\":2}", 
@@ -98,7 +96,7 @@ var TableManaged = function () {
             	    success: function(res) {
             	    	if (res.result == "ok") {
 	        	        	alert("Delete succeed!");
-	        	        	window.location.href="/studiostare/manage/admin-client-list.html";
+	        	        	window.location.href="/studiostare/manage/admin-category-list.html";
 	        	        } else {
 	        	        	alert("Deleted failed!");
 	        	        }

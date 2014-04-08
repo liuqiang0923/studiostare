@@ -12,12 +12,17 @@ var TableManaged = function () {
             // begin first table
             $('#managetable_video').dataTable({
                 "aoColumns": [
-                  { "bSortable": false },
+                  { "bSortable": false, "bSearchable": false },
                   null,
-                  null, // { "bSortable": false, "sType": "text" },
+                  { "bSortable": false, "bSearchable": false }, // { "bSortable": false, "sType": "text" },
+                  { "bSortable": false, "bSearchable": false },
+                  { "bSortable": false, "bSearchable": false },
+                  { "bSortable": false, "bSearchable": false },
                   null,
-                  { "bSortable": false },
-                  { "bSortable": false }
+                  null,
+                  { "bSearchable": false},
+                  { "bSortable": false, "bSearchable": false },
+                  { "bSortable": false, "bSearchable": false }
                 ],
                 "aLengthMenu": [
                     [5, 15, 20, -1],

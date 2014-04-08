@@ -6,42 +6,34 @@ import java.util.Date;
 public class VideoRefEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private int id;
-	private int videoId;
-	private int clientId;
-	private int categoryId;
+	private VideoEntity video;
+	private ClientEntity client;
+	private CategoryEntity category;
 	private String description;
 	private Date updateTime;
-	public VideoRefEntity(){
-		id = 0;
-		videoId = 0;
-		clientId = 0;
-		categoryId = 0;
-		description = "";
-		updateTime = new Date();
-	}
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getVideoId() {
-		return videoId;
+	public VideoEntity getVideo() {
+		return video;
 	}
-	public void setVideoId(int videoId) {
-		this.videoId = videoId;
+	public void setVideo(VideoEntity video) {
+		this.video = video;
 	}
-	public int getClientId() {
-		return clientId;
+	public ClientEntity getClient() {
+		return client;
 	}
-	public void setClientId(int clientId) {
-		this.clientId = clientId;
+	public void setClient(ClientEntity client) {
+		this.client = client;
 	}
-	public int getCategoryId() {
-		return categoryId;
+	public CategoryEntity getCategory() {
+		return category;
 	}
-	public void setCategoryId(int categoryId) {
-		this.categoryId = categoryId;
+	public void setCategory(CategoryEntity category) {
+		this.category = category;
 	}
 	public String getDescription() {
 		return description;

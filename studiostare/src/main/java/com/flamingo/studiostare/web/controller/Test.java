@@ -72,7 +72,7 @@ public class Test {
 	public ModelAndView testClient() {
 		ModelAndView m = new ModelAndView();
 		ClientEntity clientEntity = new ClientEntity();
-		List<ClientEntity> clientList = clientService.getClient(clientEntity);
+		List<ClientEntity> clientList = clientService.getAll();
 		m.addObject("clientList", clientList);
 		m.setViewName("manage/admin-client-list");
 //		m.setViewName("test");

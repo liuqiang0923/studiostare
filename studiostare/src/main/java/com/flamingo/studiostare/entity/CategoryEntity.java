@@ -9,12 +9,6 @@ public class CategoryEntity implements Serializable {
 	private String name;
 	private String description;
 	private Date updateTime;
-	public CategoryEntity(){
-		id = 0;
-		name = "";
-		description = "";
-		updateTime = new Date();
-	}
 	public int getId() {
 		return id;
 	}

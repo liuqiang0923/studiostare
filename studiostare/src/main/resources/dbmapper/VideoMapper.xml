@@ -7,10 +7,26 @@
 	<resultMap type="VideoEntity" id="videoResultMap">
 		<id property="id" column="id" />
 		<result property="name" column="name" />
-		<result property="videoPath" column="video_path" />
+		<result property="imgPath" column="img_path" />
+		<result property="videoPathWebm" column="video_path_webm" />
+		<result property="videoPathOgg" column="video_path_ogg" />
+		<result property="videoPathMp4" column="video_path_mp4" />
 		<result property="description" column="description" />
 		<result property="updateTime" column="update_time" javaType="Date" />
 	</resultMap>
+	
+	<!-- <resultMap type="VideoEntity" id="videoResultMap">
+		<id property="id" column="id"></id>
+		<result property="name" column="name"></result>
+		<result property="clientName" column="clientName"></result>
+		<result property="categoryName" column = "categoryName"></result>
+		<result property="imgPath" column="img_path"></result>
+		<result property="videoPathWebm" column="video_path_webm"></result>
+		<result property="videoPathOgg" column="video_path_ogg"></result>
+		<result property="videoPathMp4" column="video_path_mp4"></result>
+		<result property="description" column="description"></result>
+		<result property="updateTime" column="update_time" javaType="Date" />
+	</resultMap> -->
 
 	<select id="selectVideoById" parameterType="int" resultType="VideoEntity" resultMap="videoResultMap">
 		select * from video where id = #{id}
