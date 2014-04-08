@@ -81,16 +81,16 @@ var TableManaged = function () {
             });
             
             function addAboutUs(){
-            	window.location.href="/studiostare/manage/addAboutUs";
+            	window.location.href="/studiostare/manage/addWho";
             }
             
             function editAboutUs(id){
-            	window.location.href="/studiostare/manage/editAboutUs/" + id;
+            	window.location.href="/studiostare/manage/editWho/" + id;
             }
             
             function deleteAboutUs(id){
             	$.ajax({
-            	    url: '/studiostare/manage/deleteAboutUs/' + id,
+            	    url: '/studiostare/manage/deleteWho/' + id,
             	    type: 'GET',
 //            	    dataType: 'json',
 //            	    data: "{\"name\":\"hmkcode\",\"id\":2}", 
