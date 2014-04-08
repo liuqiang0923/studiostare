@@ -166,6 +166,7 @@ var FormWizard = function () {
                 },
 
                 submitHandler: function (form) {
+                	form.submit();
                     success.show();
                     error.hide();
                     //add here some ajax code to submit your form or just call form.submit() if you want to submit the form without ajax
