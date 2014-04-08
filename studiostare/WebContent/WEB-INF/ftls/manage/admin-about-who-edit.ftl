@@ -3,7 +3,7 @@
 <!-- BEGIN HEAD -->
 <head>
 <meta charset="utf-8" />
-<title>Studio Stare | edit about</title>
+<title>Studio Stare | edit who we are</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 <meta content="" name="description" />
@@ -97,10 +97,10 @@
 						</a>
 					</li>
 					<li class="last ">
-						<a href="admin-about-edit.html" >
+						<a href="admin-about.html" >
 							<i class="fa fa-bar-chart-o"></i>
 							<span class="title">
-								Edit About
+								About
 							</span>
 						</a>
 					</li>
@@ -138,7 +138,7 @@
 				<div class="row">
 					<div class="col-md-12">
 						<!-- BEGIN PAGE TITLE & BREADCRUMB-->
-						<h3 class="page-title">Edit About Wizard</h3>
+						<h3 class="page-title">Edit Who We Are Wizard</h3>
 						<!-- END PAGE TITLE & BREADCRUMB-->
 					</div>
 				</div>
@@ -150,11 +150,12 @@
 							<div class="portlet-title">
 								<div class="caption">
 									<i class="fa fa-reorder"></i> Edit About Wizard - <span
-										class="step-title"> Step 1 of 4 </span>
+										class="step-title"> Step 1 of 2 </span>
 								</div>
 							</div>
 							<div class="portlet-body form">
-								<form action="#" class="form-horizontal" id="submit_form">
+								<form action="saveWho" class="form-horizontal" id="submit_form" method="post" enctype="multipart/form-data">
+									<input type="hidden" name="id" value="${(who.id)!"0"}"></input>
 									<div class="form-wizard">
 										<!-- <div class="form-body"> -->
 										<div class="form-body">
@@ -166,16 +167,6 @@
 												</a></li>
 												<li><a href="#tab2" data-toggle="tab" class="step">
 														<span class="number"> 2 </span> <span class="desc">
-															<i class="fa fa-check"></i> Edit who are we
-													</span>
-												</a></li>
-												<li><a href="#tab3" data-toggle="tab" class="step">
-														<span class="number"> 3 </span> <span class="desc">
-															<i class="fa fa-check"></i> Edit manifesto
-													</span>
-												</a></li>
-												<li><a href="#tab4" data-toggle="tab" class="step">
-														<span class="number"> 4 </span> <span class="desc">
 															<i class="fa fa-check"></i> Confirm
 													</span>
 												</a></li>
@@ -194,147 +185,90 @@
 													Your form validation is successful!
 												</div>
 												<div class="tab-pane active" id="tab1">
-													<h3 class="block">Provide about us</h3>
+													<h3 class="block">Who's info</h3>
 													<div class="form-group">
 														<label class="control-label col-md-3"> 
-															Office Img 
+															Photo 
 															<span class="required"> * </span>
 														</label>
 														<div class="fileinput fileinput-new col-md-4" data-provides="fileinput">
-															<div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 400px; height: 300px;" id="officeimgdiv">
+															<div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 100%;" id="whoimgdiv">
 															</div>
-															<div>
-																<!-- <span class="btn default btn-file">
-																	<span class="fileinput-new">
-																		 Select image
-																	</span>
-																	<span class="fileinput-exists">
-																		 Change
-																	</span>
-																	<input type="file" name="...">
-																</span> -->
-																<!-- <a href="#" class="btn default fileinput-exists" data-dismiss="fileinput">
-																	 Remove
-																</a> -->
-															</div>
-															<input type="file" name="officeimg"/>
-															<span class="help-block"> Upload office photo. </span>	
+															<input type="file" name="whoimg"/>
+															<span class="help-block"> Upload photo. </span>	
 														</div>
 													</div>
 													<div class="form-group">
-														<label class="control-label col-md-3"> 
-															About us 
+														<label class="control-label col-md-3">Name 
 															<span class="required"> * </span>
 														</label>
 														<div class="col-md-4">
-															<!-- <input type="text" class="form-control" name="phone" /> -->
-															<textarea class="form-control" rows="3" style="width: 300px; height: 200px" name="aboutus"></textarea>
-															<span class="help-block"> Input about us infomation. </span>
+															<input type="text" class="form-control" name="name" value="${(who.name)!""}" />
+															<span class="help-block"> Input name. </span>
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="control-label col-md-3">Position 
+															<span class="required"> * </span>
+														</label>
+														<div class="col-md-4">
+															<input type="text" class="form-control" name="position" value="${(who.position)!""}" />
+															<span class="help-block"> Input position. </span>
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="control-label col-md-3">Email 
+															<span class="required"> * </span>
+														</label>
+														<div class="col-md-4">
+															<input type="text" class="form-control" name="email" value="${(who.email)!""}" />
+															<span class="help-block"> Input email. </span>
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="control-label col-md-3">Description 
+														</label>
+														<div class="col-md-4">
+															<input type="text" class="form-control" name="description" value="${(who.description)!""}" />
+															<span class="help-block"> Input description. </span>
 														</div>
 													</div>
 												</div>
 												<div class="tab-pane" id="tab2">
-													<h3 class="block">Provide who are we</h3>
-													<div class="portlet box blue">
-														<div class="portlet-title">
-															<div class="caption">
-																<i class="fa fa-edit"></i>about categories
-															</div>
-														</div>
-														<div class="portlet-body">
-															<div class="table-toolbar">
-																<div class="btn-group">
-																	<button id="editable_about_new" class="btn green">
-																		Add New <i class="fa fa-plus"></i>
-																	</button>
-																</div>
-															</div>
-															<table class="table table-striped table-hover table-bordered" id="editable_about">
-																<thead>
-																	<tr>
-																		<th>Img</th>
-																		<th>Name</th>
-																		<th>Position</th>
-																		<th>Email</th>
-																		<th>Edit</th>
-																		<th>Delete</th>
-																	</tr>
-																</thead>
-																<tbody>
-																	<tr>
-																		<td>
-																			<!-- <div class="fileinput fileinput-new col-md-4" data-provides="fileinput">
-																				<div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 200px;"></div>
-																				<input type="file" name="usimg" />
-																			</div> --> 
-																			<img src="/studiostare/manage-resource/assets/img/photo2.jpg" style="width: 200px; height: 200px;"></img>
-																		</td>
-																		<td>name</td>
-																		<td>position</td>
-																		<td>email</td>
-																		<td>
-																			<a class="edit" href="javascript:;"> Edit </a>
-																		</td>
-																		<td>
-																			<a class="delete" href="javascript:;"> Delete </a>
-																		</td>
-																	</tr>
-																</tbody>
-															</table>
-														</div>
-													</div>
-												</div>
-												<div class="tab-pane" id="tab3">
-													<h3 class="block">Provide manifesto details</h3>
-													<div class="form-group">
-														<label class="control-label col-md-3">Manifesto<span class="required"> * </span>
-														</label>
-														<div class="col-md-4">
-															<!-- <input type="text" class="form-control" name="card_name" />
-															<span class="help-block"> </span> -->
-															<textarea class="form-control" rows="3" style="width: 300px; height: 200px" name="manifesto"></textarea>
-															<span class="help-block"> Input manifesto. </span>
-														</div>
-													</div>
-												</div>
-												<div class="tab-pane" id="tab4">
 													<h3 class="block">Confirm</h3>
 													<h4 class="form-section">About us</h4>
 													<div class="form-group">
-														<label class="control-label col-md-3">Office:</label>
+														<label class="control-label col-md-3">Photo:</label>
 														<div class="col-md-4">
-															<p class="form-control-static" data-display="office">
+															<div class="form-control-static" data-display="whoimgdiv"></div>
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="control-label col-md-3">Name:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="name">
 															</p>
 														</div>
 													</div>
 													<div class="form-group">
-														<label class="control-label col-md-3">About us:</label>
+														<label class="control-label col-md-3">Position:</label>
 														<div class="col-md-4">
-															<p class="form-control-static" data-display="aboutus">
+															<p class="form-control-static" data-display="position">
 															</p>
 														</div>
 													</div>
-													<h4 class="form-section">Who are we</h4>
 													<div class="form-group">
-														<label class="control-label col-md-3">username: aa
-														</label>
+														<label class="control-label col-md-3">Email:</label>
 														<div class="col-md-4">
-															<p class="form-control-static" data-display="fullname"> </p>
+															<p class="form-control-static" data-display="email">
+															</p>
 														</div>
 													</div>
 													<div class="form-group">
-														<label class="control-label col-md-3">username: bb
-														</label>
+														<label class="control-label col-md-3">Description:</label>
 														<div class="col-md-4">
-															<p class="form-control-static" data-display="fullname"> a category description.</p>
-														</div>
-													</div>
-													<h4 class="form-section">Manifesto</h4>
-													<div class="form-group">
-														<label class="control-label col-md-3">Manifesto:
-														</label>
-														<div class="col-md-4">
-															<p class="form-control-static" data-display="manifesto"> .</p>
+															<p class="form-control-static" data-display="description">
+															</p>
 														</div>
 													</div>
 												</div>
@@ -393,33 +327,22 @@
 	<!-- END CORE PLUGINS -->
 	<!-- BEGIN PAGE LEVEL PLUGINS -->
 	<script type="text/javascript" src="/studiostare/manage-resource/assets/plugins/bootstrap-wizard/jquery.bootstrap.wizard.min.js"></script>
-	<!-- <script type="text/javascript" src="/studiostare/manage-resource/assets/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js"></script> -->
-	<!-- <script type="text/javascript" src="/studiostare/manage-resource/assets/plugins/bootstrap-touchspin/bootstrap.touchspin.js" ></script> -->
 	<script type="text/javascript" src="/studiostare/manage-resource/assets/plugins/bootstrap-fileinput/bootstrap-fileinput.js"></script>
 	<script type="text/javascript" src="/studiostare/manage-resource/assets/plugins/jquery-validation/dist/jquery.validate.min.js"></script>
 	<script type="text/javascript" src="/studiostare/manage-resource/assets/plugins/jquery-validation/dist/additional-methods.min.js"></script>
-	<!-- <script type="text/javascript" src="/studiostare/manage-resource/assets/plugins/jquery-validation/dist/jquery.validate.studiostare-methods.js"></script>
-	<script type="text/javascript" src="/studiostare/manage-resource/assets/plugins/jquery-validation/dist/jquery.validate.additional-methods.js"></script> -->
-	<!-- <script type="text/javascript" src="/studiostare/manage-resource/assets/plugins/fuelux/js/spinner.min.js"></script> -->
-	<!-- <script type="text/javascript" src="/studiostare/manage-resource/assets/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js"></script> -->
-	<!-- <script type="text/javascript" src="/studiostare/manage-resource/assets/plugins/jquery.input-ip-address-control-1.0.min.js"></script> -->
 	<script type="text/javascript" src="/studiostare/manage-resource/assets/plugins/select2/select2.min.js"></script>
 	<script type="text/javascript" src="/studiostare/manage-resource/assets/plugins/data-tables/jquery.dataTables.js"></script>
 	<script type="text/javascript" src="/studiostare/manage-resource/assets/plugins/data-tables/DT_bootstrap.js"></script>
-	<!-- <script type="text/javascript" src="/studiostare/manage-resource/assets/plugins/typeahead/handlebars.min.js"></script>
-	<script type="text/javascript" src="/studiostare/manage-resource/assets/plugins/typeahead/typeahead.min.js"></script> -->
 	<!-- END PAGE LEVEL PLUGINS -->
 	<!-- BEGIN PAGE LEVEL SCRIPTS -->
 	<script src="/studiostare/manage-resource/assets/scripts/core/app.js"></script>
 	<script src="/studiostare/manage-resource/assets/scripts/form-wizard-about.js"></script>
-	<script src="/studiostare/manage-resource/assets/scripts/table-editable-about.js"></script>
 	<!-- END PAGE LEVEL SCRIPTS -->
 	<script>
 jQuery(document).ready(function() {       
    // initiate layout and plugins
    App.init();
    FormWizard.init();
-   TableEditable.init();
 });
 </script>
 	<!-- END JAVASCRIPTS -->

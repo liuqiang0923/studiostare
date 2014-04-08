@@ -12,6 +12,9 @@ public class UserEntity implements Serializable {
 	private RoleEntity role;
 	private int captureNewsFlag;
 	private String twitterUser;
+	private String position;
+	private String photoPath;
+	private String description;
 	private Date updateTime;
 	public int getId() {
 		return id;
@@ -60,6 +63,24 @@ public class UserEntity implements Serializable {
 	}
 	public void setRole(RoleEntity role) {
 		this.role = role;
+	}
+	public String getPhotoPath() {
+		return photoPath;
+	}
+	public void setPhotoPath(String photoPath) {
+		this.photoPath = photoPath;
+	}
+	public String getPosition() {
+		return position;
+	}
+	public void setPosition(String position) {
+		this.position = position;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	
 

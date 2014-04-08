@@ -1,11 +1,14 @@
 package com.flamingo.studiostare.service.impl;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.flamingo.studiostare.common.FileUtils;
 import com.flamingo.studiostare.dao.IUserDao;
 import com.flamingo.studiostare.entity.UserEntity;
 import com.flamingo.studiostare.service.IUserService;
@@ -37,14 +40,21 @@ public class UserServiceImpl implements IUserService {
 	}
 
 	@Override
-	public void save(UserEntity userEntity) {
+	public void save(UserEntity userEntity, MultipartFile whoimg) throws IOException {
 		int id = userEntity.getId();
 		Date now = new Date();
 		userEntity.setUpdateTime(now);
+		if(whoimg != null && whoimg.getSize() != 0)
+			userEntity.setPhotoPath(saveFile(whoimg));
 		if(id == 0 || getById(id) == null)
 			userDao.insertUser(userEntity);
 		else
 			userDao.updateUser(userEntity);
+	}
+	
+	private String saveFile(MultipartFile file) throws IOException {
+		if (file == null) return "";
+		return FileUtils.saveFile(file.getOriginalFilename(), file.getBytes());
 	}
 
 }

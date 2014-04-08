@@ -28,14 +28,14 @@ var FormWizard = function () {
             var success = $('.alert-success', form);
            
            	// add validate of office img.
-						jQuery.validator.addMethod("officeimgexist", function(value, element, param) {
-							if (document.getElementById("officeimgdiv").getElementsByTagName("img").length == 0)
+						jQuery.validator.addMethod("whoimgexist", function(value, element, param) {
+							if (document.getElementById("whoimgdiv").getElementsByTagName("img").length == 0)
 								return false;
 						 	return true;
 						},"This field is required.");
 						
 						function checkImg(){
-							if (document.getElementById("officeimgdiv").getElementsByTagName("img").length == 0)
+							if (document.getElementById("whoimgdiv").getElementsByTagName("img").length == 0)
 								return false;
 						 	return true;
 						}
@@ -47,7 +47,7 @@ var FormWizard = function () {
                 focusInvalid: false, // do not focus the last invalid input
                 rules: {
                     //account
-                    username: {
+                	name: {
                         minlength: 5,
                         required: true
                     },
@@ -105,19 +105,22 @@ var FormWizard = function () {
                         required: true,
                         minlength: 1
                     },
-                    officeimg: {
-                    		officeimgexist: true,
+                    whoimg: {
+                    	whoimgexist: true,
                     },
                     aboutus: {
-                    		required: true,
-                    		minlength: 10,
-                    		maxlength: 1024,
+                    	required: true,
+                   		minlength: 10,
+                   		maxlength: 1024,
                     },
                     manifesto: {
-                    		required: true,
-                    		minlength: 10,
-                    		maxlength: 1024,
+                   		required: true,
+                   		minlength: 10,
+                   		maxlength: 1024,
                     },
+                    position: {
+                    	required: true,
+                    }
                 },
 
                 messages: { // custom messages for radio buttons and checkboxes
@@ -168,30 +171,36 @@ var FormWizard = function () {
                 submitHandler: function (form) {
                     success.show();
                     error.hide();
+                    form.submit();
                     //add here some ajax code to submit your form or just call form.submit() if you want to submit the form without ajax
                 }
 
             });
 
             var displayConfirm = function() {
-                $('#tab4 .form-control-static', form).each(function(){
-                    var input = $('[name="'+$(this).attr("data-display")+'"]', form);
-                    if (input.is(":radio")) {
-                        input = $('[name="'+$(this).attr("data-display")+'"]:checked', form);
-                    }
-                    if (input.is(":text") || input.is("textarea")) {
-                        $(this).html(input.val());
-                    } else if (input.is("select")) {
-                        $(this).html(input.find('option:selected').text());
-                    } else if (input.is(":radio") && input.is(":checked")) {
-                        $(this).html(input.attr("data-title"));
-                    } else if ($(this).attr("data-display") == 'payment') {
-                        var payment = [];
-                        $('[name="payment[]"]').each(function(){
-                            payment.push($(this).attr('data-title'));
-                        });
-                        $(this).html(payment.join("<br>"));
-                    }
+                $('#tab2 .form-control-static', form).each(function(){
+                	if ($(this).attr("data-display") == "whoimgdiv"){
+                		$(this).html($("#whoimgdiv"));
+                	}
+                	else{
+	                    var input = $('[name="'+$(this).attr("data-display")+'"]', form);
+	                    if (input.is(":radio")) {
+	                        input = $('[name="'+$(this).attr("data-display")+'"]:checked', form);
+	                    }
+	                    if (input.is(":text") || input.is("textarea")) {
+	                        $(this).html(input.val());
+	                    } else if (input.is("select")) {
+	                        $(this).html(input.find('option:selected').text());
+	                    } else if (input.is(":radio") && input.is(":checked")) {
+	                        $(this).html(input.attr("data-title"));
+	                    } else if ($(this).attr("data-display") == 'payment') {
+	                        var payment = [];
+	                        $('[name="payment[]"]').each(function(){
+	                            payment.push($(this).attr('data-title'));
+	                        });
+	                        $(this).html(payment.join("<br>"));
+	                    } 
+                	}
                 });
             }
 
@@ -264,7 +273,8 @@ var FormWizard = function () {
 
             $('#form_wizard_1').find('.button-previous').hide();
             $('#form_wizard_1 .button-submit').click(function () {
-                alert('Finished! Hope you like it :)');
+//                alert('Finished! Hope you like it :)');
+            	form.submit();
             }).hide();
         }
 

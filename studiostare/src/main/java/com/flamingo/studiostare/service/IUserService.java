@@ -1,6 +1,9 @@
 package com.flamingo.studiostare.service;
 
+import java.io.IOException;
 import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
 
 import com.flamingo.studiostare.entity.UserEntity;
 
@@ -14,6 +17,6 @@ public interface IUserService {
 	
 	void delById(int id);
 	
-	void save(UserEntity userEntity);
+	void save(UserEntity userEntity, MultipartFile whoimg) throws IOException;
 	
 }

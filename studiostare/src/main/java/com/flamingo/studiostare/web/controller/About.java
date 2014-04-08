@@ -5,7 +5,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.flamingo.studiostare.entity.AboutEntity;
+import com.flamingo.studiostare.entity.RoleEntity;
 import com.flamingo.studiostare.entity.UserEntity;
 import com.flamingo.studiostare.service.IAboutService;
 import com.flamingo.studiostare.service.IUserService;
@@ -25,6 +25,12 @@ public class About extends JsonAction {
 	private IAboutService aboutService;
 	@Autowired
 	private IUserService userService;
+	
+	private static RoleEntity role = new RoleEntity();
+	
+	static{
+		role.setId(RoleEntity.ROLEType_ABOUTUS);
+	}
 	
 	@RequestMapping("admin-about.html")
 	public ModelAndView about() {
@@ -71,9 +77,12 @@ public class About extends JsonAction {
 	}
 	
 	@RequestMapping(value = "saveWho", method = RequestMethod.POST)
-	public String savaWho(UserEntity user, Model model, HttpSession session) {
+	public String saveWho(UserEntity user, 
+			@RequestParam(value="whoimg", required=false) MultipartFile whoimg, 
+			HttpSession session) {
+		user.setRole(role);
 		try {
-			userService.save(user);
+			userService.save(user,whoimg);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
