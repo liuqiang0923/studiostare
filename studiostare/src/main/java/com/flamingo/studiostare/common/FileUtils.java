@@ -100,6 +100,7 @@ public class FileUtils {
 	public static String getFileName(String filename) {
 		int i = filename.lastIndexOf("_");
 		int j = filename.lastIndexOf(".");
+		if (i == -1 || j == -1) return filename;
 		return filename.substring(0, i) + filename.substring(j);
 	}
 
@@ -128,8 +129,8 @@ public class FileUtils {
 
 	public static void main(String[] args) {
 		// System.out.println(createFileName("abc.txt"));
-		// System.out.println(getFileName("abc_234231423.txt"));
-		System.out.println(saveFile("https://pbs.twimg.com/media/Bkn5o2fCMAAJuxF.jpg"));
+		 System.out.println(getFileName("abcsadfs"));
+//		System.out.println(saveFile("https://pbs.twimg.com/media/Bkn5o2fCMAAJuxF.jpg"));
 	}
 
 }
