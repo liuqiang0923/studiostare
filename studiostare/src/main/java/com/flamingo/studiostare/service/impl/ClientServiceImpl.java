@@ -1,5 +1,6 @@
 package com.flamingo.studiostare.service.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,37 +17,29 @@ public class ClientServiceImpl implements IClientService {
 	private IClientDao clientDao;
 	
 	@Override
-	public ClientEntity getClientById(int id){
+	public ClientEntity getById(int id){
 		return clientDao.selectClientById(id);
 	}
 	
 	@Override
-	public List<ClientEntity> getClient(ClientEntity clientEntity) {
-		return clientDao.selectClient(clientEntity);
-	}
-	
-	@Override
-	public List<ClientEntity> getAllClient(){
+	public List<ClientEntity> getAll(){
 		return clientDao.selectClient(new ClientEntity());
 	}
 
 	@Override
-	public void addClient(ClientEntity clientEntity) {
-		clientDao.insertClient(clientEntity);
+	public void delById(int id){
+		clientDao.deleteClientById(id);
 	}
 
 	@Override
-	public void updClient(ClientEntity clientEntity) {
-		clientDao.updateClient(clientEntity);
-	}
-
-	@Override
-	public void delClient(ClientEntity clientEntity){
+	public void save(ClientEntity clientEntity){
 		int id = clientEntity.getId();
-		if(id != 0)
-			clientDao.deleteClientById(id);
+		Date now = new Date();
+		clientEntity.setUpdateTime(now);
+		if(id == 0 || getById(id) == null)
+			clientDao.insertClient(clientEntity);
 		else
-			clientDao.deleteClient(clientEntity);
+			clientDao.updateClient(clientEntity);
 	}
 
 }

@@ -1,5 +1,8 @@
 package com.flamingo.studiostare.service.impl;
 
+import java.util.Date;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,4 +21,25 @@ public class CategoryServiceImpl implements ICategoryService {
 		return categoryDao.selectCategoryById(id);
 	}
 
+	@Override
+	public List<CategoryEntity> getAll() {
+		return categoryDao.selectCategory(new CategoryEntity());
+	}
+
+	@Override
+	public void delById(int id){
+		categoryDao.deleteCategoryById(id);
+	}
+
+	@Override
+	public void save(CategoryEntity categoryEntity) {
+		int id = categoryEntity.getId();
+		Date now = new Date();
+		categoryEntity.setUpdateTime(now);
+		if(id == 0 || getById(id) == null)
+			categoryDao.insertCategory(categoryEntity);
+		else
+			categoryDao.updateCategory(categoryEntity);
+	}
+	
 }

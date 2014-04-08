@@ -200,9 +200,27 @@
 															class="required"> * </span>
 														</label>
 														<div class="col-md-4">
-															<input type="text" class="form-control" name="videoname" />
+															<input type="text" class="form-control" name="name" />
 															<span class="help-block"> Input video name </span>
 														</div>
+													</div>
+													<div class="form-group">
+														<label class="control-label col-md-3">Client <span
+															class="required"> * </span>
+														</label>
+														<div class="col-md-4">
+															<select multiple class="form-control">
+															</select>
+														</div>													
+													</div>
+													<div class="form-group">
+														<label class="control-label col-md-3">Category <span
+															class="required"> * </span>
+														</label>
+														<div class="col-md-4">
+															<select multiple class="form-control">
+															</select>
+														</div>													
 													</div>
 													<div class="form-group">
 														<label class="control-label col-md-3"> 
@@ -210,7 +228,7 @@
 															<span class="required"> * </span>
 														</label>
 														<div class="fileinput fileinput-new col-md-4" data-provides="fileinput">
-															<div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 400px; height: 300px;" id="videoimgdiv">
+															<div class="fileinput-preview thumbnail" style="width: 100%;" data-trigger="fileinput" id="videoimgdiv">
 															</div>
 															<input type="file" name="videoimg"/>
 															<span class="help-block"> Upload video img. </span>	
@@ -222,7 +240,7 @@
 															<span class="required"> * </span>
 														</label>
 														<div class="fileinput fileinput-new col-md-4" data-provides="fileinput">
-															<div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 400px; height: 300px;" id="videodiv">
+															<div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 100%;" id="videodiv">
 															</div>
 															<input type="file" name="video"/>
 															<span class="help-block"> Upload video. </span>	

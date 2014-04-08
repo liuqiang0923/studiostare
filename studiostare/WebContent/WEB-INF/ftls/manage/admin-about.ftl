@@ -3,7 +3,7 @@
 <!-- BEGIN HEAD -->
 <head>
 <meta charset="utf-8" />
-<title>Studio Stare | Edit Client</title>
+<title>Studio Stare | About</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 <meta content="" name="description" />
@@ -17,6 +17,7 @@
 <!-- BEGIN PAGE LEVEL STYLES -->
 <link rel="stylesheet" type="text/css" href="/studiostare/manage-resource/assets/plugins/select2/select2.css" />
 <link rel="stylesheet" type="text/css" href="/studiostare/manage-resource/assets/plugins/select2/select2-metronic.css" />
+<link rel="stylesheet" href="/studiostare/manage-resource/assets/plugins/data-tables/DT_bootstrap.css" />
 <!-- END PAGE LEVEL SCRIPTS -->
 <!-- BEGIN THEME STYLES -->
 <link href="/studiostare/manage-resource/assets/css/style-metronic.css" rel="stylesheet" type="text/css" />
@@ -25,6 +26,7 @@
 <link href="/studiostare/manage-resource/assets/css/plugins.css" rel="stylesheet" type="text/css" />
 <link href="/studiostare/manage-resource/assets/css/themes/default.css" rel="stylesheet" type="text/css" id="style_color" />
 <link href="/studiostare/manage-resource/assets/css/custom.css" rel="stylesheet" type="text/css" />
+<link href="/studiostare/manage-resource/assets/css/bootstrap-fileinput.css" rel="stylesheet" type="text/css" />
 <!-- END THEME STYLES -->
 <link rel="shortcut icon" href="favicon.ico" />
 </head>
@@ -37,7 +39,7 @@
 	<div class="header-inner">
 		<!-- BEGIN LOGO -->
 		<a class="navbar-brand" href="index.html">
-			<img src="favicon.png" alt="logo" class="img-responsive"/>
+			<img src="/studiostare/manage-resource/favicon.png" alt="logo" class="img-responsive"/>
 		</a>
 		<!-- END LOGO -->
 		<!-- BEGIN RESPONSIVE MENU TOGGLER -->
@@ -96,10 +98,10 @@
 						</a>
 					</li>
 					<li class="last ">
-						<a href="admin-about-edit.html" >
+						<a href="admin-about.html" >
 							<i class="fa fa-bar-chart-o"></i>
 							<span class="title">
-								Edit About
+								About
 							</span>
 						</a>
 					</li>
@@ -111,172 +113,121 @@
 		<!-- BEGIN CONTENT -->
 		<div class="page-content-wrapper">
 			<div class="page-content">
-				<!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
-				<div class="modal fade" id="portlet-config" tabindex="-1"
-					role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-					<div class="modal-dialog">
-						<div class="modal-content">
-							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal"
-									aria-hidden="true"></button>
-								<h4 class="modal-title">Modal title</h4>
-							</div>
-							<div class="modal-body">Widget settings form goes here</div>
-							<div class="modal-footer">
-								<button type="button" class="btn blue">Save changes</button>
-								<button type="button" class="btn default" data-dismiss="modal">Close</button>
-							</div>
-						</div>
-						<!-- /.modal-content -->
-					</div>
-					<!-- /.modal-dialog -->
-				</div>
-				<!-- /.modal -->
-				<!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
 				<!-- BEGIN PAGE HEADER-->
 				<div class="row">
 					<div class="col-md-12">
 						<!-- BEGIN PAGE TITLE & BREADCRUMB-->
-						<h3 class="page-title">Edit Client Wizard</h3>
+						<h3 class="page-title">About US</h3>
 						<!-- END PAGE TITLE & BREADCRUMB-->
 					</div>
 				</div>
 				<!-- END PAGE HEADER-->
 				<!-- BEGIN PAGE CONTENT-->
+				
+				<div class="form-group">
+					<h4 class="form-section">About us</h4>
+					<div class="row">
+						<label class="control-label col-md-2"> 
+							Office Img 
+						</label>
+						<div class="fileinput fileinput-new col-md-4" data-provides="fileinput">
+							<div class="fileinput-preview thumbnail" style="width: 100%;" data-trigger="fileinput" id="officeimgdiv">
+								<img src="/studiostare/manage-resource/favicon.png"></img>
+							</div>
+						    <input type="file" name="officeimg" />
+						</div>
+					</div>
+					<div class="row">
+						<label class="control-label col-md-2"> 
+							About us description
+						</label>
+						<div class="col-md-4">
+							<textarea class="form-control" rows="3" style="width: 100%;" name="aboutus">${(about.aboutUsInfo)!""}</textarea>
+							<a href="javascript:;" class="btn green">
+								Save <i class="m-icon-swapright m-icon-white"></i>
+							</a>
+						</div>
+					</div>
+				</div>
+				
+				<div class="form-group" id="div_minifesto">
+					<h4 class="form-section">Manifesto</h4>
+					<div class="row">
+						<label class="control-label col-md-2"> 
+							Manifesto
+						</label>
+						<div class="col-md-4">
+							<textarea class="form-control" rows="3" style="width: 100%;" name="manifestor">${(about.manifesto)!""}</textarea>
+							<a href="javascript:;" class="btn green">
+								Save <i class="m-icon-swapright m-icon-white"></i>
+							</a>
+						</div>
+					</div>
+				</div>
+				
+				<h4 class="form-section">Who we are</h4>
 				<div class="row">
 					<div class="col-md-12">
-						<div class="portlet box blue" id="form_wizard_1">
+						<div class="portlet box light-grey">
 							<div class="portlet-title">
 								<div class="caption">
-									<i class="fa fa-reorder"></i> Edit Client Wizard - <span
-										class="step-title"> Step 1 of 2 </span>
+									<i class="fa fa-globe"></i>Who we are
 								</div>
 							</div>
-							<div class="portlet-body form">
-								<form action="/studiostare/manage/saveClient" class="form-horizontal" method="post" id="submit_form">
-									<input type="hidden" name="id" value="${(client.id)!"0"}"></input>
-									<div class="form-wizard">
-										<div class="form-body">
-											<ul class="nav nav-pills nav-justified steps">
-												<li><a href="#tab1" data-toggle="tab" class="step">
-														<span class="number"> 1 </span> <span class="desc">
-															<i class="fa fa-check"></i> Client Info Setup
-													</span>
-												</a></li>
-												<li><a href="#tab2" data-toggle="tab" class="step">
-														<span class="number"> 2 </span> <span class="desc">
-															<i class="fa fa-check"></i> Confirm
-													</span>
-												</a></li>
-											</ul>
-											<div id="bar" class="progress progress-striped"
-												role="progressbar">
-												<div class="progress-bar progress-bar-success"></div>
-											</div>
-											<div class="tab-content">
-												<div class="alert alert-danger display-none">
-													<button class="close" data-dismiss="alert"></button>
-													You have some form errors. Please check below.
-												</div>
-												<div class="alert alert-success display-none">
-													<button class="close" data-dismiss="alert"></button>
-													Your form validation is successful!
-												</div>
-												<div class="tab-pane active" id="tab1">
-													<h3 class="block">Provide client details</h3>
-													<div class="form-group">
-														<label class="control-label col-md-3">Name 
-															<span class="required"> * </span>
-														</label>
-														<div class="col-md-4">
-															<input type="text" class="form-control" name="name" value="${(client.name)!""}" />
-															<span class="help-block"> Input name </span>
-														</div>
-													</div>
-													<div class="form-group">
-														<label class="control-label col-md-3">Phone 
-															<span class="required"> * </span>
-														</label>
-														<div class="col-md-4">
-															<input type="text" class="form-control" name="phone" value="${(client.phone)!""}" />
-															<span class="help-block"> Input phone. </span>
-														</div>
-													</div>
-													<div class="form-group">
-														<label class="control-label col-md-3">Email 
-															<span class="required"> * </span>
-														</label>
-														<div class="col-md-4">
-															<input type="text" class="form-control" name="email" value="${(client.email)!""}"/>
-															<span class="help-block"> Input email address </span>
-														</div>
-													</div>
-													<div class="form-group">
-														<label class="control-label col-md-3">Description 
-															<span class="required"> * </span>
-														</label>
-														<div class="col-md-4">
-															<input type="text" class="form-control" name="description" value="${(client.description)!""}"/>
-															<span class="help-block"> Input description </span>
-														</div>
-													</div>
-												</div>
-												<div class="tab-pane" id="tab2">
-													<h3 class="block">Confirm your account</h3>
-													<h4 class="form-section">Client Info</h4>
-													<div class="form-group">
-														<label class="control-label col-md-3">Name:</label>
-														<div class="col-md-4">
-															<p class="form-control-static" data-display="name">
-															</p>
-														</div>
-													</div>
-													<div class="form-group">
-														<label class="control-label col-md-3">Phone:</label>
-														<div class="col-md-4">
-															<p class="form-control-static" data-display="phone">
-															</p>
-														</div>
-													</div>
-													<div class="form-group">
-														<label class="control-label col-md-3">Email:</label>
-														<div class="col-md-4">
-															<p class="form-control-static" data-display="email">
-															</p>
-														</div>
-													</div>
-													<div class="form-group">
-														<label class="control-label col-md-3">Description:</label>
-														<div class="col-md-4">
-															<p class="form-control-static" data-display="description">
-															</p>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="form-actions fluid">
-											<div class="row">
-												<div class="col-md-12">
-													<div class="col-md-offset-3 col-md-9">
-														<a href="javascript:;" class="btn default button-previous">
-															<i class="m-icon-swapleft"></i> Back
-														</a> <a href="javascript:;" class="btn blue button-next">
-															Continue <i class="m-icon-swapright m-icon-white"></i>
-														</a> <a href="javascript:;" class="btn green button-submit">
-															Submit <i class="m-icon-swapright m-icon-white"></i>
-														</a>
-													</div>
-												</div>
-											</div>
-										</div>
+							<div class="portlet-body">
+								<div class="table-toolbar">
+									<div class="btn-group">
+										<button id="managetable_about_new" class="btn green"> Add New <i class="fa fa-plus"></i></button>
 									</div>
-								</form>
+								</div>
+								<table class="table table-striped table-bordered table-hover" id="managetable_about">
+									<thead>
+										<tr>
+											<th class="table-checkbox">
+												<input type="checkbox" class="group-checkable" data-set="#managetable_about .checkboxes"/>
+											</th>
+											<th>
+												 Photo
+											</th>
+											<th>
+												 Name
+											</th>
+											<th>
+												 Position
+											</th>
+											<th>
+												 Email
+											</th>
+											<th>
+												 Description
+											</th>
+											<th>
+												 Edit
+											</th>
+											<th> 
+												 Delete
+											</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr class="odd gradeX">
+											<td>
+												<input name="clientId" type="checkbox" class="checkboxes" value="0" />
+											</td>
+											<td><img src="/studiostare/manage-resource/assets/img/photo2.jpg"></td>
+											<td>asdf</td>
+											<td>asdf</td>
+											<td>asdf</td>
+											<td>asdf</td>
+											<td><a class="edit" href="javascript:;"> Edit </a></td>
+											<td><a class="delete" href="javascript:;"> Delete </a></td>
+										</tr>
+									</tbody>
+								</table>
 							</div>
 						</div>
 					</div>
 				</div>
-				<!-- END PAGE CONTENT-->
 			</div>
 		</div>
 		<!-- END CONTENT -->
@@ -315,22 +266,15 @@
 	<script type="text/javascript" src="/studiostare/manage-resource/assets/plugins/data-tables/jquery.dataTables.js"></script>
 	<script type="text/javascript" src="/studiostare/manage-resource/assets/plugins/data-tables/DT_bootstrap.js"></script>
 	<!-- END PAGE LEVEL PLUGINS -->
-	<!-- BEGIN PAGE LEVEL PLUGINS -->
-	<script type="text/javascript" src="/studiostare/manage-resource/assets/plugins/select2/select2.min.js"></script>
-	<script type="text/javascript" src="/studiostare/manage-resource/assets/plugins/data-tables/jquery.dataTables.js" ></script>
-	<script type="text/javascript" src="/studiostare/manage-resource/assets/plugins/data-tables/DT_bootstrap.js"></script>
-	<!-- END PAGE LEVEL PLUGINS -->
 	<!-- BEGIN PAGE LEVEL SCRIPTS -->
 	<script src="/studiostare/manage-resource/assets/scripts/core/app.js"></script>
-	<script src="/studiostare/manage-resource/assets/scripts/form-wizard-client.js"></script>
-	<script src="/studiostare/manage-resource/assets/scripts/custom/table-editable.js"></script>
+	<script src="/studiostare/manage-resource/assets/scripts/table-managed-about.js"></script>
 	<!-- END PAGE LEVEL SCRIPTS -->
 	<script>
 jQuery(document).ready(function() {       
    // initiate layout and plugins
    App.init();
-   FormWizard.init();
-   TableEditable.init();
+   TableManaged.init();
 });
 </script>
 	<!-- END JAVASCRIPTS -->

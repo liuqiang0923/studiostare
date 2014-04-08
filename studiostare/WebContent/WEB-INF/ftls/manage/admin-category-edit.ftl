@@ -3,7 +3,7 @@
 <!-- BEGIN HEAD -->
 <head>
 <meta charset="utf-8" />
-<title>Studio Stare | Edit Client</title>
+<title>Studio Stare | Edit Category</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 <meta content="" name="description" />
@@ -137,7 +137,7 @@
 				<div class="row">
 					<div class="col-md-12">
 						<!-- BEGIN PAGE TITLE & BREADCRUMB-->
-						<h3 class="page-title">Edit Client Wizard</h3>
+						<h3 class="page-title">Edit Category Wizard</h3>
 						<!-- END PAGE TITLE & BREADCRUMB-->
 					</div>
 				</div>
@@ -148,19 +148,19 @@
 						<div class="portlet box blue" id="form_wizard_1">
 							<div class="portlet-title">
 								<div class="caption">
-									<i class="fa fa-reorder"></i> Edit Client Wizard - <span
+									<i class="fa fa-reorder"></i> Edit Category Wizard - <span
 										class="step-title"> Step 1 of 2 </span>
 								</div>
 							</div>
 							<div class="portlet-body form">
-								<form action="/studiostare/manage/saveClient" class="form-horizontal" method="post" id="submit_form">
-									<input type="hidden" name="id" value="${(client.id)!"0"}"></input>
+								<form action="/studiostare/manage/saveCategory" class="form-horizontal" method="post" id="submit_form">
+									<input type="hidden" name="id" value="${(category.id)!"0"}"></input>
 									<div class="form-wizard">
 										<div class="form-body">
 											<ul class="nav nav-pills nav-justified steps">
 												<li><a href="#tab1" data-toggle="tab" class="step">
 														<span class="number"> 1 </span> <span class="desc">
-															<i class="fa fa-check"></i> Client Info Setup
+															<i class="fa fa-check"></i> Category Info Setup
 													</span>
 												</a></li>
 												<li><a href="#tab2" data-toggle="tab" class="step">
@@ -189,26 +189,8 @@
 															<span class="required"> * </span>
 														</label>
 														<div class="col-md-4">
-															<input type="text" class="form-control" name="name" value="${(client.name)!""}" />
+															<input type="text" class="form-control" name="name" value="${(category.name)!""}" />
 															<span class="help-block"> Input name </span>
-														</div>
-													</div>
-													<div class="form-group">
-														<label class="control-label col-md-3">Phone 
-															<span class="required"> * </span>
-														</label>
-														<div class="col-md-4">
-															<input type="text" class="form-control" name="phone" value="${(client.phone)!""}" />
-															<span class="help-block"> Input phone. </span>
-														</div>
-													</div>
-													<div class="form-group">
-														<label class="control-label col-md-3">Email 
-															<span class="required"> * </span>
-														</label>
-														<div class="col-md-4">
-															<input type="text" class="form-control" name="email" value="${(client.email)!""}"/>
-															<span class="help-block"> Input email address </span>
 														</div>
 													</div>
 													<div class="form-group">
@@ -216,32 +198,18 @@
 															<span class="required"> * </span>
 														</label>
 														<div class="col-md-4">
-															<input type="text" class="form-control" name="description" value="${(client.description)!""}"/>
+															<input type="text" class="form-control" name="description" value="${(category.description)!""}"/>
 															<span class="help-block"> Input description </span>
 														</div>
 													</div>
 												</div>
 												<div class="tab-pane" id="tab2">
 													<h3 class="block">Confirm your account</h3>
-													<h4 class="form-section">Client Info</h4>
+													<h4 class="form-section">Category Info</h4>
 													<div class="form-group">
 														<label class="control-label col-md-3">Name:</label>
 														<div class="col-md-4">
 															<p class="form-control-static" data-display="name">
-															</p>
-														</div>
-													</div>
-													<div class="form-group">
-														<label class="control-label col-md-3">Phone:</label>
-														<div class="col-md-4">
-															<p class="form-control-static" data-display="phone">
-															</p>
-														</div>
-													</div>
-													<div class="form-group">
-														<label class="control-label col-md-3">Email:</label>
-														<div class="col-md-4">
-															<p class="form-control-static" data-display="email">
 															</p>
 														</div>
 													</div>
@@ -322,15 +290,15 @@
 	<!-- END PAGE LEVEL PLUGINS -->
 	<!-- BEGIN PAGE LEVEL SCRIPTS -->
 	<script src="/studiostare/manage-resource/assets/scripts/core/app.js"></script>
-	<script src="/studiostare/manage-resource/assets/scripts/form-wizard-client.js"></script>
-	<script src="/studiostare/manage-resource/assets/scripts/custom/table-editable.js"></script>
+	<script src="/studiostare/manage-resource/assets/scripts/form-wizard-category.js"></script>
+	<!-- <script src="/studiostare/manage-resource/assets/scripts/custom/table-editable.js"></script> -->
 	<!-- END PAGE LEVEL SCRIPTS -->
 	<script>
 jQuery(document).ready(function() {       
    // initiate layout and plugins
    App.init();
    FormWizard.init();
-   TableEditable.init();
+   <!-- TableEditable.init(); -->
 });
 </script>
 	<!-- END JAVASCRIPTS -->

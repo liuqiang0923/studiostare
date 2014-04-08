@@ -7,16 +7,12 @@ public class VideoEntity implements Serializable {
 	private static final long serialVersionUID = 1L; 
 	private int id;
 	private String name;
-	private String videoPath;
+	private String imgPath;
+	private String videoPathWebm;
+	private String videoPathMp4;
+	private String videoPathOgg;
 	private String description;
 	private Date updateTime;
-	public VideoEntity(){
-		id = 0;
-		name = "";
-		videoPath = "";
-		description = "";
-		updateTime = new Date();
-	}
 	public int getId() {
 		return id;
 	}
@@ -29,11 +25,11 @@ public class VideoEntity implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getVideoPath() {
-		return videoPath;
+	public String getImgPath() {
+		return imgPath;
 	}
-	public void setVideoPath(String videoPath) {
-		this.videoPath = videoPath;
+	public void setImgPath(String imgPath) {
+		this.imgPath = imgPath;
 	}
 	public String getDescription() {
 		return description;
@@ -46,5 +42,23 @@ public class VideoEntity implements Serializable {
 	}
 	public void setUpdateTime(Date updateTime) {
 		this.updateTime = updateTime;
+	}
+	public String getVideoPathWebm() {
+		return videoPathWebm;
+	}
+	public void setVideoPathWebm(String videoPathWebm) {
+		this.videoPathWebm = videoPathWebm;
+	}
+	public String getVideoPathMp4() {
+		return videoPathMp4;
+	}
+	public void setVideoPathMp4(String videoPathMp4) {
+		this.videoPathMp4 = videoPathMp4;
+	}
+	public String getVideoPathOgg() {
+		return videoPathOgg;
+	}
+	public void setVideoPathOgg(String videoPathOgg) {
+		this.videoPathOgg = videoPathOgg;
 	}
 }

@@ -3,6 +3,7 @@ package com.flamingo.studiostare.web.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,7 @@ import com.flamingo.studiostare.entity.ClientEntity;
 import com.flamingo.studiostare.service.IClientService;
 
 @Controller
-public class Client {
+public class Client extends JsonAction {
 
 	@Autowired
 	private IClientService clientService;
@@ -25,8 +26,12 @@ public class Client {
 	@RequestMapping(value="admin-client-list.html", method = RequestMethod.GET)
 	public ModelAndView clientList() {
 		ModelAndView m = new ModelAndView();
-		ClientEntity clientEntity = new ClientEntity();
-		List<ClientEntity> clientList = clientService.getClient(clientEntity);
+		List<ClientEntity> clientList = null;
+		try{
+			clientList = clientService.getAll();
+		} catch(Exception e){
+			e.printStackTrace();
+		}
 		if (clientList == null)
 			clientList = new ArrayList<ClientEntity>();
 		m.addObject("clientList", clientList);
@@ -44,23 +49,38 @@ public class Client {
 	@RequestMapping(value = "editClient/{clientId}", method = RequestMethod.GET)
 	public ModelAndView editClient(@PathVariable int clientId) {
 		ModelAndView m = new ModelAndView();
-		ClientEntity clientEntity = clientService.getClientById(clientId);
+		ClientEntity clientEntity  = null ;
+		try{
+			clientEntity = clientService.getById(clientId);
+		} catch(Exception e){
+			e.printStackTrace();
+		}
+		if(clientEntity == null)
+			clientEntity = new ClientEntity();
 		m.addObject("client", clientEntity);
 		m.setViewName("manage/admin-client-edit");
 		return m;
 	}
 	
 	@RequestMapping(value = "deleteClient/{clientId}", method = RequestMethod.GET)
-	public ModelAndView deleteClient(@PathVariable int clientId) {
-		ModelAndView m = new ModelAndView();
-		ClientEntity clientEntity = clientService.getClientById(clientId);
-		m.addObject("client", clientEntity);
-		m.setViewName("manage/admin-client-edit");
-		return m;
+	public String deleteClient(@PathVariable int clientId, HttpServletResponse response) {
+		String result = "ok";
+		try {
+			clientService.delById(clientId);
+		} catch (Exception e) {
+			result = "error";
+		}
+		output(response, "{\"result\":\"" + result + "\"}");
+		return null;
 	}
 	
 	@RequestMapping(value = "saveClient", method = RequestMethod.POST)
 	public String savaClient(ClientEntity client, Model model, HttpSession session) {
+		try {
+			clientService.save(client);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return "redirect:admin-client-list.html";
 	}
 	

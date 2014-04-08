@@ -223,9 +223,7 @@
 														</label>
 														<div class="fileinput fileinput-new col-md-4" data-provides="fileinput">
 															<div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 400px; height: 300px;" id="newsimgdiv">
-															<#if news.photoPath!="">
-																<img alt="image" src="down?view=1&url=${(news.photoPath)}" />
-															</#if>
+																<img alt="image" src='down?view=1&url=${(news.photoPath)!""}' />
 															</div>
 															<input type="file" name="newsimg"/>
 															<span class="help-block"> Upload news photo. </span>	
@@ -241,7 +239,7 @@
 														</label>
 														<div class="fileinput fileinput-new col-md-4" data-provides="fileinput">
 															<div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 400px; height: 300px;" id="newsvideodiv">
-															<#if news.videoPath!="" >
+															<#if (news.videoPath)?? && news.videoPath!="" >
 																<span>${(news.videoName)!""}</span>
 															</#if>
 															</div>

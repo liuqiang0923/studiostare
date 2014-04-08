@@ -1,5 +1,7 @@
 package com.flamingo.studiostare.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,5 +19,5 @@ public class VideoServiceImpl implements IVideoService {
 	public VideoEntity getById(int id) {
 		return videoDao.selectVideoById(id);
 	}
-
+	
 }
