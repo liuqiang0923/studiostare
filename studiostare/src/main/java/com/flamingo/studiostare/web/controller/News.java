@@ -40,6 +40,8 @@ public class News extends JsonAction {
 	@RequestMapping("admin-news-edit.html")
 	public ModelAndView newsEdit() {
 		ModelAndView m = new ModelAndView();
+		NewsEntity news = new NewsEntity();
+		m.addObject("news", news);
 		m.setViewName("manage/admin-news-edit");
 		return m;
 	}
