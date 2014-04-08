@@ -38,7 +38,7 @@ public class About extends JsonAction {
 	@RequestMapping(value = "addWho", method = RequestMethod.GET)
 	public ModelAndView addWho() {
 		ModelAndView m = new ModelAndView();
-		m.setViewName("manage/admin-about-edit");
+		m.setViewName("manage/admin-about-who-edit");
 		return m;
 	}
 	
@@ -54,7 +54,7 @@ public class About extends JsonAction {
 		if(userEntity == null)
 			userEntity = new UserEntity();
 		m.addObject("user", userEntity);
-		m.setViewName("manage/admin-about-edit");
+		m.setViewName("manage/admin-about-who-edit");
 		return m;
 	}
 	
