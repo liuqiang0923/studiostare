@@ -10,6 +10,7 @@
 		<result property="content" column="content" />
 		<result property="photoPath" column="photo_path" />
 		<result property="videoPath" column="video_path" />
+		<result property="twitterId" column="twitter_id" />
 		<result property="userId" column="user_id" />
 		<result property="updateTime" column="update_time" javaType="Date" />
 	</resultMap>
@@ -19,8 +20,8 @@
 	</select>
 	
 	<insert id="insertNews" parameterType="NewsEntity">
-		insert into news (title, content, photo_path, video_path, user_id)
-		values (#{title}, #{content}, #{photoPath}, #{videoPath}, #{userId})
+		insert into news (title, content, photo_path, video_path, user_id, twitter_id)
+		values (#{title}, #{content}, #{photoPath}, #{videoPath}, #{userId}, #{twitterId})
 	</insert>
 	
 	<update id="updateNews" parameterType="NewsEntity">
@@ -56,6 +57,10 @@
 		</if>
 	</select>
 	
+	<select id="getMaxTwitterId" resultType="java.lang.Long">
+		select max(twitter_id) from news
+	</select>
+	
 	<delete id="deleteNews" parameterType="NewsEntity">
 		delete from news where 1 = 1 
 		<if test="title != null and title != ''">
@@ -72,6 +77,9 @@
 		</if>
 		<if test="userId != 0">
 			and user_id = #{userId} 
+		</if>
+		<if test="twitterId != 0">
+			and twitter_id = #{twitterId} 
 		</if>
 	</delete>
 

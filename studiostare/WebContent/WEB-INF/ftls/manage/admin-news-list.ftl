@@ -183,29 +183,36 @@
 								<th>
 									 Created
 								</th>
+								<th>
+									 Edit
+								</th>
+								<th> 
+									 Delete
+								</th>
 							</tr>
 							</thead>
 							<tbody>
+							<#list newslist as news>
 							<tr class="odd gradeX">
 								<td>
-									<input type="checkbox" class="checkboxes" value="1"/>
+									<input name="newsId" type="checkbox" class="checkboxes" value=${(news.id)!0} />
 								</td>
+								<td>${(news.title)!""}</td>
 								<td>
-									 title 1
+								<#if news.content?length gt 20>
+									${(news.content[0..20])}...
+								</#if>
+								<#if news.content?length lte 20>
+									${(news.content)!""}
+								</#if>
 								</td>
-								<td>
-									content 1
-								</td>
-								<td>
-									photo1
-								</td>
-								<td>
-									video 1
-								</td>
-								<td class="center">
-									 12 Jan 2012
-								</td>
+								<td><a href="down?view=1&url=${(news.photoPath)!""}">${(news.photoName)!""}</a></td>
+								<td><a href="down?url=${(news.videoPath)!""}">${(news.videoName)!""}</a></td>
+								<td>${(news.updateTime)?string('yyyy-MM-dd')}</td>
+								<td><a class="edit" href="javascript:;"> Edit </a></td>
+								<td><a class="delete" href="javascript:;"> Delete </a></td>
 							</tr>
+							</#list>
 							</tbody>
 							</table>
 						</div>
@@ -247,7 +254,7 @@
 <!-- END PAGE LEVEL PLUGINS -->
 <!-- BEGIN PAGE LEVEL SCRIPTS -->
 <script src="/studiostare/manage-resource/assets/scripts/core/app.js" ></script>
-<script src="/studiostare/manage-resource/assets/scripts/custom/table-managed.js" ></script>
+<script src="/studiostare/manage-resource/assets/scripts/table-managed-news.js" ></script>
 <script>
 jQuery(document).ready(function() {       
    App.init();

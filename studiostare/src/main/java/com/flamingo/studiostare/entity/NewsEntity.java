@@ -3,6 +3,9 @@ package com.flamingo.studiostare.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import com.flamingo.studiostare.common.FileUtils;
+import com.flamingo.studiostare.common.StringUtils;
+
 public class NewsEntity implements Serializable {
 	private static final long serialVersionUID = 1L; 
 	private int id;
@@ -11,6 +14,7 @@ public class NewsEntity implements Serializable {
 	private String photoPath;
 	private String videoPath;
 	private int userId;
+	private long twitterId;
 	private Date updateTime;
 	public NewsEntity(){
 		id = 0;
@@ -62,5 +66,24 @@ public class NewsEntity implements Serializable {
 	}
 	public void setUpdateTime(Date updateTime) {
 		this.updateTime = updateTime;
+	}
+	public long getTwitterId() {
+		return twitterId;
+	}
+	public void setTwitterId(long twitterId) {
+		this.twitterId = twitterId;
+	}
+	
+	public String getPhotoName() {
+		if (!StringUtils.isNull(photoPath)) {
+			return FileUtils.getFileName(photoPath);
+		}
+		return "";
+	}
+	public String getVideoName() {
+		if (!StringUtils.isNull(videoPath)) {
+			return FileUtils.getFileName(videoPath);
+		}
+		return "";
 	}
 }

@@ -50,6 +50,15 @@ public class Client {
 		return m;
 	}
 	
+	@RequestMapping(value = "deleteClient/{clientId}", method = RequestMethod.GET)
+	public ModelAndView deleteClient(@PathVariable int clientId) {
+		ModelAndView m = new ModelAndView();
+		ClientEntity clientEntity = clientService.getClientById(clientId);
+		m.addObject("client", clientEntity);
+		m.setViewName("manage/admin-client-edit");
+		return m;
+	}
+	
 	@RequestMapping(value = "saveClient", method = RequestMethod.POST)
 	public String savaClient(ClientEntity client, Model model, HttpSession session) {
 		return "redirect:admin-client-list.html";
