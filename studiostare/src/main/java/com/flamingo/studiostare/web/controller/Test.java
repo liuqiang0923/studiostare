@@ -7,21 +7,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.flamingo.studiostare.entity.AboutEntity;
-import com.flamingo.studiostare.entity.CategoryEntity;
 import com.flamingo.studiostare.entity.ClientEntity;
-import com.flamingo.studiostare.entity.NewsEntity;
-import com.flamingo.studiostare.entity.RoleEntity;
-import com.flamingo.studiostare.entity.UserEntity;
-import com.flamingo.studiostare.entity.VideoEntity;
-import com.flamingo.studiostare.entity.VideoRefEntity;
 import com.flamingo.studiostare.service.IAboutService;
 import com.flamingo.studiostare.service.ICategoryService;
 import com.flamingo.studiostare.service.IClientService;
 import com.flamingo.studiostare.service.INewsService;
 import com.flamingo.studiostare.service.IRoleService;
 import com.flamingo.studiostare.service.IUserService;
-import com.flamingo.studiostare.service.IVideoRefService;
 import com.flamingo.studiostare.service.IVideoService;
 
 @Controller
@@ -41,8 +33,6 @@ public class Test {
 	private IUserService userService;
 	@Autowired
 	private IVideoService videoService;
-	@Autowired
-	private IVideoRefService videoRefService;
 	
 	@RequestMapping("test.do")
 	public ModelAndView test() {

@@ -17,7 +17,7 @@ var TableManaged = function () {
                   { "bSortable": false, "bSearchable": false }, // { "bSortable": false, "sType": "text" },
                   { "bSortable": false, "bSearchable": false },
                   { "bSortable": false, "bSearchable": false },
-                  { "bSortable": false, "bSearchable": false },
+//                  { "bSortable": false, "bSearchable": false },
                   null,
                   null,
                   { "bSearchable": false},
@@ -67,6 +67,50 @@ var TableManaged = function () {
             jQuery('#managetable_video_wrapper .dataTables_length select').addClass("form-control input-xsmall"); // modify table per page dropdown
             //jQuery('#managetable_video_wrapper .dataTables_length select').select2(); // initialize select2 dropdown
 
+            $('#managetable_video_new').click(function (e) {
+            	addVideo();
+            });
+            
+            $('#managetable_video a.edit').live('click', function (e) {
+            	var id = $(this).parents('tr')[0].getElementsByTagName("input")[0].value;
+            	editVideo(id);
+            });
+            
+            $('#managetable_video a.delete').live('click', function (e) {
+            	var id = $(this).parents('tr')[0].getElementsByTagName("input")[0].value;
+            	deleteVideo(id);
+            });
+            
+            function addVideo(){
+            	window.location.href="/studiostare/manage/addVideo";
+            }
+            
+            function editVideo(id){
+            	window.location.href="/studiostare/manage/editVideo/" + id;
+            }
+            
+            function deleteVideo(id){
+            	$.ajax({
+            	    url: '/studiostare/manage/deleteVideo/' + id,
+            	    type: 'GET',
+//            	    dataType: 'json',
+//            	    data: "{\"name\":\"hmkcode\",\"id\":2}", 
+            	    contentType: 'application/json;',
+            	    mimeType: 'application/json;',
+            	    success: function(res) {
+            	    	if (res.result == "ok") {
+	        	        	alert("Delete succeed!");
+	        	        	window.location.href="/studiostare/manage/admin-video-list.html";
+	        	        } else {
+	        	        	alert("Deleted failed!");
+	        	        }
+            	    },
+            	    error:function(data,status,er) {
+            	        alert("error: "+data+" status: "+status+" er:"+er);
+            	    }
+            	});
+            }
+            
         }
 
     };

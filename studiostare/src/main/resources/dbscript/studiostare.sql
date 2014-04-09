@@ -45,7 +45,8 @@ CREATE TABLE IF NOT EXISTS `studiostare`.`user` (
   `capture_news_flag` INT NULL COMMENT '是否需要抓取新闻的标识',
   `twitter_user` VARCHAR(255) NULL COMMENT '抓取新闻的账号',
   `position`	VARCHAR(64) NULL COMMENT '职位',
-  `photo_path` VARCHAR(1024) NULL COMMENT '用户相片地址';
+  `photo_path` VARCHAR(1024) NULL COMMENT '用户相片地址',
+  `description` VARCHAR(1024) NULL COMMENT '说明',
   `update_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_user_to_role_role_id`

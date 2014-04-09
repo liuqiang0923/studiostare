@@ -65,7 +65,7 @@
 						<div class="sidebar-toggler hidden-phone"></div> <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
 					</li>
 					<li class="last ">
-						<a href="admin-video-list.html" >
+						<a href="/studiostare/manage/admin-video-list.html" >
 							<i class="fa fa-bar-chart-o"></i>
 							<span class="title">
 								Video
@@ -73,7 +73,7 @@
 						</a>
 					</li>
 					<li class="last ">
-						<a href="admin-client-list.html"> 
+						<a href="/studiostare/manage/admin-client-list.html"> 
 							<i class="fa fa-bar-chart-o"></i> 
 							<span class="title"> 
 								Client 
@@ -81,7 +81,7 @@
 						</a>
 					</li>
 					<li class="last ">
-						<a href="admin-category-list.html"> 
+						<a href="/studiostare/manage/admin-category-list.html"> 
 							<i class="fa fa-bar-chart-o"></i> 
 							<span class="title"> 
 								Category 
@@ -89,7 +89,7 @@
 						</a>
 					</li>
 					<li class="last ">
-						<a href="admin-news-list.html" >
+						<a href="/studiostare/manage/admin-news-list.html" >
 							<i class="fa fa-bar-chart-o"></i>
 							<span class="title">
 								News
@@ -97,7 +97,7 @@
 						</a>
 					</li>
 					<li class="last ">
-						<a href="admin-about.html" >
+						<a href="/studiostare/manage/admin-about.html" >
 							<i class="fa fa-bar-chart-o"></i>
 							<span class="title">
 								About
@@ -149,12 +149,12 @@
 						<div class="portlet box blue" id="form_wizard_1">
 							<div class="portlet-title">
 								<div class="caption">
-									<i class="fa fa-reorder"></i> Edit About Wizard - <span
+									<i class="fa fa-reorder"></i> Edit Who We Are Wizard - <span
 										class="step-title"> Step 1 of 2 </span>
 								</div>
 							</div>
 							<div class="portlet-body form">
-								<form action="saveWho" class="form-horizontal" id="submit_form" method="post" enctype="multipart/form-data">
+								<form action="/studiostare/manage/saveWho" class="form-horizontal" id="submit_form" method="post" enctype="multipart/form-data">
 									<input type="hidden" name="id" value="${(who.id)!"0"}"></input>
 									<div class="form-wizard">
 										<!-- <div class="form-body"> -->
@@ -193,6 +193,9 @@
 														</label>
 														<div class="fileinput fileinput-new col-md-4" data-provides="fileinput">
 															<div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 100%;" id="whoimgdiv">
+																<#if (who.photoPath)?? >
+																	<img src='${(who.photoPath)!""}'></img>
+																</#if>
 															</div>
 															<input type="file" name="whoimg"/>
 															<span class="help-block"> Upload photo. </span>	

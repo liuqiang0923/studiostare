@@ -97,10 +97,10 @@
 						</a>
 					</li>
 					<li class="last ">
-						<a href="/studiostare/manage/admin-about-edit.html" >
+						<a href="/studiostare/manage/admin-about.html" >
 							<i class="fa fa-bar-chart-o"></i>
 							<span class="title">
-								Edit About
+								About
 							</span>
 						</a>
 					</li>

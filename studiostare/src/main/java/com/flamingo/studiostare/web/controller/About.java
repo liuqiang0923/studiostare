@@ -1,5 +1,8 @@
 package com.flamingo.studiostare.web.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -29,14 +32,24 @@ public class About extends JsonAction {
 	private static RoleEntity role = new RoleEntity();
 	
 	static{
-		role.setId(RoleEntity.ROLEType_ABOUTUS);
+		role.setId(RoleEntity.ROLETYPE_ABOUTUS);
 	}
 	
 	@RequestMapping("admin-about.html")
 	public ModelAndView about() {
 		ModelAndView m = new ModelAndView();
-		AboutEntity about = aboutService.getById(1);
+		AboutEntity about = null;
+		List<UserEntity> whoList = null;
+		try{
+			about = aboutService.getById(1);
+			whoList = userService.getUserByType(RoleEntity.ROLETYPE_ABOUTUS);
+		} catch(Exception e){
+			e.printStackTrace();
+		}
+		if(whoList == null)
+			whoList = new ArrayList<UserEntity>();
 		m.addObject("about",about);
+		m.addObject("whoList", whoList);
 		m.setViewName("manage/admin-about");
 		return m;
 	}
@@ -59,16 +72,16 @@ public class About extends JsonAction {
 		}
 		if(userEntity == null)
 			userEntity = new UserEntity();
-		m.addObject("user", userEntity);
+		m.addObject("who", userEntity);
 		m.setViewName("manage/admin-about-who-edit");
 		return m;
 	}
 	
-	@RequestMapping(value = "deleteWho/{clientId}", method = RequestMethod.GET)
-	public String deleteWho(@PathVariable int clientId, HttpServletResponse response) {
+	@RequestMapping(value = "deleteWho/{whoId}", method = RequestMethod.GET)
+	public String deleteWho(@PathVariable int whoId, HttpServletResponse response) {
 		String result = "ok";
 		try {
-			userService.delById(clientId);
+			userService.delById(whoId);
 		} catch (Exception e) {
 			result = "error";
 		}
@@ -89,10 +102,32 @@ public class About extends JsonAction {
 		return "redirect:admin-about.html";
 	}
 	
+	@RequestMapping(value = "editAboutInfo", method = RequestMethod.GET)
+	public ModelAndView editAboutInfo() {
+		ModelAndView m = new ModelAndView();
+		AboutEntity aboutEntity  = null ;
+		try{
+			aboutEntity = aboutService.getById(1);
+		} catch(Exception e){
+			e.printStackTrace();
+		}
+		if(aboutEntity == null)
+			aboutEntity = new AboutEntity();
+		m.addObject("about", aboutEntity);
+		m.setViewName("manage/admin-about-edit");
+		return m;
+	}
+	
 	@RequestMapping(value="saveAboutInfo", method=RequestMethod.POST)
-	public String saveAboutInfo(@RequestParam(value="newsimg", required=false) MultipartFile officeimg, HttpServletResponse response){
-		
-		return null;
+	public String saveAboutInfo(
+			AboutEntity about,
+			@RequestParam(value="officeimg", required=false) MultipartFile officeimg, HttpSession session){
+		try {
+			aboutService.save(about, officeimg);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "redirect:admin-about.html";
 	}
 	
 	@RequestMapping(value="saveManifesto", method=RequestMethod.POST)

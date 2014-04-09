@@ -44,17 +44,20 @@ public class UserServiceImpl implements IUserService {
 		int id = userEntity.getId();
 		Date now = new Date();
 		userEntity.setUpdateTime(now);
+		UserEntity old = getById(id);
 		if(whoimg != null && whoimg.getSize() != 0)
-			userEntity.setPhotoPath(saveFile(whoimg));
-		if(id == 0 || getById(id) == null)
+			userEntity.setPhotoPath(FileUtils.saveFile(whoimg));
+		if(id == 0 || old == null)
 			userDao.insertUser(userEntity);
-		else
-			userDao.updateUser(userEntity);
+		else{
+			old.setName(userEntity.getName());
+			old.setPosition(userEntity.getPosition());
+			old.setEmail(userEntity.getEmail());
+			old.setDescription(userEntity.getDescription());
+			if(userEntity.getPhotoPath() != null)
+				old.setPhotoPath(userEntity.getPhotoPath());
+			userDao.updateUser(old);
+		}
 	}
 	
-	private String saveFile(MultipartFile file) throws IOException {
-		if (file == null) return "";
-		return FileUtils.saveFile(file.getOriginalFilename(), file.getBytes());
-	}
-
 }

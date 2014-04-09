@@ -8,6 +8,8 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import org.springframework.web.multipart.MultipartFile;
+
 /**
  * 文件读写
  * 
@@ -22,9 +24,9 @@ public class FileUtils {
 	 * @param filebytes
 	 */
 	public static String saveFile(String filename, byte[] filebytes) {
-		String absPath = createFileName(filename);
+		String absPath = getFileRoot() + "/" + createFileName(filename);
 		try {
-			File file = new File(getFileRoot() + "/" + absPath);
+			File file = new File(absPath);
 			org.apache.commons.io.FileUtils.writeByteArrayToFile(file, filebytes);
 			return absPath;
 		} catch (IOException e) {
@@ -126,7 +128,12 @@ public class FileUtils {
 	 */
 	public static String getFileRoot() {
 		//return "D:/temp";
-		return ConfigUtils.get("data.root.path", "/data/files/");
+		return ConfigUtils.get("data.root.path", "/resources");
+	}
+	
+	public static String saveFile(MultipartFile file) throws IOException {
+		if (file == null) return "";
+		return saveFile(file.getOriginalFilename(), file.getBytes());
 	}
 
 	public static void main(String[] args) {

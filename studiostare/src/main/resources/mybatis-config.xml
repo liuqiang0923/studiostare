@@ -31,7 +31,6 @@
 		<typeAlias alias="RoleEntity" type="com.flamingo.studiostare.entity.RoleEntity" />
 		<typeAlias alias="UserEntity" type="com.flamingo.studiostare.entity.UserEntity" />
 		<typeAlias alias="VideoEntity" type="com.flamingo.studiostare.entity.VideoEntity" />
-		<typeAlias alias="VideoRefEntity" type="com.flamingo.studiostare.entity.VideoRefEntity" />
 	</typeAliases>
 	<!-- 非注解的sql映射文件配置，如果使用mybatis注解，该mapper无需配置，但是如果mybatis注解中包含@resultMap注解，则mapper必须配置，给resultMap注解使用 -->
 	<!-- 因为如果user-mapper.xml与namespace的接口在同一路径下，就不需要在mybaits.xml中再进行配置了。-->

@@ -47,7 +47,7 @@ var FormWizard = function () {
                 focusInvalid: false, // do not focus the last invalid input
                 rules: {
                     //account
-                    username: {
+                	name: {
                         minlength: 5,
                         required: true
                     },
@@ -112,10 +112,17 @@ var FormWizard = function () {
                     		required: true,
                     		maxlength: 50,
                     },
-                    description: {
-                    		required: true,
-                    		minlength: 10,
-                    		maxlength: 1024,
+                    'client.id': {
+                    	required: true,
+                    },
+                    'category.id': {
+                    	required: true,
+                    },
+                    videowebm: {
+                    	required: true,
+                    },
+                    videoogg: {
+                    	required: true,
                     },
                 },
 
@@ -167,6 +174,7 @@ var FormWizard = function () {
                 submitHandler: function (form) {
                     success.show();
                     error.hide();
+                    form.submit();
                     //add here some ajax code to submit your form or just call form.submit() if you want to submit the form without ajax
                 }
 
@@ -174,23 +182,31 @@ var FormWizard = function () {
 
             var displayConfirm = function() {
                 $('#tab4 .form-control-static', form).each(function(){
-                    var input = $('[name="'+$(this).attr("data-display")+'"]', form);
-                    if (input.is(":radio")) {
-                        input = $('[name="'+$(this).attr("data-display")+'"]:checked', form);
-                    }
-                    if (input.is(":text") || input.is("textarea")) {
-                        $(this).html(input.val());
-                    } else if (input.is("select")) {
-                        $(this).html(input.find('option:selected').text());
-                    } else if (input.is(":radio") && input.is(":checked")) {
-                        $(this).html(input.attr("data-title"));
-                    } else if ($(this).attr("data-display") == 'payment') {
-                        var payment = [];
-                        $('[name="payment[]"]').each(function(){
-                            payment.push($(this).attr('data-title'));
-                        });
-                        $(this).html(payment.join("<br>"));
-                    }
+                	if ($(this).attr("data-display") == "videoimgdiv"){
+                		$(this).html($("#videoimgdiv"));
+                	} else if ($(this).attr("data-display") == "videowebmdiv"){
+                		$(this).html($("#videowebmdiv"));
+                	} else if ($(this).attr("data-display") == "videooggdiv"){
+                		$(this).html($("#videooggdiv"));
+                	} else{
+	                    var input = $('[name="'+$(this).attr("data-display")+'"]', form);
+	                    if (input.is(":radio")) {
+	                        input = $('[name="'+$(this).attr("data-display")+'"]:checked', form);
+	                    }
+	                    if (input.is(":text") || input.is("textarea")) {
+	                        $(this).html(input.val());
+	                    } else if (input.is("select")) {
+	                        $(this).html(input.find('option:selected').text());
+	                    } else if (input.is(":radio") && input.is(":checked")) {
+	                        $(this).html(input.attr("data-title"));
+	                    } else if ($(this).attr("data-display") == 'payment') {
+	                        var payment = [];
+	                        $('[name="payment[]"]').each(function(){
+	                            payment.push($(this).attr('data-title'));
+	                        });
+	                        $(this).html(payment.join("<br>"));
+	                    }
+                	}
                 });
             }
 
@@ -263,7 +279,8 @@ var FormWizard = function () {
 
             $('#form_wizard_1').find('.button-previous').hide();
             $('#form_wizard_1 .button-submit').click(function () {
-                alert('Finished! Hope you like it :)');
+//                alert('Finished! Hope you like it :)');
+            	form.submit();
             }).hide();
         }
 

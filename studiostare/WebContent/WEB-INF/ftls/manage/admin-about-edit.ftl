@@ -3,7 +3,7 @@
 <!-- BEGIN HEAD -->
 <head>
 <meta charset="utf-8" />
-<title>Studio Stare | Edit Client</title>
+<title>Studio Stare | edit about info</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 <meta content="" name="description" />
@@ -25,6 +25,7 @@
 <link href="/studiostare/manage-resource/assets/css/plugins.css" rel="stylesheet" type="text/css" />
 <link href="/studiostare/manage-resource/assets/css/themes/default.css" rel="stylesheet" type="text/css" id="style_color" />
 <link href="/studiostare/manage-resource/assets/css/custom.css" rel="stylesheet" type="text/css" />
+<link href="/studiostare/manage-resource/assets/css/bootstrap-fileinput.css" rel="stylesheet" type="text/css" />
 <!-- END THEME STYLES -->
 <link rel="shortcut icon" href="favicon.ico" />
 </head>
@@ -37,7 +38,7 @@
 	<div class="header-inner">
 		<!-- BEGIN LOGO -->
 		<a class="navbar-brand" href="index.html">
-			<img src="favicon.png" alt="logo" class="img-responsive"/>
+			<img src="/studiostare/manage-resource/favicon.png" alt="logo" class="img-responsive"/>
 		</a>
 		<!-- END LOGO -->
 		<!-- BEGIN RESPONSIVE MENU TOGGLER -->
@@ -137,7 +138,7 @@
 				<div class="row">
 					<div class="col-md-12">
 						<!-- BEGIN PAGE TITLE & BREADCRUMB-->
-						<h3 class="page-title">Edit Client Wizard</h3>
+						<h3 class="page-title">Edit About Info Wizard</h3>
 						<!-- END PAGE TITLE & BREADCRUMB-->
 					</div>
 				</div>
@@ -148,19 +149,20 @@
 						<div class="portlet box blue" id="form_wizard_1">
 							<div class="portlet-title">
 								<div class="caption">
-									<i class="fa fa-reorder"></i> Edit Client Wizard - <span
+									<i class="fa fa-reorder"></i> Edit About Info Wizard - <span
 										class="step-title"> Step 1 of 2 </span>
 								</div>
 							</div>
 							<div class="portlet-body form">
-								<form action="/studiostare/manage/saveClient" class="form-horizontal" method="post" id="submit_form">
-									<input type="hidden" name="id" value="${(client.id)!"0"}"></input>
+								<form action="/studiostare/manage/saveAboutInfo" class="form-horizontal" id="submit_form" method="post" enctype="multipart/form-data">
+									<input type="hidden" name="id" value="${(about.id)!"0"}"></input>
 									<div class="form-wizard">
+										<!-- <div class="form-body"> -->
 										<div class="form-body">
 											<ul class="nav nav-pills nav-justified steps">
 												<li><a href="#tab1" data-toggle="tab" class="step">
 														<span class="number"> 1 </span> <span class="desc">
-															<i class="fa fa-check"></i> Client Info Setup
+															<i class="fa fa-check"></i> Edit about info
 													</span>
 												</a></li>
 												<li><a href="#tab2" data-toggle="tab" class="step">
@@ -183,72 +185,61 @@
 													Your form validation is successful!
 												</div>
 												<div class="tab-pane active" id="tab1">
-													<h3 class="block">Provide client details</h3>
+													<h3 class="block">About info</h3>
 													<div class="form-group">
-														<label class="control-label col-md-3">Name 
+														<label class="control-label col-md-3"> 
+															Office 
 															<span class="required"> * </span>
 														</label>
-														<div class="col-md-4">
-															<input type="text" class="form-control" name="name" value="${(client.name)!""}" />
-															<span class="help-block"> Input name </span>
+														<div class="fileinput fileinput-new col-md-4" data-provides="fileinput">
+															<div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 100%;" id="officeimgdiv">
+																<#if (about.officeImgPath)?? >
+																	<img src='${(about.officeImgPath)!""}'></img>
+																</#if>
+															</div>
+															<input type="file" name="officeimg"/>
+															<span class="help-block"> Upload office photo. </span>	
 														</div>
 													</div>
 													<div class="form-group">
-														<label class="control-label col-md-3">Phone 
+														<label class="control-label col-md-3">About 
 															<span class="required"> * </span>
 														</label>
 														<div class="col-md-4">
-															<input type="text" class="form-control" name="phone" value="${(client.phone)!""}" />
-															<span class="help-block"> Input phone. </span>
+															<textarea class="form-control" rows="3" style="width: 100%;" name="aboutUsInfo">${(about.aboutUsInfo)!""}</textarea>
+															<span class="help-block"> Input about. </span>
 														</div>
 													</div>
 													<div class="form-group">
-														<label class="control-label col-md-3">Email 
+														<label class="control-label col-md-3">Manifesto 
 															<span class="required"> * </span>
 														</label>
 														<div class="col-md-4">
-															<input type="text" class="form-control" name="email" value="${(client.email)!""}"/>
-															<span class="help-block"> Input email address </span>
-														</div>
-													</div>
-													<div class="form-group">
-														<label class="control-label col-md-3">Description 
-															<span class="required"> * </span>
-														</label>
-														<div class="col-md-4">
-															<input type="text" class="form-control" name="description" value="${(client.description)!""}"/>
-															<span class="help-block"> Input description </span>
+															<textarea class="form-control" rows="3" style="width: 100%;" name="manifesto">${(about.manifesto)!""}</textarea>
+															<span class="help-block"> Input manifesto. </span>
 														</div>
 													</div>
 												</div>
 												<div class="tab-pane" id="tab2">
-													<h3 class="block">Confirm your account</h3>
-													<h4 class="form-section">Client Info</h4>
+													<h3 class="block">Confirm</h3>
+													<h4 class="form-section">About infos</h4>
 													<div class="form-group">
-														<label class="control-label col-md-3">Name:</label>
+														<label class="control-label col-md-3">Office:</label>
 														<div class="col-md-4">
-															<p class="form-control-static" data-display="name">
+															<div class="form-control-static" data-display="officeimgdiv"></div>
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="control-label col-md-3">about:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="aboutUsInfo">
 															</p>
 														</div>
 													</div>
 													<div class="form-group">
-														<label class="control-label col-md-3">Phone:</label>
+														<label class="control-label col-md-3">Manifesto:</label>
 														<div class="col-md-4">
-															<p class="form-control-static" data-display="phone">
-															</p>
-														</div>
-													</div>
-													<div class="form-group">
-														<label class="control-label col-md-3">Email:</label>
-														<div class="col-md-4">
-															<p class="form-control-static" data-display="email">
-															</p>
-														</div>
-													</div>
-													<div class="form-group">
-														<label class="control-label col-md-3">Description:</label>
-														<div class="col-md-4">
-															<p class="form-control-static" data-display="description">
+															<p class="form-control-static" data-display="manifesto">
 															</p>
 														</div>
 													</div>
@@ -311,23 +302,19 @@
 	<script type="text/javascript" src="/studiostare/manage-resource/assets/plugins/bootstrap-fileinput/bootstrap-fileinput.js"></script>
 	<script type="text/javascript" src="/studiostare/manage-resource/assets/plugins/jquery-validation/dist/jquery.validate.min.js"></script>
 	<script type="text/javascript" src="/studiostare/manage-resource/assets/plugins/jquery-validation/dist/additional-methods.min.js"></script>
-	<!-- END PAGE LEVEL PLUGINS -->
-	<!-- BEGIN PAGE LEVEL PLUGINS -->
 	<script type="text/javascript" src="/studiostare/manage-resource/assets/plugins/select2/select2.min.js"></script>
-	<script type="text/javascript" src="/studiostare/manage-resource/assets/plugins/data-tables/jquery.dataTables.js" ></script>
+	<script type="text/javascript" src="/studiostare/manage-resource/assets/plugins/data-tables/jquery.dataTables.js"></script>
 	<script type="text/javascript" src="/studiostare/manage-resource/assets/plugins/data-tables/DT_bootstrap.js"></script>
 	<!-- END PAGE LEVEL PLUGINS -->
 	<!-- BEGIN PAGE LEVEL SCRIPTS -->
 	<script src="/studiostare/manage-resource/assets/scripts/core/app.js"></script>
-	<script src="/studiostare/manage-resource/assets/scripts/form-wizard-client.js"></script>
-	<script src="/studiostare/manage-resource/assets/scripts/custom/table-editable.js"></script>
+	<script src="/studiostare/manage-resource/assets/scripts/form-wizard-about.js"></script>
 	<!-- END PAGE LEVEL SCRIPTS -->
 	<script>
 jQuery(document).ready(function() {       
    // initiate layout and plugins
    App.init();
    FormWizard.init();
-   TableEditable.init();
 });
 </script>
 	<!-- END JAVASCRIPTS -->

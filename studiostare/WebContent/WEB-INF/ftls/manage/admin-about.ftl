@@ -66,7 +66,7 @@
 						<div class="sidebar-toggler hidden-phone"></div> <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
 					</li>
 					<li class="last ">
-						<a href="admin-video-list.html" >
+						<a href="/studiostare/manage/admin-video-list.html" >
 							<i class="fa fa-bar-chart-o"></i>
 							<span class="title">
 								Video
@@ -74,7 +74,7 @@
 						</a>
 					</li>
 					<li class="last ">
-						<a href="admin-client-list.html"> 
+						<a href="/studiostare/manage/admin-client-list.html"> 
 							<i class="fa fa-bar-chart-o"></i> 
 							<span class="title"> 
 								Client 
@@ -82,7 +82,7 @@
 						</a>
 					</li>
 					<li class="last ">
-						<a href="admin-category-list.html"> 
+						<a href="/studiostare/manage/admin-category-list.html"> 
 							<i class="fa fa-bar-chart-o"></i> 
 							<span class="title"> 
 								Category 
@@ -90,7 +90,7 @@
 						</a>
 					</li>
 					<li class="last ">
-						<a href="admin-news-list.html" >
+						<a href="/studiostare/manage/admin-news-list.html" >
 							<i class="fa fa-bar-chart-o"></i>
 							<span class="title">
 								News
@@ -98,7 +98,7 @@
 						</a>
 					</li>
 					<li class="last ">
-						<a href="admin-about.html" >
+						<a href="/studiostare/manage/admin-about.html" >
 							<i class="fa fa-bar-chart-o"></i>
 							<span class="title">
 								About
@@ -124,46 +124,76 @@
 				<!-- END PAGE HEADER-->
 				<!-- BEGIN PAGE CONTENT-->
 				
-				<div class="form-group">
-					<h4 class="form-section">About us</h4>
-					<div class="row">
-						<label class="control-label col-md-2"> 
-							Office Img 
-						</label>
-						<div class="fileinput fileinput-new col-md-4" data-provides="fileinput">
-							<div class="fileinput-preview thumbnail" style="width: 100%;" data-trigger="fileinput" id="officeimgdiv">
-								<img src="/studiostare/manage-resource/favicon.png"></img>
+				<div class="form-group" id="div_aboutinfo">
+						<h4 class="form-section">About Info</h4>
+						<div class="row">
+							<label class="control-label col-md-2"> 
+								Office Img 
+							</label>
+							<div class="fileinput fileinput-new col-md-4" data-provides="fileinput">
+								<div class="fileinput-preview thumbnail" style="width: 100%;" data-trigger="fileinput" id="officeimgdiv">
+								<#if (about.officeImgPath)?? >
+									<img src='${(about.officeImgPath)!""}'></img>
+								</#if>
+								</div>
+							    <!-- <input type="file" name="officeimg" /> -->
 							</div>
-						    <input type="file" name="officeimg" />
 						</div>
-					</div>
-					<div class="row">
-						<label class="control-label col-md-2"> 
-							About us description
-						</label>
-						<div class="col-md-4">
-							<textarea class="form-control" rows="3" style="width: 100%;" name="aboutus">${(about.aboutUsInfo)!""}</textarea>
-							<a href="javascript:;" class="btn green">
-								Save <i class="m-icon-swapright m-icon-white"></i>
-							</a>
+						<h4 class="form-section"></h4>
+						<div class="row">
+							<label class="control-label col-md-2"> 
+								About us description
+							</label>
+							<div class="col-md-4">
+								<textarea class="form-control" rows="3" style="width: 100%;" name="aboutus" readonly="readonly">${(about.aboutUsInfo)!""}</textarea>
+								<!--
+								<a href="javascript:;" class="btn green button-submit" id="saveAboutUs">
+									Save <i class="m-icon-swapright m-icon-white"></i>
+								</a>
+								-->
+							</div>
 						</div>
-					</div>
+						<h4 class="form-section"></h4>
+						<div class="row">
+							<label class="control-label col-md-2"> 
+								Manifesto
+							</label>
+							<div class="col-md-4">
+								<textarea class="form-control" rows="3" style="width: 100%;" name="manifestor" readonly="readonly">${(about.manifesto)!""}</textarea>
+								<!--
+								<a href="javascript:;" class="btn green button-submit" id="saveManifesto">
+									Save <i class="m-icon-swapright m-icon-white"></i>
+								</a>
+								-->
+							</div>
+						</div>
+						<h4 class="form-section"></h4>
+						<div class="row">
+							<label class="control-label col-md-2"> </label>
+							<div class="col-md-4">
+								<a href="javascript:;" class="btn green button-submit" id="saveAboutInfo">
+									Edit <i class="m-icon-swapright m-icon-white"></i>
+								</a>
+							</div>
+						</div>
 				</div>
 				
-				<div class="form-group" id="div_minifesto">
-					<h4 class="form-section">Manifesto</h4>
-					<div class="row">
-						<label class="control-label col-md-2"> 
-							Manifesto
-						</label>
-						<div class="col-md-4">
-							<textarea class="form-control" rows="3" style="width: 100%;" name="manifestor">${(about.manifesto)!""}</textarea>
-							<a href="javascript:;" class="btn green">
-								Save <i class="m-icon-swapright m-icon-white"></i>
-							</a>
+				<!--
+				<div class="form-group" id="div_manifesto">
+						<h4 class="form-section">Manifesto</h4>
+						<div class="row">
+							<label class="control-label col-md-2"> 
+								Manifesto
+							</label>
+							<div class="col-md-4">
+								<textarea class="form-control" rows="3" style="width: 100%;" name="manifestor">${(about.manifesto)!""}</textarea>
+								<a href="javascript:;" class="btn green button-submit" id="saveManifesto">
+									Save <i class="m-icon-swapright m-icon-white"></i>
+								</a>
+							</div>
 						</div>
-					</div>
 				</div>
+				-->
 				
 				<h4 class="form-section">Who we are</h4>
 				<div class="row">
@@ -210,18 +240,20 @@
 										</tr>
 									</thead>
 									<tbody>
+										<#list whoList as who>
 										<tr class="odd gradeX">
 											<td>
-												<input name="clientId" type="checkbox" class="checkboxes" value="0" />
+												<input name="clientId" type="checkbox" class="checkboxes" value=${(who.id)!""} />
 											</td>
-											<td><img src="/studiostare/manage-resource/assets/img/photo2.jpg"></td>
-											<td>asdf</td>
-											<td>asdf</td>
-											<td>asdf</td>
-											<td>asdf</td>
+											<td><img style="width:150px;" src='${(who.photoPath)!""}'></td>
+											<td>${(who.name)!""}</td>
+											<td>${(who.position)!""}</td>
+											<td><a href='mailto:${(who.email)!""}'>${(who.email)!""}</a></td>
+											<td>${(who.description)!""}</td>
 											<td><a class="edit" href="javascript:;"> Edit </a></td>
 											<td><a class="delete" href="javascript:;"> Delete </a></td>
 										</tr>
+										</#list>
 									</tbody>
 								</table>
 							</div>

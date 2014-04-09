@@ -6,7 +6,7 @@ public class RoleEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 	public static final int ROLETYPE_ADMIN = 1;
 	public static final int ROLETYPE_TWITTER = 2;
-	public static final int ROLEType_ABOUTUS = 3;
+	public static final int ROLETYPE_ABOUTUS = 3;
 	private int id;
 	private String name;
 	private String description;

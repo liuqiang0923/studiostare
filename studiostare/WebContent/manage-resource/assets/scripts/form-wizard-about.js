@@ -34,11 +34,17 @@ var FormWizard = function () {
 						 	return true;
 						},"This field is required.");
 						
-						function checkImg(){
-							if (document.getElementById("whoimgdiv").getElementsByTagName("img").length == 0)
+						jQuery.validator.addMethod("officeimgexist", function(value, element, param) {
+							if (document.getElementById("officeimgdiv").getElementsByTagName("img").length == 0)
 								return false;
 						 	return true;
-						}
+						},"This field is required.");
+						
+//						function checkImg(){
+//							if (document.getElementById("whoimgdiv").getElementsByTagName("img").length == 0)
+//								return false;
+//						 	return true;
+//						}
 						
             form.validate({
                 doNotHideMessage: true, //this option enables to show the error/success messages on tab switch.
@@ -108,7 +114,10 @@ var FormWizard = function () {
                     whoimg: {
                     	whoimgexist: true,
                     },
-                    aboutus: {
+                    officeimg: {
+                    	officeimgexist: true,
+                    },
+                    aboutUsInfo: {
                     	required: true,
                    		minlength: 10,
                    		maxlength: 1024,
@@ -181,8 +190,9 @@ var FormWizard = function () {
                 $('#tab2 .form-control-static', form).each(function(){
                 	if ($(this).attr("data-display") == "whoimgdiv"){
                 		$(this).html($("#whoimgdiv"));
-                	}
-                	else{
+                	} else if ($(this).attr("data-display") == "officeimgdiv"){
+                		$(this).html($("#officeimgdiv"));
+                	} else{
 	                    var input = $('[name="'+$(this).attr("data-display")+'"]', form);
 	                    if (input.is(":radio")) {
 	                        input = $('[name="'+$(this).attr("data-display")+'"]:checked', form);
@@ -276,6 +286,7 @@ var FormWizard = function () {
 //                alert('Finished! Hope you like it :)');
             	form.submit();
             }).hide();
+            
         }
 
     };

@@ -65,7 +65,7 @@
 						<div class="sidebar-toggler hidden-phone"></div> <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
 					</li>
 					<li class="last ">
-						<a href="admin-video-list.html" >
+						<a href="/studiostare/manage/admin-video-list.html" >
 							<i class="fa fa-bar-chart-o"></i>
 							<span class="title">
 								Video
@@ -73,7 +73,7 @@
 						</a>
 					</li>
 					<li class="last ">
-						<a href="admin-client-list.html"> 
+						<a href="/studiostare/manage/admin-client-list.html"> 
 							<i class="fa fa-bar-chart-o"></i> 
 							<span class="title"> 
 								Client 
@@ -81,7 +81,7 @@
 						</a>
 					</li>
 					<li class="last ">
-						<a href="admin-category-list.html"> 
+						<a href="/studiostare/manage/admin-category-list.html"> 
 							<i class="fa fa-bar-chart-o"></i> 
 							<span class="title"> 
 								Category 
@@ -89,7 +89,7 @@
 						</a>
 					</li>
 					<li class="last ">
-						<a href="admin-news-list.html" >
+						<a href="/studiostare/manage/admin-news-list.html" >
 							<i class="fa fa-bar-chart-o"></i>
 							<span class="title">
 								News
@@ -97,7 +97,7 @@
 						</a>
 					</li>
 					<li class="last ">
-						<a href="admin-about.html" >
+						<a href="/studiostare/manage/admin-about.html" >
 							<i class="fa fa-bar-chart-o"></i>
 							<span class="title">
 								About
@@ -157,8 +157,8 @@
 						<div class="portlet-body">
 							<div class="table-toolbar">
 								<div class="btn-group">
-									<button id="managetable_video_new" class="btn green" onclick="location='admin-video-edit.html'">
-									Add New <i class="fa fa-plus"></i>
+									<button id="managetable_video_new" class="btn green">
+										Add New <i class="fa fa-plus"></i>
 									</button>
 								</div>
 							</div>
@@ -181,9 +181,6 @@
 									 Ogg
 								</th>
 								<th>
-									 Mp4
-								</th>
-								<th>
 									 Client
 								</th>
 								<th>
@@ -201,16 +198,16 @@
 							</tr>
 							</thead>
 							<tbody>
+							<#if videoList ??>
 							<#list videoList as video>
 							<tr class="odd gradeX">
 								<td>
 									<input type="checkbox" class="checkboxes" value=${(video.id)!""} />
 								</td>
-								<td>${(video.video.name)!""}</td>
-								<td><img src='${video.video.imgPath}!""'></img></td>
-								<td><video src='${video.video.videoPathWebm}!""'></video></td>
-								<td><video src='${video.video.videoPathOgg}!""'></video></td>
-								<td><video src='${video.video.videoPathMp4}!""'></video></td>
+								<td>${(video.name)!""}</td>
+								<td><img style="width:150px;height:150px;" src='${video.imgPath!""}'></img></td>
+								<td><video style="width:150px;height:150px;" src='${video.videoPathWebm!""}' controls="controls"></video></td>
+								<td><video style="width:150px;height:150px;" src='${video.videoPathOgg!""}' controls="controls"></video></td>
 								<td>${(video.client.name)!""}</td>
 								<td>${(video.category.name)!""}</td>
 								<td>${(video.description)!""}</td>
@@ -218,6 +215,7 @@
 								<td><a class="delete" href="javascript:;"> Delete </a></td>
 							</tr>
 							</#list>
+							</#if>
 							</tbody>
 							</table>
 						</div>

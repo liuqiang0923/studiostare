@@ -6,6 +6,8 @@ import java.util.Date;
 public class VideoEntity implements Serializable {
 	private static final long serialVersionUID = 1L; 
 	private int id;
+	private ClientEntity client;
+	private CategoryEntity category;
 	private String name;
 	private String imgPath;
 	private String videoPathWebm;
@@ -60,5 +62,17 @@ public class VideoEntity implements Serializable {
 	}
 	public void setVideoPathOgg(String videoPathOgg) {
 		this.videoPathOgg = videoPathOgg;
+	}
+	public ClientEntity getClient() {
+		return client;
+	}
+	public void setClient(ClientEntity client) {
+		this.client = client;
+	}
+	public CategoryEntity getCategory() {
+		return category;
+	}
+	public void setCategory(CategoryEntity category) {
+		this.category = category;
 	}
 }

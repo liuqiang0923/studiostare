@@ -66,7 +66,7 @@
 						<div class="sidebar-toggler hidden-phone"></div> <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
 					</li>
 					<li class="last ">
-						<a href="admin-video-list.html" >
+						<a href="/studiostare/manage/admin-video-list.html" >
 							<i class="fa fa-bar-chart-o"></i>
 							<span class="title">
 								Video
@@ -74,7 +74,7 @@
 						</a>
 					</li>
 					<li class="last ">
-						<a href="admin-client-list.html"> 
+						<a href="/studiostare/manage/admin-client-list.html"> 
 							<i class="fa fa-bar-chart-o"></i> 
 							<span class="title"> 
 								Client 
@@ -82,7 +82,7 @@
 						</a>
 					</li>
 					<li class="last ">
-						<a href="admin-category-list.html"> 
+						<a href="/studiostare/manage/admin-category-list.html"> 
 							<i class="fa fa-bar-chart-o"></i> 
 							<span class="title"> 
 								Category 
@@ -90,7 +90,7 @@
 						</a>
 					</li>
 					<li class="last ">
-						<a href="admin-news-list.html" >
+						<a href="/studiostare/manage/admin-news-list.html" >
 							<i class="fa fa-bar-chart-o"></i>
 							<span class="title">
 								News
@@ -98,10 +98,10 @@
 						</a>
 					</li>
 					<li class="last ">
-						<a href="admin-about-edit.html" >
+						<a href="/studiostare/manage/admin-about.html" >
 							<i class="fa fa-bar-chart-o"></i>
 							<span class="title">
-								Edit About
+								About
 							</span>
 						</a>
 					</li>
@@ -155,7 +155,8 @@
 								</div>
 							</div>
 							<div class="portlet-body form">
-								<form action="#" class="form-horizontal" id="submit_form">
+								<form action="/studiostare/manage/saveVideo" class="form-horizontal" id="submit_form" method="post" enctype="multipart/form-data">
+									<input type="hidden" name="id" value="${(video.id)!"0"}"></input>
 									<div class="form-wizard">
 										<div class="form-body">
 											<ul class="nav nav-pills nav-justified steps">
@@ -166,12 +167,12 @@
 												</a></li>
 												<li><a href="#tab2" data-toggle="tab" class="step">
 														<span class="number"> 2 </span> <span class="desc">
-															<i class="fa fa-check"></i> Video Client Setup
+															<i class="fa fa-check"></i> Video Image Setup
 													</span>
 												</a></li>
 												<li><a href="#tab3" data-toggle="tab" class="step">
 														<span class="number"> 3 </span> <span class="desc">
-															<i class="fa fa-check"></i> Video Category Setup
+															<i class="fa fa-check"></i> Video Setup
 													</span>
 												</a></li>
 												<li><a href="#tab4" data-toggle="tab" class="step">
@@ -200,7 +201,7 @@
 															class="required"> * </span>
 														</label>
 														<div class="col-md-4">
-															<input type="text" class="form-control" name="name" />
+															<input type="text" class="form-control" name="name" value='${(video.name)!""}'/>
 															<span class="help-block"> Input video name </span>
 														</div>
 													</div>
@@ -209,8 +210,15 @@
 															class="required"> * </span>
 														</label>
 														<div class="col-md-4">
-															<select multiple class="form-control">
+															<select name="client.id" class="form-control" value='${(video.client.id)!""}'>
+																<option value='${(video.client.id)!""}'>${(video.client.name)!"choose one"}</option>
+																<#if clientList ??>
+																	<#list clientList as client>
+																		<option value='${(client.id)!""}'>${(client.name)!""}</option>
+																	</#list>
+																</#if>
 															</select>
+															<span class="help-block"> Select client </span>
 														</div>													
 													</div>
 													<div class="form-group">
@@ -218,10 +226,18 @@
 															class="required"> * </span>
 														</label>
 														<div class="col-md-4">
-															<select multiple class="form-control">
+															<select name="category.id" class="form-control" value='${(video.category.id)!""}'>
+																<option value='${(video.category.id)!""}'>${(video.category.name)!"choose one"}</option>
+																<#if categoryList ??>
+																	<#list categoryList as category>
+																		<option value='${(category.id)!""}'>${(category.name)!""}</option>
+																	</#list>
+																</#if>
 															</select>
+															<span class="help-block"> Select category </span>
 														</div>													
 													</div>
+													<!--
 													<div class="form-group">
 														<label class="control-label col-md-3"> 
 															Video Img 
@@ -234,6 +250,8 @@
 															<span class="help-block"> Upload video img. </span>	
 														</div>
 													</div>
+													-->
+													<!--
 													<div class="form-group">
 														<label class="control-label col-md-3"> 
 															Video 
@@ -246,18 +264,35 @@
 															<span class="help-block"> Upload video. </span>	
 														</div>
 													</div>
+													-->
 													<div class="form-group">
-														<label class="control-label col-md-3">Description <span
-															class="required"> * </span>
+														<label class="control-label col-md-3">Description 
+															<!-- <span class="required"> * </span> -->
 														</label>
 														<div class="col-md-4">
-															<textarea class="form-control" rows="3" style="width: 400px; height: 300px" name="description"></textarea>
+															<textarea class="form-control" rows="3" style="width:100%" name="description"></textarea>
 															<span class="help-block"> Input video description </span>
 														</div>
 													</div>
 												</div>
 												<div class="tab-pane" id="tab2">
-													<h3 class="block">Provide video client details</h3>
+													<h3 class="block">Provide video image</h3>
+													<div class="form-group">
+														<label class="control-label col-md-3"> 
+															Video Img 
+															<span class="required"> * </span>
+														</label>
+														<div class="fileinput fileinput-new col-md-4" data-provides="fileinput">
+															<div class="fileinput-preview thumbnail" style="width: 100%;" data-trigger="fileinput" id="videoimgdiv">
+																<#if (video.imgPath) ??>
+																	<img src='${(video.imgPath)!""}'></img>
+																</#if>
+															</div>
+															<input type="file" name="videoimg"/>
+															<span class="help-block"> Upload video img. </span>	
+														</div>
+													</div>
+													<!--
 													<div class="portlet box blue">
 														<div class="portlet-title">
 															<div class="caption">
@@ -288,9 +323,9 @@
 																		<td>client 1</td>
 																		<td>1234</td>
 																		<td>
-																			<!-- <a href="mailto:aa@gmail.com"> -->
+																			<a href="mailto:aa@gmail.com">
 																				aa@gmail.com
-																			<!-- </a> -->
+																			</a>
 																		</td>
 																		<td>description 1</td>
 																		<td><a class="edit" href="javascript:;"> Edit </a></td>
@@ -300,9 +335,58 @@
 															</table>
 														</div>
 													</div>
+													-->
 												</div>
 												<div class="tab-pane" id="tab3">
-													<h3 class="block">Provide video categories details</h3>
+													<h3 class="block">Provide video </h3>
+													<h4 class="form-section">webm</h4>
+													<div class="form-group">
+														<label class="control-label col-md-3"> 
+															Video 
+															<span class="required"> * </span>
+														</label>
+														<div class="fileinput fileinput-new col-md-4" data-provides="fileinput">
+															<div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 100%;" id="videowebmdiv">
+																<#if (video.videoPathWebm) ??>
+																	<video src='${(video.videoPathWebm)!""}'></video>
+																</#if>
+															</div>
+															<input type="file" name="videowebm"/>
+															<span class="help-block"> Upload webm video. </span>	
+														</div>
+													</div>
+													<h4 class="form-section">ogg</h4>
+													<div class="form-group">
+														<label class="control-label col-md-3"> 
+															Video 
+															<span class="required"> * </span>
+														</label>
+														<div class="fileinput fileinput-new col-md-4" data-provides="fileinput">
+															<div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 100%;" id="videooggdiv">
+																<#if (video.videoPathOgg) ??>
+																	<video src='${(video.videoPathOgg)!""}'></video>
+																</#if>
+															</div>
+															<input type="file" name="videoogg"/>
+															<span class="help-block"> Upload ogg video. </span>	
+														</div>
+													</div>
+													<!--
+													<h4 class="form-section">mp4</h4>
+													<div class="form-group">
+														<label class="control-label col-md-3"> 
+															Video 
+															<span class="required"> * </span>
+														</label>
+														<div class="fileinput fileinput-new col-md-4" data-provides="fileinput">
+															<div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 100%;" id="videodiv_mp4">
+															</div>
+															<input type="file" name="videomp4"/>
+															<span class="help-block"> Upload mp4 video. </span>	
+														</div>
+													</div>
+													-->
+													<!--
 													<div class="portlet box blue">
 														<div class="portlet-title">
 															<div class="caption">
@@ -336,7 +420,8 @@
 																</tbody>
 															</table>
 														</div>
-													</div>													
+													</div>	
+													-->												
 												</div>
 												<div class="tab-pane" id="tab4">
 													<h3 class="block">Confirm your video</h3>
@@ -344,63 +429,55 @@
 													<div class="form-group">
 														<label class="control-label col-md-3">Video name:</label>
 														<div class="col-md-4">
-															<p class="form-control-static" data-display="videoname">
+															<p class="form-control-static" data-display="name">
 															</p>
 														</div>
 													</div>
 													<div class="form-group">
-														<label class="control-label col-md-3">Video img:</label>
+														<label class="control-label col-md-3">Client :</label>
 														<div class="col-md-4">
-															<p class="form-control-static" data-display="videoname">
+															<p class="form-control-static" data-display="client.id">
 															</p>
 														</div>
 													</div>
 													<div class="form-group">
-														<label class="control-label col-md-3">Video:</label>
+														<label class="control-label col-md-3">Category:</label>
 														<div class="col-md-4">
-															<p class="form-control-static" data-display="videoname">
+															<p class="form-control-static" data-display="category.id">
 															</p>
 														</div>
 													</div>
 													<div class="form-group">
-														<label class="control-label col-md-3">Video description:</label>
+														<label class="control-label col-md-3">Description:</label>
 														<div class="col-md-4">
 															<p class="form-control-static" data-display="description">
 															</p>
 														</div>
 													</div>
-													<h4 class="form-section">Video Clients</h4>
+													<h4 class="form-section">Video Image</h4>
 													<div class="form-group">
-														<label class="control-label col-md-3">client: client 1
+														<label class="control-label col-md-3">Image: 
 														</label>
 														<div class="col-md-4">
-															<p class="form-control-static" data-display="fullname">
-																a category description.</p>
+															<p class="form-control-static" data-display="videoimgdiv">
+															</p>
+														</div>
+													</div>
+													<h4 class="form-section">Videos</h4>
+													<div class="form-group">
+														<label class="control-label col-md-3">Webm:
+														</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="videowebmdiv">
+															</p>
 														</div>
 													</div>
 													<div class="form-group">
-														<label class="control-label col-md-3">client: client 2
+														<label class="control-label col-md-3">Ogg:
 														</label>
 														<div class="col-md-4">
-															<p class="form-control-static" data-display="fullname">
-																a category description.</p>
-														</div>
-													</div>
-													<h4 class="form-section">Video Categories</h4>
-													<div class="form-group">
-														<label class="control-label col-md-3">category: category 1
-														</label>
-														<div class="col-md-4">
-															<p class="form-control-static" data-display="fullname">
-																a category description.</p>
-														</div>
-													</div>
-													<div class="form-group">
-														<label class="control-label col-md-3">category: category 2
-														</label>
-														<div class="col-md-4">
-															<p class="form-control-static" data-display="fullname">
-																a category description.</p>
+															<p class="form-control-static" data-display="videooggdiv">
+															</p>
 														</div>
 													</div>
 												</div>

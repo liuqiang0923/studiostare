@@ -80,6 +80,14 @@ var TableManaged = function () {
             	deleteAboutUs(id);
             });
             
+            $("#saveAboutInfo").click(function (e){
+            	editAboutInfo();
+            });
+            
+            function editAboutInfo(){
+            	window.location.href="/studiostare/manage/editAboutInfo";
+            }
+            
             function addAboutUs(){
             	window.location.href="/studiostare/manage/addWho";
             }
