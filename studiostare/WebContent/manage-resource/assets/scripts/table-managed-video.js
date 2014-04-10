@@ -17,7 +17,7 @@ var TableManaged = function () {
                   { "bSortable": false, "bSearchable": false }, // { "bSortable": false, "sType": "text" },
                   { "bSortable": false, "bSearchable": false },
                   { "bSortable": false, "bSearchable": false },
-//                  { "bSortable": false, "bSearchable": false },
+                  { "bSortable": false, "bSearchable": false },
                   null,
                   null,
                   { "bSearchable": false},

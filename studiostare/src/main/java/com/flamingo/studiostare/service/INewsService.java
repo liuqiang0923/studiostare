@@ -13,8 +13,7 @@ public interface INewsService {
 
 	List<NewsEntity> findNews(NewsEntity news);
 
-	void save(NewsEntity news, MultipartFile newsimg, MultipartFile newsvideo)
-			throws IOException;
+	void save(NewsEntity news, MultipartFile newsimg, MultipartFile newsvideomp4,MultipartFile newsvideowebm,MultipartFile newsvideoogg) throws IOException;      
 
 	void delete(int id);
 	

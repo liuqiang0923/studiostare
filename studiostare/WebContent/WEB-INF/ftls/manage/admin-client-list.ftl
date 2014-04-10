@@ -190,6 +190,7 @@
 							</tr>
 							</thead>
 							<tbody>
+							<#if clientList??>
 							<#list clientList as client>
 							<tr class="odd gradeX">
 								<td>
@@ -203,6 +204,7 @@
 								<td><a class="delete" href="javascript:;"> Delete </a></td>
 							</tr>
 							</#list>
+							</#if>
 							</tbody>
 							</table>
 						</div>

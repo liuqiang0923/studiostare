@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=720, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<title>Sales Report</title>
+	
+	<link rel="stylesheet" type="text/css" href="../../css/style.css" media="screen" />
+	<script src="/js/util.js"></script>
+	<script src="/js/error.js"></script>
+	<script src="/js/page.js"></script>
+	<script src="/js/map.js"></script>
+	<script src="/js/zepto.js"></script>
+	<script src="/js/zepto.form.js"></script>
+	<script language="javascript"> 
+
+	// 条件查询级联菜单
+	$(document).ready(function() {
+		   //get community
+		  $.get("/spi/communityUtil.do", {type:'community'},
+				function(data) {
+				  var opstr = "<option value=''>请选择楼盘</option>";
+				  for (var i=0;i<data.options.length;i++) {
+					  opstr += "<option value='"+data.options[i].value+"'>"+data.options[i].name+"</option>";
+				  }
+				  $('#community').html(opstr);
+			  });
+		
+			//community onchange
+			$('#community').change(function() {
+			  var community = $(this).val();
+			  $.get("/spi/communityUtil.do", {type:'building', community:community}, function(data) {
+				  var opstr = "<option value=''>请选择楼栋</option>";
+				  for (var i=0;i<data.options.length;i++) {
+					  opstr += "<option value='"+data.options[i].value+"'>"+data.options[i].name+"</option>";
+				  }
+				$('#building').html(opstr);
+				
+				var opstr = "<option value=''>请选择房型</option>";
+				$('#suitetype').html(opstr);
+			  });
+			});
+
+			//building onchange
+			$('#building').change(function() {
+			  var community = $('#community').val();
+			  var building = $(this).val();
+			  $.get("/spi/communityUtil.do", {type:'suitetype', community:community, building:building}, function(data) {
+				  var opstr = "<option value=''>请选择房型</option>";
+				  for (var i=0;i<data.options.length;i++) {
+					  opstr += "<option value='"+data.options[i].value+"'>"+data.options[i].name+"</option>";
+				  }
+				$('#suitetype').html(opstr);
+			  });
+			});
+
+			load(1);
+		});
+	
+	
+	    function load(pageNo) {
+	    	pageNo = isNaN(parseInt(pageNo)) ? 1 : pageNo;
+	    	$("#pageNo").val(pageNo);
+	   		var form = $("#mainForm");
+	    	$.ajax({
+			  type: 'POST',
+			  url: '/spi/querySuiteList.do',
+			  // data to be added to query string:
+			  data: '{"body":'+JSON.stringify(form.serializeJson())+'}',
+			  // type of data we are expecting in return:
+			  dataType: 'json',
+			  headers:{
+			  	"_x_sessionid":"${sessionId}"
+			  },
+			  success: function(data){
+			    var result = data.result;
+			    if(result){
+			    	if(result.code=="0"){
+			    		var page = data.page;
+			    		var suites = data.suites;
+			    		reloadView(suites);
+			    		reloadPage(page);
+			    	}else{
+			    		reportErrorCode(result.code);
+			    	}
+			    }else{
+			    	alert("结果返回不正确");
+			    }
+			  },
+			  error: function(xhr, type){
+			    alert('Ajax error!')
+			  }
+			});
+	    	
+	    }
+	    //重载查询结果视图
+	    function reloadView(suites){
+	    	var rpttable = byId('datatable');
+	    	var rows = rpttable.rows;
+	    	for (var i=rows.length-1; i>0; i--) {
+	    		rpttable.deleteRow(i);
+	    	}
+	    	clearPageBar('pagenav');
+	    	if(!suites||suites.length==0){
+	    		var row = rpttable.insertRow(rpttable.rows.length);
+	    		var cell = row.insertCell(ci++);
+	    		cell.setAttribute('colspan',12);
+	    		cell.innerHTML = '暂无记录';
+	    	}else{
+				var faceMap = new Map();
+				faceMap.put("E","东向");
+				faceMap.put("W","西向");
+				faceMap.put("S","南向");
+				faceMap.put("N","北向");
+				faceMap.put("EW","东西向");
+				faceMap.put("SN","南北向");
+
+				var statusMap = new Map();
+				statusMap.put("1", "待售");
+				statusMap.put("5", "认筹");
+				statusMap.put("6", "解筹");
+				statusMap.put("7", "保留");
+		    	
+	    		for (var i=0;i<suites.length;i++) {
+	    			var item = suites[i];
+	    			var ci=0;
+	    			var row = rpttable.insertRow(rpttable.rows.length);
+		    		//tr.append(String.format('<td><input type="checkbox" name="checkCustomerId" value="{0}"></td>',item.id));
+		    		append(row,ci++,String.format('<td>{0}</td>',item.communityname));
+		    		append(row,ci++,String.format('<td>{0}</td>',item.roomno));
+		    		append(row,ci++,String.format('<td>{0}</td>',item.buildingno));
+		    		append(row,ci++,String.format('<td>{0}</td>',item.floor+"F"));
+		    		append(row,ci++,String.format('<td>{0}</td>',item.suitearea?parseFloat(item.suitearea).toFixed(2)+"平方米":"--"));
+		    		append(row,ci++,String.format('<td>{0}</td>',item.apportionedarea?parseFloat(item.apportionedarea).toFixed(2)+"平方米":"--"));
+		    		append(row,ci++,String.format('<td>{0}</td>',item.suitename));
+		    		append(row,ci++,String.format('<td>{0}</td>',faceMap.get(item.face)));
+		    		append(row,ci++,String.format('<td>{0}</td>',statusMap.get(item.salestatus)));
+		    		//append(String.format('<td>{0}</td>',item.salestatus));
+		    		append(row,ci++,String.format('<td>{0}</td>',item.unitprice));
+		    		append(row,ci++,String.format('<td>{0}</td>',item.totalprice));
+		    		append(row,ci++,'<td><img class="searchbtn" src="/images/order.png" onclick="order(\''+item.id+'\')"></td>');
+				}
+			}
+	    }
+	    
+	    function append(row,ci,html){
+	    	var cell = row.insertCell(ci);
+	    	cell.innerHTML = html;
+	    }
+	    
+	    function reloadPage(page){
+	    	generatePageBar(page.pageno, page.totalpage, 'pagenav', 'load');
+	    }
+
+	    function order(id) {
+			//alert(id);
+	    	window.location.href="/page/orderHouse?ss=${sessionId}&id="+id;
+	    }
+	</script>
+</head>
+<body>
+	<form id="mainForm" name="mainForm">
+	  <input type="hidden" name="pageNo" id="pageNo"/>
+		<div class='datadiv'>
+<div class="search">
+ <div class="fl">
+		<select name="communityId" id="community">
+			<option value="">请选择楼盘</option>
+		</select>
+		<select name="saleStatus">
+			<option value="">请选择状态</option>
+			<option value="1">待售</option>
+			<option value="5">认筹</option>
+			<option value="6">解筹</option>
+			<option value="7">保留</option>
+		</select>
+		<select name="buildId" id="building">
+			<option value="">请选择楼栋</option>
+		</select>
+		<select name="suiteTypeId" id="suitetype">
+			<option value="">请选择房型</option>
+		</select>
+		<input type="text" name="querystr" placeHolder="请输入关键字">
+		
+		<div class="searchbox"><a href=""  onclick="load()"></a></div>
+		</div>
+		<div class="r">
+		<!-- 
+		<img class="searchbtn" src="/images/detail.png" onclick="loadReport()">
+		<img class="searchbtn" src="/images/del.png" onclick="loadReport()">
+		<img class="searchbtn" src="/images/message.png" onclick="loadReport()">		
+		 -->
+		</div>
+	</div>
+		<table id="datatable" class="datatable_list" cellpadding="0" cellspacing="0">
+			<tr>
+				<!--<th><input type="checkbox" onclick="checkall('customerInfoIds',this.checked)"></th>-->
+				<th>楼盘</th>
+				<th>房间号</th>
+				<th>楼座</th>
+				<th>楼层</th>
+				<th>建筑面积</th>
+				<th>套内面积</th>
+				<th>房型</th>
+				<th>朝向</th>
+				<th>状态</th>
+				<th>单价(元/平方米)</th>
+				<th>总价(元)</th>
+				<th>操作</th>
+			</tr>
+		</table>
+        	<div id='pagenav' class='pagenav'></div>
+
+	</div>
+	</form>
+</body>

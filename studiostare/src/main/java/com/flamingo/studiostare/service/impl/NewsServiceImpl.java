@@ -36,25 +36,31 @@ public class NewsServiceImpl implements INewsService {
 		newsDao.insertNews(news);
 	}
 	
-	public void save(NewsEntity news, MultipartFile newsimg, MultipartFile newsvideo) throws IOException {
+	public void save(NewsEntity news, MultipartFile newsimg, MultipartFile newsvideomp4,MultipartFile newsvideowebm,MultipartFile newsvideoogg) throws IOException {
 		if (news.getId() == 0) {
 			news.setUpdateTime(new Date());
 			news.setPhotoPath(saveFile(newsimg));
-			news.setVideoPath(saveFile(newsvideo));
+			news.setVideoPathMp4(saveFile(newsvideomp4));
+			news.setVideoPathWebm(saveFile(newsvideowebm));
+			news.setVideoPathOgg(saveFile(newsvideoogg));
 			newsDao.insertNews(news);
 		} else {
 			NewsEntity old = getById(news.getId());
 			if (old == null) {
 				news.setUpdateTime(new Date());
 				news.setPhotoPath(saveFile(newsimg));
-				news.setVideoPath(saveFile(newsvideo));
+				news.setVideoPathMp4(saveFile(newsvideomp4));
+				news.setVideoPathWebm(saveFile(newsvideowebm));
+				news.setVideoPathOgg(saveFile(newsvideoogg));
 				newsDao.insertNews(news);
 			} else {
 				old.setTitle(news.getTitle());
 				old.setContent(news.getContent());
 				old.setUpdateTime(new Date());
 				if (newsimg != null && newsimg.getSize() > 0) old.setPhotoPath(saveFile(newsimg));
-				if (newsvideo != null && newsvideo.getSize() > 0) old.setVideoPath(saveFile(newsvideo));
+				if (newsvideomp4 != null && newsvideomp4.getSize() > 0) old.setVideoPathMp4(saveFile(newsvideomp4));
+				if (newsvideowebm != null && newsvideowebm.getSize() > 0) old.setVideoPathWebm(saveFile(newsvideowebm));
+				if (newsvideoogg != null && newsvideoogg.getSize() > 0) old.setVideoPathOgg(saveFile(newsvideoogg));
 				newsDao.updateNews(old);
 			}
 		}

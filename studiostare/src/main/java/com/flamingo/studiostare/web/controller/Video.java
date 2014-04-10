@@ -98,11 +98,12 @@ public class Video extends JsonAction {
 	public String saveVideo(
 			VideoEntity video,
 			@RequestParam(value="videoimg", required=false) MultipartFile videoimg,
+			@RequestParam(value="videomp4", required=false) MultipartFile videomp4,
 			@RequestParam(value="videowebm", required=false) MultipartFile videowebm,
 			@RequestParam(value="videoogg", required=false) MultipartFile videoogg,
 			HttpSession session){
 		try {
-			videoService.save(video, videoimg, videowebm, videoogg);
+			videoService.save(video, videoimg, videomp4, videowebm, videoogg);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

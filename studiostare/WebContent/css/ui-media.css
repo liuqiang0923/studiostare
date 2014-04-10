@@ -1,0 +1,54 @@
+@media all
+{
+	html
+	{
+		font-size:22px;
+	}
+}
+}
+@media all and (min-width:1025px) and (max-width:1280px) {
+html {
+	font-size: 22px;
+}
+}
+/*------*/
+@media all and (min-width:901px) and (max-width:1024px) {
+html {
+	font-size: 22px;
+}
+}
+@media all and (min-width:801px) and (max-width:900px) {
+html {
+	font-size: 20px;
+}
+}
+@media all and (min-width:769px) and (max-width:800px) {
+html {
+	font-size: 17px;
+}
+}
+
+/*------*/
+@media all and (min-width:641px) and (max-width:768px) {
+html {
+	font-size: 17px;
+}
+}
+@media all and (min-width:481px) and (max-width:640px) {
+html {
+	font-size: 14px;
+}}
+@media all and (min-width:361px) and (max-width:480px) {
+html {
+	font-size: 12px;
+}}
+@media all and (min-width:320px) and (max-width:360px) {
+html {
+	font-size: 12px;
+}}
+/*------*/
+@media all and (min-width:0px) and (max-width:319px) {
+html {
+	font-size: 12px;
+}
+}

@@ -118,6 +118,9 @@ var FormWizard = function () {
                     'category.id': {
                     	required: true,
                     },
+                    videomp4: {
+                    	required: true,
+                    },
                     videowebm: {
                     	required: true,
                     },
@@ -184,6 +187,8 @@ var FormWizard = function () {
                 $('#tab4 .form-control-static', form).each(function(){
                 	if ($(this).attr("data-display") == "videoimgdiv"){
                 		$(this).html($("#videoimgdiv"));
+                	} else if ($(this).attr("data-display") == "videomp4div"){
+                		$(this).html($("#videomp4div"));
                 	} else if ($(this).attr("data-display") == "videowebmdiv"){
                 		$(this).html($("#videowebmdiv"));
                 	} else if ($(this).attr("data-display") == "videooggdiv"){

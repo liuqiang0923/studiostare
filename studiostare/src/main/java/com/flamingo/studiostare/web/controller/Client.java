@@ -1,6 +1,5 @@
 package com.flamingo.studiostare.web.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -32,8 +31,6 @@ public class Client extends JsonAction {
 		} catch(Exception e){
 			e.printStackTrace();
 		}
-		if (clientList == null)
-			clientList = new ArrayList<ClientEntity>();
 		m.addObject("clientList", clientList);
 		m.setViewName("manage/admin-client-list");
 		return m;

@@ -18,7 +18,7 @@ public interface IVideoDao {
 	void updateVideo(VideoEntity videoEntity);
 
 	void deleteVideoById(int id);
-
+	
 	List<VideoEntity> selectVideo(VideoEntity videoEntity);
 
 	void deleteVideo(VideoEntity videoEntity);

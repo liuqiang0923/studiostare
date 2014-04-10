@@ -339,6 +339,22 @@
 												</div>
 												<div class="tab-pane" id="tab3">
 													<h3 class="block">Provide video </h3>
+													<h4 class="form-section">Mp4</h4>
+													<div class="form-group">
+														<label class="control-label col-md-3"> 
+															Video 
+															<span class="required"> * </span>
+														</label>
+														<div class="fileinput fileinput-new col-md-4" data-provides="fileinput">
+															<div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 100%;" id="videomp4div">
+																<#if (video.videoPathMp4) ??>
+																	<video src='${(video.videoPathMp4)!""}'></video>
+																</#if>
+															</div>
+															<input type="file" name="videomp4"/>
+															<span class="help-block"> Upload mp4 video. </span>	
+														</div>
+													</div>
 													<h4 class="form-section">webm</h4>
 													<div class="form-group">
 														<label class="control-label col-md-3"> 
@@ -464,6 +480,14 @@
 														</div>
 													</div>
 													<h4 class="form-section">Videos</h4>
+													<div class="form-group">
+														<label class="control-label col-md-3">Mp4:
+														</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="videomp4div">
+															</p>
+														</div>
+													</div>
 													<div class="form-group">
 														<label class="control-label col-md-3">Webm:
 														</label>

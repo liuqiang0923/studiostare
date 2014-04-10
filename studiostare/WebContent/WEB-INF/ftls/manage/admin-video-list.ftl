@@ -175,6 +175,9 @@
 									 Img
 								</th>
 								<th>
+									 Mp4
+								</th>
+								<th>
 									 Webm
 								</th>
 								<th>
@@ -205,9 +208,10 @@
 									<input type="checkbox" class="checkboxes" value=${(video.id)!""} />
 								</td>
 								<td>${(video.name)!""}</td>
-								<td><img style="width:150px;height:150px;" src='${video.imgPath!""}'></img></td>
-								<td><video style="width:150px;height:150px;" src='${video.videoPathWebm!""}' controls="controls"></video></td>
-								<td><video style="width:150px;height:150px;" src='${video.videoPathOgg!""}' controls="controls"></video></td>
+								<td><img style="width:150px;height:150px;" src='${(video.imgPath)!""}'></img></td>
+								<td><video style="width:150px;height:150px;" src='${(video.videoPathMp4)!""}' controls="controls"></video></td>
+								<td><video style="width:150px;height:150px;" src='${(video.videoPathWebm)!""}' controls="controls"></video></td>
+								<td><video style="width:150px;height:150px;" src='${(video.videoPathOgg)!""}' controls="controls"></video></td>
 								<td>${(video.client.name)!""}</td>
 								<td>${(video.category.name)!""}</td>
 								<td>${(video.description)!""}</td>

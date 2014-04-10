@@ -42,13 +42,13 @@ public class FileUtils {
 	 * @return
 	 */
 	public static String saveFile(String url) {
-		String absPath = createFileName(getUrlFileName(url));
+		String absPath = getFileRoot() + "/" + createFileName(getUrlFileName(url));
 		
 		URL urlfile = null;
 		HttpURLConnection httpUrl = null;
 		BufferedInputStream bis = null;
 		BufferedOutputStream bos = null;
-		File f = new File(getFileRoot() + "/" + absPath);
+		File f = new File(absPath);
 		try {
 			urlfile = new URL(url);
 			httpUrl = (HttpURLConnection) urlfile.openConnection();

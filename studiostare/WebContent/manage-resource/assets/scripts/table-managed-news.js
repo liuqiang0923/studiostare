@@ -12,14 +12,16 @@ var TableManaged = function () {
             // begin first table
             $('#managetable_news').dataTable({
                 "aoColumns": [
-                  { "bSortable": false },
-                  null,
-                  { "bSortable": false, "sType": "text" },
+                  { "bSortable": false, "bSearchable":false},
                   null,
                   null,
+                  { "bSortable": false, "bSearchable":false}, // { "bSortable": false, "sType": "text" },
+                  { "bSortable": false, "bSearchable":false},
+                  { "bSortable": false, "bSearchable":false},
+                  { "bSortable": false, "bSearchable":false},
                   null,
-                  { "bSortable": false },
-                  { "bSortable": false }
+                  { "bSortable": false, "bSearchable":false},
+                  { "bSortable": false, "bSearchable":false},
                 ],
                 "aLengthMenu": [
                     [5, 15, 20, -1],

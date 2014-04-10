@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=1024, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title>Sales Report</title>
+
+	<link rel="stylesheet" type="text/css" href="../../css/style.css" media="screen" />
+		<script src="/js/util.js"></script>
+		<script language="javascript"> 
+		var sid = '${sessionId}';
+		var tabs=[],divs = [];
+		function init() {
+			for (var i=1; i<=10; i++) {
+				var div = byId('r'+i);
+				if (div) {
+					divs.push(div);
+				}
+				var tab = byId('h'+i);
+				if (tab) {
+					tabs.push(tab);
+				}
+			}
+		}
+		function showpage(idx) {
+			var len = divs.length;
+			if (len<1) return;
+			for (var i=0; i<len; i++) {
+				var shown = (i == (idx-1));
+				var div = divs[i];
+				div.style.display = shown ? '' : 'none';
+				if (shown) {
+					var iframe = div.getElementsByTagName('iframe')[0];
+					if (iframe.getAttribute('loaded') != 'ok') {
+						iframe.src = '/page/'+div.getAttribute('u')+'?ss='+sid;
+						iframe.setAttribute('loaded', 'ok');
+					}
+				}
+				
+				var tab = tabs[i];
+				var classname = (i == (idx-1)) ? 'redtab2' : 'redtab1';
+				classname += (i==0) ? ' topleft' : ((i==(len-1))?' topright':'');
+				tab.className = classname;
+			}
+		}
+	</script>
+
+	</head>
+	<body onload="init();showpage(1)">
+		<div class="redtabs">
+			<!-- <div class='backbtn'>
+				<a href="easyshow://back"><img src='/images/back2.png' ></a>
+			</div> -->
+			<div class="redtabbody">
+				<div class="redtab2 topleft" onclick="showpage(1)" id='h1'>
+					渠道成交量报表
+				</div>
+				<div class="redtab1" onclick="showpage(2)" id='h2'>
+					楼盘成交量报表
+				</div>
+				<div class="redtab1" onclick="showpage(3)" id='h3'>
+					置业顾问销售报表
+				</div>
+				<div class="redtab1 topright" onclick="showpage(4)" id='h4'>
+					顾客订购报表
+				</div>
+			</div>
+		</div>
+		<div style='clear: both; float: none;display: none' id='r1' u='querySaleTurnOver'>
+			<iframe src="about:blank" style="width: 1024px; height:650px" frameBorder=0></iframe>
+		</div>
+		<div style='clear: both; float: none;display: none' id='r2' u='querySaleTradeVolume'>
+			<iframe src="about:blank" style="width: 1024px; height:650px" frameBorder=0></iframe>
+		</div>
+		<div style='clear: both; float: none;display: none' id='r3' u='querySaleInfo'>
+			<iframe src="about:blank" style="width: 1024px; height:650px" frameBorder=0></iframe>
+		</div>
+		<div style='clear: both; float: none;display: none' id='r4' u='querySaleOrder'>
+			<iframe src="about:blank" style="width: 1024px; height:650px" frameBorder=0></iframe>
+		</div>
+	</body>

@@ -12,7 +12,9 @@ public class NewsEntity implements Serializable {
 	private String title;
 	private String content;
 	private String photoPath;
-	private String videoPath;
+	private String videoPathWebm;
+	private String videoPathMp4;
+	private String videoPathOgg;
 	private int userId;
 	private long twitterId;
 	private Date updateTime;
@@ -40,12 +42,6 @@ public class NewsEntity implements Serializable {
 	public void setPhotoPath(String photoPath) {
 		this.photoPath = photoPath;
 	}
-	public String getVideoPath() {
-		return videoPath;
-	}
-	public void setVideoPath(String videoPath) {
-		this.videoPath = videoPath;
-	}
 	public int getUserId() {
 		return userId;
 	}
@@ -71,9 +67,39 @@ public class NewsEntity implements Serializable {
 		}
 		return "";
 	}
-	public String getVideoName() {
-		if (!StringUtils.isNull(videoPath)) {
-			return FileUtils.getFileName(videoPath);
+	public String getVideoPathWebm() {
+		return videoPathWebm;
+	}
+	public void setVideoPathWebm(String videoPathWebm) {
+		this.videoPathWebm = videoPathWebm;
+	}
+	public String getVideoPathMp4() {
+		return videoPathMp4;
+	}
+	public void setVideoPathMp4(String videoPathMp4) {
+		this.videoPathMp4 = videoPathMp4;
+	}
+	public String getVideoPathOgg() {
+		return videoPathOgg;
+	}
+	public void setVideoPathOgg(String videoPathOgg) {
+		this.videoPathOgg = videoPathOgg;
+	}
+	public String getVideoNameMp4() {
+		if (!StringUtils.isNull(getVideoPathMp4())) {
+			return FileUtils.getFileName(getVideoPathMp4());
+		}
+		return "";
+	}
+	public String getVideoNameWebm() {
+		if (!StringUtils.isNull(getVideoPathWebm())) {
+			return FileUtils.getFileName(getVideoPathWebm());
+		}
+		return "";
+	}
+	public String getVideoNameOgg() {
+		if (!StringUtils.isNull(getVideoPathOgg())) {
+			return FileUtils.getFileName(getVideoPathOgg());
 		}
 		return "";
 	}

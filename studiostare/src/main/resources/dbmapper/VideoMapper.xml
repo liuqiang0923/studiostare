@@ -49,8 +49,8 @@
 	<update id="updateVideo" parameterType="VideoEntity">
 		update video set 
 			name = #{name}, 
-			client_id = #{client_id},
-			category_id = #{category_id},
+			client_id = #{client.id},
+			category_id = #{category.id},
 			img_path = #{imgPath},
 			video_path_webm = #{videoPathWebm},
 			video_path_ogg = #{videoPathOgg},

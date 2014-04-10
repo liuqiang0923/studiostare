@@ -234,17 +234,47 @@
 													<h3 class="block">Provide news video details</h3>
 													<div class="form-group">
 														<label class="control-label col-md-3"> 
-															News Video 
+															News Mp4 Video 
 															<span class="required"> * </span>
 														</label>
 														<div class="fileinput fileinput-new col-md-4" data-provides="fileinput">
-															<div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 400px; height: 300px;" id="newsvideodiv">
-															<#if (news.videoPath)?? && news.videoPath!="" >
-																<span>${(news.videoName)!""}</span>
+															<div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 100%" id="newsvideomp4div">
+															<#if (news.videoPathMp4)?? && news.videoPathMp4!="" >
+																<span>${(news.videoNameMp4)!""}</span>
 															</#if>
 															</div>
-															<input type="file" name="newsvideo"/>
-															<span class="help-block"> Upload news video. </span>	
+															<input type="file" name="newsvideomp4"/>
+															<span class="help-block"> Upload news mp4 video. </span>	
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="control-label col-md-3"> 
+															News Webm Video 
+															<span class="required"> * </span>
+														</label>
+														<div class="fileinput fileinput-new col-md-4" data-provides="fileinput">
+															<div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 100%" id="newsvideowebmdiv">
+															<#if (news.videoPathWebm)?? && news.videoPathWebm!="" >
+																<span>${(news.videoNameWebm)!""}</span>
+															</#if>
+															</div>
+															<input type="file" name="newsvideowebm"/>
+															<span class="help-block"> Upload news webm video. </span>	
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="control-label col-md-3"> 
+															News Ogg Video 
+															<span class="required"> * </span>
+														</label>
+														<div class="fileinput fileinput-new col-md-4" data-provides="fileinput">
+															<div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 100%" id="newsvideooggdiv">
+															<#if (news.videoPathOgg)?? && news.videoPathOgg!="" >
+																<span>${(news.videoNameOgg)!""}</span>
+															</#if>
+															</div>
+															<input type="file" name="newsvideoogg"/>
+															<span class="help-block"> Upload news ogg video. </span>	
 														</div>
 													</div>
 												</div>
@@ -275,10 +305,24 @@
 													</div>
 													<h4 class="form-section">News video</h4>
 													<div class="form-group">
-														<label class="control-label col-md-3">news video :
+														<label class="control-label col-md-3">news mp4 video :
 														</label>
 														<div class="col-md-4">
-															<p class="form-control-static" data-display="fullname"> ${(news.videoName)!"news video."}</p>
+															<p class="form-control-static" data-display="fullname"> ${(news.videoNameMp4)!"news video."}</p>
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="control-label col-md-3">news webm video :
+														</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="fullname"> ${(news.videoNameWebm)!"news video."}</p>
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="control-label col-md-3">news ogg video :
+														</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="fullname"> ${(news.videoNameOgg)!"news video."}</p>
 														</div>
 													</div>
 												</div>

@@ -1,6 +1,5 @@
 package com.flamingo.studiostare.web.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -46,8 +45,6 @@ public class About extends JsonAction {
 		} catch(Exception e){
 			e.printStackTrace();
 		}
-		if(whoList == null)
-			whoList = new ArrayList<UserEntity>();
 		m.addObject("about",about);
 		m.addObject("whoList", whoList);
 		m.setViewName("manage/admin-about");
@@ -136,5 +133,6 @@ public class About extends JsonAction {
 		output(response, "{\"result\":\"" + result + "\"}");
 		return null;
 	}
+
 	
 }

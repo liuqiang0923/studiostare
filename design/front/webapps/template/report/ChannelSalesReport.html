@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=1024, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<title>Sales Report</title>
+	<link rel="stylesheet" type="text/css" href="../../css/style.css" media="screen" />
+	<script src="/js/util.js"></script>
+	<script src="/js/page.js"></script>
+	<script src="/js/calendar.js"></script>
+	<script src="/js/zepto.min.js"></script>
+	<script language="javascript"> 
+	    function loadReport(pageNo) {
+	    	pageNo = isNaN(parseInt(pageNo)) ? 1 : pageNo;
+	    	var channelId = parseInt(getValue('channelId'));
+	    	
+	    	if (!channelId) return;
+	    	
+	    	var startAt = getValue("startAt");
+	    	var endAt = getValue("endAt");
+	    	
+	    	var data = '{"body":{"channelid":"'+channelId+'","pageno":"'+pageNo+'"';
+	    	data += ',"orderby":"'+lastOrderBy+'","startat":"'+startAt+'","endat":"'+endAt+'"}}'
+	    	
+	    	progress(1);
+	    	$.ajax({type: "POST",dataType: "json",
+		        url: '/spi/querySaleTurnOver.do',
+		        data: data, headers:{'_x_sessionid':'${sessionId}'},
+		        success: function(data){ 
+			        buildReport(data);
+		        }
+		    });
+	    }
+	    function buildReport(data) {
+	    	progressReset();
+	    	var rpttable = byId('rpttable');
+	    	var rows = rpttable.rows;
+	    	for (var i=rows.length-1; i>0; i--) {
+	    		rpttable.deleteRow(i);
+	    	}
+	    	clearPageBar('pagenav');
+	    	
+	    	var reports = data.reports;
+	    	if (reports && reports.length>0) {
+	    		for (var i=0;i<reports.length;i++) {
+	    			var row = rpttable.insertRow(rpttable.rows.length);
+	    			var report = reports[i];
+	    			
+	    			var ci=0;
+	    			var cell = row.insertCell(ci++);
+	    			cell.innerHTML = '<td>'+report.date+'</td>';
+	    			
+	    			cell = row.insertCell(ci++);
+	    			cell.innerHTML = '<td>'+report.channelname+'</td>';
+	    			
+	    			cell = row.insertCell(ci++);
+	    			cell.innerHTML = '<td>'+report.tradecount+'</td>';
+	    			
+	    			cell = row.insertCell(ci++);
+	    			cell.innerHTML = '<td>'+report.tradearea+'</td>';
+	    			
+	    			cell = row.insertCell(ci++);
+	    			cell.innerHTML = '<td>'+report.tradeprice+'</td>';
+	    		}
+	    		
+	    		var page= data.page;
+	    		generatePageBar(page.pageno, page.totalpage, 'pagenav', 'loadReport');
+	    	} else {
+	    		var row = rpttable.insertRow(rpttable.rows.length);
+	    		var cell = row.insertCell(ci++);
+	    		cell.setAttribute('colspan',5);
+	    		cell.innerHTML = '暂无交易记录';
+	    	}
+	    }
+	    var lastOrderBy = 'desc';
+	    function setOrder(orderBy) {
+	    	if (orderBy == lastOrderBy) return;
+	    	
+	    	lastOrderBy = orderBy;
+	    	if (orderBy == 'asc') {
+	    		byId('divasc').className = 'asc ativ';
+	    		byId('divdesc').className = 'desc';
+	    	} else {
+	    		byId('divasc').className = 'asc';
+	    		byId('divdesc').className = 'desc ativ';
+	    	}
+	    	loadReport(1);
+	    }
+	</script>
+	
+</head>
+<body onload="loadReport()" topmargin="0">
+	<div class='datadiv'>
+	<div class="search">
+     <div class="fl">
+		<input type="text" name="startAt" id="startAt" readonly class='datepickr' 
+			placeholder="开始日期" onclick='javascript:calendar.setHook(this)'>
+		<input type="text" name="endAt" id="endAt" readonly class='datepickr' 
+			placeholder="结束日期" onclick='javascript:calendar.setHook(this)'>
+		<select name="channelId" id="channelId">
+			<option value="0">-- 选择渠道 --</option>
+			<#if channels?exists>
+				<#list channels as ch>
+				<option value="${ch.id}">${ch.channelName}</option>
+				</#list>
+			</#if>
+		</select>
+		<div class="actionbtn1" onclick="cssclick(this,'actionbtn1','actionbtn2')">
+            <div class="searchbox"><a href=""  onclick="loadReport()"></a></div>
+			<div id="progressbar" style="display:none"><div id='progressblock'></div></div>
+		</div>
+        </div>
+		<div class="fr">
+			<div class="txt">成交排序</div>
+			<div class="asc" id="divasc" onclick="setOrder('asc')">升</div>
+			<div class="desc ativ" id="divdesc" onclick="setOrder('desc')">降</div>
+		</div>
+	</div>
+		<table id='rpttable' class="datatable_list" cellpadding="0" cellspacing="0">
+			<tr>
+				<th>日期</th>
+				<th>渠道商</th>
+				<th>成交套数</th>
+				<th>成交面积（平方米）</th>
+				<th>成交金额（万元）</th>
+			</tr>
+		</table>
+	<div id='pagenav' class='pagenav'></div>
+		</div>
+
+	</div>
+</body>
+</html>

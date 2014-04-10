@@ -9,7 +9,9 @@
 		<result property="title" column="title" />
 		<result property="content" column="content" />
 		<result property="photoPath" column="photo_path" />
-		<result property="videoPath" column="video_path" />
+		<result property="videoPathMp4" column="video_path_mp4" />
+		<result property="videoPathWebm" column="video_path_webm" />
+		<result property="videoPathOgg" column="video_path_ogg" />
 		<result property="twitterId" column="twitter_id" />
 		<result property="userId" column="user_id" />
 		<result property="updateTime" column="update_time" javaType="Date" />
@@ -20,8 +22,8 @@
 	</select>
 	
 	<insert id="insertNews" parameterType="NewsEntity">
-		insert into news (title, content, photo_path, video_path, user_id, twitter_id)
-		values (#{title}, #{content}, #{photoPath}, #{videoPath}, #{userId}, #{twitterId})
+		insert into news (title, content, photo_path, video_path_mp4, video_path_webm, video_path_ogg, user_id, twitter_id)
+		values (#{title}, #{content}, #{photoPath}, #{videoPathMp4}, #{videoPathWebm}, #{videoPathOgg}, #{userId}, #{twitterId})
 	</insert>
 	
 	<update id="updateNews" parameterType="NewsEntity">
@@ -29,7 +31,9 @@
 			title = #{title}, 
 			content = #{content}, 
 			photo_path = #{photoPath}, 
-			video_path = #{videoPath}, 
+			video_path_mp4 = #{videoPathMp4},
+			video_path_webm = #{videoPathWebm},
+			video_path_ogg = #{videoPathOgg}, 
 			update_time = #{updateTime} 
 		where id = #{id}
 	</update>
@@ -49,8 +53,14 @@
 		<if test="photoPath != null and photoPath != ''">
 			and photo_path like '%${photoPath}%' 
 		</if>
-		<if test="videoPath != null and videoPath != ''">
-			and video_path like '%${videoPath}%' 
+		<if test="videoPathMp4 != null and videoPathMp4 != ''">
+			and video_path_mp4 like '%${videoPathMp4}%' 
+		</if>
+		<if test="videoPathWebm != null and videoPathWebm != ''">
+			and video_path_webm like '%${videoPathWebm}%' 
+		</if>
+		<if test="videoPathOgg != null and videoPathOgg != ''">
+			and video_path_ogg like '%${videoPathOgg}%' 
 		</if>
 		<if test="userId != 0">
 			and user_id = #{userId} 

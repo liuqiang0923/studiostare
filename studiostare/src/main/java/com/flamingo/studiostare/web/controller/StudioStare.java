@@ -1,0 +1,154 @@
+package com.flamingo.studiostare.web.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.flamingo.studiostare.entity.AboutEntity;
+import com.flamingo.studiostare.entity.CategoryEntity;
+import com.flamingo.studiostare.entity.ClientEntity;
+import com.flamingo.studiostare.entity.NewsEntity;
+import com.flamingo.studiostare.entity.RoleEntity;
+import com.flamingo.studiostare.entity.UserEntity;
+import com.flamingo.studiostare.entity.VideoEntity;
+import com.flamingo.studiostare.service.IAboutService;
+import com.flamingo.studiostare.service.ICategoryService;
+import com.flamingo.studiostare.service.IClientService;
+import com.flamingo.studiostare.service.INewsService;
+import com.flamingo.studiostare.service.IUserService;
+import com.flamingo.studiostare.service.IVideoService;
+
+@Controller
+public class StudioStare {
+	
+	@Autowired
+	private IVideoService videoService;
+	@Autowired
+	private ICategoryService categoryService;
+	@Autowired
+	private IClientService clientService;
+	@Autowired
+	private IAboutService aboutService;
+	@Autowired
+	private IUserService userService;
+	@Autowired
+	private INewsService newsService;
+	
+	@RequestMapping(value="index.html")
+	public ModelAndView index() {
+		ModelAndView m = new ModelAndView();
+		List<VideoEntity> videoList = null;
+		try{
+			videoList = videoService.getAll();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		m.addObject("videoList", videoList);
+		m.setViewName("index");
+		return m;
+	}
+	
+	@RequestMapping(value="work.html")
+	public ModelAndView work() {
+		ModelAndView m = new ModelAndView();
+		List<VideoEntity> videoList = null;
+		try{
+			videoList = videoService.getAll();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		m.addObject("videoList", videoList);
+		m.setViewName("work");
+		return m;
+	}
+	
+	@RequestMapping(value="news.html")
+	public ModelAndView news() {
+		ModelAndView m = new ModelAndView();
+		NewsEntity news = new NewsEntity();
+		List<NewsEntity> newsList = null;
+		try{
+			newsList = newsService.findNews(news);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		m.addObject("newsList", newsList);
+		m.setViewName("news");
+		return m;
+	}
+	
+	@RequestMapping(value="clients.html")
+	public ModelAndView clients() {
+		ModelAndView m = new ModelAndView();
+		List<ClientEntity> clientList = null;
+		List<CategoryEntity> categoryList = null;
+		try{
+			clientList = clientService.getAll();
+			categoryList = categoryService.getAll();
+		} catch(Exception e){
+			e.printStackTrace();
+		}
+		m.addObject("clientList", clientList);
+		m.addObject("categoryList", categoryList);
+		m.setViewName("clients");
+		return m;
+	}
+	
+	@RequestMapping(value="videoOfClient/{clientId}", method = RequestMethod.GET)
+	public ModelAndView videoOfClient(@PathVariable int clientId) {
+		ModelAndView m = new ModelAndView();
+		List<VideoEntity> videoList = null;
+		List<CategoryEntity> categoryList = null;
+		try{
+			videoList = videoService.getByClient(clientId);
+			categoryList = categoryService.getAll();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		m.addObject("videoList", videoList);
+		m.addObject("categoryList", categoryList);
+		m.setViewName("event");
+		return m;
+	}
+	
+	@RequestMapping(value="videoOfCategory/{categoryId}", method = RequestMethod.GET)
+	public ModelAndView videoOfCategory(@PathVariable int categoryId) {
+		ModelAndView m = new ModelAndView();
+		List<VideoEntity> videoList = null;
+		List<CategoryEntity> categoryList = null;
+		try{
+			videoList = videoService.getByCategory(categoryId);
+			categoryList = categoryService.getAll();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		m.addObject("videoList", videoList);
+		m.addObject("categoryList", categoryList);
+		m.setViewName("event");
+		return m;
+	}
+	
+	@RequestMapping(value="about.html")
+	public ModelAndView about() {
+		ModelAndView m = new ModelAndView();
+		AboutEntity about = null;
+		List<UserEntity> whoList = null;
+		try{
+			about = aboutService.getById(1);
+			whoList = userService.getUserByType(RoleEntity.ROLETYPE_ABOUTUS);
+		} catch(Exception e){
+			e.printStackTrace();
+		}
+		about.setAboutUsInfo(about.getAboutUsInfo().toUpperCase());
+		m.addObject("about",about);
+		m.addObject("whoList", whoList);
+		m.setViewName("about");
+		return m;
+	}
+	
+}

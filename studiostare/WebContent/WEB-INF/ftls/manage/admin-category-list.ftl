@@ -175,6 +175,7 @@
 									</tr>
 								</thead>
 								<tbody>
+									<#if categoryList ??>
 									<#list categoryList as category>
 									<tr>
 										<td>
@@ -186,6 +187,7 @@
 										<td><a class="delete" href="javascript:;"> Delete </a></td>
 									</tr>
 									</#list>
+									</#if>
 								</tbody>
 							</table>
 						</div>

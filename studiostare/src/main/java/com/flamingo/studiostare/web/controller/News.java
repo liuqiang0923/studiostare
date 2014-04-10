@@ -49,13 +49,15 @@ public class News extends JsonAction {
 	@RequestMapping(value="saveNews", method=RequestMethod.POST)
 	public String saveNews(NewsEntity news, 
 			@RequestParam(value="newsimg", required=false) MultipartFile newsimg, 
-			@RequestParam(value="newsvideo", required=false) MultipartFile newsvideo,
+			@RequestParam(value="newsvideomp4", required=false) MultipartFile newsvideomp4,
+			@RequestParam(value="newsvideowebm", required=false) MultipartFile newsvideowebm,
+			@RequestParam(value="newsvideoogg", required=false) MultipartFile newsvideoogg,
 			HttpSession session) {
 		
 		news.setUserId((int) session.getAttribute("userid"));
 		
 		try {
-			newsService.save(news, newsimg, newsvideo);
+			newsService.save(news, newsimg, newsvideomp4,newsvideowebm,newsvideoogg);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

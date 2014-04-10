@@ -178,7 +178,13 @@
 									 Photo
 								</th>
 								<th>
-									 Video
+									 Mp4
+								</th>
+								<th>
+									 Webm
+								</th>
+								<th>
+									 Ogg
 								</th>
 								<th>
 									 Created
@@ -207,7 +213,9 @@
 								</#if>
 								</td>
 								<td><a href="down?view=1&url=${(news.photoPath)!""}">${(news.photoName)!""}</a></td>
-								<td><a href="down?url=${(news.videoPath)!""}">${(news.videoName)!""}</a></td>
+								<td><a href="down?url=${(news.videoPathMp4)!""}">${(news.videoNameMp4)!""}</a></td>
+								<td><a href="down?url=${(news.videoPathWebm)!""}">${(news.videoNameWebm)!""}</a></td>
+								<td><a href="down?url=${(news.videoPathOgg)!""}">${(news.videoNameOgg)!""}</a></td>
 								<td>${(news.updateTime)?string('yyyy-MM-dd')}</td>
 								<td><a class="edit" href="javascript:;"> Edit </a></td>
 								<td><a class="delete" href="javascript:;"> Delete </a></td>

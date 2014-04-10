@@ -240,6 +240,7 @@
 										</tr>
 									</thead>
 									<tbody>
+										<#if whoList??>
 										<#list whoList as who>
 										<tr class="odd gradeX">
 											<td>
@@ -254,6 +255,7 @@
 											<td><a class="delete" href="javascript:;"> Delete </a></td>
 										</tr>
 										</#list>
+										</#if>
 									</tbody>
 								</table>
 							</div>

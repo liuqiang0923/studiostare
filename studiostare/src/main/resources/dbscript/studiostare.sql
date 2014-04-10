@@ -92,6 +92,8 @@ DROP TABLE IF EXISTS `studiostare`.`video` ;
 
 CREATE TABLE IF NOT EXISTS `studiostare`.`video` (
   `id` INT NOT NULL AUTO_INCREMENT,
+  `client_id` INT NOT NULL COMMENT '所属客户',
+  `category_id` INT NOT NULL COMMENT '所属分类',
   `name` VARCHAR(255) NOT NULL COMMENT '名称',
   `img_path` VARCHAR(1024) NOT NULL COMMENT '视频预览图片地址',
   `video_path_webm` VARCHAR(1024) COMMENT 'webm视频地址',
@@ -99,38 +101,17 @@ CREATE TABLE IF NOT EXISTS `studiostare`.`video` (
   `video_path_mp4` VARCHAR(1024) COMMENT 'mp4视频地址',
   `description` VARCHAR(1024) NOT NULL COMMENT '视频描述',
   `update_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '更新时间',
-  PRIMARY KEY (`id`));
-
-
--- -----------------------------------------------------
--- Table `studiostare`.`videoref`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `studiostare`.`videoref` ;
-
-CREATE TABLE IF NOT EXISTS `studiostare`.`videoref` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `video_id` INT NOT NULL COMMENT '视频ID',
-  `client_id` INT NULL COMMENT '客户ID',
-  `category_id` INT NULL COMMENT '分类ID',
-  `description` VARCHAR(1024) NOT NULL COMMENT '描述',
-  `update_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id`),
-  CONSTRAINT `fk_video_id`
-    FOREIGN KEY (`id`)
-    REFERENCES `studiostare`.`video` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_client_id`
+  CONSTRAINT `fk_video_to_client_client_id`
     FOREIGN KEY (`id`)
     REFERENCES `studiostare`.`client` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_category_id`
+  CONSTRAINT `fk_video_to_category_category_id`
     FOREIGN KEY (`id`)
     REFERENCES `studiostare`.`category` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
-
 
 -- -----------------------------------------------------
 -- Table `studiostare`.`about`
@@ -167,6 +148,9 @@ CREATE TABLE IF NOT EXISTS `studiostare`.`news` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
+INSERT INTO `studiostare`.`role` (`id`, `name`, `description`) VALUES ('1', 'admin', 'admin');
+INSERT INTO `studiostare`.`role` (`id`, `name`, `description`) VALUES ('2', 'twitterUser', 'twitterUser');
+INSERT INTO `studiostare`.`role` (`id`, `name`, `description`) VALUES ('3', 'aboutus', 'aboutus');
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

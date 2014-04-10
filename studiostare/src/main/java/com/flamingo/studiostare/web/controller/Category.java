@@ -1,6 +1,5 @@
 package com.flamingo.studiostare.web.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -26,9 +25,12 @@ public class Category extends JsonAction {
 	@RequestMapping("admin-category-list.html")
 	public ModelAndView categoryList() {
 		ModelAndView m = new ModelAndView();
-		List<CategoryEntity> categoryList = categoryService.getAll();
-		if (categoryList == null)
-			categoryList = new ArrayList<CategoryEntity>();
+		List<CategoryEntity> categoryList = null;
+		try {
+			categoryList = categoryService.getAll();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		m.addObject("categoryList", categoryList);
 		m.setViewName("manage/admin-category-list");
 		return m;

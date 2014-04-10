@@ -77,11 +77,13 @@
 	<servlet-mapping>
 		<servlet-name>dispatcher</servlet-name>
 		<url-pattern>/manage/*</url-pattern>
-		<url-pattern>*.do</url-pattern>
+		<url-pattern>/client/*</url-pattern>
+		<url-pattern>/category/*</url-pattern>
+		<url-pattern>*.html</url-pattern>
 	</servlet-mapping>
 
 	<welcome-file-list>
-		<welcome-file>/index.jsp</welcome-file>
+		<welcome-file>/index.html</welcome-file>
 	</welcome-file-list>
 
 	<error-page>

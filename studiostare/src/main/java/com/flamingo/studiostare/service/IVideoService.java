@@ -11,10 +11,15 @@ public interface IVideoService {
 	
 	VideoEntity getById(int id);
 
-	void save(VideoEntity videoEntity, MultipartFile videoimg, MultipartFile videowebm, MultipartFile videoogg) throws IOException;
+	void save(VideoEntity videoEntity, MultipartFile videoimg, MultipartFile videowebm, MultipartFile videomp4, MultipartFile videoogg) throws IOException;
 
 	List<VideoEntity> getAll();
 
 	void delById(int videoId);
+
+	List<VideoEntity> getByClient(int id);
+
+	List<VideoEntity> getByCategory(int id);
 	
+	List<VideoEntity> getByVideoEntity(VideoEntity videoEntity);
 }
