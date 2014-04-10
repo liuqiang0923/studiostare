@@ -43,6 +43,7 @@
 		<div id='videoplaybox-${(video.id)!""}' class="videoplaybigbox" style="display: none">
 			<div class="videoplaybox">
 				<video id='video-${(video.id)!""}' class="video-js vjs-default-skin" controls preload="auto" poster='${(video.imgPath)!""}' data-setup="{}">
+					<source src='${(video.videoPathMp4)!""}' type='video/mp4' />
 					<source src='${(video.videoPathWebm)!""}' type='video/webm' />
 					<source src='${(video.videoPathOgg)!""}' type='video/ogg' />
 					<track kind="captions" src="demo.captions.vtt" srclang="en" label="English"></track>
