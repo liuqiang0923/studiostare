@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 这里的namespace名字必须为执行该sql的dao地址 -->
+<mapper namespace="com.flamingo.studiostare.dao.IVideoDao">
+
+	<resultMap type="VideoEntity" id="videoResultMap">
+		<id property="id" column="v_id" />
+		<result property="name" column="v_name" />
+		<result property="imgPath" column="v_img_path" />
+		<result property="videoPathWebm" column="v_video_path_webm" />
+		<result property="videoPathOgg" column="v_video_path_ogg" />
+		<result property="videoPathMp4" column="v_video_path_mp4" />
+		<result property="description" column="v_description" />
+		<result property="updateTime" column="v_update_time" javaType="Date" />
+		
+		<association property="client" javaType="ClientEntity">
+			<id property="id" column="c_id" />
+			<result property="name" column="c_name" />
+			<result property="phone" column="c_phone" />
+			<result property="email" column="c_email" />
+			<result property="description" column="c_description" />
+			<result property="updateTime" column="c_update_time" javaType="Date" />
+		</association>
+	
+		<association property="category" javaType="CategoryEntity">
+			<id property="id" column="ca_id" />
+			<result property="name" column="ca_name" />
+			<result property="description" column="ca_description" />
+			<result property="updateTime" column="ca_update_time" javaType="Date" />
+		</association>
+	</resultMap>
+
+	<select id="selectVideoById" parameterType="int" resultType="VideoEntity" resultMap="videoResultMap">
+		select v.id v_id, v.name v_name, v.img_path v_img_path, 
+			v.video_path_webm v_video_path_webm, v.video_path_ogg v_video_path_ogg, v.video_path_mp4 v_video_path_mp4, 
+			v.description v_description, v.update_time v_update_time, 
+			c.id c_id, c.name c_name, c.phone c_phone, c.email c_email, c.description c_description, c.update_time c_update_time, 
+			ca.id ca_id, ca.name ca_name, ca.description ca_description, ca.update_time ca_update_time 
+			from video v, client c, category ca 
+			where c.id = v.client_id and ca.id = v.category_id and v.id = #{id}
+	</select>
+	
+	<insert id="insertVideo" parameterType="VideoEntity">
+		insert into video (name, client_id, category_id, img_path, video_path_webm, video_path_ogg, video_path_mp4, description)
+		values (#{name},#{client.id}, #{category.id}, #{imgPath}, #{videoPathWebm}, #{videoPathOgg}, #{videoPathMp4}, #{description})
+	</insert>
+	
+	<update id="updateVideo" parameterType="VideoEntity">
+		update video set 
+			name = #{name}, 
+			client_id = #{client.id},
+			category_id = #{category.id},
+			img_path = #{imgPath},
+			video_path_webm = #{videoPathWebm},
+			video_path_ogg = #{videoPathOgg},
+			video_path_mp4 = #{videoPathMp4},
+			description = #{description}, 
+			update_time = #{updateTime}
+		where id = #{id}
+	</update>
+	
+	<delete id="deleteVideoById" parameterType="int">
+		delete from video where id = #{id}
+	</delete>
+	
+	<select id="selectVideo" parameterType="VideoEntity" resultType="VideoEntity" resultMap="videoResultMap">
+		select v.id v_id, v.name v_name, v.img_path v_img_path, 
+			v.video_path_webm v_video_path_webm, v.video_path_ogg v_video_path_ogg, v.video_path_mp4 v_video_path_mp4, 
+			v.description v_description, v.update_time v_update_time, 
+			c.id c_id, c.name c_name, c.phone c_phone, c.email c_email, c.description c_description, c.update_time c_update_time, 
+			ca.id ca_id, ca.name ca_name, ca.description ca_description, ca.update_time ca_update_time 
+			from video v, client c, category ca 
+			where c.id = v.client_id and ca.id = v.category_id 
+		<if test="name != null and name != ''">
+			and v.name like '%${name}%' 
+		</if>
+		<if test="description != null and description != ''">
+			and v.description like '%${description}%' 
+		</if>
+		<if test="client != null and client.id != null and client.id != 0">
+			and v.client_id = #{client.id} 
+		</if>
+		<if test="category != null and category != null and category.id != 0">
+			and v.category_id = #{category.id} 
+		</if>
+	</select>
+
+</mapper>

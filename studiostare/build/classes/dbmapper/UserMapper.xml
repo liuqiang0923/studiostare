@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 这里的namespace名字必须为执行该sql的dao地址 -->
+<mapper namespace="com.flamingo.studiostare.dao.IUserDao">
+
+	<resultMap type="UserEntity" id="userResultMap">
+		<id property="id" column="u_id" />
+		<result property="name" column="u_name" />
+		<result property="password" column="u_password" />
+		<result property="email" column="u_email" />
+		<result property="captureNewsFlag" column="u_capture_news_flag" />
+		<result property="twitterUser" column="u_twitter_user" />
+		<result property="position" column="u_position" />
+		<result property="photoPath" column="u_photo_path" />
+		<result property="description" column="u_description" />
+		<result property="updateTime" column="u_update_time" javaType="Date" />
+		
+		<association property="role" javaType="RoleEntity">
+			<id property="id" column="r_id" />
+			<result property="name" column="r_name" />
+			<result property="description" column="r_description" />
+		</association>
+	</resultMap>
+
+	<select id="selectUserById" parameterType="int" resultType="UserEntity" resultMap="userResultMap">
+		select u.id u_id, u.name u_name, u.password u_password, u.email u_email, u.capture_news_flag u_capture_news_flag,
+		u.twitter_user u_twitter_user, u.position u_position, u.photo_path u_photo_path, u.description u_description,
+		u.update_time u_update_time, r.id r_id, r.name r_name, r.description r_description  
+		from user u, role r where u.role_id = r.id and u.id = #{id}
+	</select>
+	
+	<insert id="insertUser" parameterType="UserEntity">
+		insert into user (name, password, email, role_id, capture_news_flag, twitter_user, position, photo_path, description)
+		values (#{name}, #{password}, #{email}, #{role.id}, #{captureNewsFlag}, #{twitterUser}, #{position}, #{photoPath}, #{description})
+	</insert>
+	
+	<update id="updateUser" parameterType="UserEntity">
+		update user set
+			name = #{name}, 
+			password = #{password}, 
+			email = #{email}, 
+			role_id = #{role.id}, 
+			capture_news_flag = #{captureNewsFlag}, 
+			twitter_user = #{twitterUser},
+			position = #{position},
+			photo_path = #{photoPath},
+			description = #{description},
+			update_time = #{updateTime}
+		where id = #{id}
+	</update>
+	
+	<delete id="deleteUserById" parameterType="int">
+		delete from user where id = #{id}
+	</delete>
+	
+	<select id="selectUserByRoleId" parameterType="int" resultType="UserEntity" resultMap="userResultMap">
+		select u.id u_id, u.name u_name, u.password u_password, u.email u_email, u.capture_news_flag u_capture_news_flag,
+		u.twitter_user u_twitter_user, u.position u_position, u.photo_path u_photo_path, u.description u_description,  
+		u.update_time u_update_time, r.id r_id, r.name r_name, r.description r_description 
+		from user u, role r where u.role_id = r.id and r.id = #{roleId}
+	</select>
+	
+	<select id="selectUser" parameterType="UserEntity" resultType="UserEntity" resultMap="userResultMap">
+		select * from user where 1 = 1 
+		<if test="name != null and name != ''">
+			and name like '%${name}%' 
+		</if>
+		<if test="email != null and email != ''">
+			and email like '%${email}%' 
+		</if>
+		<if test="twitterUser != null and twitterUser != ''">
+			and twitter_user like '%${twitterUser}%' 
+		</if>
+		<if test="role != null and role.id != null and role.id != 0">
+			and role_id = #{roleId} 
+		</if>
+		<if test="captureNewsFlag != null and captureNewsFlag != 0">
+			and capture_news_flag = #{captureNewsFlag} 
+		</if>
+	</select>
+	
+	<delete id="deleteUser" parameterType="UserEntity">
+		delete from user where 1 = 1 
+		<if test="name != null and name != ''">
+			and name like '%${name}%' 
+		</if>
+		<if test="email != null and email != ''">
+			and email like '%${email}%' 
+		</if>
+		<if test="twitterUser != null and twitterUser != ''">
+			and twitter_user like '%${twitterUser}%' 
+		</if>
+		<if test="roleId != null and roleId != 0">
+			and role_id = #{roleId} 
+		</if>
+		<if test="captureNewsFlag != null and captureNewsFlag != 0">
+			and capture_news_flag = #{captureNewsFlag} 
+		</if>
+	</delete>
+
+</mapper>
