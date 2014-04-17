@@ -39,7 +39,6 @@ $(function(){
 
 </head>
 <div class="flexslider">
-      <ul class="slides">
         <!-- <li> <img src="img/temp/img01.jpg" /> <div class="infos">
           <p>Come as you are</p>
         </div></li>
@@ -57,7 +56,6 @@ $(function(){
         <ul class="slides">
 			<li id="randomimg" />
 		</ul>
-      </ul> 
       <span class="arrow" onclick="function(){$('.flexslider').slideUp('slow');}"></span>
     </div>
 <header id="main_header">
