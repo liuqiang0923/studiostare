@@ -38,7 +38,7 @@
 	<!-- BEGIN TOP NAVIGATION BAR -->
 	<div class="header-inner">
 		<!-- BEGIN LOGO -->
-		<a class="navbar-brand" href="index.html">
+		<a class="navbar-brand" href="/studiostare/index.html">
 			<img src="/studiostare/manage-resource/favicon.png" alt="logo" class="img-responsive"/>
 		</a>
 		<!-- END LOGO -->
@@ -66,8 +66,8 @@
 						<div class="sidebar-toggler hidden-phone"></div> <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
 					</li>
 					<li class="last ">
-						<a href="/studiostare/manage/admin-video-list.html" >
-							<i class="fa fa-bar-chart-o"></i>
+						<a style="background:#000000;" href="/studiostare/manage/admin-video-list.html" >
+							<i class="fa fa-puzzle-piece"></i>
 							<span class="title">
 								Video
 							</span>
@@ -75,7 +75,7 @@
 					</li>
 					<li class="last ">
 						<a href="/studiostare/manage/admin-client-list.html"> 
-							<i class="fa fa-bar-chart-o"></i> 
+							<i class="fa fa-user"></i> 
 							<span class="title"> 
 								Client 
 							</span>
@@ -83,7 +83,7 @@
 					</li>
 					<li class="last ">
 						<a href="/studiostare/manage/admin-category-list.html"> 
-							<i class="fa fa-bar-chart-o"></i> 
+							<i class="fa fa-sitemap"></i> 
 							<span class="title"> 
 								Category 
 							</span>
@@ -91,7 +91,7 @@
 					</li>
 					<li class="last ">
 						<a href="/studiostare/manage/admin-news-list.html" >
-							<i class="fa fa-bar-chart-o"></i>
+							<i class="fa fa-file-text"></i>
 							<span class="title">
 								News
 							</span>
@@ -99,7 +99,7 @@
 					</li>
 					<li class="last ">
 						<a href="/studiostare/manage/admin-about.html" >
-							<i class="fa fa-bar-chart-o"></i>
+							<i class="fa fa-bookmark-o"></i>
 							<span class="title">
 								About
 							</span>
@@ -265,13 +265,24 @@
 														</div>
 													</div>
 													-->
+													<!--
 													<div class="form-group">
 														<label class="control-label col-md-3">Description 
-															<!-- <span class="required"> * </span> -->
+															<span class="required"> * </span>
 														</label>
 														<div class="col-md-4">
 															<textarea class="form-control" rows="3" style="width:100%" name="description"></textarea>
 															<span class="help-block"> Input video description </span>
+														</div>
+													</div>
+													-->
+													<div class="form-group">
+														<label class="control-label col-md-3">Order 
+															<span class="required"> * </span>
+														</label>
+														<div class="col-md-4">
+															<input type="text" class="form-control" name="index" value='${(video.index)!""}'/>
+															<span class="help-block"> Input video order </span>
 														</div>
 													</div>
 												</div>
@@ -345,10 +356,10 @@
 															Video 
 															<span class="required"> * </span>
 														</label>
-														<div class="fileinput fileinput-new col-md-4" data-provides="fileinput">
-															<div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 100%;" id="videomp4div">
+														<div class="col-md-4" data-provides="fileinput">
+															<div data-trigger="fileinput" style="width: 100%;" id="videomp4div">
 																<#if (video.videoPathMp4) ??>
-																	<video src='${(video.videoPathMp4)!""}'></video>
+																	<video controls="controls" preload="preload" src='${(video.videoPathMp4)!""}'></video>
 																</#if>
 															</div>
 															<input type="file" name="videomp4"/>
@@ -361,10 +372,10 @@
 															Video 
 															<span class="required"> * </span>
 														</label>
-														<div class="fileinput fileinput-new col-md-4" data-provides="fileinput">
-															<div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 100%;" id="videowebmdiv">
+														<div class="col-md-4" data-provides="fileinput">
+															<div data-trigger="fileinput" style="width: 100%;" id="videowebmdiv">
 																<#if (video.videoPathWebm) ??>
-																	<video src='${(video.videoPathWebm)!""}'></video>
+																	<video style="width:300px;height:150px;" preload="preload" controls="controls" src='${(video.videoPathWebm)!""}'></video>
 																</#if>
 															</div>
 															<input type="file" name="videowebm"/>
@@ -377,14 +388,14 @@
 															Video 
 															<span class="required"> * </span>
 														</label>
-														<div class="fileinput fileinput-new col-md-4" data-provides="fileinput">
-															<div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 100%;" id="videooggdiv">
+														<div class="col-md-4" data-provides="fileinput">
+															<div data-trigger="fileinput" style="width: 100%;" id="videooggdiv">
 																<#if (video.videoPathOgg) ??>
-																	<video src='${(video.videoPathOgg)!""}'></video>
+																	<video style="width:300px;height:150px;" preload="preload" controls="controls" src='${(video.videoPathOgg)!""}'></video>
 																</#if>
 															</div>
 															<input type="file" name="videoogg"/>
-															<span class="help-block"> Upload ogg video. </span>	
+															<span class="help-block"> Upload ogv video. </span>	
 														</div>
 													</div>
 													<!--
@@ -463,10 +474,19 @@
 															</p>
 														</div>
 													</div>
+													<!--
 													<div class="form-group">
 														<label class="control-label col-md-3">Description:</label>
 														<div class="col-md-4">
 															<p class="form-control-static" data-display="description">
+															</p>
+														</div>
+													</div>
+													-->
+													<div class="form-group">
+														<label class="control-label col-md-3">Order:</label>
+														<div class="col-md-4">
+															<p class="form-control-static" data-display="index">
 															</p>
 														</div>
 													</div>

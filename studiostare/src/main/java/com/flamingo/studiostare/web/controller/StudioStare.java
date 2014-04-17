@@ -102,14 +102,17 @@ public class StudioStare {
 	@RequestMapping(value="videoOfClient/{clientId}", method = RequestMethod.GET)
 	public ModelAndView videoOfClient(@PathVariable int clientId) {
 		ModelAndView m = new ModelAndView();
+		ClientEntity client = null;
 		List<VideoEntity> videoList = null;
 		List<CategoryEntity> categoryList = null;
 		try{
+			client = clientService.getById(clientId);
 			videoList = videoService.getByClient(clientId);
 			categoryList = categoryService.getAll();
 		}catch(Exception e){
 			e.printStackTrace();
 		}
+		m.addObject("client", client);
 		m.addObject("videoList", videoList);
 		m.addObject("categoryList", categoryList);
 		m.setViewName("event");
@@ -119,14 +122,17 @@ public class StudioStare {
 	@RequestMapping(value="videoOfCategory/{categoryId}", method = RequestMethod.GET)
 	public ModelAndView videoOfCategory(@PathVariable int categoryId) {
 		ModelAndView m = new ModelAndView();
+		CategoryEntity category = null;
 		List<VideoEntity> videoList = null;
 		List<CategoryEntity> categoryList = null;
 		try{
+			category = categoryService.getById(categoryId);
 			videoList = videoService.getByCategory(categoryId);
 			categoryList = categoryService.getAll();
 		}catch(Exception e){
 			e.printStackTrace();
 		}
+		m.addObject("category", category);
 		m.addObject("videoList", videoList);
 		m.addObject("categoryList", categoryList);
 		m.setViewName("event");

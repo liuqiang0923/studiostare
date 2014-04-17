@@ -29,16 +29,42 @@ var FormWizard = function () {
             
             // add validate of office img.
 						jQuery.validator.addMethod("videoimgexist", function(value, element, param) {
+							if (value != "")
+								return true;
 							if (document.getElementById("videoimgdiv").getElementsByTagName("img").length == 0)
 								return false;
 						 	return true;
 						},"This field is required.");
 						
-						function checkImg(){
-							if (document.getElementById("videoimgdiv").getElementsByTagName("img").length == 0)
+						jQuery.validator.addMethod("videomp4exist", function(value, element, param) {
+							if (value != "")
+								return true;
+							if (document.getElementById("videomp4div").getElementsByTagName("video").length == 0)
 								return false;
 						 	return true;
-						}
+						},"This field is required.");
+						
+						jQuery.validator.addMethod("videowebmexist", function(value, element, param) {
+							if (value != "")
+								return true;
+							if (document.getElementById("videowebmdiv").getElementsByTagName("video").length == 0)
+								return false;
+						 	return true;
+						},"This field is required.");
+						
+						jQuery.validator.addMethod("videooggexist", function(value, element, param) {
+							if (value != "")
+								return true;
+							if (document.getElementById("videooggdiv").getElementsByTagName("video").length == 0)
+								return false;
+						 	return true;
+						},"This field is required.");
+						
+//						function checkImg(){
+//							if (document.getElementById("videoimgdiv").getElementsByTagName("img").length == 0)
+//								return false;
+//						 	return true;
+//						}
 						
             form.validate({
                 doNotHideMessage: true, //this option enables to show the error/success messages on tab switch.
@@ -106,11 +132,12 @@ var FormWizard = function () {
                         minlength: 1
                     },
                     videoimg: {
-                    		videoimgexist: true,
+                    	videoimgexist: true,
+                    	accept: "png|jpg|jpeg",
                     },
                     videoname: {
-                    		required: true,
-                    		maxlength: 50,
+                    	required: true,
+                    	maxlength: 50,
                     },
                     'client.id': {
                     	required: true,
@@ -119,21 +146,40 @@ var FormWizard = function () {
                     	required: true,
                     },
                     videomp4: {
-                    	required: true,
+                    	videomp4exist: true,
+                    	accept: "mp4",
                     },
                     videowebm: {
-                    	required: true,
+                    	videowebmexist: true,
+                    	accept: "webm",
                     },
                     videoogg: {
-                    	required: true,
+//                    	videooggexist: true,
+                    	accept: "ogv|ogg",
                     },
+                    index: {
+                    	required: true,
+                    	digits: true,
+                    }
                 },
 
                 messages: { // custom messages for radio buttons and checkboxes
                     'payment[]': {
                         required: "Please select at least one option",
                         minlength: jQuery.format("Please select at least one option")
-                    }
+                    },
+                    videoimg: {
+                		accept: "This field must be image.",
+                	},
+                	videomp4: {
+                		accept: "This field must be mp4.",
+                	},
+                	videowebm: {
+                		accept: "This field must be webm.",
+                	},
+                	videoogg: {
+                		accept: "This field must be ogv/ogg.",
+                	},
                 },
 
                 errorPlacement: function (error, element) { // render error placement for each input type

@@ -4,6 +4,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <title>Studio Stare</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
+<style>
+a:link{text-decoration:none;}
+a:visited{text-decoration:none;}
+a:hover{text-decoration:underline;} 
+</style>
 <link rel="stylesheet" href="css/lrtk.css">
 <link href="video-js.css" rel="stylesheet" type="text/css">
 <!-- ICONS -->
@@ -175,8 +180,9 @@ $(function(){
       <div class="imgbox"><font class="font01">Studio Stare</font> <font class="font02">—</font> <font class="font03">film production in Shanghai since 2008</font></div>
       <div class="line_fr"></div>
     </div>
-    <div class="footfont"> <font class="demi">address&nbsp;</font>&nbsp;71 West Suzhou Road - room 401
-      Jing’an District - 200040 Shanghai - China<br>
+    <div class="footfont"> <a style="color:#000000" href="http://map.baidu.com/?newmap=1&shareurl=1&l=19&tn=B_NORMAL_MAP&c=13520836,3642551&cc=sh&s=s%26da_src%3Dpcmappg.searchBox.button%26wd%3D%E8%A5%BF%E8%8B%8F%E5%B7%9E%E8%B7%AF71%E5%8F%B7%26c%3D289%26src%3D0%26wd2%3D%26sug%3D0%26l%3D19%26from%3Dwebmap&sc=0">
+    <font class="demi">address&nbsp;</font>&nbsp;71 West Suzhou Road - room 401
+      Jing’an District - 200040 Shanghai - China<br></a>
       <font class="demi">contact</font> <font class="book">phone</font> +86 (0)
       21 6276 0052 <font class="book">email</font> contact@studiostare.com </div>
     <div class="fllowus">

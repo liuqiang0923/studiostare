@@ -37,7 +37,7 @@
 	<!-- BEGIN TOP NAVIGATION BAR -->
 	<div class="header-inner">
 		<!-- BEGIN LOGO -->
-		<a class="navbar-brand" href="index.html">
+		<a class="navbar-brand" href="/studiostare/index.html">
 			<img src="/studiostare/manage-resource/favicon.png" alt="logo" class="img-responsive"/>
 		</a>
 		<!-- END LOGO -->
@@ -65,8 +65,8 @@
 						<div class="sidebar-toggler hidden-phone"></div> <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
 					</li>
 					<li class="last ">
-						<a href="/studiostare/manage/admin-video-list.html" >
-							<i class="fa fa-bar-chart-o"></i>
+						<a style="background:#000000;" href="/studiostare/manage/admin-video-list.html" >
+							<i class="fa fa-puzzle-piece"></i>
 							<span class="title">
 								Video
 							</span>
@@ -74,7 +74,7 @@
 					</li>
 					<li class="last ">
 						<a href="/studiostare/manage/admin-client-list.html"> 
-							<i class="fa fa-bar-chart-o"></i> 
+							<i class="fa fa-user"></i> 
 							<span class="title"> 
 								Client 
 							</span>
@@ -82,7 +82,7 @@
 					</li>
 					<li class="last ">
 						<a href="/studiostare/manage/admin-category-list.html"> 
-							<i class="fa fa-bar-chart-o"></i> 
+							<i class="fa fa-sitemap"></i> 
 							<span class="title"> 
 								Category 
 							</span>
@@ -90,7 +90,7 @@
 					</li>
 					<li class="last ">
 						<a href="/studiostare/manage/admin-news-list.html" >
-							<i class="fa fa-bar-chart-o"></i>
+							<i class="fa fa-file-text"></i>
 							<span class="title">
 								News
 							</span>
@@ -98,7 +98,7 @@
 					</li>
 					<li class="last ">
 						<a href="/studiostare/manage/admin-about.html" >
-							<i class="fa fa-bar-chart-o"></i>
+							<i class="fa fa-bookmark-o"></i>
 							<span class="title">
 								About
 							</span>
@@ -169,6 +169,9 @@
 									<input type="checkbox" class="group-checkable" data-set="#managetable_video .checkboxes"/>
 								</th>
 								<th>
+									 Order
+								</th>
+								<th>
 									 Name
 								</th>
 								<th>
@@ -189,9 +192,11 @@
 								<th>
 									 Category
 								</th>
+								<!--
 								<th>
 									 Description
 								</th>
+								-->
 								<th>
 									 Edit
 								</th>
@@ -205,16 +210,19 @@
 							<#list videoList as video>
 							<tr class="odd gradeX">
 								<td>
-									<input type="checkbox" class="checkboxes" value=${(video.id)!""} />
+									<input type="checkbox" class="checkboxes" value=${(video.id)!""}></input>
 								</td>
+								<td>${(video.index)!""}</td>
 								<td>${(video.name)!""}</td>
 								<td><img style="width:150px;height:150px;" src='${(video.imgPath)!""}'></img></td>
-								<td><video style="width:150px;height:150px;" src='${(video.videoPathMp4)!""}' controls="controls"></video></td>
-								<td><video style="width:150px;height:150px;" src='${(video.videoPathWebm)!""}' controls="controls"></video></td>
-								<td><video style="width:150px;height:150px;" src='${(video.videoPathOgg)!""}' controls="controls"></video></td>
+								<td><video style="width:180px;height:150px;" src='${(video.videoPathMp4)!""}' preload="preload" controls="controls"></video></td>
+								<td><video style="width:180px;height:150px;" src='${(video.videoPathWebm)!""}' preload="preload" controls="controls"></video></td>
+								<td><video style="width:180px;height:150px;" src='${(video.videoPathOgg)!""}' preload="preload" controls="controls"></video></td>
 								<td>${(video.client.name)!""}</td>
 								<td>${(video.category.name)!""}</td>
+								<!--
 								<td>${(video.description)!""}</td>
+								-->
 								<td><a class="edit" href="javascript:;"> Edit </a></td>
 								<td><a class="delete" href="javascript:;"> Delete </a></td>
 							</tr>

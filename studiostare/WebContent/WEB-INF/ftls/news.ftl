@@ -6,6 +6,11 @@
 <title>Studio Stare</title>
 <meta name="description" content="" />
 <link rel="stylesheet" type="text/css" href="css/style.css">
+<style>
+a:link{text-decoration:none;}
+a:visited{text-decoration:none;}
+a:hover{text-decoration:underline;} 
+</style>
 <script src="js/libs/html5shiv.js"></script>
 <script src="js/jquery.min.js"></script>
 <!-- video -->
@@ -79,10 +84,20 @@
 	      		<img src="${(news.photoPath)!""}" /> 
 	      	</div>
 	      </#if>
-	      <div class="date01">${(news.updateTime)?string("EEEE, MMMM dd, yyyy, hh:mm:ss a")}</div>
+	      <#if (news.twitterId)?? && (news.twitterId) != 0>
+	      	<div class="imgholder">
+		      <img src="img/twitter.jpg" class="twitter">
+		      <div class="date01">${(news.updateTime)?string("  dd MMMM yyyy")}</div>
+		    </div>
+	      <#else>
+	      	<div class="date01">${(news.updateTime)?string("dd MMMM yyyy")}</div>
+	      </#if>
 	      <div class="title">${(news.title)!""}<font class="medi">&gt;</font></div>
-	      <p>${(news.content)!""}</p>
-	      
+	      <#if (news.twitterId)?? && (news.twitterId) != 0>
+	      	<p class="news_twitter">${(news.content)!""}</p>
+	      <#else>
+	      	<p>${(news.content)!""}</p>
+	      </#if>
 	      <div class="meta"></div>
 	    </div>
   	</#list>
@@ -98,18 +113,26 @@
       <div class="imgbox"><font class="font01">Studio Stare</font> <font class="font02">—</font> <font class="font03">film production in Shanghai since 2008</font></div>
       <div class="line_fr"></div>
     </div>
-    <div class="footfont"> <font class="demi">address&nbsp;</font>&nbsp;71 West Suzhou Road - room 401
-      Jing’an District - 200040 Shanghai - China<br>
+    <div class="footfont"> <a style="color:#000000" href="http://map.baidu.com/?newmap=1&shareurl=1&l=19&tn=B_NORMAL_MAP&c=13520836,3642551&cc=sh&s=s%26da_src%3Dpcmappg.searchBox.button%26wd%3D%E8%A5%BF%E8%8B%8F%E5%B7%9E%E8%B7%AF71%E5%8F%B7%26c%3D289%26src%3D0%26wd2%3D%26sug%3D0%26l%3D19%26from%3Dwebmap&sc=0"><font class="demi">address&nbsp;</font>&nbsp;71 West Suzhou Road - room 401
+      Jing’an District - 200040 Shanghai - China<br></a>
       <font
 					class="demi">contact</font> <font class="book">phone</font> +86 (0)
       21 6276 0052 <font class="book">email</font> contact@studiostare.com </div>
     <div class="fllowus">
       <h1>follow us</h1>
-      <div class="fllowuslink">
-	      <img src="img/facebook.jpg">
-	      <img src="img/vimeo.jpg">
-	      <img src="img/twitter.jpg">
-	      <img src="img/linkedin.jpg">
+       <div class="fllowuslink">
+      				<a target="_blank" href="https://www.facebook.com/Fzuck">
+			    	<img src="img/facebook.jpg">
+			    </a>
+			    <a target="_blank" href="http://vimeo.com/88907972">
+			    	<img src="img/vimeo.jpg">
+			    </a>
+			    <a target="_blank" href="https://twitter.com/KimKardashian">
+			    	<img src="img/twitter.jpg">
+			    </a>
+			    <a target="_blank" href="http://www.linkedin.com/profile/view?id=337308570">
+			    	<img src="img/linkedin.jpg">
+			    </a>
       </div>
     </div>
   </div>

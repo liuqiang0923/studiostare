@@ -22,8 +22,8 @@ var TableManaged = function () {
                   { "bSortable": false, "bSearchable": false},
                 ],
                 "aLengthMenu": [
-                    [5, 15, 20, -1],
-                    [5, 15, 20, "All"] // change per page values here
+                    [15, 30, 50, -1],
+                    [15, 30, 50, "All"] // change per page values here
                 ],
                 // set the initial value
                 "iDisplayLength": 5,

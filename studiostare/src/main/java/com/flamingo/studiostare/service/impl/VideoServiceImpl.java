@@ -47,6 +47,7 @@ public class VideoServiceImpl implements IVideoService {
 		if(vId == 0 || oldVideo == null)
 			videoDao.insertVideo(videoEntity);
 		else{
+			oldVideo.setIndex(videoEntity.getIndex());
 			oldVideo.setName(videoEntity.getName());
 			oldVideo.setDescription(videoEntity.getDescription());
 			if(videoEntity.getImgPath() != null)

@@ -36,8 +36,8 @@
 	<!-- BEGIN TOP NAVIGATION BAR -->
 	<div class="header-inner">
 		<!-- BEGIN LOGO -->
-		<a class="navbar-brand" href="index.html">
-			<img src="favicon.png" alt="logo" class="img-responsive"/>
+		<a class="navbar-brand" href="/studiostare/index.html">
+			<img src="/studiostare/manage-resource/favicon.png" alt="logo" class="img-responsive"/>
 		</a>
 		<!-- END LOGO -->
 		<!-- BEGIN RESPONSIVE MENU TOGGLER -->
@@ -65,7 +65,7 @@
 					</li>
 					<li class="last ">
 						<a href="/studiostare/manage/admin-video-list.html" >
-							<i class="fa fa-bar-chart-o"></i>
+							<i class="fa fa-puzzle-piece"></i>
 							<span class="title">
 								Video
 							</span>
@@ -73,15 +73,15 @@
 					</li>
 					<li class="last ">
 						<a href="/studiostare/manage/admin-client-list.html"> 
-							<i class="fa fa-bar-chart-o"></i> 
+							<i class="fa fa-user"></i> 
 							<span class="title"> 
 								Client 
 							</span>
 						</a>
 					</li>
 					<li class="last ">
-						<a href="/studiostare/manage/admin-category-list.html"> 
-							<i class="fa fa-bar-chart-o"></i> 
+						<a style="background:#000000;" href="/studiostare/manage/admin-category-list.html"> 
+							<i class="fa fa-sitemap"></i> 
 							<span class="title"> 
 								Category 
 							</span>
@@ -89,7 +89,7 @@
 					</li>
 					<li class="last ">
 						<a href="/studiostare/manage/admin-news-list.html" >
-							<i class="fa fa-bar-chart-o"></i>
+							<i class="fa fa-file-text"></i>
 							<span class="title">
 								News
 							</span>
@@ -97,7 +97,7 @@
 					</li>
 					<li class="last ">
 						<a href="/studiostare/manage/admin-about.html" >
-							<i class="fa fa-bar-chart-o"></i>
+							<i class="fa fa-bookmark-o"></i>
 							<span class="title">
 								About
 							</span>

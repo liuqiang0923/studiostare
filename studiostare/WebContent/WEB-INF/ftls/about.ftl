@@ -6,6 +6,11 @@
 <title>Studio Stare</title>
 <meta name="description" content="" />
 <link rel="stylesheet" type="text/css" href="css/style.css">
+<style>
+a:link{text-decoration:none;}
+a:visited{text-decoration:none;}
+a:hover{text-decoration:underline;} 
+</style>
 <script src="js/libs/html5shiv.js"></script>
 <script src="js/jquery.min.js"></script>
 <!-- ICONS -->
@@ -57,10 +62,10 @@
       	<#if whoList??>
       	<#list whoList as who>
       		<div class="who_list">
-	          <div class="who_imgbox"> <img style="width:150px; height:200px;" src='${(who.photoPath)!"img/temp/Director.jpg"}'> </div>
+	          <div class="who_imgbox"> <img style="width:200px; height:200px;" src='${(who.photoPath)!"img/temp/Director.jpg"}'> </div>
 	          <h2>${(who.name)!"petter eldin"}</h2>
 	          <h3>${(who.position)!"Director"}</h3>
-	          <h4><a href='mailto:${(who.email)!"petter@studiostare.com"}'>${(who.email)!"petter@studiostare.com"}</a></h4>
+	          <h4><a style="color:#000000" href='mailto:${(who.email)!"petter@studiostare.com"}'>${(who.email)!"petter@studiostare.com"}</a></h4>
 	        </div>      		
       	</#list>
       	</#if>
@@ -94,8 +99,8 @@
       <div class="imgbox"><font class="font01">Studio Stare</font> <font class="font02">—</font> <font class="font03">film production in Shanghai since 2008</font></div>
       <div class="line_fr"></div>
     </div>
-    <div class="footfont"> <font class="demi">address&nbsp;</font>&nbsp;71 West Suzhou Road - room 401
-      Jing’an District - 200040 Shanghai - China<br>
+    <div class="footfont"> <a style="color:#000000" href="http://map.baidu.com/?newmap=1&shareurl=1&l=19&tn=B_NORMAL_MAP&c=13520836,3642551&cc=sh&s=s%26da_src%3Dpcmappg.searchBox.button%26wd%3D%E8%A5%BF%E8%8B%8F%E5%B7%9E%E8%B7%AF71%E5%8F%B7%26c%3D289%26src%3D0%26wd2%3D%26sug%3D0%26l%3D19%26from%3Dwebmap&sc=0"><font class="demi">address&nbsp;</font>&nbsp;71 West Suzhou Road - room 401
+      Jing’an District - 200040 Shanghai - China<br></a>
       <font
 					class="demi">contact</font> <font class="book">phone</font> +86 (0)
       21 6276 0052 <font class="book">email</font> contact@studiostare.com </div>

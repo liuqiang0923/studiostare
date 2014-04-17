@@ -6,6 +6,7 @@ import java.util.Date;
 public class VideoEntity implements Serializable {
 	private static final long serialVersionUID = 1L; 
 	private int id;
+	private int index;
 	private ClientEntity client;
 	private CategoryEntity category;
 	private String name;
@@ -74,5 +75,11 @@ public class VideoEntity implements Serializable {
 	}
 	public void setCategory(CategoryEntity category) {
 		this.category = category;
+	}
+	public int getIndex() {
+		return index;
+	}
+	public void setIndex(int index) {
+		this.index = index;
 	}
 }

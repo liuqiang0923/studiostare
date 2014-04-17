@@ -70,11 +70,11 @@ var FormWizard = function () {
                         required: true
                     },
                     email: {
-                        required: true,
+//                        required: true,
                         email: true
                     },
                     phone: {
-                        required: true,
+//                        required: true,
                         phone : true
                     },
                     gender: {
