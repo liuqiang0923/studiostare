@@ -1,7 +1,6 @@
 package com.flamingo.studiostare.web.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -17,22 +16,39 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.flamingo.studiostare.entity.NewsEntity;
+import com.flamingo.studiostare.entity.RoleEntity;
+import com.flamingo.studiostare.entity.UserEntity;
 import com.flamingo.studiostare.service.INewsService;
+import com.flamingo.studiostare.service.IUserService;
 
 @Controller
 public class News extends JsonAction {
 	
 	@Autowired
 	private INewsService newsService;
+	@Autowired
+	private IUserService userService;
+	
+	private static RoleEntity role = new RoleEntity();
+	
+	static{
+		role.setId(RoleEntity.ROLETYPE_TWITTER);
+	}
 	
 	@RequestMapping("admin-news-list.html")
 	public ModelAndView newsList() {
 		ModelAndView m = new ModelAndView();
 		NewsEntity news = new NewsEntity();
-		List<NewsEntity> newslist = newsService.findNews(news);
-		if (newslist == null)
-			newslist = new ArrayList<NewsEntity>();
+		List<NewsEntity> newslist = null;
+		List<UserEntity> userList = null;
+		try{
+			newslist = newsService.findNews(news);
+			userList = userService.getUserByType(RoleEntity.ROLETYPE_TWITTER);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 		m.addObject("newslist", newslist);
+		m.addObject("userList", userList);
 		m.setViewName("manage/admin-news-list");
 		return m;
 	}
@@ -81,5 +97,51 @@ public class News extends JsonAction {
 		return null;
 	}
 	
+	@RequestMapping(value = "addTwitter", method = RequestMethod.GET)
+	public ModelAndView addTwitter() {
+		ModelAndView m = new ModelAndView();
+		m.setViewName("manage/admin-news-twitter-edit");
+		return m;
+	}
 	
+	@RequestMapping(value = "editTwitterUser/{userId}", method = RequestMethod.GET)
+	public ModelAndView editTwitterUser(@PathVariable int userId) {
+		ModelAndView m = new ModelAndView();
+		UserEntity userEntity  = null ;
+		try{
+			userEntity = userService.getById(userId);
+		} catch(Exception e){
+			e.printStackTrace();
+		}
+		if(userEntity == null)
+			userEntity = new UserEntity();
+		m.addObject("twitter", userEntity);
+		m.setViewName("manage/admin-news-twitter-edit");
+		return m;
+	}
+	
+	@RequestMapping(value = "deleteTwitter/{twitterId}", method = RequestMethod.GET)
+	public String deleteTwitter(@PathVariable int twitterId, HttpServletResponse response) {
+		String result = "ok";
+		try {
+			userService.delById(twitterId);
+		} catch (Exception e) {
+			result = "error";
+		}
+		output(response, "{\"result\":\"" + result + "\"}");
+		return null;
+	}
+	
+	@RequestMapping(value = "saveTwitter", method = RequestMethod.POST)
+	public String saveTwitter(UserEntity user, 
+			@RequestParam(value="twitterimg", required=false) MultipartFile twitterimg, 
+			HttpSession session) {
+		user.setRole(role);
+		try {
+			userService.save(user,twitterimg);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "redirect:admin-news-list.html";
+	}
 }

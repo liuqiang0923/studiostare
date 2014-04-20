@@ -147,12 +147,14 @@
 				<div class="col-md-12">
 					<!-- BEGIN PAGE TITLE & BREADCRUMB-->
 					<h3 class="page-title">
-					News List
+					News
 					</h3>
 				</div>
 			</div>
 			<!-- END PAGE HEADER-->
 			<!-- BEGIN PAGE CONTENT-->
+			
+			<h4 class="form-section">News manage</h4>
 			<div class="row">
 				<div class="col-md-12">
 					<!-- BEGIN EXAMPLE TABLE PORTLET-->
@@ -206,6 +208,7 @@
 							</tr>
 							</thead>
 							<tbody>
+							<#if newslist??>
 							<#list newslist as news>
 							<tr class="odd gradeX">
 								<td>
@@ -229,6 +232,7 @@
 								<td><a class="delete" href="javascript:;"> Delete </a></td>
 							</tr>
 							</#list>
+							</#if>
 							</tbody>
 							</table>
 						</div>
@@ -236,6 +240,66 @@
 					<!-- END EXAMPLE TABLE PORTLET-->
 				</div>
 			</div>
+			
+			<h4 class="form-section">Twitter account manage</h4>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="portlet box light-grey">
+							<div class="portlet-title">
+								<div class="caption">
+									<i class="fa fa-globe"></i>Twitter account List
+								</div>
+							</div>
+							<div class="portlet-body">
+								<div class="table-toolbar">
+									<div class="btn-group">
+										<button id="managetable_twitter_new" class="btn green"> Add New <i class="fa fa-plus"></i></button>
+									</div>
+								</div>
+								<table class="table table-striped table-bordered table-hover" id="managetable_twitter">
+									<thead>
+										<tr>
+											<th class="table-checkbox">
+												<input type="checkbox" class="group-checkable" data-set="#managetable_twitter .checkboxes"/>
+											</th>
+											<th>
+												 Name
+											</th>
+											<th>
+												 Twitter
+											</th>
+											<th>
+												 Description
+											</th>
+											<th>
+												 Edit
+											</th>
+											<th> 
+												 Delete
+											</th>
+										</tr>
+									</thead>
+									<tbody>
+										<#if userList??>
+										<#list userList as user>
+										<tr class="odd gradeX">
+											<td>
+												<input name="clientId" type="checkbox" class="checkboxes" value=${(user.id)!""} />
+											</td>
+											<td>${(user.name)!""}</td>
+											<td>${(user.twitterUser)!""}</td>
+											<td>${(user.description)!""}</td>
+											<td><a class="edit" href="javascript:;"> Edit </a></td>
+											<td><a class="delete" href="javascript:;"> Delete </a></td>
+										</tr>
+										</#list>
+										</#if>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
 			<!-- END PAGE CONTENT-->
 		</div>
 	</div>

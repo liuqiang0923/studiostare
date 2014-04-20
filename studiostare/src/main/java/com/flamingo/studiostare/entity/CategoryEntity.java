@@ -16,10 +16,14 @@ public class CategoryEntity implements Serializable {
 		this.id = id;
 	}
 	public String getName() {
-		return name.toLowerCase();
+		if(name != null)
+			return name.toLowerCase();
+		return null;
 	}
 	public void setName(String name) {
-		this.name = name.toLowerCase();
+		if(name != null)
+			this.name = name.toLowerCase();
+		this.name = name;
 	}
 	public String getDescription() {
 		return description;

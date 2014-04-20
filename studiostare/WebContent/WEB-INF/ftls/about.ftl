@@ -78,11 +78,17 @@
   <div class="manifesto">
     <dl>
       <dt>MANIFESTO</dt>
-      <dd> 
-      	${(about.manifesto)!""}
-      	<!--
+      <dd>
+      	<!-- 
+      		${(about.manifesto)!""}
       	<font color="#000">PLEASE EXPLORE</font> or you will never evolve into a better you <font color="#000">/ IF YOU DON’T LIKE YOUR JOB, GET A NEW ONE</font> not everyone has a choice, but you probably do <font color="#000">/ LOVE YOUR PROJECT AND IT WILL LOVE YOU BACK</font> and at the end of the day you will create something good <font color="#000">/ MAKE FRIENDS IMPORTANT</font> instead of making important friends <font color="#000">/ YOU DON’T HAVE TO LOVE EVERYONE</font> but you should try <font color="#000">/ DON’T BE CYNICAL</font> it’s a waste of everyone’s time <font color="#000">/ COME AS YOU ARE</font> because that’s the way we like you <font color="#000">/ LISTEN</font> or you might miss the point <font color="#000">/ GOOD ENOUGH</font> IS NOT GOOD ENOUGH in fact it’s boring and boring is not good — it’s bad <font color="#000">/ YOUR THOUGHTS HERE</font> because you have something to say and you should share it.
       	--> 
+      	<#if leadingList??>
+      	<#list leadingList as leading>
+      		<font color="#000">${(leading.title)!""}</font>
+      		${(leading.description)!""}
+      	</#list>
+      	</#if>
       </dd>
     </dl>
   </div>

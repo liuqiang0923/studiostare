@@ -3,7 +3,7 @@
 <!-- BEGIN HEAD -->
 <head>
 <meta charset="utf-8" />
-<title>Studio Stare | edit who we are</title>
+<title>Studio Stare | edit twitter account</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 <meta content="" name="description" />
@@ -146,7 +146,7 @@
 				<div class="row">
 					<div class="col-md-12">
 						<!-- BEGIN PAGE TITLE & BREADCRUMB-->
-						<h3 class="page-title">Edit Who We Are Wizard</h3>
+						<h3 class="page-title">Edit Twitter Account Wizard</h3>
 						<!-- END PAGE TITLE & BREADCRUMB-->
 					</div>
 				</div>
@@ -157,20 +157,20 @@
 						<div class="portlet box blue" id="form_wizard_1">
 							<div class="portlet-title">
 								<div class="caption">
-									<i class="fa fa-reorder"></i> Edit Who We Are Wizard - <span
+									<i class="fa fa-reorder"></i> Edit Twitter Account Wizard - <span
 										class="step-title"> Step 1 of 2 </span>
 								</div>
 							</div>
 							<div class="portlet-body form">
-								<form action="/studiostare/manage/saveWho" class="form-horizontal" id="submit_form" method="post" enctype="multipart/form-data">
-									<input type="hidden" name="id" value="${(who.id)!"0"}"></input>
+								<form action="/studiostare/manage/saveTwitter" class="form-horizontal" id="submit_form" method="post" enctype="multipart/form-data">
+									<input type="hidden" name="id" value="${(twitter.id)!"0"}"></input>
 									<div class="form-wizard">
 										<!-- <div class="form-body"> -->
 										<div class="form-body">
 											<ul class="nav nav-pills nav-justified steps">
 												<li><a href="#tab1" data-toggle="tab" class="step">
 														<span class="number"> 1 </span> <span class="desc">
-															<i class="fa fa-check"></i> Edit about us
+															<i class="fa fa-check"></i> Edit twitter account
 													</span>
 												</a></li>
 												<li><a href="#tab2" data-toggle="tab" class="step">
@@ -193,67 +193,37 @@
 													Your form validation is successful!
 												</div>
 												<div class="tab-pane active" id="tab1">
-													<h3 class="block">Who's info</h3>
-													<div class="form-group">
-														<label class="control-label col-md-3"> 
-															Photo 
-															<span class="required"> * </span>
-														</label>
-														<div class="fileinput fileinput-new col-md-4" data-provides="fileinput">
-															<div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 100%;" id="whoimgdiv">
-																<#if (who.photoPath)?? >
-																	<img src='${(who.photoPath)!""}'></img>
-																</#if>
-															</div>
-															<input type="file" name="whoimg"/>
-															<span class="help-block"> Upload photo. </span>	
-														</div>
-													</div>
+													<h3 class="block">Twitter account info</h3>
 													<div class="form-group">
 														<label class="control-label col-md-3">Name 
 															<span class="required"> * </span>
 														</label>
 														<div class="col-md-4">
-															<input type="text" class="form-control" name="name" value="${(who.name)!""}" />
+															<input type="text" class="form-control" name="name" value="${(twitter.name)!""}" />
 															<span class="help-block"> Input name. </span>
 														</div>
 													</div>
 													<div class="form-group">
-														<label class="control-label col-md-3">Position 
+														<label class="control-label col-md-3">Twitter account 
 															<span class="required"> * </span>
 														</label>
 														<div class="col-md-4">
-															<input type="text" class="form-control" name="position" value="${(who.position)!""}" />
-															<span class="help-block"> Input position. </span>
-														</div>
-													</div>
-													<div class="form-group">
-														<label class="control-label col-md-3">Email 
-															<span class="required"> * </span>
-														</label>
-														<div class="col-md-4">
-															<input type="text" class="form-control" name="email" value="${(who.email)!""}" />
-															<span class="help-block"> Input email. </span>
+															<input type="text" class="form-control" name="twitterUser" value="${(twitter.twitterUser)!""}" />
+															<span class="help-block"> Input twitter account. </span>
 														</div>
 													</div>
 													<div class="form-group">
 														<label class="control-label col-md-3">Description 
 														</label>
 														<div class="col-md-4">
-															<input type="text" class="form-control" name="description" value="${(who.description)!""}" />
+															<input type="text" class="form-control" name="description" value="${(twitter.description)!""}" />
 															<span class="help-block"> Input description. </span>
 														</div>
 													</div>
 												</div>
 												<div class="tab-pane" id="tab2">
 													<h3 class="block">Confirm</h3>
-													<h4 class="form-section">Who's info</h4>
-													<div class="form-group">
-														<label class="control-label col-md-3">Photo:</label>
-														<div class="col-md-4">
-															<div class="form-control-static" data-display="whoimgdiv"></div>
-														</div>
-													</div>
+													<h4 class="form-section">Twitter's info</h4>
 													<div class="form-group">
 														<label class="control-label col-md-3">Name:</label>
 														<div class="col-md-4">
@@ -262,16 +232,9 @@
 														</div>
 													</div>
 													<div class="form-group">
-														<label class="control-label col-md-3">Position:</label>
+														<label class="control-label col-md-3">twitterUser:</label>
 														<div class="col-md-4">
-															<p class="form-control-static" data-display="position">
-															</p>
-														</div>
-													</div>
-													<div class="form-group">
-														<label class="control-label col-md-3">Email:</label>
-														<div class="col-md-4">
-															<p class="form-control-static" data-display="email">
+															<p class="form-control-static" data-display="twitterUser">
 															</p>
 														</div>
 													</div>
