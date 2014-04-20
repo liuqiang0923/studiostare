@@ -146,11 +146,11 @@ var FormWizard = function () {
                     	required: true,
                     },
                     videomp4: {
-                    	videomp4exist: true,
+//                    	videomp4exist: true,
                     	accept: "mp4",
                     },
                     videowebm: {
-                    	videowebmexist: true,
+//                    	videowebmexist: true,
                     	accept: "webm",
                     },
                     videoogg: {
@@ -223,11 +223,40 @@ var FormWizard = function () {
                 submitHandler: function (form) {
                     success.show();
                     error.hide();
-                    form.submit();
+                    // form.submit();
+                    var fd = new FormData(form);
+                    var xhr = new XMLHttpRequest();
+                    xhr.upload.addEventListener("progress", uploadProgress, false);
+                    xhr.addEventListener("load", uploadComplete, false);
+                    xhr.addEventListener("error", uploadFailed, false);
+                    xhr.addEventListener("abort", uploadCanceled, false);
+                    xhr.open("POST", "/studiostare/manage/saveVideo");
+                    xhr.send(fd);
                     //add here some ajax code to submit your form or just call form.submit() if you want to submit the form without ajax
                 }
 
             });
+            
+            function uploadProgress(evt) {
+				if (evt.lengthComputable) {
+					var percentComplete = Math.round(evt.loaded * 100 / evt.total).toString();
+					$('#uploadbar').find('.progress-bar').css({
+                        width: percentComplete + '%'
+                    });
+				} else {
+					document.getElementById('progressNumber').innerHTML = 'unable to compute';
+				}
+			}
+			function uploadComplete(evt) {
+				alert("add video succeed.");
+				window.location.href="/studiostare/manage/admin-video-list.html";
+			}
+			function uploadFailed(evt) {
+				alert("There was an error attempting to upload the file.");
+			}
+			function uploadCanceled(evt) {
+				alert("The upload has been canceled by the user or the browser dropped the connection.");
+			}
 
             var displayConfirm = function() {
                 $('#tab4 .form-control-static', form).each(function(){
@@ -324,6 +353,9 @@ var FormWizard = function () {
                     var $percent = (current / total) * 100;
                     $('#form_wizard_1').find('.progress-bar').css({
                         width: $percent + '%'
+                    });
+                    $('#uploadbar').find('.progress-bar').css({
+                        width: '0%'
                     });
                 }
             });

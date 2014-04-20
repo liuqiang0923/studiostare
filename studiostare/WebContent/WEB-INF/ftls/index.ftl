@@ -1,14 +1,9 @@
-<html xmlns:wb="http://open.weibo.com/wb">
+<!doctype html>
 <head>
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <title>Studio Stare</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
-<style>
-a:link{text-decoration:none;}
-a:visited{text-decoration:none;}
-a:hover{text-decoration:underline;} 
-</style>
 <link rel="stylesheet" href="css/lrtk.css">
 <link href="video-js.css" rel="stylesheet" type="text/css">
 <!-- ICONS -->
@@ -53,10 +48,20 @@ $(function(){
         <li> <img src="img/temp/img08.jpg" /><p>Good enough <br>
           is not good enough</p>  </li>
         <li> <img src="img/temp/img10.jpg" /><p>Your thoughts HERE</p></li> -->
+        <!--
         <ul class="slides">
 			<li id="randomimg" />
 		</ul>
-      <span class="arrow" onclick="function(){$('.flexslider').slideUp('slow');}"></span>
+		-->
+		<ul class="slides">
+			<li> 
+				<img src=${(leading.picPath)!"img/temp/img04.jpg"} /> 
+				<div class="infos">
+					<p>${(leading.title)!"You don’t have to love everyone"}</p>
+				</div>
+	        </li>
+        </ul>
+      	<span class="arrow" onclick="function(){$('.flexslider').slideUp('slow');}"></span>
     </div>
 <header id="main_header">
 	<div class="center">
@@ -78,15 +83,19 @@ $(function(){
 	<#list videoList as video>
 		<div id='videoplaybox-${(video.id)!""}' class="videoplaybigbox" style="display: none">
 			<div class="videoplaybox">
-				<video id='video-${(video.id)!""}' class="video-js vjs-default-skin" controls="controls" preload="preload" poster='${(video.imgPath)!""}' data-setup="{}">
-					<source src='${(video.videoPathMp4)!""}' type='video/mp4' />
-					<source src='${(video.videoPathWebm)!""}' type='video/webm' />
-					<source src='${(video.videoPathOgg)!""}' type='video/ogg' />
-					<track kind="captions" src="demo.captions.vtt" srclang="en" label="English"></track>
-					Tracks need an ending tag thanks to IE9
-					<track kind="subtitles" src="demo.captions.vtt" srclang="en" label="English"></track>
-					Tracks need an ending tag thanks to IE9
-				</video>
+				<#if (video.videoPathMp4) ?? && video.videoPathMp4 != "" && (video.videoPathWebm) ?? && video.videoPathWebm != "">
+					<video id='video-${(video.id)!""}' class="video-js vjs-default-skin" controls="controls" preload="preload" poster='${(video.imgPath)!""}' data-setup="{}">
+						<source src='${(video.videoPathMp4)!""}' type='video/mp4' />
+						<source src='${(video.videoPathWebm)!""}' type='video/webm' />
+						<source src='${(video.videoPathOgg)!""}' type='video/ogg' />
+						<track kind="captions" src="demo.captions.vtt" srclang="en" label="English"></track>
+						Tracks need an ending tag thanks to IE9
+						<track kind="subtitles" src="demo.captions.vtt" srclang="en" label="English"></track>
+						Tracks need an ending tag thanks to IE9
+					</video>
+				<#else>
+					<img src='${(video.imgPath)!""}' style="width:100%;"/>
+				</#if>
 				<div class="sharebigbox">
 					<div class="sharebox">
 						<div class="shareicon" style="display: none;">
@@ -113,8 +122,10 @@ $(function(){
 				<div class="infos_left">
 					<h1>${(video.name)!""}</h1>
 					<font> / </font>
+					<!--
 					<h2>${(video.category.name)!""}</h2>
 					<font> / </font>
+					-->
 					<h2>${(video.client.name)!""}</h2>
 				</div>
 				<div class="infos_right">
@@ -186,23 +197,18 @@ $(function(){
     <div class="fllowus">
       <h1>follow us</h1>
       <div class="fllowuslink">
-      	<!--
-      	<a href="javascript:(function(){window.open('http://www.facebook.com/plugins/follow.php?href=https://www.facebook.com/Fzuck&width&height=80&colorscheme=light&layout=standard&show_faces=true','_blank','width=450,height=200');})()">
-	      <img src="img/facebook.jpg">
-	    </a>
-	    -->
-	    <a target="_blank" href="https://www.facebook.com/Fzuck">
-	    	<img src="img/facebook.jpg">
-	    </a>
-	    <a target="_blank" href="http://vimeo.com/88907972">
-	      <img src="img/vimeo.jpg">
-	    </a>
-	      <a target="_blank" href="https://twitter.com/KimKardashian">
-	      	<img src="img/twitter.jpg">
-	      </a>
-	      <a target="_blank" href="http://www.linkedin.com/profile/view?id=337308570">
-	      <img src="img/linkedin.jpg">
-	      </a>
+      <a target="_blank" href="https://www.facebook.com/studiostare">
+			    	<img src="img/facebook.jpg">
+			    </a>
+			    <a target="_blank" href="https://vimeo.com/studiostare">
+			    	<img src="img/vimeo.jpg">
+			    </a>
+			    <a target="_blank" href="https://twitter.com/StudioStare">
+			    	<img src="img/twitter.jpg">
+			    </a>
+			    <a target="_blank" href="http://www.linkedin.com/company/2551588">
+			    	<img src="img/linkedin.jpg">
+			    </a>
       </div>
     </div>
   </div>

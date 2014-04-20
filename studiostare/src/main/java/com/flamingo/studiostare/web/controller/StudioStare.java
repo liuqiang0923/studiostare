@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.flamingo.studiostare.entity.AboutEntity;
 import com.flamingo.studiostare.entity.CategoryEntity;
 import com.flamingo.studiostare.entity.ClientEntity;
+import com.flamingo.studiostare.entity.LeadingEntity;
 import com.flamingo.studiostare.entity.NewsEntity;
 import com.flamingo.studiostare.entity.RoleEntity;
 import com.flamingo.studiostare.entity.UserEntity;
@@ -19,6 +20,7 @@ import com.flamingo.studiostare.entity.VideoEntity;
 import com.flamingo.studiostare.service.IAboutService;
 import com.flamingo.studiostare.service.ICategoryService;
 import com.flamingo.studiostare.service.IClientService;
+import com.flamingo.studiostare.service.ILeadingService;
 import com.flamingo.studiostare.service.INewsService;
 import com.flamingo.studiostare.service.IUserService;
 import com.flamingo.studiostare.service.IVideoService;
@@ -38,16 +40,21 @@ public class StudioStare {
 	private IUserService userService;
 	@Autowired
 	private INewsService newsService;
+	@Autowired
+	private ILeadingService leadingService;
 	
 	@RequestMapping(value="index.html")
 	public ModelAndView index() {
 		ModelAndView m = new ModelAndView();
 		List<VideoEntity> videoList = null;
+		LeadingEntity leadingEntity = null;
 		try{
 			videoList = videoService.getAll();
+			leadingEntity = leadingService.getOneByRandom();
 		}catch(Exception e){
 			e.printStackTrace();
 		}
+		m.addObject("leading", leadingEntity);
 		m.addObject("videoList", videoList);
 		m.setViewName("index");
 		return m;

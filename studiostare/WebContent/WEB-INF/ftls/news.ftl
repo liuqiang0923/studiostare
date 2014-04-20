@@ -6,11 +6,6 @@
 <title>Studio Stare</title>
 <meta name="description" content="" />
 <link rel="stylesheet" type="text/css" href="css/style.css">
-<style>
-a:link{text-decoration:none;}
-a:visited{text-decoration:none;}
-a:hover{text-decoration:underline;} 
-</style>
 <script src="js/libs/html5shiv.js"></script>
 <script src="js/jquery.min.js"></script>
 <!-- video -->
@@ -87,7 +82,7 @@ a:hover{text-decoration:underline;}
 	      <#if (news.twitterId)?? && (news.twitterId) != 0>
 	      	<div class="imgholder">
 		      <img src="img/twitter.jpg" class="twitter">
-		      <div class="date01">${(news.updateTime)?string("  dd MMMM yyyy")}</div>
+		      <div class="date01">${(news.updateTime)?string("dd MMMM yyyy")}</div>
 		    </div>
 	      <#else>
 	      	<div class="date01">${(news.updateTime)?string("dd MMMM yyyy")}</div>
@@ -121,16 +116,16 @@ a:hover{text-decoration:underline;}
     <div class="fllowus">
       <h1>follow us</h1>
        <div class="fllowuslink">
-      				<a target="_blank" href="https://www.facebook.com/Fzuck">
+      			<a target="_blank" href="https://www.facebook.com/studiostare">
 			    	<img src="img/facebook.jpg">
 			    </a>
-			    <a target="_blank" href="http://vimeo.com/88907972">
+			    <a target="_blank" href="https://vimeo.com/studiostare">
 			    	<img src="img/vimeo.jpg">
 			    </a>
-			    <a target="_blank" href="https://twitter.com/KimKardashian">
+			    <a target="_blank" href="https://twitter.com/StudioStare">
 			    	<img src="img/twitter.jpg">
 			    </a>
-			    <a target="_blank" href="http://www.linkedin.com/profile/view?id=337308570">
+			    <a target="_blank" href="http://www.linkedin.com/company/2551588">
 			    	<img src="img/linkedin.jpg">
 			    </a>
       </div>

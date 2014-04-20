@@ -65,6 +65,7 @@
 		<if test="userId != 0">
 			and user_id = #{userId} 
 		</if>
+		order by update_time desc
 	</select>
 	
 	<select id="getMaxTwitterId" resultType="java.lang.Long">

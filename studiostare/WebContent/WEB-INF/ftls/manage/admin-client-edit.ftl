@@ -103,6 +103,14 @@
 							</span>
 						</a>
 					</li>
+					<li class="last ">
+						<a href="/studiostare/manage/admin-leading-list.html" >
+							<i class="fa fa-th"></i>
+							<span class="title">
+								Leading page
+							</span>
+						</a>
+					</li>
 				</ul>
 				<!-- END SIDEBAR MENU -->
 			</div>

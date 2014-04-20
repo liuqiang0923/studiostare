@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 这里的namespace名字必须为执行该sql的dao地址 -->
+<mapper namespace="com.flamingo.studiostare.dao.ILeadingDao">
+
+	<resultMap type="LeadingEntity" id="leadingResultMap">
+		<id property="id" column="id" />
+		<result property="picPath" column="picPath" />
+		<result property="title" column="title" />
+		<result property="description" column="description" />
+		<result property="updateTime" column="update_time" javaType="Date" />
+	</resultMap>
+
+	<select id="selectLeadingById" parameterType="int" resultType="LeadingEntity" resultMap="leadingResultMap">
+		select * from `leading` where id = #{id}
+	</select>
+	
+	<insert id="insertLeading" parameterType="LeadingEntity">
+		insert into `leading` (picPath, title, description)
+		values (#{picPath}, #{title}, #{description})
+	</insert>
+	
+	<update id="updateLeading" parameterType="LeadingEntity">
+		update `leading` set
+			picPath = #{picPath},
+			title = #{title}, 
+			description = #{description},
+			update_time = #{updateTime}
+		where id = #{id}
+	</update>
+	
+	<delete id="deleteLeadingById" parameterType="int">
+		delete from `leading` where id = #{id}
+	</delete>
+	
+	<select id="selectLeading" parameterType="LeadingEntity" resultType="LeadingEntity" resultMap="leadingResultMap">
+		select * from `leading` where 1 = 1 
+		<if test="title != null and title != ''">
+			and title like '%${title}%' 
+		</if>
+		<if test="description != null and description != ''">
+			and description like '%${description}%' 
+		</if>
+	</select>
+	
+	<select id="getAllNum" parameterType="LeadingEntity" resultType="int">
+		select count(*) from `leading` 
+	</select>
+	
+	<delete id="deleteLeading" parameterType="LeadingEntity">
+		delete from `leading` where 1 = 1
+		<if test="title != null and title != ''">
+			and title like '%${title}%' 
+		</if>
+		<if test="description != null and description != ''">
+			and description like '%${description}%' 
+		</if>
+	</delete>
+
+</mapper>

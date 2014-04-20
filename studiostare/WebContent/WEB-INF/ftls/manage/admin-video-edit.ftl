@@ -105,6 +105,14 @@
 							</span>
 						</a>
 					</li>
+					<li class="last ">
+						<a href="/studiostare/manage/admin-leading-list.html" >
+							<i class="fa fa-th"></i>
+							<span class="title">
+								Leading page
+							</span>
+						</a>
+					</li>
 				</ul>
 				<!-- END SIDEBAR MENU -->
 			</div>
@@ -294,6 +302,9 @@
 															<span class="required"> * </span>
 														</label>
 														<div class="fileinput fileinput-new col-md-4" data-provides="fileinput">
+															<!--
+																<div class="fileinput-preview thumbnail" style="width: 100%;" data-trigger="fileinput" id="videoimgdiv">
+															-->
 															<div class="fileinput-preview thumbnail" style="width: 100%;" data-trigger="fileinput" id="videoimgdiv">
 																<#if (video.imgPath) ??>
 																	<img src='${(video.imgPath)!""}'></img>
@@ -356,8 +367,8 @@
 															Video 
 															<span class="required"> * </span>
 														</label>
-														<div class="col-md-4" data-provides="fileinput">
-															<div data-trigger="fileinput" style="width: 100%;" id="videomp4div">
+														<div class="fileinput fileinput-new col-md-4" data-provides="fileinput">
+															<div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 100%;" id="videomp4div">
 																<#if (video.videoPathMp4) ??>
 																	<video controls="controls" preload="preload" src='${(video.videoPathMp4)!""}'></video>
 																</#if>
@@ -372,8 +383,8 @@
 															Video 
 															<span class="required"> * </span>
 														</label>
-														<div class="col-md-4" data-provides="fileinput">
-															<div data-trigger="fileinput" style="width: 100%;" id="videowebmdiv">
+														<div class="fileinput fileinput-new col-md-4" data-provides="fileinput">
+															<div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 100%;" id="videowebmdiv">
 																<#if (video.videoPathWebm) ??>
 																	<video style="width:300px;height:150px;" preload="preload" controls="controls" src='${(video.videoPathWebm)!""}'></video>
 																</#if>
@@ -388,8 +399,8 @@
 															Video 
 															<span class="required"> * </span>
 														</label>
-														<div class="col-md-4" data-provides="fileinput">
-															<div data-trigger="fileinput" style="width: 100%;" id="videooggdiv">
+														<div class="fileinput fileinput-new col-md-4" data-provides="fileinput">
+															<div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 100%;" id="videooggdiv">
 																<#if (video.videoPathOgg) ??>
 																	<video style="width:300px;height:150px;" preload="preload" controls="controls" src='${(video.videoPathOgg)!""}'></video>
 																</#if>
@@ -523,6 +534,10 @@
 															<p class="form-control-static" data-display="videooggdiv">
 															</p>
 														</div>
+													</div>
+													<h4 class="form-section">Progress</h4>
+													<div id="uploadbar" role="progressbar" class="progress progress-striped">
+														<div id="uploadProgress" class="progress-bar progress-bar-success"></div>
 													</div>
 												</div>
 											</div>

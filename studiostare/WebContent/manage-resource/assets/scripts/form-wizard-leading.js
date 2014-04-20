@@ -28,110 +28,35 @@ var FormWizard = function () {
             var success = $('.alert-success', form);
            
            	// add validate of office img.
-						jQuery.validator.addMethod("whoimgexist", function(value, element, param) {
-							if (document.getElementById("whoimgdiv").getElementsByTagName("img").length == 0)
-								return false;
-						 	return true;
-						},"This field is required.");
-						
-						jQuery.validator.addMethod("officeimgexist", function(value, element, param) {
-							if (document.getElementById("officeimgdiv").getElementsByTagName("img").length == 0)
-								return false;
-						 	return true;
-						},"This field is required.");
-						
-//						function checkImg(){
-//							if (document.getElementById("whoimgdiv").getElementsByTagName("img").length == 0)
-//								return false;
-//						 	return true;
-//						}
-						
+            jQuery.validator.addMethod("leadimgexist", function(value, element, param) {
+            	if (document.getElementById("leadingimgdiv").getElementsByTagName("img").length == 0)
+            		return false;
+            	return true;
+            },"This field is required.");
+            
             form.validate({
                 doNotHideMessage: true, //this option enables to show the error/success messages on tab switch.
                 errorElement: 'span', //default input error message container
                 errorClass: 'help-block', // default input error message class
                 focusInvalid: false, // do not focus the last invalid input
                 rules: {
-                    //account
-                	name: {
+                    title: {
                         minlength: 5,
                         required: true
                     },
-                    password: {
-                        minlength: 5,
-                        required: true
-                    },
-                    rpassword: {
-                        minlength: 5,
-                        required: true,
-                        equalTo: "#submit_form_password"
-                    },
-                    //profile
-                    fullname: {
-                        required: true
-                    },
-                    email: {
-                        required: true,
-                        email: true
-                    },
-                    phone: {
-                        required: true
-                    },
-                    gender: {
-                        required: true
-                    },
-                    address: {
-                        required: true
-                    },
-                    city: {
-                        required: true
-                    },
-                    country: {
-                        required: true
-                    },
-                    //payment
-                    card_name: {
-                        required: true
-                    },
-                    card_number: {
-                        minlength: 16,
-                        maxlength: 16,
-                        required: true
-                    },
-                    card_cvc: {
-                        digits: true,
-                        required: true,
-                        minlength: 3,
-                        maxlength: 4
-                    },
-                    card_expiry_date: {
+                    description: {
+                    	minlength: 10,
+                    	maxlength: 100,
                         required: true
                     },
                     'payment[]': {
                         required: true,
                         minlength: 1
                     },
-                    whoimg: {
-                    	whoimgexist: true,
+                    leadingimg: {
+                    	leadimgexist: true,
                     	accept: "png|jpg|jpeg",
                     },
-                    officeimg: {
-                    	officeimgexist: true,
-                    	accept: "png|jpg|jpeg",
-                    },
-                    aboutUsInfo: {
-                    	required: true,
-                   		minlength: 10,
-                   		maxlength: 1024,
-                    },
-                    manifesto: {
-                   		required: true,
-                   		minlength: 10,
-                   		maxlength: 1024,
-                    },
-                    position: {
-                    	required: true,
-                    }
                 },
 
                 messages: { // custom messages for radio buttons and checkboxes
@@ -190,10 +115,8 @@ var FormWizard = function () {
 
             var displayConfirm = function() {
                 $('#tab2 .form-control-static', form).each(function(){
-                	if ($(this).attr("data-display") == "whoimgdiv"){
-                		$(this).html($("#whoimgdiv"));
-                	} else if ($(this).attr("data-display") == "officeimgdiv"){
-                		$(this).html($("#officeimgdiv"));
+                	if ($(this).attr("data-display") == "leadingimgdiv"){
+                		$(this).html($("#leadingimgdiv"));
                 	} else{
 	                    var input = $('[name="'+$(this).attr("data-display")+'"]', form);
 	                    if (input.is(":radio")) {
@@ -285,10 +208,9 @@ var FormWizard = function () {
 
             $('#form_wizard_1').find('.button-previous').hide();
             $('#form_wizard_1 .button-submit').click(function () {
-//                alert('Finished! Hope you like it :)');
+                // alert('Finished! Hope you like it :)');
             	form.submit();
             }).hide();
-            
         }
 
     };

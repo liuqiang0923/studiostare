@@ -3,7 +3,7 @@
 <!-- BEGIN HEAD -->
 <head>
 <meta charset="utf-8"/>
-<title>Studio Stare | Client List</title>
+<title>Studio Stare | List Leading Page</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta content="" name="description"/>
@@ -73,7 +73,7 @@
 						</a>
 					</li>
 					<li class="last ">
-						<a style="background:#000000;" href="/studiostare/manage/admin-client-list.html"> 
+						<a href="/studiostare/manage/admin-client-list.html"> 
 							<i class="fa fa-user"></i> 
 							<span class="title"> 
 								Client 
@@ -105,7 +105,7 @@
 						</a>
 					</li>
 					<li class="last ">
-						<a href="/studiostare/manage/admin-leading-list.html" >
+						<a style="background:#000000;" href="/studiostare/manage/admin-leading-list.html" >
 							<i class="fa fa-bookmark-o"></i>
 							<span class="title">
 								Leading page
@@ -147,7 +147,7 @@
 				<div class="col-md-12">
 					<!-- BEGIN PAGE TITLE & BREADCRUMB-->
 					<h3 class="page-title">
-					Client List
+					Leading Page List
 					</h3>
 				</div>
 			</div>
@@ -159,32 +159,28 @@
 					<div class="portlet box light-grey">
 						<div class="portlet-title">
 							<div class="caption">
-								<i class="fa fa-globe"></i>Client List
+								<i class="fa fa-globe"></i>Leading Page List
 							</div>
 						</div>
 						<div class="portlet-body">
 							<div class="table-toolbar">
 								<div class="btn-group">
-									<!-- <button id="managetable_client_new" class="btn green" onclick="location='admin-client-edit.html'"> -->
-									<button id="managetable_client_new" class="btn green">
+									<button id="managetable_leading_new" class="btn green">
 									Add New <i class="fa fa-plus"></i>
 									</button>
 								</div>
 							</div>
-							<table class="table table-striped table-bordered table-hover" id="managetable_client">
+							<table class="table table-striped table-bordered table-hover" id="managetable_leading">
 							<thead>
 							<tr>
 								<th class="table-checkbox">
-									<input type="checkbox" class="group-checkable" data-set="#managetable_client .checkboxes"/>
+									<input type="checkbox" class="group-checkable" data-set="#managetable_leading .checkboxes"/>
 								</th>
 								<th>
-									 Name
+									 Picture
 								</th>
 								<th>
-									 Phone
-								</th>
-								<th>
-									 Email
+									 Title
 								</th>
 								<th>
 									 Description
@@ -198,16 +194,15 @@
 							</tr>
 							</thead>
 							<tbody>
-							<#if clientList??>
-							<#list clientList as client>
+							<#if leadingList??>
+							<#list leadingList as leading>
 							<tr class="odd gradeX">
 								<td>
-									<input name="clientId" type="checkbox" class="checkboxes" value=${(client.id)!""} />
+									<input name="leadingId" type="checkbox" class="checkboxes" value=${(leading.id)!""} />
 								</td>
-								<td>${(client.name)!""}</td>
-								<td>${(client.phone)!""}</td>
-								<td><a href="mailto:${(client.email)!""}">${(client.email)!""}</a></td>
-								<td>${(client.description)!""}</td>
+								<td><img style="width:300px;" src='${(leading.picPath)!""}'></td>
+								<td>${(leading.title)!""}</td>
+								<td>${(leading.description)!""}</td>
 								<td><a class="edit" href="javascript:;"> Edit </a></td>
 								<td><a class="delete" href="javascript:;"> Delete </a></td>
 							</tr>
@@ -254,7 +249,7 @@
 <!-- END PAGE LEVEL PLUGINS -->
 <!-- BEGIN PAGE LEVEL SCRIPTS -->
 <script src="/studiostare/manage-resource/assets/scripts/core/app.js" ></script>
-<script src="/studiostare/manage-resource/assets/scripts/table-managed-client.js" ></script>
+<script src="/studiostare/manage-resource/assets/scripts/table-managed-leading.js" ></script>
 <script>
 jQuery(document).ready(function() {       
    App.init();

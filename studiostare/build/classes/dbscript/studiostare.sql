@@ -92,6 +92,7 @@ DROP TABLE IF EXISTS `studiostare`.`video` ;
 
 CREATE TABLE IF NOT EXISTS `studiostare`.`video` (
   `id` INT NOT NULL AUTO_INCREMENT,
+  `index` INT NOT NULL COMMENT '视频显示排序',
   `client_id` INT NOT NULL COMMENT '所属客户',
   `category_id` INT NOT NULL COMMENT '所属分类',
   `name` VARCHAR(255) NOT NULL COMMENT '名称',
@@ -134,7 +135,7 @@ DROP TABLE IF EXISTS `studiostare`.`news` ;
 
 CREATE TABLE IF NOT EXISTS `studiostare`.`news` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `title` VARCHAR(255) NOT NULL COMMENT '新闻标题	',
+  `title` VARCHAR(255) NOT NULL COMMENT '新闻标题',
   `content` VARCHAR(1024) NOT NULL COMMENT '新闻内容',
   `photo_path` VARCHAR(1024) NULL COMMENT '新闻照片地址，非必填',
   `video_path_mp4` VARCHAR(1024) NULL COMMENT '新闻MP4视频地址，非必填',
@@ -149,6 +150,20 @@ CREATE TABLE IF NOT EXISTS `studiostare`.`news` (
     REFERENCES `studiostare`.`user` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
+    
+    
+-- -----------------------------------------------------
+-- Table `studiostare`.`news`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `studiostare`.`leading` ;
+
+CREATE TABLE IF NOT EXISTS `studiostare`.`leading` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `picPath` VARCHAR(1024) NOT NULL COMMENT '图片地址',,
+  `title` VARCHAR(1024) NOT NULL COMMENT '标题',
+  `description` VARCHAR(1024) NOT NULL COMMENT '详细内容',
+  `updateTime` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '更新时间',
+  PRIMARY KEY (`id`));
 
 INSERT INTO `studiostare`.`role` (`id`, `name`, `description`) VALUES ('1', 'admin', 'admin');
 INSERT INTO `studiostare`.`role` (`id`, `name`, `description`) VALUES ('2', 'twitterUser', 'twitterUser');

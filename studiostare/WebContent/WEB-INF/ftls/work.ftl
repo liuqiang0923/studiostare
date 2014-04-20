@@ -4,11 +4,6 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <title>Studio Stare</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
-<style>
-a:link{text-decoration:none;}
-a:visited{text-decoration:none;}
-a:hover{text-decoration:underline;} 
-</style>
 <link rel="stylesheet" href="css/lrtk.css">
 <link href="video-js.css" rel="stylesheet" type="text/css">
 <!-- ICONS -->
@@ -58,15 +53,19 @@ $(function(){
 	<#list videoList as video>
 		<div id='videoplaybox-${(video.id)!""}' class="videoplaybigbox" style="display: none">
 			<div class="videoplaybox">
-				<video id='video-${(video.id)!""}' class="video-js vjs-default-skin" controls preload="auto" poster='${(video.imgPath)!""}' data-setup="{}">
-					<source src='${(video.videoPathMp4)!""}' type='video/mp4' />
-					<source src='${(video.videoPathWebm)!""}' type='video/webm' />
-					<source src='${(video.videoPathOgg)!""}' type='video/ogg' />
-					<track kind="captions" src="demo.captions.vtt" srclang="en" label="English"></track>
-					Tracks need an ending tag thanks to IE9
-					<track kind="subtitles" src="demo.captions.vtt" srclang="en" label="English"></track>
-					Tracks need an ending tag thanks to IE9
-				</video>
+				<#if (video.videoPathMp4) ?? && video.videoPathMp4 != "" && (video.videoPathWebm) ?? && video.videoPathWebm != "">
+					<video id='video-${(video.id)!""}' class="video-js vjs-default-skin" controls="controls" preload="preload" poster='${(video.imgPath)!""}' data-setup="{}">
+						<source src='${(video.videoPathMp4)!""}' type='video/mp4' />
+						<source src='${(video.videoPathWebm)!""}' type='video/webm' />
+						<source src='${(video.videoPathOgg)!""}' type='video/ogg' />
+						<track kind="captions" src="demo.captions.vtt" srclang="en" label="English"></track>
+						Tracks need an ending tag thanks to IE9
+						<track kind="subtitles" src="demo.captions.vtt" srclang="en" label="English"></track>
+						Tracks need an ending tag thanks to IE9
+					</video>
+				<#else>
+					<img src='${(video.imgPath)!""}' style="width:100%;"/>
+				</#if>
 				<div class="sharebigbox">
 					<div class="sharebox">
 						<div class="shareicon" style="display: none;">
@@ -93,8 +92,10 @@ $(function(){
 				<div class="infos_left">
 					<h1>${(video.name)!""}</h1>
 					<font> / </font>
+					<!--
 					<h2>${(video.category.name)!""}</h2>
 					<font> / </font>
+					-->
 					<h2>${(video.client.name)!""}</h2>
 				</div>
 				<div class="infos_right">
@@ -170,16 +171,16 @@ $(function(){
 		<div class="fllowus">
 			<h1>follow us</h1>
 			<div class="fllowuslink">
-				<a target="_blank" href="https://www.facebook.com/Fzuck">
+				<a target="_blank" href="https://www.facebook.com/studiostare">
 			    	<img src="img/facebook.jpg">
 			    </a>
-			    <a target="_blank" href="http://vimeo.com/88907972">
+			    <a target="_blank" href="https://vimeo.com/studiostare">
 			    	<img src="img/vimeo.jpg">
 			    </a>
-			    <a target="_blank" href="https://twitter.com/KimKardashian">
+			    <a target="_blank" href="https://twitter.com/StudioStare">
 			    	<img src="img/twitter.jpg">
 			    </a>
-			    <a target="_blank" href="http://www.linkedin.com/profile/view?id=337308570">
+			    <a target="_blank" href="http://www.linkedin.com/company/2551588">
 			    	<img src="img/linkedin.jpg">
 			    </a>
 			</div>

@@ -3,12 +3,11 @@ package com.flamingo.studiostare.entity;
 import java.io.Serializable;
 import java.util.Date;
 
-public class ClientEntity implements Serializable {
-	private static final long serialVersionUID = 1L; 
+public class LeadingEntity implements Serializable {
+	private static final long serialVersionUID = 1L;
 	private int id;
-	private String name;
-	private String phone;
-	private String email;
+	private String picPath;
+	private String title;
 	private String description;
 	private Date updateTime;
 	public int getId() {
@@ -17,23 +16,17 @@ public class ClientEntity implements Serializable {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getName() {
-		return name.toLowerCase();
+	public String getPicPath() {
+		return picPath;
 	}
-	public void setName(String name) {
-		this.name = name.toLowerCase();
+	public void setPicPath(String picPath) {
+		this.picPath = picPath;
 	}
-	public String getPhone() {
-		return phone;
+	public String getTitle() {
+		return title;
 	}
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	public String getDescription() {
 		return description;

@@ -48,8 +48,9 @@
 			and email like '%${email}%' 
 		</if>
 		<if test="description != null and description != ''">
-			and description like '%${description}%' 
+			and description like '%${description}%'  
 		</if>
+		order by name asc
 	</select>
 	
 	<delete id="deleteClient" parameterType="ClientEntity">
