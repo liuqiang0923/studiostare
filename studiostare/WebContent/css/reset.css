@@ -56,8 +56,8 @@ body {
 }
 #main_nav {
 	float: left;
-	margin: 4.8em 0 0 0;
-	width: 92.7%;
+	margin: 2.8em 0 0 0;
+	width: 92.6%;
 	text-transform: uppercase;
 }
 #main_nav a, #main_nav span {
@@ -82,10 +82,12 @@ body {
 }
 #main_nav ul a {
 	color: #747373;
-	font: 0.88em/1.5em 'itcavantgardestd-bold';}
+	font: 0.88em/1.5em 'itcavantgardestd-bold';
+	letter-spacing: 0.02em;
+}
 .subnav{font: 0.88em/1.4em 'itcavantgardestd-bold'; color:#7dc399; width:100%; float:left;}
 .logo {
-	margin: 3.2em 0 0 0;
+	margin: 1.21em 0 0 0;
 	float: right;
 	width: 7.3%;
 	max-width: 70px;
@@ -101,7 +103,7 @@ body {
 footer {
 	clear: both;
 	line-height: 17px;
-	margin: 4em auto 0 auto;
+	margin: 5.3em auto 2em auto;
 	width: 100%;
 	max-width: 965px;
 }
@@ -110,30 +112,29 @@ footer .center {
 .c1{width: 100%;    position:relative;}
 .imgbox{width: 56%; margin:0 auto; color:#231f20;}
 .imgbox img{width:100%;max-width: 836px;}
-.line_fl{width: 20.3%; height: 2px; background:#7d7c7c; left:0; top:50%; margin: -0.1em 0 0 0;position:absolute;}
-.line_fr{width: 20.3%; height: 2px; background:#7d7c7c; right:0; top:50%; margin-top: -0.1em; position:absolute;}
-.font01{font: 1em/1.6em 'itcavantgardestd-bold'; text-transform:uppercase;}
+.line_fl{width: 19.1%; height: 2px; background:#7d7c7c; left:0; top:50%; margin: 0 0 0 0;position:absolute;}
+.line_fr{width: 19.1%; height: 2px; background:#7d7c7c; right:0; top:50%; margin-top: 0; position:absolute;}
+.font01{font: 0.92em/1.6em 'itcavantgardestd-bold'; text-transform:uppercase;}
 .font02{font: 1em/1.6em 'itcavantgardestd-md';}
-.font03{font: 1em/1.6em 'Conv_Lobster 1.4';  text-transform:lowercase}
+.font03{font: 1em/1.6em 'Conv_Lobster 1.4';  text-transform:lowercase;letter-spacing: 0.02em;}
 .footfont {
 	width: 62%;
 	margin: 0 auto;
 	text-align: center;
-	font: 0.4em/1.6em 'itcavantgardestd-md';
+	font: 0.6em/1.6em 'itcavantgardestd-md';
 	color: #231f20;
 	margin-top: 1.4em;
 }
 .fllowus {
 	width: 62%;
-	margin: 0 auto;
+	margin: 0.8em auto 0 auto;
 	text-align: center;
-	margin-top: 0.8em;
 	overflow: hidden;
 	text-transform:uppercase;
 }
 .fllowuslink{width:100%; text-align:center;}
-.fllowuslink img{max-width: 34px; }
-.fllowus h1{font: 0.6em/1.5em 'itcavantgardestd-bold';color: #000;}
+.fllowuslink img{max-width: 34px; margin: 0 0.06em;}
+.fllowus h1{font: 0.5em/1.5em 'itcavantgardestd-bold';color: #000;}
 .playbox{  max-width: 53px;   width: 3em;  top:50%;   height: 3em;  left:50%; z-index:1;   margin: -1.5em 0 0 -1.5em; display:block;position: absolute;}
 .playbox img{width:100%;}
 @media (max-width: 480px) {
@@ -159,13 +160,11 @@ margin: 0 auto !important;
 .clientsnav{width: 68% !important;}
 .clientssubnav{width: 28% !important;}
 .videobigbox{width:100% !important;margin: 0 auto 2em auto!important;float: none!important;}
-.line_fl,.line_fr {
-height: 1px;
-margin: -0.2em 0 0 0;
-}
 .vjs-paused,.vjs-playing{
 background-size: 3em !important;
 bottom:0.2em!important;
+
+
 
 
 left:42%!important;
@@ -181,27 +180,24 @@ left:46%!important;
 	max-width: 351px;
 	width: 100%!important;
 }
-.imgbox{width: 64% !important;}
-.line_fl{width: 14%;margin: 0;}
-.line_fr{width: 14%;margin: 0;}
 }
-@media all and (min-width:0) and (max-width:320px) {
+@media all and (min-width:0px) and (max-width:320px) {
 .imgbox{width: 91% !important;}
-.line_fl{width: 4%;margin: 0;}
-.line_fr{width: 4%;margin: 0;}
+.line_fl{width: 4%;height: 1px !important;margin: -0.2em 0 0 0;}
+.line_fr{width: 4%;height: 1px !important;margin: -0.2em 0 0 0;}
 .font01{font: 1em/1.6em 'itcavantgardestd-bold'; text-transform:uppercase;}
 .font02{font: 1em/1.6em 'itcavantgardestd-md';}
 .font03{font: 1em/1.6em 'Conv_Lobster 1.4';  text-transform:lowercase}
 }
-@media all and (min-width:321) and (max-width:360px) {
+@media all and (min-width:321px) and (max-width:360px) {
 .imgbox{width: 88% !important;}
-.line_fl{width: 4%;margin: 0;}
-.line_fr{width: 4%;margin: 0;}
+.line_fl{width: 4%;height: 1px !important;margin: -0.2em 0 0 0;}
+.line_fr{width: 4%;height: 1px !important;margin: -0.2em 0 0 0;}
 }
 @media all and (min-width:361px) and (max-width:480px) {
 .imgbox{width: 73.5% !important;}
-.line_fl{width: 10%;margin: 0;}
-.line_fr{width: 10%;margin: 0;}
+.line_fl{width: 10%;height: 1px !important;margin: -0.2em 0 0 0;}
+.line_fr{width: 10%;height: 1px !important;margin: -0.2em 0 0 0;}
 .font01{font: 1.2em/1.6em 'itcavantgardestd-bold'; text-transform:uppercase;}
 .font02{font: 1.2em/1.6em 'itcavantgardestd-md';}
 .font03{font: 1.2em/1.6em 'Conv_Lobster 1.4';  text-transform:lowercase}

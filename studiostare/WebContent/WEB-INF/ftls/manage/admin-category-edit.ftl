@@ -202,8 +202,10 @@
 														</div>
 													</div>
 													<div class="form-group">
-														<label class="control-label col-md-3">Description 
+														<label class="control-label col-md-3">Description
+															<!-- 
 															<span class="required"> * </span>
+															-->
 														</label>
 														<div class="col-md-4">
 															<input type="text" class="form-control" name="description" value="${(category.description)!""}"/>

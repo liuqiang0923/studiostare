@@ -273,17 +273,13 @@
 														</div>
 													</div>
 													-->
-													<!--
 													<div class="form-group">
-														<label class="control-label col-md-3">Description 
-															<span class="required"> * </span>
-														</label>
+														<label class="control-label col-md-3">Description</label>
 														<div class="col-md-4">
 															<textarea class="form-control" rows="3" style="width:100%" name="description"></textarea>
 															<span class="help-block"> Input video description </span>
 														</div>
 													</div>
-													-->
 													<div class="form-group">
 														<label class="control-label col-md-3">Order 
 															<span class="required"> * </span>

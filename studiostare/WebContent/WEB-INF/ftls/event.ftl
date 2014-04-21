@@ -162,16 +162,16 @@
       <h1>follow us</h1>
       <div class="fllowuslink">
 				<a target="_blank" href="https://www.facebook.com/studiostare">
-			    	<img src="img/facebook.jpg">
+			    	<img src="/studiostare/img/facebook.jpg">
 			    </a>
 			    <a target="_blank" href="https://vimeo.com/studiostare">
-			    	<img src="img/vimeo.jpg">
+			    	<img src="/studiostare/img/vimeo.jpg">
 			    </a>
 			    <a target="_blank" href="https://twitter.com/StudioStare">
-			    	<img src="img/twitter.jpg">
+			    	<img src="/studiostare/img/twitter.jpg">
 			    </a>
 			    <a target="_blank" href="http://www.linkedin.com/company/2551588">
-			    	<img src="img/linkedin.jpg">
+			    	<img src="/studiostare/img/linkedin.jpg">
 			    </a>
      </div>
     </div>

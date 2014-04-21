@@ -55,7 +55,7 @@ $(function(){
 		-->
 		<ul class="slides">
 			<li> 
-				<img src=${(leading.picPath)!"img/temp/img04.jpg"} /> 
+				<img src='${(leading.picPath)!"img/temp/img04.jpg"}' /> 
 				<div class="infos">
 					<p>${(leading.title)!"You don’t have to love everyone"}</p>
 				</div>
@@ -216,48 +216,6 @@ $(function(){
 <script src="js/libs/html5shiv.js"></script>
 <script src="js/video.js"></script>
 <script>videojs.options.flash.swf = "swf/video-js.swf";</script>
-	<script>
-		var m=10; //随机显示图片的总数量
-		var n=Math.floor(Math.random()*m);
-		var p = "";
-		switch(n)
-		{
-		case 1:
-		  p = "<div class='infos'><p>Come as you are</p></div>";
-		  break;
-		case 2:
-		  p = "<div class='infos'><p>Listen</p></div>";
-		  break;
-		case 3:
-		  p = "<div class='infos'><p>If you don’t like your job, <br> get a new one</p></div>";
-		  break;
-		case 4:
-		  p = "<div class='infos'><p>You don’t have to love everyone</p></div>";
-		  break;
-		case 5:
-		  p = "<div class='infos'><p>Don't be cynical</p></div>";
-		  break;
-		case 6:
-		  p = "<div class='infos'><p>Love your project and it will <br> love you back</p></div>";
-		  break;
-		case 7:
-		  p = "<div class='infos'><p>Good enough <br> is not good enough</p></div>";
-		  break;
-		case 8:
-		  p = "<div class='infos'><p>Your thoughts HERE</p></div>";
-		  break;
-		case 9:
-		  p = "<div class='infos'><p>Your thoughts HERE</p></div>";
-		  break;
-		case 0:
-		  p = "<div class='infos'><p>Your thoughts HERE</p></div>";
-		  break;
-		default:
-		  p = "";
-		}
-		var imgstr = "<img src='img/temp/img0" + n + ".jpg' />" + p;
-		document.getElementById("randomimg").innerHTML = imgstr;
-	</script>
 <script>
 var warp_pro=document.getElementsByClassName("sharebox");
 	   for (i=0;i<warp_pro.length;i++){

@@ -93,7 +93,9 @@ video {
 	text-transform: capitalize;
 }
 .subtitle a{float:left; color:#000;}
+.subtitle a.colorgreen{text-transform:capitalize;}
 .subtitle a.colorgreen:hover{float:left;color:#7dc399}
+.subtitle a.colorgray{text-transform:lowercase}
 .subtitle a.colorgray:hover{float:left;color:#747373}
 
 .subtitle font{float:left;color:#000;}
@@ -236,30 +238,30 @@ float: left;
 /*==========NEWS END==========*/
 /*==========CLIENTS START==========*/
 .clients_box,.clientsbanner{width:100%; overflow:hidden;}
-.clientsbanner img{width:100%;max-width: 965px;}
-.clientsnav_box{width:100%; max-width:965px; overflow:hidden; margin: 0.8em auto 0 auto;}
+.clientsbanner img{width:100%;max-width: 966px;}
+.clientsnav_box{width:100%; max-width:965px; overflow:hidden; margin: 0.76em auto 0 auto;}
 .clientsnav{width: 80%; overflow:hidden; float:left;letter-spacing: -2px;}
-.clientsnav a{font: 0.9em/0.9em 'itcavantgardestd-bold';text-transform:Uppercase; color:#000;letter-spacing: 0;}
+.clientsnav a{font: 0.9em/0.9em 'itcavantgardestd-bold';text-transform:Uppercase; color:#000;letter-spacing: 0.02em;}
 .clientsnav a:hover{color:#7dc399;}
 .clientsnav font {
 	color: #000;
-	font: 0.9em/1.4em 'itcavantgardestd-md';
+	font: 0.9em/0.9em 'itcavantgardestd-md';
 }
-.clientssubnav{width: 15%; overflow:hidden; float:right}
-.clientssubnav h1{width:100%; height: 1.4em; background:#000; color: #fff;
-	font: 0.6em/1.5em 'itcavantgardestd-bold'; text-indent:0.4em; text-transform:uppercase;
-letter-spacing: 1px;margin: 0.4em 0 0 0;}
-.clientssubnav a{width:100%; float:left; height:1.5em;font: 0.68em/2em 'itcavantgardestd-demi';text-indent:0.2em; color:#000; text-transform:lowercase;}
+.clientssubnav{width: 14.8%; overflow:hidden; float:right}
+.clientssubnav h1{width:100%; height: 1.6em; background:#000; color: #fff;
+	font: 0.5em/1.6em 'itcavantgardestd-bold'; text-indent: 0.2em; text-transform:uppercase;
+letter-spacing: 0.08em;margin: 0.44em 0 0 0;}
+.clientssubnav a{width:100%; float:left; height:1.5em;font: 0.74em/2em 'itcavantgardestd-demi';text-indent:0.2em; margin: 0 0 0.076em 0;color:#000; text-transform:lowercase;}
 .clientssubnav a:hover,.clientssubnav a.active{color:#73c69c;}
 .clientssubnav a:hover font{color:#747373;}
 
 /*==========CLIENTS END==========*/
 /*==========ABOUT START==========*/
-.aboutbox,.clientsbox,#wrapper,.submainbox{margin: 1em auto 0 auto; width:80%;max-width:965px;overflow: hidden;}
+.aboutbox,.clientsbox,#wrapper,.submainbox{margin: 1em auto 0 auto; width:80%;max-width: 966px;overflow: hidden;}
 .aboutbanner_box,.aboutbanner{width:100%; overflow:hidden;}
 .aboutbanner img{width:100%;}
-.aboutbanner_font{width:100%; overflow:hidden;margin: 0.8em 0 0 0;}
-.aboutbanner_font h1{font: 1em/1.4em 'itcavantgardestd-bold';text-transform:Uppercase;letter-spacing: 0;}
+.aboutbanner_font{width:100%; overflow:hidden;margin: 0.66em 0 0 0;}
+.aboutbanner_font h1{font: 0.888em/1.4em 'itcavantgardestd-bold';text-transform:Uppercase;letter-spacing: 0.02em;}
 .aboutbanner_font font{color:#747373}
 .whobox{width:100%; overflow:hidden;}
 .whobox dl dt{font: 1em/1em 'itcavantgardestd-bold';color:#747373; margin: 3em 0 0.8em 0;text-transform:Uppercase;letter-spacing: 0;}
@@ -273,6 +275,7 @@ letter-spacing: 1px;margin: 0.4em 0 0 0;}
 .who_list h4{font: 0.5em/1em 'itcavantgardestd-md'; margin: 0 0 0.6em 0;text-transform:Uppercase;}
 .who_list h4 a{color:#000;}
 .manifesto{width:100%; overflow:hidden; margin: 1.2em 0 0 0;}
+
 .manifesto dl dt{font: 1em/1em 'itcavantgardestd-bold';color:#73c69c; margin: 0 0 0.8em 0;text-transform:Uppercase;}
 .manifesto dl dd{font: 0.79em/1.4em 'itcavantgardestd-bold';color:#747373; text-transform:Uppercase;}
 /*==========ABOUT END==========*/
