@@ -116,11 +116,11 @@ var FormWizard = function () {
                     },
                     whoimg: {
                     	whoimgexist: true,
-                    	accept: "png|jpg|jpeg",
+                    	accept: "png|jpg|jpeg|gif",
                     },
                     officeimg: {
                     	officeimgexist: true,
-                    	accept: "png|jpg|jpeg",
+                    	accept: "png|jpg|jpeg|gif",
                     },
                     aboutUsInfo: {
                     	required: true,

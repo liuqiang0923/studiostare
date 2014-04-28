@@ -26,13 +26,16 @@ public class Leading extends JsonAction {
 	@RequestMapping(value="admin-leading-list.html", method = RequestMethod.GET)
 	public ModelAndView leadingList() {
 		ModelAndView m = new ModelAndView();
-		List<LeadingEntity> leadingList = null;
+		List<LeadingEntity> leadingListPic = null;
+		List<LeadingEntity> leadingListWord = null;
 		try{
-			leadingList = leadingService.getAll();
+			leadingListPic = leadingService.getAllPicture();
+			leadingListWord = leadingService.getAllWord();
 		} catch(Exception e){
 			e.printStackTrace();
 		}
-		m.addObject("leadingList", leadingList);
+		m.addObject("leadingListPic", leadingListPic);
+		m.addObject("leadingListWord", leadingListWord);
 		m.setViewName("manage/admin-leading-list");
 		return m;
 	}
@@ -41,6 +44,13 @@ public class Leading extends JsonAction {
 	public ModelAndView addLeading() {
 		ModelAndView m = new ModelAndView();
 		m.setViewName("manage/admin-leading-edit");
+		return m;
+	}
+	
+	@RequestMapping(value = "addLeadingWord", method = RequestMethod.GET)
+	public ModelAndView addLeadingWord() {
+		ModelAndView m = new ModelAndView();
+		m.setViewName("manage/admin-leading-word-edit");
 		return m;
 	}
 	
@@ -60,8 +70,36 @@ public class Leading extends JsonAction {
 		return m;
 	}
 	
+	@RequestMapping(value = "editLeadingWord/{leadingId}", method = RequestMethod.GET)
+	public ModelAndView editLeadingWord(@PathVariable int leadingId) {
+		ModelAndView m = new ModelAndView();
+		LeadingEntity leadingEntity  = null ;
+		try{
+			leadingEntity = leadingService.getById(leadingId);
+		} catch(Exception e){
+			e.printStackTrace();
+		}
+		if(leadingEntity == null)
+			leadingEntity = new LeadingEntity();
+		m.addObject("leading", leadingEntity);
+		m.setViewName("manage/admin-leading-word-edit");
+		return m;
+	}
+	
 	@RequestMapping(value = "deleteLeading/{leadingId}", method = RequestMethod.GET)
 	public String deleteLeading(@PathVariable int leadingId, HttpServletResponse response) {
+		String result = "ok";
+		try {
+			leadingService.delById(leadingId);
+		} catch (Exception e) {
+			result = "error";
+		}
+		output(response, "{\"result\":\"" + result + "\"}");
+		return null;
+	}
+	
+	@RequestMapping(value = "deleteLeadingWord/{leadingId}", method = RequestMethod.GET)
+	public String deleteLeadingWord(@PathVariable int leadingId, HttpServletResponse response) {
 		String result = "ok";
 		try {
 			leadingService.delById(leadingId);
@@ -83,4 +121,17 @@ public class Leading extends JsonAction {
 		}
 		return "redirect:admin-leading-list.html";
 	}
+	
+	@RequestMapping(value = "saveLeadingWord", method = RequestMethod.POST)
+	public String saveLeadingWord(LeadingEntity leading, 
+			@RequestParam(value="leadingimg", required=false) MultipartFile leadingimg, 
+			HttpSession session) {
+		try {
+			leadingService.save(leading, leadingimg);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "redirect:admin-leading-list.html";
+	}
+	
 }

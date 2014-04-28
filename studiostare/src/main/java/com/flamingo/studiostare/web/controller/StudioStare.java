@@ -50,7 +50,7 @@ public class StudioStare {
 		LeadingEntity leadingEntity = null;
 		try{
 			videoList = videoService.getAll();
-			leadingEntity = leadingService.getOneByRandom();
+			leadingEntity = leadingService.getOnePicByRandom();
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -151,11 +151,11 @@ public class StudioStare {
 		ModelAndView m = new ModelAndView();
 		AboutEntity about = null;
 		List<UserEntity> whoList = null;
-		List<LeadingEntity> leadingList = null;
+//		List<LeadingEntity> leadingList = null;
 		try{
 			about = aboutService.getById(1);
 			whoList = userService.getUserByType(RoleEntity.ROLETYPE_ABOUTUS);
-			leadingList = leadingService.getAll();
+//			leadingList = leadingService.getAll();
 		} catch(Exception e){
 			e.printStackTrace();
 		}
@@ -163,7 +163,7 @@ public class StudioStare {
 			about.setAboutUsInfo(about.getAboutUsInfo().toUpperCase());
 		m.addObject("about",about);
 		m.addObject("whoList", whoList);
-		m.addObject("leadingList", leadingList);
+//		m.addObject("leadingList", leadingList);
 		m.setViewName("about");
 		return m;
 	}

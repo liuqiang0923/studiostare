@@ -11,12 +11,16 @@ public interface ILeadingService {
 	
 	LeadingEntity getById(int id);
 	
-	List<LeadingEntity> getAll();
+	List<LeadingEntity> getAllPicture();
+	
+	List<LeadingEntity> getAllWord();
 	
 	void delById(int id);
 	
 	void save(LeadingEntity leadingEntity, MultipartFile leadingimg) throws IOException;
 
-	LeadingEntity getOneByRandom();
+	LeadingEntity getOnePicByRandom();
+	
+	LeadingEntity getOneWordByRandom();
 	
 }

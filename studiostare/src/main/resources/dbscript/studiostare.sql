@@ -159,9 +159,9 @@ DROP TABLE IF EXISTS `studiostare`.`leading` ;
 
 CREATE TABLE IF NOT EXISTS `studiostare`.`leading` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `picPath` VARCHAR(1024) NOT NULL COMMENT '图片地址',
-  `title` VARCHAR(1024) NOT NULL COMMENT '标题',
-  `description` VARCHAR(1024) NOT NULL COMMENT '详细内容',
+  `picPath` VARCHAR(1024) COMMENT '图片地址',
+  `title` VARCHAR(1024) COMMENT '标题',
+  `description` VARCHAR(1024) COMMENT '详细内容',
   `updateTime` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id`));
 

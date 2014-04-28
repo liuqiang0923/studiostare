@@ -18,27 +18,29 @@
 <meta itemprop="name" content="Studio Stare" >
 <meta itemprop="description" content="">
 <!--[if lt IE 9]>
-	<script src="/js/libs/html5shiv.js"></script>
+	<script src="js/libs/html5shiv.js"></script>
 	<![endif]-->
-
 </head>
 <body>
 <header id="main_header">
-  <div class="center">
-    <nav id="main_nav">
-      <ul>
-        <li><a href="/studiostare/work.html">work</a><font>&nbsp;/&nbsp;</font></li>
-        <li><a href="/studiostare/news.html">news</a><font>&nbsp;/&nbsp;</font></li>
-        <li><a href="/studiostare/clients.html">clients</a><font>&nbsp;/&nbsp;</font></li>
-        <li><a href="/studiostare/about.html">about</a><font>&nbsp;/&nbsp;</font></li>
-      </ul>
-      <div class="subnav">${(client.name)!""}${(category.name)!""}</div>
-    </nav>
-    <a href="/en/home/" class="logo"> <img src="/studiostare/img/logo.png" alt=""> </a> <span class="clearfix"></span> </div>
+	<div class="center">
+		<nav id="main_nav">
+			<ul>
+				<li><a href="work.html">work</a><div>/</div></li>
+				<li><a href="news.html">news</a><div>/</div></li>
+				<li><a href="clients.html" class="active">clients</a><div>/</div></li>
+				<li><a href="about.html">about</a><div>/</div></li>
+			</ul>
+			<div class="subnav">${(client.name)!""}${(category.name)!""}</div>
+		</nav>
+		<a href="/en/home/" class="logo"> <img src="img/logo.png" alt="">
+		</a> <span class="clearfix"></span>
+	</div>
 </header>
 <div class="submainbox"> 
   <!-- videobox-->
-  	<#if videoList??>
+  
+  <#if videoList??>
 	<#list videoList as video>
 		<div id='videoplaybox-${(video.id)!""}' class="videoplaybigbox" style="display: none">
 			<div class="videoplaybox">
@@ -94,8 +96,8 @@
 		</div>
 	</#list>
 	</#if>
-  
-  <#if videoList??>
+	
+	<#if videoList??>
 	<#list videoList as video>
   <div class="submain_imgbox">
     <div class="videobox"> <img src="${(video.imgPath)!""}"></img>
@@ -137,15 +139,6 @@
   </#list>
 	</#if>
 </div>
-<div class="clientsnav_box">
-  <div class="clientssubnav">
-  	<h1>category</h1>
-    <#if categoryList??>
-  	<#list categoryList as category>
-  		<a href="/studiostare/category/videoOfCategory/${(category.id)!""}">${(category.name)!""} <font> / </font></a>
-  	</#list>
-    </#if> 
-</div>
 <footer>
   <div class="center">
     <div class="c1">
@@ -153,15 +146,18 @@
       <div class="imgbox"><font class="font01">Studio Stare</font> <font class="font02">—</font> <font class="font03">film production in Shanghai since 2008</font></div>
       <div class="line_fr"></div>
     </div>
-    <div class="footfont"> <a style="color:#000000" href="http://map.baidu.com/?newmap=1&shareurl=1&l=19&tn=B_NORMAL_MAP&c=13520836,3642551&cc=sh&s=s%26da_src%3Dpcmappg.searchBox.button%26wd%3D%E8%A5%BF%E8%8B%8F%E5%B7%9E%E8%B7%AF71%E5%8F%B7%26c%3D289%26src%3D0%26wd2%3D%26sug%3D0%26l%3D19%26from%3Dwebmap&sc=0"><font class="demi">address&nbsp;</font>&nbsp;71 West Suzhou Road - room 401
-      Jing’an District - 200040 Shanghai - China<br></a>
+    <div class="footfont"> 
+    <a style="color:#000000" href="http://map.baidu.com/?newmap=1&shareurl=1&l=19&tn=B_NORMAL_MAP&c=13520836,3642551&cc=sh&s=s%26da_src%3Dpcmappg.searchBox.button%26wd%3D%E8%A5%BF%E8%8B%8F%E5%B7%9E%E8%B7%AF71%E5%8F%B7%26c%3D289%26src%3D0%26wd2%3D%26sug%3D0%26l%3D19%26from%3Dwebmap&sc=0">
+    	<font class="demi">address&nbsp;</font>&nbsp;71 West Suzhou Road - room 401
+      Jing’an District - 200040 Shanghai - China<br>
+      </a>
       <font
 					class="demi">contact</font> <font class="book">phone</font> +86 (0)
-      21 6276 0052 <font class="book">email</font> contact@studiostare.com </div>
+      21 6276 0052 <font class="book">email</font> <a href='mailto:contact@studiostare.com'> contact@studiostare.com </a> </div>
     <div class="fllowus">
       <h1>follow us</h1>
       <div class="fllowuslink">
-				<a target="_blank" href="https://www.facebook.com/studiostare">
+      	<a target="_blank" href="https://www.facebook.com/studiostare">
 			    	<img src="/studiostare/img/facebook.jpg">
 			    </a>
 			    <a target="_blank" href="https://vimeo.com/studiostare">
@@ -173,7 +169,7 @@
 			    <a target="_blank" href="http://www.linkedin.com/company/2551588">
 			    	<img src="/studiostare/img/linkedin.jpg">
 			    </a>
-     </div>
+      </div>
     </div>
   </div>
 </footer>
@@ -182,30 +178,31 @@
 <script>videojs.options.flash.swf = "/studiostare/swf/video-js.swf";</script> 
 <script src="/studiostare/js/jquery.min.js"></script> 
 <script>
-	   var warp_pro=document.getElementsByClassName("sharebox");
+var warp_pro=document.getElementsByClassName("sharebox");
 	   for (i=0;i<warp_pro.length;i++){
 		   warp_pro[i].onmouseover=sharebox_action;
 		   warp_pro[i].onmouseout=sharebox_move;
-		   warp_pro[i].getElementsByClassName("shareicon")[0].style.display="none";
+		   warp_pro[i].getElementsByClassName("shareicon")[0].style.cssText= "display:none; height:0px";
 		 }
 		function sharebox_action(){
 			this.getElementsByClassName("shareicon")[0].style.display="block";
+			$(this).find(".shareicon").stop(false,false).animate({height:115,opacity:1},800);
 		}
 		function sharebox_move(){
-			this.getElementsByClassName("shareicon")[0].style.display="none";
+			$(this).find(".shareicon").stop(false,false).animate({height:0,opacity:0},800);
 		}
 
 		var videoboxs=document.getElementsByClassName("videobox");
 		for (i=0;i<videoboxs.length;i++){
 			videoboxs[i].onmouseover=videobuttons_action;
 			videoboxs[i].onmouseout=videobuttons_move;
-			videoboxs[i].getElementsByClassName("playbtn")[0].style.display="none";
+			videoboxs[i].getElementsByClassName("playbtn")[0].style.cssText="display:block; opacity:0";
 		}
 		function videobuttons_action(){
-			this.getElementsByClassName("playbtn")[0].style.display="block";
+			$(this).find(".playbtn").stop(false,false).animate({opacity:1},300);
 		}
 		function videobuttons_move(){
-			this.getElementsByClassName("playbtn")[0].style.display="none";
+			$(this).find(".playbtn").stop(false,false).animate({opacity:0},300);
 		}
 		
 		function hideAndStopAll(){
@@ -307,6 +304,24 @@
 			document.getElementsByClassName("videoplayinfos")[0].appendChild(pdoc2);	
 			}
 		
-       </script>
+       </script> 
+<script type="text/javascript">
+	bottom_size();
+	window.onresize = function(){ window.clearTimeout(time); var time = window.setTimeout(bottom_size,50);}
+	function bottom_size()
+	{
+		$(".imgbox").css({"width":"auto"});
+		var c1width = $(".center .c1").width();
+		var imgwidth = $(".imgbox").width();
+		var word = (c1width - imgwidth)/2 - (imgwidth*0.04);
+		$(".line_fl,.line_fr").css({"width":word+"px"});
+		$(".imgbox").css({"width":imgwidth+"px"});
+	}
+	function scroll_top(){
+		$("html, body").animate({ scrollTop: 0 }, 120);
+	}
+	window.setTimeout(function(){$(".videobox").css("height",$("#example_video_1").height()+"px");},1000);
+$(".videobox").css("height",$("#example_video_1").height()+"px");
+    </script>
 </body>
 </html>

@@ -55,7 +55,7 @@ var FormWizard = function () {
                     },
                     leadingimg: {
                     	leadimgexist: true,
-                    	accept: "png|jpg|jpeg",
+                    	accept: "png|jpg|jpeg|gif",
                     },
                 },
 

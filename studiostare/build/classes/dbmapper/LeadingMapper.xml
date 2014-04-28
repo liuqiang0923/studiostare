@@ -44,6 +44,14 @@
 		</if>
 	</select>
 	
+	<select id="selectLeadingPic" resultType="LeadingEntity" resultMap="leadingResultMap">
+		select * from `leading` where picPath is not null 
+	</select>
+	
+	<select id="selectLeadingTitle" resultType="LeadingEntity" resultMap="leadingResultMap">
+		select * from `leading` where title is not null 
+	</select>
+	
 	<select id="getAllNum" parameterType="LeadingEntity" resultType="int">
 		select count(*) from `leading` 
 	</select>

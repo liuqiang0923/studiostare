@@ -110,7 +110,7 @@ var FormWizard = function () {
                     },
                     content: {
                     		required: true,
-                    		maxlength: 1024,
+//                    		maxlength: 1024,
                     },
                 },
 

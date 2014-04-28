@@ -3,7 +3,7 @@
 <!-- BEGIN HEAD -->
 <head>
 <meta charset="utf-8" />
-<title>Studio Stare | Edit Leading Page</title>
+<title>Studio Stare | Edit Leading Word Page</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 <meta content="" name="description" />
@@ -145,7 +145,7 @@
 				<div class="row">
 					<div class="col-md-12">
 						<!-- BEGIN PAGE TITLE & BREADCRUMB-->
-						<h3 class="page-title">Edit Leading Picture Wizard</h3>
+						<h3 class="page-title">Edit Leading Word Wizard</h3>
 						<!-- END PAGE TITLE & BREADCRUMB-->
 					</div>
 				</div>
@@ -156,19 +156,19 @@
 						<div class="portlet box blue" id="form_wizard_1">
 							<div class="portlet-title">
 								<div class="caption">
-									<i class="fa fa-reorder"></i> Edit Leading Picture Wizard - <span
+									<i class="fa fa-reorder"></i> Edit Leading Word Wizard - <span
 										class="step-title"> Step 1 of 2 </span>
 								</div>
 							</div>
 							<div class="portlet-body form">
-								<form action="/studiostare/manage/saveLeading" class="form-horizontal" method="post" id="submit_form" enctype="multipart/form-data">>
+								<form action="/studiostare/manage/saveLeadingWord" class="form-horizontal" method="post" id="submit_form" enctype="multipart/form-data">>
 									<input type="hidden" name="id" value="${(leading.id)!"0"}"></input>
 									<div class="form-wizard">
 										<div class="form-body">
 											<ul class="nav nav-pills nav-justified steps">
 												<li><a href="#tab1" data-toggle="tab" class="step">
 														<span class="number"> 1 </span> <span class="desc">
-															<i class="fa fa-check"></i> Leading Page Picture Setup
+															<i class="fa fa-check"></i> Leading Page Info Setup
 													</span>
 												</a></li>
 												<li><a href="#tab2" data-toggle="tab" class="step">
@@ -191,30 +191,25 @@
 													Your form validation is successful!
 												</div>
 												<div class="tab-pane active" id="tab1">
-													<h3 class="block">Provide leading details</h3>
+													<h3 class="block">Provide leading word details</h3>
 													<div class="form-group">
-														<label class="control-label col-md-3"> 
-															Picture 
+														<label class="control-label col-md-3">Word
 															<span class="required"> * </span>
 														</label>
-														<div class="fileinput fileinput-new col-md-4" data-provides="fileinput">
-															<div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 100%;" id="leadingimgdiv">
-																<#if (leading.picPath)?? >
-																	<img src='${(leading.picPath)!""}'></img>
-																</#if>
-															</div>
-															<input type="file" name="leadingimg"/>
-															<span class="help-block"> Upload Picture. </span>	
+														<div class="col-md-4">
+															<input type="text" class="form-control" name="title" value="${(leading.title)!""}" />
+															<span class="help-block"> Input title. </span>
 														</div>
 													</div>
 												</div>
 												<div class="tab-pane" id="tab2">
 													<h3 class="block">Confirm your account</h3>
-													<h4 class="form-section">Leading Info</h4>
+													<h4 class="form-section">Leading Word</h4>
 													<div class="form-group">
-														<label class="control-label col-md-3">Picture:</label>
+														<label class="control-label col-md-3">Word:</label>
 														<div class="col-md-4">
-															<div class="form-control-static" data-display="leadingimgdiv"></div>
+															<p class="form-control-static" data-display="title">
+															</p>
 														</div>
 													</div>
 												</div>

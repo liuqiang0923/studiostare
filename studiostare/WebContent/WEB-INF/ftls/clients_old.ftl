@@ -15,6 +15,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=0.8, maximum-scale=0.8, minimum-scale=0.8, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
 <meta itemprop="name" content="Studio Stare" >
 <meta itemprop="description" content="">
 <!--[if lt IE 9]>
@@ -27,18 +28,10 @@
   <div class="center">
     <nav id="main_nav">
       <ul>
-        <li><a href="work.html">work</a>
-          <div>/</div>
-        </li>
-        <li><a href="news.html">news</a>
-          <div>/</div>
-        </li>
-        <li><a href="clients.html" class="active">clients</a>
-          <div>/</div>
-        </li>
-        <li><a href="about.html">about</a>
-          <div>/</div>
-        </li>
+        <li><a href="work.html">work</a><font>&nbsp;/&nbsp;</font></li>
+        <li><a href="news.html">news</a><font>&nbsp;/&nbsp;</font></li>
+        <li><a href="clients.html" class="active">clients</a><font>&nbsp;/&nbsp;</font></li>
+        <li><a href="about.html">about</a><font>&nbsp;/&nbsp;</font></li>
       </ul>
     </nav>
     <a href="/en/home/" class="logo"> <img src="img/logo.png" alt=""> </a> <span class="clearfix"></span> </div>
@@ -46,21 +39,21 @@
 <div class="clientsbox">
   <div class="clientsbanner"> <img src="img/temp/clientsimg00.jpg"> </div>
   <div class="clientsnav_box">
-    <div class="clientsnav">
-	  <#if clientList??>
-	  <#list clientList as client> 
-	  	<a href="client/videoOfClient/${(client.id)!""}">${(client.name)!""} <font> / </font></a>
-	  </#list>
-	  </#if>
-	  </div>
-	  <div class="clientssubnav">
-	  	<h1>category</h1>
-	  	<#if categoryList??>
-	  	<#list categoryList as category>
-	  		<a href="category/videoOfCategory/${(category.id)!""}">${(category.name)!""} <font> / </font></a>
-	  	</#list>
-	    </#if> 
-	   </div>
+  <div class="clientsnav">
+  <#if clientList??>
+  <#list clientList as client> 
+  	<a href="client/videoOfClient/${(client.id)!""}">${(client.name)!""} <font> / </font></a>
+  </#list>
+  </#if>
+  </div>
+  <div class="clientssubnav">
+  	<h1>category</h1>
+  	<#if categoryList??>
+  	<#list categoryList as category>
+  		<a href="category/videoOfCategory/${(category.id)!""}">${(category.name)!""} <font> / </font></a>
+  	</#list>
+    </#if> 
+   </div>
   </div>
 </div>
 <footer>
@@ -70,18 +63,15 @@
       <div class="imgbox"><font class="font01">Studio Stare</font> <font class="font02">—</font> <font class="font03">film production in Shanghai since 2008</font></div>
       <div class="line_fr"></div>
     </div>
-    <div class="footfont"> 
-    <a style="color:#000000" href="http://map.baidu.com/?newmap=1&shareurl=1&l=19&tn=B_NORMAL_MAP&c=13520836,3642551&cc=sh&s=s%26da_src%3Dpcmappg.searchBox.button%26wd%3D%E8%A5%BF%E8%8B%8F%E5%B7%9E%E8%B7%AF71%E5%8F%B7%26c%3D289%26src%3D0%26wd2%3D%26sug%3D0%26l%3D19%26from%3Dwebmap&sc=0">
-    	<font class="demi">address&nbsp;</font>&nbsp;71 West Suzhou Road - room 401
-      Jing’an District - 200040 Shanghai - China<br>
-      </a>
+    <div class="footfont"> <a style="color:#000000" href="http://map.baidu.com/?newmap=1&shareurl=1&l=19&tn=B_NORMAL_MAP&c=13520836,3642551&cc=sh&s=s%26da_src%3Dpcmappg.searchBox.button%26wd%3D%E8%A5%BF%E8%8B%8F%E5%B7%9E%E8%B7%AF71%E5%8F%B7%26c%3D289%26src%3D0%26wd2%3D%26sug%3D0%26l%3D19%26from%3Dwebmap&sc=0"><font class="demi">address&nbsp;</font>&nbsp;71 West Suzhou Road - room 401
+      Jing’an District - 200040 Shanghai - China<br></a>
       <font
 					class="demi">contact</font> <font class="book">phone</font> +86 (0)
       21 6276 0052 <font class="book">email</font> <a href='mailto:contact@studiostare.com'> contact@studiostare.com </a> </div>
     <div class="fllowus">
       <h1>follow us</h1>
       <div class="fllowuslink">
-      	<a target="_blank" href="https://www.facebook.com/studiostare">
+				<a target="_blank" href="https://www.facebook.com/studiostare">
 			    	<img src="img/facebook.jpg">
 			    </a>
 			    <a target="_blank" href="https://vimeo.com/studiostare">
@@ -98,33 +88,28 @@
   </div>
 </footer>
 <div class="scroll_top"><a href="index.html" class="homebtn"></a></div>
+<!--
 <script type="text/javascript">
 	$(window).bind("scroll",check_scroll);
 	function scroll_top(){
 		$("html, body").animate({ scrollTop: 0 }, 120);
 	}
-</script> 
-<script type="text/javascript">
-	bottom_size();
-	window.onresize = function(){ window.clearTimeout(time); var time = window.setTimeout(bottom_size,50);}
-	function bottom_size()
-	{
-		$(".imgbox").css({"width":"auto"});
-		var c1width = $(".center .c1").width();
-		var imgwidth = $(".imgbox").width();
-		var word = (c1width - imgwidth)/2 - (imgwidth*0.04);
-		$(".line_fl,.line_fr").css({"width":word+"px"});
-		$(".imgbox").css({"width":imgwidth+"px"});
-		
-		$(".clientsnav").css({"width":"auto"});
-		c1width = $(".clientsnav_box").width();
-		imgwidth = $(".clientssubnav").width();
-		word = (c1width - imgwidth) - (imgwidth*0.5);
-		$(".clientsnav").css({"width":word+"px"});
-	}
-	function scroll_top(){
-		$("html, body").animate({ scrollTop: 0 }, 120);
-	}
-       </script>
+</script>
+--> 
+<!--<script>
+	   var warp_pro=document.getElementsByClassName("clientsnav_box");
+	   for (i=0;i<warp_pro.length;i++)
+		{
+		 warp_pro[i].onmouseover=clientsnav_box_action;
+		 warp_pro[i].onmouseout=clientsnav_box_move;
+		 warp_pro[i].getElementsByClassName("clientssubnav")[0].style.display="none";
+		}
+       function clientsnav_box_action(){
+		   this.getElementsByClassName("clientssubnav")[0].style.display="block";
+		   }
+		function clientsnav_box_move(){
+		   this.getElementsByClassName("clientssubnav")[0].style.display="none";
+		   }
+       </script>-->
 </body>
 </html>

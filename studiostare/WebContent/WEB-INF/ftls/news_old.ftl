@@ -30,27 +30,25 @@
 <!--[if lt IE 9]>
 	<script src="js/libs/html5shiv.js"></script>
 	<![endif]-->
-
 </head>
 <body data-tpl="home">
 <header id="main_header">
-	<div class="center">
-		<nav id="main_nav">
-			<ul>
-				<li><a href="work.html">work</a><div>/</div></li>
-				<li><a href="news.html" class="active">news</a><div>/</div></li>
-				<li><a href="clients.html">clients</a><div>/</div></li>
-				<li><a href="about.html">about</a><div>/</div></li>
-			</ul>
-		</nav>
-		<a href="/en/home/" class="logo"> <img src="img/logo.png" alt="">
-		</a> <span class="clearfix"></span>
-	</div>
+  <div class="center">
+    <nav id="main_nav">
+      <ul>
+         <li><a href="work.html">work</a><font>&nbsp;/&nbsp;</font></li>
+        <li><a href="news.html" class="active">news</a><font>&nbsp;/&nbsp;</font></li>
+        <li><a href="clients.html">clients</a><font>&nbsp;/&nbsp;</font></li>
+        <li><a href="about.html">about</a><font>&nbsp;/&nbsp;</font></li>
+      </ul>
+    </nav>
+    <a href="/en/home/" class="logo"> <img src="img/logo.png" alt=""> </a> <span class="clearfix"></span> </div>
 </header>
 <!-- news start-->
 <section id="wrapper">
   <div id="container">
-    <#if newsList??>
+  
+  <#if newsList??>
   	<#list newsList as news>
   		<div class="grid">
   			<#if (news.videoPathMp4)?? && (news.videoPathWebm)?? && (news.videoPathOgg)?? && news.videoPathMp4 != "" && (news.videoPathWebm)?? && (news.videoPathOgg)?? >
@@ -99,6 +97,7 @@
 	    </div>
   	</#list>
   </#if>
+  
   </div>
 </section>
 <!-- news end-->
@@ -109,18 +108,15 @@
       <div class="imgbox"><font class="font01">Studio Stare</font> <font class="font02">—</font> <font class="font03">film production in Shanghai since 2008</font></div>
       <div class="line_fr"></div>
     </div>
-    <div class="footfont"> 
-    <a style="color:#000000" href="http://map.baidu.com/?newmap=1&shareurl=1&l=19&tn=B_NORMAL_MAP&c=13520836,3642551&cc=sh&s=s%26da_src%3Dpcmappg.searchBox.button%26wd%3D%E8%A5%BF%E8%8B%8F%E5%B7%9E%E8%B7%AF71%E5%8F%B7%26c%3D289%26src%3D0%26wd2%3D%26sug%3D0%26l%3D19%26from%3Dwebmap&sc=0">
-    	<font class="demi">address&nbsp;</font>&nbsp;71 West Suzhou Road - room 401
-      Jing’an District - 200040 Shanghai - China<br>
-      </a>
+    <div class="footfont"> <a style="color:#000000" href="http://map.baidu.com/?newmap=1&shareurl=1&l=19&tn=B_NORMAL_MAP&c=13520836,3642551&cc=sh&s=s%26da_src%3Dpcmappg.searchBox.button%26wd%3D%E8%A5%BF%E8%8B%8F%E5%B7%9E%E8%B7%AF71%E5%8F%B7%26c%3D289%26src%3D0%26wd2%3D%26sug%3D0%26l%3D19%26from%3Dwebmap&sc=0"><font class="demi">address&nbsp;</font>&nbsp;71 West Suzhou Road - room 401
+      Jing’an District - 200040 Shanghai - China<br></a>
       <font
 					class="demi">contact</font> <font class="book">phone</font> +86 (0)
       21 6276 0052 <font class="book">email</font> <a href='mailto:contact@studiostare.com'> contact@studiostare.com </a> </div>
     <div class="fllowus">
       <h1>follow us</h1>
-      <div class="fllowuslink">
-      	<a target="_blank" href="https://www.facebook.com/studiostare">
+       <div class="fllowuslink">
+      			<a target="_blank" href="https://www.facebook.com/studiostare">
 			    	<img src="img/facebook.jpg">
 			    </a>
 			    <a target="_blank" href="https://vimeo.com/studiostare">
@@ -139,36 +135,8 @@
 <div class="scroll_top"><a href="index.html" class="homebtn"></a><a onclick="scroll_top()"></a></div>
 </div>
 <script type="text/javascript">
-bottom_size();var checksize = 0,index = 0;
-	window.onresize = function(){ window.clearTimeout(time); var time = window.setTimeout(bottom_size,50);}
-	function bottom_size()
-	{
-		$(".imgbox").css({"width":"auto"});
-		var c1width = $(".center .c1").width();
-		var imgwidth = $(".imgbox").width();
-		var word = (c1width - imgwidth)/2 - (imgwidth*0.04);
-		$(".line_fl,.line_fr").css({"width":word+"px"});
-		$(".imgbox").css({"width":imgwidth+"px"});
-	}
 	function scroll_top(){
 		$("html, body").animate({ scrollTop: 0 }, 120);
-	}
-	window.onload = function()
-	{
-		$(".vjs-fullscreen-control").click(function(){
-			$(this).parents(".videoplaybox").css("font-size","22px");
-			var index = $(".vjs-fullscreen-control").index(this);
-			window.clearInterval(checksize);
-			checksize =window.setInterval(function(){changesize(index)},300);
-		})
-	}
-	function changesize(index)
-	{
-		if($(".video-js").eq(index).width()<400)
-		{
-			window.clearInterval(checksize);
-			$(".videoplaybox").css("font-size","12px");
-		}
 	}
 </script>
 </body>

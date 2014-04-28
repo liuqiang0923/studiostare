@@ -133,7 +133,7 @@ var FormWizard = function () {
                     },
                     videoimg: {
                     	videoimgexist: true,
-                    	accept: "png|jpg|jpeg",
+                    	accept: "png|jpg|jpeg|gif",
                     },
                     videoname: {
                     	required: true,

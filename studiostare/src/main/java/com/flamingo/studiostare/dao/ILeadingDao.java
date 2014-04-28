@@ -19,7 +19,9 @@ public interface ILeadingDao {
 
 	void deleteLeadingById(int id);
 
-	List<LeadingEntity> selectLeading(LeadingEntity leadingEntity);
+	List<LeadingEntity> selectLeadingPic();
+	
+	List<LeadingEntity> selectLeadingTitle();
 
 	void deleteLeading(LeadingEntity leadingEntity);
 	

@@ -147,7 +147,7 @@
 				<div class="col-md-12">
 					<!-- BEGIN PAGE TITLE & BREADCRUMB-->
 					<h3 class="page-title">
-					Leading Page List
+					Leading Page Manage
 					</h3>
 				</div>
 			</div>
@@ -179,11 +179,72 @@
 								<th>
 									 Picture
 								</th>
+								<!--
 								<th>
 									 Title
 								</th>
 								<th>
 									 Description
+								</th>
+								-->
+								<th>
+									 Edit
+								</th>
+								<th> 
+									 Delete
+								</th>
+							</tr>
+							</thead>
+							<tbody>
+							<#if leadingListPic??>
+							<#list leadingListPic as leading>
+							<tr class="odd gradeX">
+								<td>
+									<input name="leadingId" type="checkbox" class="checkboxes" value=${(leading.id)!""} />
+								</td>
+								<td><img style="width:300px;" src='${(leading.picPath)!""}'></td>
+								<!--
+								<td>${(leading.title)!""}</td>
+								<td>${(leading.description)!""}</td>
+								-->
+								<td><a class="edit" href="javascript:;"> Edit </a></td>
+								<td><a class="delete" href="javascript:;"> Delete </a></td>
+							</tr>
+							</#list>
+							</#if>
+							</tbody>
+							</table>
+						</div>
+					</div>
+					<!-- END EXAMPLE TABLE PORTLET-->
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-md-12">
+					<!-- BEGIN EXAMPLE TABLE PORTLET-->
+					<div class="portlet box light-grey">
+						<div class="portlet-title">
+							<div class="caption">
+								<i class="fa fa-globe"></i>Leading Word List
+							</div>
+						</div>
+						<div class="portlet-body">
+							<div class="table-toolbar">
+								<div class="btn-group">
+									<button id="managetable_leading_word_new" class="btn green">
+									Add New <i class="fa fa-plus"></i>
+									</button>
+								</div>
+							</div>
+							<table class="table table-striped table-bordered table-hover" id="managetable_leading_word">
+							<thead>
+							<tr>
+								<th class="table-checkbox">
+									<input type="checkbox" class="group-checkable" data-set="#managetable_leading_word .checkboxes"/>
+								</th>
+								<th>
+									 Word
 								</th>
 								<th>
 									 Edit
@@ -194,15 +255,13 @@
 							</tr>
 							</thead>
 							<tbody>
-							<#if leadingList??>
-							<#list leadingList as leading>
+							<#if leadingListWord??>
+							<#list leadingListWord as leading>
 							<tr class="odd gradeX">
 								<td>
 									<input name="leadingId" type="checkbox" class="checkboxes" value=${(leading.id)!""} />
 								</td>
-								<td><img style="width:300px;" src='${(leading.picPath)!""}'></td>
 								<td>${(leading.title)!""}</td>
-								<td>${(leading.description)!""}</td>
 								<td><a class="edit" href="javascript:;"> Edit </a></td>
 								<td><a class="delete" href="javascript:;"> Delete </a></td>
 							</tr>

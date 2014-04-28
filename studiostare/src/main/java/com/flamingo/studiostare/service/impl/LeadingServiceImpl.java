@@ -26,8 +26,13 @@ public class LeadingServiceImpl implements ILeadingService {
 	}
 	
 	@Override
-	public List<LeadingEntity> getAll(){
-		return leadingDao.selectLeading(new LeadingEntity());
+	public List<LeadingEntity> getAllPicture(){
+		return leadingDao.selectLeadingPic();
+	}
+	
+	@Override
+	public List<LeadingEntity> getAllWord(){
+		return leadingDao.selectLeadingTitle();
 	}
 
 	@Override
@@ -55,13 +60,23 @@ public class LeadingServiceImpl implements ILeadingService {
 	}
 
 	@Override
-	public LeadingEntity getOneByRandom() {
-		int num = leadingDao.getAllNum();
-		List<LeadingEntity> leadingList = getAll();
-		if(leadingList == null || leadingList.size() == 0)
+	public LeadingEntity getOnePicByRandom() {
+		List<LeadingEntity> leadingPicList = getAllPicture();
+		if(leadingPicList == null || leadingPicList.size() == 0)
 			return null;
+		int num = leadingPicList.size();
 		Random random = new Random();
-		return leadingList.get(Math.abs(random.nextInt()) % num);
+		return leadingPicList.get(Math.abs(random.nextInt()) % num);
+	}
+	
+	@Override
+	public LeadingEntity getOneWordByRandom() {
+		List<LeadingEntity> leadingPicList = getAllWord();
+		if(leadingPicList == null || leadingPicList.size() == 0)
+			return null;
+		int num = leadingPicList.size();
+		Random random = new Random();
+		return leadingPicList.get(Math.abs(random.nextInt()) % num);
 	}
 
 }
