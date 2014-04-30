@@ -129,6 +129,10 @@ footer .center {
 	color: #231f20;
 	margin-top: 1.4em;
 }
+.footfont a{color:#000;}
+.footfont a.colorgreen{text-transform:capitalize;}
+.footfont a.colorgreen:hover{color:#7dc399}
+
 .fllowus {
 	width: 62%;
 	margin: 0.8em auto 0 auto;

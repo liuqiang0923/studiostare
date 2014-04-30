@@ -29,8 +29,6 @@ CREATE TABLE IF NOT EXISTS `studiostare`.`role` (
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
-insert into `studiostare`.`role` values (1, '超级管理员', '超级管理员');
-
 -- -----------------------------------------------------
 -- Table `studiostare`.`user`
 -- -----------------------------------------------------
