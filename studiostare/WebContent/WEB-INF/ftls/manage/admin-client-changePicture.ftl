@@ -3,7 +3,7 @@
 <!-- BEGIN HEAD -->
 <head>
 <meta charset="utf-8" />
-<title>Studio Stare | edit about info</title>
+<title>Studio Stare | change client picture</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 <meta content="" name="description" />
@@ -165,12 +165,12 @@
 						<div class="portlet box blue" id="form_wizard_1">
 							<div class="portlet-title">
 								<div class="caption">
-									<i class="fa fa-reorder"></i> Edit About Info Wizard - <span
+									<i class="fa fa-reorder"></i> Change Client Picture Wizard - <span
 										class="step-title"> Step 1 of 2 </span>
 								</div>
 							</div>
 							<div class="portlet-body form">
-								<form action="/studiostare/manage/saveAboutInfo" class="form-horizontal" id="submit_form" method="post" enctype="multipart/form-data">
+								<form action="/studiostare/manage/saveClientPic" class="form-horizontal" id="submit_form" method="post" enctype="multipart/form-data">
 									<input type="hidden" name="id" value="${(about.id)!"0"}"></input>
 									<div class="form-wizard">
 										<!-- <div class="form-body"> -->
@@ -178,7 +178,7 @@
 											<ul class="nav nav-pills nav-justified steps">
 												<li><a href="#tab1" data-toggle="tab" class="step">
 														<span class="number"> 1 </span> <span class="desc">
-															<i class="fa fa-check"></i> Edit about info
+															<i class="fa fa-check"></i> Change client picture
 													</span>
 												</a></li>
 												<li><a href="#tab2" data-toggle="tab" class="step">
@@ -201,38 +201,20 @@
 													Your form validation is successful!
 												</div>
 												<div class="tab-pane active" id="tab1">
-													<h3 class="block">About info</h3>
+													<h3 class="block">Change Picture</h3>
 													<div class="form-group">
 														<label class="control-label col-md-3"> 
-															Office 
+															Picture 
 															<span class="required"> * </span>
 														</label>
 														<div class="fileinput fileinput-new col-md-4" data-provides="fileinput">
 															<div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 100%;" id="officeimgdiv">
-																<#if (about.officeImgPath)?? >
-																	<img src='${(about.officeImgPath)!""}'></img>
+																<#if (clientPic.officeImgPath)?? >
+																	<img src='${(clientPic.officeImgPath)!""}'></img>
 																</#if>
 															</div>
-															<input type="file" name="officeimg"/>
-															<span class="help-block"> Upload office photo. </span>	
-														</div>
-													</div>
-													<div class="form-group">
-														<label class="control-label col-md-3">About 
-															<span class="required"> * </span>
-														</label>
-														<div class="col-md-4">
-															<textarea class="form-control" rows="3" style="width: 100%;" name="aboutUsInfo">${(about.aboutUsInfo)!""}</textarea>
-															<span class="help-block"> Input about. </span>
-														</div>
-													</div>
-													<div class="form-group">
-														<label class="control-label col-md-3">Manifesto 
-															<span class="required"> * </span>
-														</label>
-														<div class="col-md-4">
-															<textarea class="form-control" rows="3" style="width: 100%;" name="manifesto">${(about.manifesto)!""}</textarea>
-															<span class="help-block"> Input manifesto. </span>
+															<input type="file" name="clientimg"/>
+															<span class="help-block"> Upload Client Picture. </span>	
 														</div>
 													</div>
 												</div>

@@ -26,7 +26,13 @@ public class UserServiceImpl implements IUserService {
 
 	@Override
 	public boolean checkLogin(UserEntity userEntity) {
-		return true;
+		try{
+			UserEntity user = userDao.selectUserById(1);
+			return user.getName().equals(userEntity.getName()) && user.getPassword().equals(userEntity.getPassword());
+		}catch(Exception e){
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 	@Override
@@ -51,6 +57,7 @@ public class UserServiceImpl implements IUserService {
 			userDao.insertUser(userEntity);
 		else{
 			old.setName(userEntity.getName());
+			old.setPassword(userEntity.getPassword());
 			old.setPosition(userEntity.getPosition());
 			old.setEmail(userEntity.getEmail());
 			old.setDescription(userEntity.getDescription());

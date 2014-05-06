@@ -38,7 +38,7 @@
 	<div class="header-inner">
 		<!-- BEGIN LOGO -->
 		<a class="navbar-brand" href="/studiostare/index.html">
-			<img src="/studiostare/manage-resource/favicon.png" alt="logo" class="img-responsive"/>
+			<img style="height:22px" src="/studiostare/manage-resource/favicon.png" alt="logo" class="img-responsive"/>
 		</a>
 		<!-- END LOGO -->
 		<!-- BEGIN RESPONSIVE MENU TOGGLER -->
@@ -112,6 +112,14 @@
 							</span>
 						</a>
 					</li>
+					<li class="last ">
+						<a href="/studiostare/manage/admin-admin.html" >
+							<i class="fa fa-gift"></i>
+							<span class="title">
+								Admin
+							</span>
+						</a>
+					</li>
 				</ul>
 			<!-- END SIDEBAR MENU -->
 		</div>
@@ -169,6 +177,11 @@
 										Add New <i class="fa fa-plus"></i>
 									</button>
 								</div>
+								<div class="btn-group">
+									<button id="managetable_video_show" class="btn green">
+										Show On Index <i class="fa"></i>
+									</button>
+								</div>
 							</div>
 							<table class="table table-striped table-bordered table-hover" id="managetable_video">
 							<thead>
@@ -177,7 +190,10 @@
 									<input type="checkbox" class="group-checkable" data-set="#managetable_video .checkboxes"/>
 								</th>
 								<th>
-									 Order
+									Order
+								</th>
+								<th>
+									Show
 								</th>
 								<th>
 									 Name
@@ -216,11 +232,18 @@
 							<tbody>
 							<#if videoList ??>
 							<#list videoList as video>
-							<tr class="odd gradeX">
+							<tr class="odd gradeX" id="${(video.id)!""}">
 								<td>
-									<input type="checkbox" class="checkboxes" value=${(video.id)!""}></input>
+									<input type="checkbox" name="videoids" class="checkboxes" value="${(video.id)!""}"></input>
 								</td>
-								<td>${(video.index)!""}</td>
+								<td name="index">${(video.index)!""}</td>
+								<td>
+									<#if video.type == 1>
+										yes
+									<#else>
+										no
+									</#if>
+								</td>
 								<td>${(video.name)!""}</td>
 								<td><img style="width:150px;height:150px;" src='${(video.imgPath)!""}'></img></td>
 								<td><video style="width:180px;height:150px;" src='${(video.videoPathMp4)!""}' preload="preload" controls="controls"></video></td>
@@ -278,6 +301,7 @@
 <!-- BEGIN PAGE LEVEL SCRIPTS -->
 <script src="/studiostare/manage-resource/assets/scripts/core/app.js" ></script>
 <script src="/studiostare/manage-resource/assets/scripts/table-managed-video.js" ></script>
+<script src="/studiostare/manage-resource/assets/scripts/jquery.tablednd.js" ></script>
 <script>
 jQuery(document).ready(function() {       
    App.init();

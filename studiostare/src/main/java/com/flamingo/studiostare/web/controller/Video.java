@@ -110,4 +110,64 @@ public class Video extends JsonAction {
 		return "redirect:admin-video-list.html";
 	}
 	
+	@RequestMapping(value="changeVideoOrder/{nowid}/{lastid}/{nextid}", method=RequestMethod.GET)
+	public ModelAndView changeVideoOrder(@PathVariable int nowid, @PathVariable int lastid, @PathVariable int nextid, HttpSession session){
+		if(lastid != 0){
+			try{
+				int lastOrder = videoService.getById(lastid).getIndex();
+				VideoEntity video = videoService.getById(nowid);
+				video.setIndex(++lastOrder);
+				videoService.save(video);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}else if(nextid != 0){
+			try{
+				int nextOrder = videoService.getById(nextid).getIndex();
+				VideoEntity video = videoService.getById(nowid);
+				video.setIndex(--nextOrder);
+				videoService.save(video);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+		ModelAndView m = new ModelAndView();
+		List<VideoEntity> videoList = null;
+		try{
+			videoList = videoService.getAll();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		m.addObject("videoList", videoList);
+		m.setViewName("manage/admin-video-list");
+		return m;
+	}
+	
+	@RequestMapping(value="showOrHideVideo/{ids}", method=RequestMethod.GET)
+	public ModelAndView showOrHideVideo(@PathVariable String ids, HttpSession session){
+		String[] ida = ids.split(",");
+		for(int i = 0 ; i < ida.length ; i++){
+			Integer id = Integer.parseInt(ida[i]);
+			if(id == null || id == 0)
+				continue;
+			try {
+				VideoEntity video = videoService.getById(id);
+				video.setType(video.getType() ^ 1);
+				videoService.save(video);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		ModelAndView m = new ModelAndView();
+		List<VideoEntity> videoList = null;
+		try{
+			videoList = videoService.getAll();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		m.addObject("videoList", videoList);
+		m.setViewName("manage/admin-video-list");
+		return m;
+	}
+	
 }

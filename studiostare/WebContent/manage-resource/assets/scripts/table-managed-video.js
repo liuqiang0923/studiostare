@@ -8,12 +8,27 @@ var TableManaged = function () {
             if (!jQuery().dataTable) {
                 return;
             }
+            
+            $('#managetable_video').tableDnD({
+            	onDragClass:'highlight',
+            	onDrop: function(table, row) {
+            		var lastid = 0;
+            		if(row.previousSibling != null)
+            			lastid = row.previousSibling.id;
+            		var nextid = 0;
+            		if(row.nextSibling != null)
+            			nextid = row.nextSibling.id;
+            		
+            		window.location.href="/studiostare/manage/changeVideoOrder/" + row.id + "/" + lastid + "/" + nextid;
+            	}
+            });
 
             // begin first table
             $('#managetable_video').dataTable({
                 "aoColumns": [
 //                  { "bSortable": false, "bSearchable": false },
                   null,
+                  { "bSearchable": false},
                   { "bSearchable": false},
                   null,
                   { "bSortable": false, "bSearchable": false }, // { "bSortable": false, "sType": "text" },
@@ -71,6 +86,18 @@ var TableManaged = function () {
 
             $('#managetable_video_new').click(function (e) {
             	addVideo();
+            });
+
+            $('#managetable_video_show').click(function (e){
+            	var ids = "";
+            	$("input[name='videoids']:checked").each(function(){
+            		ids += $(this).val() + ",";
+            	});
+            	if(ids == ""){
+            		alert("please select video need to show or hide on index.");
+            		return;
+            	}
+            	window.location.href="/studiostare/manage/showOrHideVideo/" + ids;
             });
             
             $('#managetable_video a.edit').live('click', function (e) {

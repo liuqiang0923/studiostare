@@ -92,7 +92,7 @@ public class SystemFilter implements Filter {
 		for (int i = 0; i < checkPages.length; i++) {
 
 			// 如果是登陆，则不需要验证 
-			if (uri.indexOf("login") != -1) 
+			if (uri.indexOf("login") != -1 || uri.indexOf("resetPassword") != -1) 
 				return false;
 			
 			// 如果是其它管理页面，则需要进行验证

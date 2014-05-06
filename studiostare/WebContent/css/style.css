@@ -2,7 +2,7 @@
 @import "font.css";
 @import "ui-media.css";
 /*==========WORK START==========*/
-#body{width:80%; margin: 1em auto 0 auto; max-width:965px;overflow: hidden;}
+#body,.videoplaybigbox{width:80%; margin: 1em auto 0 auto; max-width:965px;overflow: hidden;}
 .ajaxContainer{margin:42px auto 0 auto;}
 .noAnim {
 	-webkit-transition: all, 0, ease-in, 0 !important;
@@ -68,7 +68,7 @@ video {
 .videoplaybox{width:100%; overflow:hidden; position:relative;}
 .videobigbox{width:49%; margin:0 2% 0 0;  float:left; max-width: 730px;overflow:hidden;margin-bottom: 2em;}
 .videobigbox:nth-last-child(1),.submain_imgbox:nth-last-child(2){margin-bottom:0;}
-.videobigbox:nth-child(2n-1){margin:0;}
+.videobigbox:nth-child(2n){margin:0;}
 .videobox{width:100%; position:relative;float: left;}
 .videobox img{width:100%;max-width: 473px;}
 .videosize{width:100%; height:10em;}
@@ -110,7 +110,7 @@ margin: 1.2em 0 4em 0;
 overflow: hidden;}
 .infos_left{float:left; width:30%;}
 .infos_left h1{float:left; font: 0.88em/1.4em 'itcavantgardestd-bold';}
-.infos_left h2{float:left; font: 0.8em/1.5em 'itcavantgardestd-md'; text-transform: lowercase;}
+.infos_left h2{float:left; font: 0.8em/1.5em 'itcavantgardestd-md'; text-transform: capitalize; width:100%;}
 .infos_left font{float:left; font: 0.88em/1.4em 'itcavantgardestd-md';}
 .infos_right{float:right; font: 0.76em/1.4em 'itcavantgardestd-md'; width:60%;text-transform:capitalize}
 .arrow {
@@ -168,7 +168,7 @@ overflow: hidden;}
 	border-bottom: solid 2px #000;
 }
 
-.grid img.twitter{position:absolute; top:-0.2em;width: 3em!important;max-width: 32px;}
+.grid img.twitter{position:absolute; top:-0.2em;width: 3em!important;max-width: 32px; left: 0;}
 .grid .date {
 	font: 1.2em/1em 'tcavantgardestd-bk'; color:#000; text-transform:capitalize; float:left;
 	width: 100%;
@@ -178,8 +178,8 @@ overflow: hidden;}
 	width: 100%;
 	margin:0.5em 0 0 1em;
 }
-
-.imgholder{margin: 0 0 1.4em 0;overflow: hidden;max-width: 348px;}
+.imgholder01{overflow: hidden;position: relative;height: 3em;}
+.imgholder{margin: 0 0 1.4em 0;overflow: hidden;}
 .grid .date.twitterfont{
 	margin: 0.2em 0 0 2em;
 float: left;
@@ -188,7 +188,7 @@ float: left;
 	margin: 0.1em 0 0.4em 0;
 	display:block;
 	float:left;
-	font: 2em/1em 'itcavantgardestd-bold';color:#000; 
+	font: 1.8em/1em 'itcavantgardestd-bold';color:#000; 
 	width: 100%;
 }
 .grid .medi {
@@ -245,7 +245,7 @@ float: left;
 	font: 0.9em/0.9em 'itcavantgardestd-md';
 }
 .clientssubnav{overflow:hidden; float:right;white-space: nowrap; display:inline-block;max-width: 142px;width: 6.6em;min-width: 100px;}
-.clientssubnav div{width:100%; margin:0;float: left;}
+.clientssubnav div{width:100%; margin:0;float: left;max-height: 19px;}
 .clientssubnav div img{ max-width:142px; max-height:19px; width:100%;}
 .clientssubnav a{width:100%; float:left; height:1.5em;font: 0.74em/2em 'itcavantgardestd-demi';text-indent:0.2em; margin: 0 0 0.076em 0;color:#000; text-transform:lowercase;}
 .clientssubnav a:hover,.clientssubnav a.active{color:#73c69c;}
@@ -269,26 +269,25 @@ float: left;
 }
 .who_imgbox img{width:100%;}
 .who_list h2{font: 0.76em/1.2em 'itcavantgardestd-bold';text-transform:Uppercase;margin: 0.8em 0 0 0;}
-.who_list h3{font: 0.3em/1.4em 'itcavantgardestd-demi'; margin: 0 0 0 0;text-transform:Uppercase;}
-.who_list h4{font: 0.3em/1.4em 'itcavantgardestd-md'; margin: 0 0 0.6em 0;text-transform:Uppercase;letter-spacing: -0.02em;}
+.who_list h3{font: 0.6em/1.4em 'itcavantgardestd-demi'; margin: 0 0 0 0;text-transform:Uppercase;}
+.who_list h4{font: 0.6em/1.4em 'itcavantgardestd-md'; margin: 0 0 0.6em 0;text-transform:Uppercase;letter-spacing: -0.02em;}
 .who_list h4 a{color:#000;}
-.who_list h4 a.colorgreen{text-transform:capitalize;}
+.who_list h4 a.colorgreen{text-transform: lowercase;}
 .who_list h4 a.colorgreen:hover{color:#7dc399}
-.manifesto{width:100%; overflow:hidden; margin: 1.2em 0 0 0;}
 
+.manifesto{width:100%; overflow:hidden; margin: 1.2em 0 0 0;}
 .manifesto dl dt{font: 0.9em/1em 'itcavantgardestd-bold';color:#73c69c; margin: 0 0 0.8em 0;text-transform:Uppercase;}
 .manifesto dl dd{font: 0.79em/1.48em 'itcavantgardestd-bold';color:#747373; text-transform:Uppercase;}
 /*==========ABOUT END==========*/
 /*==========SUBNAV START==========*/
-
 .submain_imgbox{width:32%; float:left; margin: 0 2% 2em 0;overflow: hidden;}
-.submain_imgbox:nth-child(3n-1){margin:0}
+.submain_imgbox:nth-child(3n){margin:0}
 .submain_imgbox:nth-last-child(1),.submain_imgbox:nth-last-child(2),.submain_imgbox:nth-last-child(3){margin-bottom:0;}
 {margin: 0 2% 0 0;}
 .submain_img{width:100%; position:relative;}
 .submain_img img{width:100%; max-width:476px;}
 
-.subfont01 h1{font: 0.78em/1em 'itcavantgardestd-bold'; float:left;}
+.subfont01 h1{font: 0.78em/1em 'itcavantgardestd-bold'; float:left;text-transform:capitalize}
 
 .subfont01 font{float:left;}
 .subfont01 h2{font: 0.78em/1em 'itcavantgardestd-md'; float:left;}

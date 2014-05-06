@@ -54,19 +54,11 @@
     <dl>
       <dt>who we are</dt>
       <dd>
-      	<div class="who_list">
-	          <div class="who_imgbox"> 
-		          <img style="width:200px; height:200px;" src='${(who.photoPath)!"img/temp/Director.jpg"}'> 
-		      </div>
-		      <h2>${(who.name)!"petter eldin"}</h2>
-		      <h3>${(who.position)!"Director"}</h3>
-		      <h4><a class="colorgreen" href='mailto:${(who.email)!"petter@studiostare.com"}'>${(who.email)!"petter@studiostare.com"}</a></h4>
-	        </div>     
         <#if whoList??>
       	<#list whoList as who>
       		<div class="who_list">
 	          <div class="who_imgbox"> 
-		          <img style="width:200px; height:200px;" src='${(who.photoPath)!"img/temp/Director.jpg"}'> 
+		          <img src='${(who.photoPath)!"img/temp/Director.jpg"}'> 
 		      </div>
 		      <h2>${(who.name)!"petter eldin"}</h2>
 		      <h3>${(who.position)!"Director"}</h3>
@@ -81,8 +73,7 @@
     <dl>
       <dt>MANIFESTO</dt>
       <dd>
-      	${(about.manifesto)!""}
-      	<font color="#000">PLEASE EXPLORE</font> or you will never evolve into a better you <font color="#000">/ IF YOU DON'T LIKE YOUR JOB, GET A NEW ONE</font> not everyone has a choice, but you probably do <font color="#000">/ LOVE YOUR PROJECT AND IT WILL LOVE YOU BACK</font> and at the end of the day you will create something good <font color="#000">/ MAKE FRIENDS IMPORTANT</font> instead of making important friends <font color="#000">/ YOU DON'T HAVE TO LOVE EVERYONE</font> but you should try <font color="#000">/ DON'T BE CYNICAL</font> it's a waste of everyone's time <font color="#000">/ COME AS YOU ARE</font> because that's the way we like you <font color="#000">/ LISTEN</font> or you might miss the point <font color="#000">/ GOOD ENOUGH</font> IS NOT GOOD ENOUGH in fact it's boring and boring is not good - it's bad <font color="#000">/ YOUR THOUGHTS HERE</font> because you have something to say and you should share it. 
+      	${(about.manifesto)!"<font color='#000'>PLEASE EXPLORE</font> or you will never evolve into a better you <font color='#000'>/ IF YOU DON'T LIKE YOUR JOB, GET A NEW ONE</font> not everyone has a choice, but you probably do <font color='#000'>/ LOVE YOUR PROJECT AND IT WILL LOVE YOU BACK</font> and at the end of the day you will create something good <font color='#000'>/ MAKE FRIENDS IMPORTANT</font> instead of making important friends <font color='#000'>/ YOU DON'T HAVE TO LOVE EVERYONE</font> but you should try <font color='#000'>/ DON'T BE CYNICAL</font> it's a waste of everyone's time <font color='#000'>/ COME AS YOU ARE</font> because that's the way we like you <font color='#000'>/ LISTEN</font> or you might miss the point <font color='#000'>/ GOOD ENOUGH</font> IS NOT GOOD ENOUGH in fact it's boring and boring is not good - it's bad <font color='#000'>/ YOUR THOUGHTS HERE</font> because you have something to say and you should share it. "}
       </dd>
     </dl>
   </div>
@@ -96,9 +87,9 @@
 	    </div>
 	    <div class="footfont"> 
 	    	<a class="colorgreen" href="http://map.baidu.com/?newmap=1&shareurl=1&l=19&tn=B_NORMAL_MAP&c=13520836,3642551&cc=sh&s=s%26da_src%3Dpcmappg.searchBox.button%26wd%3D%E8%A5%BF%E8%8B%8F%E5%B7%9E%E8%B7%AF71%E5%8F%B7%26c%3D289%26src%3D0%26wd2%3D%26sug%3D0%26l%3D19%26from%3Dwebmap&sc=0">
-		    	<font class="demi">address&nbsp;</font>&nbsp;71 West Suzhou Road - room 401 Jing'an District - 200040 Shanghai - China<br>
+		    	<font class="demi">address&nbsp;</font>71 West Suzhou Road - room 401 Jing'an District - 200040 Shanghai - China<br>
 	      	</a>
-	      	<font class="demi">contact</font> <font class="book">phone</font> +86 (0)21 6276 0052 <font class="book">email</font> <a class="colorgreen" href='mailto:contact@studiostare.com'> contact@studiostare.com </a> 
+	      	<font class="demi">contact</font> <font class="book">phone</font> +86 (0)21 6276 0052 <font class="book">email</font> <a class="colorgreen01" href='mailto:contact@studiostare.com'> contact@studiostare.com </a> 
 	    </div>
 	    <div class="fllowus">
 	    	<h1>follow us</h1>

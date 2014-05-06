@@ -109,6 +109,10 @@ var TableManaged = function () {
             	});
             }
             
+            $("#saveClientPic").click(function (e){
+            	$("#clientPicForm").submit();
+            });
+            
         }
 
     };

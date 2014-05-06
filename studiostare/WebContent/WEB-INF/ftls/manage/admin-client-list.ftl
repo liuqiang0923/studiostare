@@ -38,7 +38,7 @@
 	<div class="header-inner">
 		<!-- BEGIN LOGO -->
 		<a class="navbar-brand" href="/studiostare/index.html">
-			<img src="/studiostare/manage-resource/favicon.png" alt="logo" class="img-responsive"/>
+			<img style="height:22px" src="/studiostare/manage-resource/favicon.png" alt="logo" class="img-responsive"/>
 		</a>
 		<!-- END LOGO -->
 		<!-- BEGIN RESPONSIVE MENU TOGGLER -->
@@ -112,6 +112,14 @@
 							</span>
 						</a>
 					</li>
+					<li class="last ">
+						<a href="/studiostare/manage/admin-admin.html" >
+							<i class="fa fa-gift"></i>
+							<span class="title">
+								Admin
+							</span>
+						</a>
+					</li>
 				</ul>
 			<!-- END SIDEBAR MENU -->
 		</div>
@@ -153,6 +161,27 @@
 			</div>
 			<!-- END PAGE HEADER-->
 			<!-- BEGIN PAGE CONTENT-->
+			
+			<h4 class="form-section">Client Picture</h4>
+			<form action="/studiostare/manage/saveClientPic" class="form-horizontal" method="post" id="clientPicForm"  enctype="multipart/form-data">
+						<div class="row">
+							<div class="fileinput fileinput-new col-md-4" data-provides="fileinput">
+								<div class="fileinput-preview thumbnail" style="width: 100%;" data-trigger="fileinput" id="clientimgdiv">
+									<img src='${(clientPic.officeImgPath)!"/studiostare/img/temp/clientsimg00.jpg"}'></img>
+								</div>
+							    <input type="file" name="clientimg" id="clientimg"/>
+							</div>
+						</div>
+						<br />
+						<div class="row">
+							<div class="col-md-4">
+								<a href="javascript:;" class="btn green button-submit" id="saveClientPic">
+									Save <i class="m-icon-swapright m-icon-white"></i>
+								</a>
+							</div>
+						</div>
+			</form>
+			<h4 class="form-section">Clients</h4>
 			<div class="row">
 				<div class="col-md-12">
 					<!-- BEGIN EXAMPLE TABLE PORTLET-->
@@ -246,6 +275,7 @@
 <script src="/studiostare/manage-resource/assets/plugins/jquery.blockui.min.js" ></script>
 <script src="/studiostare/manage-resource/assets/plugins/jquery.cokie.min.js" ></script>
 <script src="/studiostare/manage-resource/assets/plugins/uniform/jquery.uniform.min.js" ></script>
+<script type="text/javascript" src="/studiostare/manage-resource/assets/plugins/bootstrap-fileinput/bootstrap-fileinput.js"></script>
 <!-- END CORE PLUGINS -->
 <!-- BEGIN PAGE LEVEL PLUGINS -->
 <script type="text/javascript" src="/studiostare/manage-resource/assets/plugins/select2/select2.min.js" ></script>

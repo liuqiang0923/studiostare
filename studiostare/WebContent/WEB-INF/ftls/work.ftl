@@ -51,7 +51,6 @@ $(function(){
     </nav>
     <a href="/en/home/" class="logo"> <img src="img/logo.png" alt=""> </a> <span class="clearfix"></span> </div>
 </header>
-<div id="body"> 
 <#if videoList??>
 	<#list videoList as video>
 		<div id='videoplaybox-${(video.id)!""}' class="videoplaybigbox" style="display: none">
@@ -108,7 +107,7 @@ $(function(){
 		</div>
 	</#list>
 	</#if>
-	
+<div id="body"> 
 	<#if videoList??>
 	<#list videoList as video>
 	<div class="videobigbox">
@@ -153,9 +152,9 @@ $(function(){
 			</p>
 		</div>
 	</div>
+	
 	</#list>
 	</#if>
-  </div>
 </div>
 <footer>
 	<div class="center">
@@ -166,9 +165,9 @@ $(function(){
 	    </div>
 	    <div class="footfont"> 
 	    	<a class="colorgreen" href="http://map.baidu.com/?newmap=1&shareurl=1&l=19&tn=B_NORMAL_MAP&c=13520836,3642551&cc=sh&s=s%26da_src%3Dpcmappg.searchBox.button%26wd%3D%E8%A5%BF%E8%8B%8F%E5%B7%9E%E8%B7%AF71%E5%8F%B7%26c%3D289%26src%3D0%26wd2%3D%26sug%3D0%26l%3D19%26from%3Dwebmap&sc=0">
-		    	<font class="demi">address&nbsp;</font>&nbsp;71 West Suzhou Road - room 401 Jing'an District - 200040 Shanghai - China<br>
+		    	<font class="demi">address&nbsp;</font>71 West Suzhou Road - room 401 Jing'an District - 200040 Shanghai - China<br>
 	      	</a>
-	      	<font class="demi">contact</font> <font class="book">phone</font> +86 (0)21 6276 0052 <font class="book">email</font> <a class="colorgreen" href='mailto:contact@studiostare.com'> contact@studiostare.com </a> 
+	      	<font class="demi">contact</font> <font class="book">phone</font> +86 (0)21 6276 0052 <font class="book">email</font> <a class="colorgreen01" href='mailto:contact@studiostare.com'> contact@studiostare.com </a> 
 	    </div>
 	    <div class="fllowus">
 	    	<h1>follow us</h1>

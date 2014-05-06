@@ -15,6 +15,7 @@ public class VideoEntity implements Serializable {
 	private String videoPathMp4;
 	private String videoPathOgg;
 	private String description;
+	private int type;
 	private Date updateTime;
 	public int getId() {
 		return id;
@@ -81,5 +82,11 @@ public class VideoEntity implements Serializable {
 	}
 	public void setIndex(int index) {
 		this.index = index;
+	}
+	public int getType() {
+		return type;
+	}
+	public void setType(int type) {
+		this.type = type;
 	}
 }

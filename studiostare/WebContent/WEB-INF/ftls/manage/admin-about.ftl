@@ -39,7 +39,7 @@
 	<div class="header-inner">
 		<!-- BEGIN LOGO -->
 		<a class="navbar-brand" href="/studiostare/index.html">
-			<img src="/studiostare/manage-resource/favicon.png" alt="logo" class="img-responsive"/>
+			<img style="height:22px" src="/studiostare/manage-resource/favicon.png" alt="logo" class="img-responsive"/>
 		</a>
 		<!-- END LOGO -->
 		<!-- BEGIN RESPONSIVE MENU TOGGLER -->
@@ -110,6 +110,14 @@
 							<i class="fa fa-th"></i>
 							<span class="title">
 								Leading page
+							</span>
+						</a>
+					</li>
+					<li class="last ">
+						<a href="/studiostare/manage/admin-admin.html" >
+							<i class="fa fa-gift"></i>
+							<span class="title">
+								Admin
 							</span>
 						</a>
 					</li>
@@ -313,12 +321,12 @@
 	<script src="/studiostare/manage-resource/assets/scripts/table-managed-about.js"></script>
 	<!-- END PAGE LEVEL SCRIPTS -->
 	<script>
-jQuery(document).ready(function() {       
-   // initiate layout and plugins
-   App.init();
-   TableManaged.init();
-});
-</script>
+		jQuery(document).ready(function() {       
+			// initiate layout and plugins
+			App.init();
+			TableManaged.init();
+		});
+	</script>
 	<!-- END JAVASCRIPTS -->
 	<script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-37564768-1']);  _gaq.push(['_setDomainName', 'keenthemes.com']);  _gaq.push(['_setAllowLinker', true]);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script>
 </body>

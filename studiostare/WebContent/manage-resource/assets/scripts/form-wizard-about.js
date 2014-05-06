@@ -61,13 +61,13 @@ var FormWizard = function () {
                         required: true
                     },
                     password: {
-                        minlength: 5,
+                        minlength: 6,
                         required: true
                     },
                     rpassword: {
-                        minlength: 5,
+                        minlength: 6,
                         required: true,
-                        equalTo: "#submit_form_password"
+                        equalTo: "#password"
                     },
                     //profile
                     fullname: {

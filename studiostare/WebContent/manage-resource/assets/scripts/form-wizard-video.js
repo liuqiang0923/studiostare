@@ -74,7 +74,6 @@ var FormWizard = function () {
                 rules: {
                     //account
                 	name: {
-                        minlength: 5,
                         required: true
                     },
                     password: {

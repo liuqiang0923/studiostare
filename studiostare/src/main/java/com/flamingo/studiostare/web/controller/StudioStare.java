@@ -48,13 +48,16 @@ public class StudioStare {
 		ModelAndView m = new ModelAndView();
 		List<VideoEntity> videoList = null;
 		LeadingEntity leadingEntity = null;
+		LeadingEntity leadingEntityText = null;
 		try{
-			videoList = videoService.getAll();
+			videoList = videoService.getAllActive();
 			leadingEntity = leadingService.getOnePicByRandom();
+			leadingEntityText = leadingService.getOneWordByRandom();
 		}catch(Exception e){
 			e.printStackTrace();
 		}
 		m.addObject("leading", leadingEntity);
+		m.addObject("leadingText", leadingEntityText);
 		m.addObject("videoList", videoList);
 		m.setViewName("index");
 		return m;
@@ -65,7 +68,7 @@ public class StudioStare {
 		ModelAndView m = new ModelAndView();
 		List<VideoEntity> videoList = null;
 		try{
-			videoList = videoService.getAll();
+			videoList = videoService.getAllActive();
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -94,12 +97,15 @@ public class StudioStare {
 		ModelAndView m = new ModelAndView();
 		List<ClientEntity> clientList = null;
 		List<CategoryEntity> categoryList = null;
+		AboutEntity clientPic = null;
 		try{
 			clientList = clientService.getAll();
 			categoryList = categoryService.getAll();
+			clientPic = aboutService.getById(2);
 		} catch(Exception e){
 			e.printStackTrace();
 		}
+		m.addObject("clientPic",clientPic);
 		m.addObject("clientList", clientList);
 		m.addObject("categoryList", categoryList);
 		m.setViewName("clients");

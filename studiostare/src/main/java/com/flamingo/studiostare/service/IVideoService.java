@@ -12,6 +12,8 @@ public interface IVideoService {
 	VideoEntity getById(int id);
 
 	void save(VideoEntity videoEntity, MultipartFile videoimg, MultipartFile videowebm, MultipartFile videomp4, MultipartFile videoogg) throws IOException;
+	
+	void save(VideoEntity videoEntity) throws IOException;
 
 	List<VideoEntity> getAll();
 
@@ -22,4 +24,6 @@ public interface IVideoService {
 	List<VideoEntity> getByCategory(int id);
 	
 	List<VideoEntity> getByVideoEntity(VideoEntity videoEntity);
+
+	List<VideoEntity> getAllActive();
 }

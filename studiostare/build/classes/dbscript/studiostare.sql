@@ -99,6 +99,7 @@ CREATE TABLE IF NOT EXISTS `studiostare`.`video` (
   `video_path_ogg` VARCHAR(1024) COMMENT 'ogg视频地址',
   `video_path_mp4` VARCHAR(1024) COMMENT 'mp4视频地址',
   `description` VARCHAR(1024) COMMENT '视频描述',
+  `type` INT NOT NULL DEFAULT 1 COMMENT '是否显示在首页',
   `update_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_video_to_client_client_id`
@@ -119,9 +120,9 @@ DROP TABLE IF EXISTS `studiostare`.`about` ;
 
 CREATE TABLE IF NOT EXISTS `studiostare`.`about` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `office_img_path` VARCHAR(1024) NOT NULL COMMENT '办公室照片地址',
-  `about_us_info` VARCHAR(1024) NOT NULL COMMENT '关于我们',
-  `manifesto` VARCHAR(1024) NOT NULL COMMENT '宣言',
+  `office_img_path` VARCHAR(1024) COMMENT '办公室照片地址',
+  `about_us_info` VARCHAR(1024) COMMENT '关于我们',
+  `manifesto` VARCHAR(1024) COMMENT '宣言',
   `update_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id`));
 
@@ -170,5 +171,6 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 INSERT INTO `studiostare`.`role` (`id`, `name`, `description`) VALUES ('1', 'admin', 'admin');
 INSERT INTO `studiostare`.`role` (`id`, `name`, `description`) VALUES ('2', 'twitterUser', 'twitterUser');
 INSERT INTO `studiostare`.`role` (`id`, `name`, `description`) VALUES ('3', 'aboutus', 'aboutus');
+INSERT INTO `studiostare`.`user` (`id`, `name`, `password`, `email`, `role_id`, `description`) VALUES ('1', 'admin', 'admin', 'admin@admin.com', '1', 'admin');
 
 

@@ -69,6 +69,13 @@ public class VideoServiceImpl implements IVideoService {
 	}
 	
 	@Override
+	public List<VideoEntity> getAllActive() {
+		VideoEntity video = new VideoEntity();
+		video.setType(1);
+		return videoDao.selectVideo(video);
+	}
+	
+	@Override
 	public List<VideoEntity> getByClient(int id) {
 		ClientEntity client = new ClientEntity();
 		client.setId(id);
@@ -94,6 +101,16 @@ public class VideoServiceImpl implements IVideoService {
 	@Override
 	public void delById(int videoId) {
 		videoDao.deleteVideoById(videoId);
+	}
+
+	@Override
+	public void save(VideoEntity videoEntity) throws IOException {
+		Date now = new Date();
+		videoEntity.setUpdateTime(now);
+		if(videoEntity.getId() == 0)
+			videoDao.insertVideo(videoEntity);
+		else
+			videoDao.updateVideo(videoEntity);
 	}
 	
 }

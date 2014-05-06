@@ -7,7 +7,8 @@
 
 /* FlexSlider Necessary Styles
 *********************************/ 
-.flexbox{display: block; position:absolute; top:49px; left:60px;}
+.flexbox{display:none}
+.flexbox01{display: block; position:absolute; top:49px; left:60px;z-index: 100;}
 .flexslider {width: 100%; margin:0 auto;overflow: hidden;position: relative;}
 .flexslider .slides > li {display: none;} /* Hide the slides before the JS is loaded. Avoids image jumping */
 .flexslider .slides img {width: 100%; display: block; }

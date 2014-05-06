@@ -38,7 +38,7 @@
 	<div class="header-inner">
 		<!-- BEGIN LOGO -->
 		<a class="navbar-brand" href="/studiostare/index.html">
-			<img src="/studiostare/manage-resource/favicon.png" alt="logo" class="img-responsive"/>
+			<img style="height:22px" src="/studiostare/manage-resource/favicon.png" alt="logo" class="img-responsive"/>
 		</a>
 		<!-- END LOGO -->
 		<!-- BEGIN RESPONSIVE MENU TOGGLER -->
@@ -109,6 +109,14 @@
 							<i class="fa fa-bookmark-o"></i>
 							<span class="title">
 								Leading page
+							</span>
+						</a>
+					</li>
+					<li class="last ">
+						<a href="/studiostare/manage/admin-admin.html" >
+							<i class="fa fa-gift"></i>
+							<span class="title">
+								Admin
 							</span>
 						</a>
 					</li>

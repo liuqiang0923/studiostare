@@ -13,6 +13,7 @@
 		<result property="videoPathOgg" column="v_video_path_ogg" />
 		<result property="videoPathMp4" column="v_video_path_mp4" />
 		<result property="description" column="v_description" />
+		<result property="type" column="v_type" />
 		<result property="updateTime" column="v_update_time" javaType="Date" />
 		
 		<association property="client" javaType="ClientEntity">
@@ -35,7 +36,7 @@
 	<select id="selectVideoById" parameterType="int" resultType="VideoEntity" resultMap="videoResultMap">
 		select v.id v_id, v.index v_index, v.name v_name, v.img_path v_img_path, 
 			v.video_path_webm v_video_path_webm, v.video_path_ogg v_video_path_ogg, v.video_path_mp4 v_video_path_mp4, 
-			v.description v_description, v.update_time v_update_time, 
+			v.description v_description, v.type v_type, v.update_time v_update_time, 
 			c.id c_id, c.name c_name, c.phone c_phone, c.email c_email, c.description c_description, c.update_time c_update_time, 
 			ca.id ca_id, ca.name ca_name, ca.description ca_description, ca.update_time ca_update_time 
 			from video v, client c, category ca 
@@ -43,8 +44,8 @@
 	</select>
 	
 	<insert id="insertVideo" parameterType="VideoEntity">
-		insert into video (`index`, name, client_id, category_id, img_path, video_path_webm, video_path_ogg, video_path_mp4, description)
-		values (#{index}, #{name}, #{client.id}, #{category.id}, #{imgPath}, #{videoPathWebm}, #{videoPathOgg}, #{videoPathMp4}, #{description})
+		insert into video (`index`, name, client_id, category_id, img_path, video_path_webm, video_path_ogg, video_path_mp4, description, type)
+		values (#{index}, #{name}, #{client.id}, #{category.id}, #{imgPath}, #{videoPathWebm}, #{videoPathOgg}, #{videoPathMp4}, #{description}, #{type})
 	</insert>
 	
 	<update id="updateVideo" parameterType="VideoEntity">
@@ -58,6 +59,7 @@
 			video_path_ogg = #{videoPathOgg},
 			video_path_mp4 = #{videoPathMp4},
 			description = #{description}, 
+			type = #{type},
 			update_time = #{updateTime}
 		where id = #{id}
 	</update>
@@ -69,7 +71,7 @@
 	<select id="selectVideo" parameterType="VideoEntity" resultType="VideoEntity" resultMap="videoResultMap">
 		select v.id v_id, v.index v_index, v.name v_name, v.img_path v_img_path, 
 			v.video_path_webm v_video_path_webm, v.video_path_ogg v_video_path_ogg, v.video_path_mp4 v_video_path_mp4, 
-			v.description v_description, v.update_time v_update_time, 
+			v.description v_description, v.type v_type, v.update_time v_update_time, 
 			c.id c_id, c.name c_name, c.phone c_phone, c.email c_email, c.description c_description, c.update_time c_update_time, 
 			ca.id ca_id, ca.name ca_name, ca.description ca_description, ca.update_time ca_update_time 
 			from video v, client c, category ca 
@@ -79,6 +81,9 @@
 		</if>
 		<if test="description != null and description != ''">
 			and v.description like '%${description}%'  
+		</if>
+		<if test="type != null and type != 0">
+			and v.type = #{type}  
 		</if>
 		<if test="client != null and client.id != null and client.id != 0">
 			and v.client_id = #{client.id} 

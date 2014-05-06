@@ -3,7 +3,7 @@
 <!-- BEGIN HEAD -->
 <head>
 <meta charset="utf-8" />
-<title>Studio Stare | edit about info</title>
+<title>Studio Stare | edit admin info</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 <meta content="" name="description" />
@@ -97,7 +97,7 @@
 						</a>
 					</li>
 					<li class="last ">
-						<a style="background:#000000;" href="/studiostare/manage/admin-about.html" >
+						<a href="/studiostare/manage/admin-about.html" >
 							<i class="fa fa-bookmark-o"></i>
 							<span class="title">
 								About
@@ -113,7 +113,7 @@
 						</a>
 					</li>
 					<li class="last ">
-						<a href="/studiostare/manage/admin-admin.html" >
+						<a style="background:#000000;" href="/studiostare/manage/admin-admin.html" >
 							<i class="fa fa-gift"></i>
 							<span class="title">
 								Admin
@@ -154,7 +154,7 @@
 				<div class="row">
 					<div class="col-md-12">
 						<!-- BEGIN PAGE TITLE & BREADCRUMB-->
-						<h3 class="page-title">Edit About Info Wizard</h3>
+						<h3 class="page-title">Edit Admin Infomation Wizard</h3>
 						<!-- END PAGE TITLE & BREADCRUMB-->
 					</div>
 				</div>
@@ -165,20 +165,20 @@
 						<div class="portlet box blue" id="form_wizard_1">
 							<div class="portlet-title">
 								<div class="caption">
-									<i class="fa fa-reorder"></i> Edit About Info Wizard - <span
+									<i class="fa fa-reorder"></i> Edit Admin Infomation Wizard - <span
 										class="step-title"> Step 1 of 2 </span>
 								</div>
 							</div>
 							<div class="portlet-body form">
-								<form action="/studiostare/manage/saveAboutInfo" class="form-horizontal" id="submit_form" method="post" enctype="multipart/form-data">
-									<input type="hidden" name="id" value="${(about.id)!"0"}"></input>
+								<form action="/studiostare/manage/saveAdmin" class="form-horizontal" id="submit_form" method="post" enctype="multipart/form-data">
+									<input type="hidden" name="id" value="${(admin.id)!"1"}"></input>
 									<div class="form-wizard">
 										<!-- <div class="form-body"> -->
 										<div class="form-body">
 											<ul class="nav nav-pills nav-justified steps">
 												<li><a href="#tab1" data-toggle="tab" class="step">
 														<span class="number"> 1 </span> <span class="desc">
-															<i class="fa fa-check"></i> Edit about info
+															<i class="fa fa-check"></i> Edit admin infomation
 													</span>
 												</a></li>
 												<li><a href="#tab2" data-toggle="tab" class="step">
@@ -201,61 +201,57 @@
 													Your form validation is successful!
 												</div>
 												<div class="tab-pane active" id="tab1">
-													<h3 class="block">About info</h3>
+													<h3 class="block">Admin infomation</h3>
 													<div class="form-group">
-														<label class="control-label col-md-3"> 
-															Office 
-															<span class="required"> * </span>
-														</label>
-														<div class="fileinput fileinput-new col-md-4" data-provides="fileinput">
-															<div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 100%;" id="officeimgdiv">
-																<#if (about.officeImgPath)?? >
-																	<img src='${(about.officeImgPath)!""}'></img>
-																</#if>
-															</div>
-															<input type="file" name="officeimg"/>
-															<span class="help-block"> Upload office photo. </span>	
-														</div>
-													</div>
-													<div class="form-group">
-														<label class="control-label col-md-3">About 
+														<label class="control-label col-md-3">Name 
 															<span class="required"> * </span>
 														</label>
 														<div class="col-md-4">
-															<textarea class="form-control" rows="3" style="width: 100%;" name="aboutUsInfo">${(about.aboutUsInfo)!""}</textarea>
-															<span class="help-block"> Input about. </span>
+															<input type="text" class="form-control" name="name" value="${(admin.name)!""}"/>
+															<span class="help-block"> Input admin name. </span>
 														</div>
 													</div>
 													<div class="form-group">
-														<label class="control-label col-md-3">Manifesto 
+														<label class="control-label col-md-3">Password 
 															<span class="required"> * </span>
 														</label>
 														<div class="col-md-4">
-															<textarea class="form-control" rows="3" style="width: 100%;" name="manifesto">${(about.manifesto)!""}</textarea>
-															<span class="help-block"> Input manifesto. </span>
+															<input type="password" autocomplete="off" class="form-control" id="password" name="password" />
+															<span class="help-block"> Input password. </span>
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="control-label col-md-3">Confirm password 
+															<span class="required"> * </span>
+														</label>
+														<div class="col-md-4">
+															<input type="password" autocomplete="off" class="form-control" name="rpassword" />
+															<span class="help-block"> Confirm password. </span>
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="control-label col-md-3">Admin email 
+														</label>
+														<div class="col-md-4">
+															<input type="text" class="form-control" name="email" value="${(admin.email)!""}" />
+															<span class="help-block"> Input admin email. </span>
 														</div>
 													</div>
 												</div>
 												<div class="tab-pane" id="tab2">
 													<h3 class="block">Confirm</h3>
-													<h4 class="form-section">About infos</h4>
+													<h4 class="form-section">Admin's info</h4>
 													<div class="form-group">
-														<label class="control-label col-md-3">Office:</label>
+														<label class="control-label col-md-3">Name:</label>
 														<div class="col-md-4">
-															<div class="form-control-static" data-display="officeimgdiv"></div>
-														</div>
-													</div>
-													<div class="form-group">
-														<label class="control-label col-md-3">about:</label>
-														<div class="col-md-4">
-															<p class="form-control-static" data-display="aboutUsInfo">
+															<p class="form-control-static" data-display="name">
 															</p>
 														</div>
 													</div>
 													<div class="form-group">
-														<label class="control-label col-md-3">Manifesto:</label>
+														<label class="control-label col-md-3">Email:</label>
 														<div class="col-md-4">
-															<p class="form-control-static" data-display="manifesto">
+															<p class="form-control-static" data-display="email">
 															</p>
 														</div>
 													</div>

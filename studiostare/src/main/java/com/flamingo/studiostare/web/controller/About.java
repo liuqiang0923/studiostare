@@ -74,6 +74,22 @@ public class About extends JsonAction {
 		return m;
 	}
 	
+	@RequestMapping(value = "admin-admin.html", method = RequestMethod.GET)
+	public ModelAndView editAdmin() {
+		ModelAndView m = new ModelAndView();
+		UserEntity userEntity  = null ;
+		try{
+			userEntity = userService.getById(1);
+		} catch(Exception e){
+			e.printStackTrace();
+		}
+		if(userEntity == null)
+			userEntity = new UserEntity();
+		m.addObject("admin", userEntity);
+		m.setViewName("manage/admin-admin");
+		return m;
+	}
+	
 	@RequestMapping(value = "deleteWho/{whoId}", method = RequestMethod.GET)
 	public String deleteWho(@PathVariable int whoId, HttpServletResponse response) {
 		String result = "ok";
@@ -99,6 +115,19 @@ public class About extends JsonAction {
 		return "redirect:admin-about.html";
 	}
 	
+	@RequestMapping(value = "saveAdmin", method = RequestMethod.POST)
+	public String saveAdmin(UserEntity user, HttpSession session) {
+		RoleEntity role = new RoleEntity();
+		role.setId(1);
+		user.setRole(role);
+		try {
+			userService.save(user, null);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "redirect:admin-admin.html";
+	}
+	
 	@RequestMapping(value = "editAboutInfo", method = RequestMethod.GET)
 	public ModelAndView editAboutInfo() {
 		ModelAndView m = new ModelAndView();
@@ -119,6 +148,7 @@ public class About extends JsonAction {
 	public String saveAboutInfo(
 			AboutEntity about,
 			@RequestParam(value="officeimg", required=false) MultipartFile officeimg, HttpSession session){
+		about.setId(1);
 		try {
 			aboutService.save(about, officeimg);
 		} catch (Exception e) {
