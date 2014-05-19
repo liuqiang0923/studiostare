@@ -112,8 +112,8 @@ The default control bar that is a container for most of the controls.
 /* Hide the control bar when the video is playing and the user is inactive  */
 .vjs-default-skin.vjs-has-started.vjs-user-inactive .vjs-control-bar {
 	display: block;
-	visibility: hidden;
-	opacity: 0;
+	/* visibility: hidden; */
+	opacity: 1;
 	/* transition */
 	-webkit-transition: visibility 1s, opacity 1s;
 	-moz-transition: visibility 1s, opacity 1s;
@@ -140,8 +140,6 @@ fonts to show/hide properly.
 .vjs-default-skin .vjs-control {
 	outline: none;
 	position: absolute;
-	left: 44%;
-	padding: 0;
 	height: 2em;
 	width: 2em;
 }
@@ -186,6 +184,8 @@ fonts to show/hide properly.
 	width: 2em;
 	max-width: 43px;
 	cursor: pointer;
+	left: 47%;
+	margin: 0 0 0 -1em;
 }
 .vjs-playing {
 	background: url(img/pause-button.png) no-repeat!important;
@@ -323,8 +323,8 @@ fonts to show/hide properly.
 	width: 2em;
 	cursor: pointer;
 	position: absolute;
-	left: 49%;
-	margin: 0 0 0 1em;
+	right: 47%;
+	margin: 0 -1em 0 0;
 	max-width: 43px;
 }
 .vjs-default-skin .vjs-fullscreen-control {

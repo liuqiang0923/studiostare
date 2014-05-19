@@ -55,11 +55,13 @@
 	  </#if>
 	  </div>
 	  <div class="clientssubnav">
-	  	<img src="img/category.jpg">
+	  	<div>
+	  		<img src="img/category.jpg">
+	  	</div>
 	  	<#if categoryList??>
 	  	<#list categoryList as category>
-	  		<a href="category/videoOfCategory/${(category.id)!""}">${(category.name)!""}</a>
-	  		<font> / </font>
+	  		<a href="category/videoOfCategory/${(category.id)!""}">${(category.name)!""} </a>
+	  		<font> / </font> 
 	  	</#list>
 	    </#if> 
 	   </div>

@@ -27,8 +27,14 @@ content="width=device-width, initial-scale=0.8, maximum-scale=0.8, minimum-scale
 $(function(){
 	$('#box').flexslider();
 })
-		$(window).bind("scroll",function(){$("#box").slideUp("slow");});
-	</script>
+$(window).bind("scroll",function(){$("#box").slideUp("slow");});
+if((navigator.userAgent.match(/iPad/i))){ 
+    document.write('<style>.video-js .vjs-tech{min-height:500px;}</style>'); 
+}
+if((navigator.userAgent.match(/iPhone/i))){ 
+    document.write('<style>.video-js .vjs-tech{min-height:250px;}</style>'); 
+}
+</script>
 </head>
 
 <header id="main_header">
@@ -113,6 +119,7 @@ $(function(){
 	<div class="videobigbox">
 		<div class="videobox">
 			<img src='${(video.imgPath)!""}'></img>
+			<!--
 			<div class="sharebigbox">
 				<div class="sharebtn">
 					<img src="img/screen.png" onclick="playvideofull('${(video.id)!""}');">
@@ -137,6 +144,7 @@ $(function(){
 					</div>
 				</div>
 			</div>
+			-->
 			<div class="playbox">
 				<div class="playbtn" style="display: none;">
 					<img src="img/play-button.png" onclick="playvideo('${(video.id)!""}');">

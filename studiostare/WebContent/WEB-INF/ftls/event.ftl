@@ -20,6 +20,14 @@
 <!--[if lt IE 9]>
 	<script src="js/libs/html5shiv.js"></script>
 	<![endif]-->
+<script type="text/javascript">
+if((navigator.userAgent.match(/iPad/i))){ 
+    document.write('<style>.video-js .vjs-tech{min-height:500px;}</style>'); 
+}
+if((navigator.userAgent.match(/iPhone/i))){ 
+    document.write('<style>.video-js .vjs-tech{min-height:250px;}</style>'); 
+}
+</script>
 </head>
 <body>
 <header id="main_header">
@@ -102,6 +110,7 @@
 	<#list videoList as video>
   <div class="submain_imgbox">
     <div class="videobox"> <img src="${(video.imgPath)!""}"></img>
+    <!--
       <div class="sharebigbox">
         <div class="sharebtn"><img src="/studiostare/img/screen.png"onclick="playvideofull('${(video.id)!""}');"></div>
         <div class="sharebox">
@@ -122,6 +131,7 @@
           <div class="sharefont"> <img src="/studiostare/img/share.png"/></div>
         </div>
       </div>
+      -->
       <div class="playbox">
         <div class="playbtn" style="display: none;"> <img src="/studiostare/img/play-button.png" onclick="playvideo('${(video.id)!""}');"> </div>
       </div>

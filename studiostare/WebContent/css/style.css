@@ -108,11 +108,11 @@ video {
 width: 100%;
 margin: 1.2em 0 4em 0;
 overflow: hidden;}
-.infos_left{float:left; width:30%;}
+.infos_left{float:left; width: 40%;}
 .infos_left h1{float:left; font: 0.88em/1.4em 'itcavantgardestd-bold';}
 .infos_left h2{float:left; font: 0.8em/1.5em 'itcavantgardestd-md'; text-transform: capitalize; width:100%;}
 .infos_left font{float:left; font: 0.88em/1.4em 'itcavantgardestd-md';}
-.infos_right{float:right; font: 0.76em/1.4em 'itcavantgardestd-md'; width:60%;text-transform:capitalize}
+.infos_right{float:right; font: 0.76em/1.4em 'itcavantgardestd-md'; width:60%;}
 .arrow {
 	display: block;
 	width: 4em;
@@ -291,11 +291,10 @@ float: left;
 
 .subfont01 font{float:left;}
 .subfont01 h2{font: 0.78em/1em 'itcavantgardestd-md'; float:left;}
-.subfont02 h3{font: 0.78em/1.2em 'itcavantgardestd-md'; text-transform: capitalize;}
 .subfontbox{float:left; width:100%;margin: 0.4em 0 0 0;}
 .subfontbox font{font: 0.78em/1em 'itcavantgardestd-md';}
 .subfontbox .subfont01{float:left; width:100%;}
-.subfontbox .subfont02{float:left; width:100%;}
+.subfontbox .subfont02{float:left; width:100%;font: 0.78em/1.6em 'itcavantgardestd-md';text-transform: capitalize;}
 
 /*==========SUBNAV END==========*/
 

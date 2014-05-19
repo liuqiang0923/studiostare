@@ -34,6 +34,12 @@ $(document).ready(function() {
 	h=window.innerHeight;
 	box.style['height']=h+"px";
 });
+if((navigator.userAgent.match(/iPad/i))){ 
+    document.write('<style>.video-js .vjs-tech{min-height:500px;}</style>'); 
+}
+if((navigator.userAgent.match(/iPhone/i))){ 
+    document.write('<style>.video-js .vjs-tech{min-height:250px;}</style>'); 
+}
 </script>
 <!--
 <script>
@@ -145,6 +151,7 @@ box.style['height']=h+"px";
 	<div class="videobigbox">
 		<div class="videobox">
 			<img src='${(video.imgPath)!""}'></img>
+			<!--
 			<div class="sharebigbox">
 				<div class="sharebtn">
 					<img src="img/screen.png" onclick="playvideofull('${(video.id)!""}');">
@@ -169,6 +176,7 @@ box.style['height']=h+"px";
 					</div>
 				</div>
 			</div>
+			-->
 			<div class="playbox">
 				<div class="playbtn" style="display: none;">
 					<img src="img/play-button.png" onclick="playvideo('${(video.id)!""}');">
@@ -283,7 +291,7 @@ var warp_pro=document.getElementsByClassName("sharebox");
 			// videobox.style.display="block";
 			// videobox.getElementsByTagName("video")[0].play();
 			_V_("video-"+videoid).play();
-			}
+		}
 		
 		function playvideofull(videoid){
 			hideAndStopAll();

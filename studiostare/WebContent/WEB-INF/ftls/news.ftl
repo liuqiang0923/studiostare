@@ -89,7 +89,7 @@
 	      <#else>
 		     <div class="date">${(news.updateTime)?string("dd MMMM yyyy")}</div>
 	      </#if>
-	      <div class="title">${(news.title)!""}<font class="medi">&gt;</font></div>
+	      <div class="title">${(news.title)!""}<font class="medi"> &gt;</font></div>
 	      <#if (news.twitterId)?? && (news.twitterId) != 0>
 	      	<p class="news_twitter">${(news.content)!""}</p>
 	      <#else>

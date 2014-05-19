@@ -124,8 +124,8 @@ public class TwitterJob extends QuartzJobBean {
 	}
 	
 	private long getSinceTwitterIdFromDb() {
-//		return newsService.getMaxTwitterId();
-		return 0;
+		return newsService.getMaxTwitterId();
+//		return 0;
 	}
 	
 	/**

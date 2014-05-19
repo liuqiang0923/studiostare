@@ -132,6 +132,9 @@ footer .center {
 
 .footfont a{color:#000;}
 .footfont a.colorgreen{text-transform:capitalize;}
+.footfont a.colorgreen div.addressbox{white-space:nowrap; text-align:center}
+.footfont a.colorgreen div{float:left; }
+
 .footfont a.colorgreen01{text-transform:lowercase;}
 .footfont a.colorgreen01:hover,.footfont a.colorgreen:hover{color:#7dc399}
 
@@ -145,7 +148,7 @@ footer .center {
 .fllowuslink{width:100%; text-align:center;}
 .fllowuslink img{max-width: 34px; margin: 0;}
 .fllowus h1{font: 0.5em/1.5em 'itcavantgardestd-bold';color: #000;}
-.playbox{  max-width: 53px; width: 2.2em; top:50%; left:50%; z-index:1; margin: -1.5em 0 0 -1.5em; display:block;position: absolute;}
+.playbox{  max-width: 53px; width: 2.2em; top:50%; left:50%; z-index:1;   margin: -1.1em 0 0 -1.14em; display:block;position: absolute;}
 .playbox02 {
 max-width: 53px;
 width: 2em;
@@ -160,14 +163,18 @@ position: absolute;}
 body {
 	padding: 0;
 }
-#body {
-width: 92%!important;}
+#body {width: 92%!important;}
+footer {
+	width: 92% !important;
+}
+.videoplaybigbox{width: 92% !important;}
 #splashscreen{ display:none;}
 .aboutbox,.clientsbox,#wrapper,.submainbox{width:92% !important;}
 #main_header{width: 92%;}
 .project_thumb {
 	width: 100%;
 	margin-bottom: 45px;
+
 	line-height: 17px;
 }
 .submain_imgbox {
