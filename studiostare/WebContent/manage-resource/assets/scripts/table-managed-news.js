@@ -118,7 +118,7 @@ var TableManaged = function () {
             //jQuery('#managetable_twitter_wrapper .dataTables_length select').select2(); // initialize select2 dropdown
 
             $('#managetable_twitter_new').click(function (e) {
-            	window.location.href="/studiostare/manage/addTwitter";
+            	window.location.href="/manage/addTwitter";
             });
             
             $('#managetable_news a.edit').live('click', function (e) {
@@ -128,7 +128,7 @@ var TableManaged = function () {
             
             $('#managetable_twitter a.edit').live('click', function (e) {
             	var id = $(this).parents('tr')[0].getElementsByTagName("input")[0].value;
-            	window.location.href="/studiostare/manage/editTwitterUser/" + id;
+            	window.location.href="/manage/editTwitterUser/" + id;
             });
             
             $('#managetable_news a.delete').live('click', function (e) {
@@ -160,7 +160,7 @@ var TableManaged = function () {
             	var id = $(this).parents('tr')[0].getElementsByTagName("input")[0].value;
             	
 	            $.ajax({
-	        	    url: "/studiostare/manage/deleteTwitter/" + id,
+	        	    url: "/manage/deleteTwitter/" + id,
 	        	    type: 'GET',
 	        	    //dataType: 'json',
 	        	    //data: "{\"name\":\"hmkcode\",\"id\":2}", 

@@ -19,7 +19,7 @@ var TableManaged = function () {
             		if(row.nextSibling != null)
             			nextid = row.nextSibling.id;
             		
-            		window.location.href="/studiostare/manage/changeVideoOrder/" + row.id + "/" + lastid + "/" + nextid;
+            		window.location.href="/manage/changeVideoOrder/" + row.id + "/" + lastid + "/" + nextid;
             	}
             });
 
@@ -97,7 +97,7 @@ var TableManaged = function () {
             		alert("please select video need to show or hide on index.");
             		return;
             	}
-            	window.location.href="/studiostare/manage/showOrHideVideo/" + ids;
+            	window.location.href="/manage/showOrHideVideo/" + ids;
             });
             
             $('#managetable_video a.edit').live('click', function (e) {
@@ -111,16 +111,16 @@ var TableManaged = function () {
             });
             
             function addVideo(){
-            	window.location.href="/studiostare/manage/addVideo";
+            	window.location.href="/manage/addVideo";
             }
             
             function editVideo(id){
-            	window.location.href="/studiostare/manage/editVideo/" + id;
+            	window.location.href="/manage/editVideo/" + id;
             }
             
             function deleteVideo(id){
             	$.ajax({
-            	    url: '/studiostare/manage/deleteVideo/' + id,
+            	    url: '/manage/deleteVideo/' + id,
             	    type: 'GET',
 //            	    dataType: 'json',
 //            	    data: "{\"name\":\"hmkcode\",\"id\":2}", 
@@ -129,7 +129,7 @@ var TableManaged = function () {
             	    success: function(res) {
             	    	if (res.result == "ok") {
 	        	        	alert("Delete succeed!");
-	        	        	window.location.href="/studiostare/manage/admin-video-list.html";
+	        	        	window.location.href="/manage/admin-video-list.html";
 	        	        } else {
 	        	        	alert("Deleted failed!");
 	        	        }

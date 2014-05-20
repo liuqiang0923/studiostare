@@ -10,22 +10,22 @@
 <meta content="" name="author"/>
 
 <!-- BEGIN GLOBAL MANDATORY STYLES -->
-<link href="/studiostare/manage-resource/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-<link href="/studiostare/manage-resource/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-<link href="/studiostare/manage-resource/assets/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+<link href="/manage-resource/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+<link href="/manage-resource/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+<link href="/manage-resource/assets/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
 <!-- END GLOBAL MANDATORY STYLES -->
 <!-- BEGIN PAGE LEVEL STYLES -->
-<link rel="stylesheet" type="text/css" href="/studiostare/manage-resource/assets/plugins/select2/select2.css" />
-<link rel="stylesheet" type="text/css" href="/studiostare/manage-resource/assets/plugins/select2/select2-metronic.css" />
-<link rel="stylesheet" href="/studiostare/manage-resource/assets/plugins/data-tables/DT_bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="/manage-resource/assets/plugins/select2/select2.css" />
+<link rel="stylesheet" type="text/css" href="/manage-resource/assets/plugins/select2/select2-metronic.css" />
+<link rel="stylesheet" href="/manage-resource/assets/plugins/data-tables/DT_bootstrap.css" />
 <!-- END PAGE LEVEL STYLES -->
 <!-- BEGIN THEME STYLES -->
-<link href="/studiostare/manage-resource/assets/css/style-metronic.css" rel="stylesheet" type="text/css"/>
-<link href="/studiostare/manage-resource/assets/css/style.css" rel="stylesheet" type="text/css"/>
-<link href="/studiostare/manage-resource/assets/css/style-responsive.css" rel="stylesheet" type="text/css"/>
-<link href="/studiostare/manage-resource/assets/css/plugins.css" rel="stylesheet" type="text/css"/>
-<link href="/studiostare/manage-resource/assets/css/themes/default.css" rel="stylesheet" type="text/css" id="style_color"/>
-<link href="/studiostare/manage-resource/assets/css/custom.css" rel="stylesheet" type="text/css"/>
+<link href="/manage-resource/assets/css/style-metronic.css" rel="stylesheet" type="text/css"/>
+<link href="/manage-resource/assets/css/style.css" rel="stylesheet" type="text/css"/>
+<link href="/manage-resource/assets/css/style-responsive.css" rel="stylesheet" type="text/css"/>
+<link href="/manage-resource/assets/css/plugins.css" rel="stylesheet" type="text/css"/>
+<link href="/manage-resource/assets/css/themes/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+<link href="/manage-resource/assets/css/custom.css" rel="stylesheet" type="text/css"/>
 <!-- END THEME STYLES -->
 <link rel="shortcut icon" href="favicon.ico" />
 </head>
@@ -37,13 +37,13 @@
 	<!-- BEGIN TOP NAVIGATION BAR -->
 	<div class="header-inner">
 		<!-- BEGIN LOGO -->
-		<a class="navbar-brand" href="/studiostare/index.html">
-			<img style="height:22px" src="/studiostare/manage-resource/favicon.png" alt="logo" class="img-responsive"/>
+		<a class="navbar-brand" href="/index.html">
+			<img style="height:22px" src="/manage-resource/favicon.png" alt="logo" class="img-responsive"/>
 		</a>
 		<!-- END LOGO -->
 		<!-- BEGIN RESPONSIVE MENU TOGGLER -->
 		<a href="javascript:;" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-			<img src="/studiostare/manage-resource/assets/img/menu-toggler.png" alt=""/>
+			<img src="/manage-resource/assets/img/menu-toggler.png" alt=""/>
 		</a>
 		<!-- END RESPONSIVE MENU TOGGLER -->
 	</div>
@@ -65,7 +65,7 @@
 						<div class="sidebar-toggler hidden-phone"></div> <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
 					</li>
 					<li class="last ">
-						<a style="background:#000000;" href="/studiostare/manage/admin-video-list.html" >
+						<a style="background:#000000;" href="/manage/admin-video-list.html" >
 							<i class="fa fa-puzzle-piece"></i>
 							<span class="title">
 								Video
@@ -73,7 +73,7 @@
 						</a>
 					</li>
 					<li class="last ">
-						<a href="/studiostare/manage/admin-client-list.html"> 
+						<a href="/manage/admin-client-list.html"> 
 							<i class="fa fa-user"></i> 
 							<span class="title"> 
 								Client 
@@ -81,7 +81,7 @@
 						</a>
 					</li>
 					<li class="last ">
-						<a href="/studiostare/manage/admin-category-list.html"> 
+						<a href="/manage/admin-category-list.html"> 
 							<i class="fa fa-sitemap"></i> 
 							<span class="title"> 
 								Category 
@@ -89,7 +89,7 @@
 						</a>
 					</li>
 					<li class="last ">
-						<a href="/studiostare/manage/admin-news-list.html" >
+						<a href="/manage/admin-news-list.html" >
 							<i class="fa fa-file-text"></i>
 							<span class="title">
 								News
@@ -97,7 +97,7 @@
 						</a>
 					</li>
 					<li class="last ">
-						<a href="/studiostare/manage/admin-about.html" >
+						<a href="/manage/admin-about.html" >
 							<i class="fa fa-bookmark-o"></i>
 							<span class="title">
 								About
@@ -105,7 +105,7 @@
 						</a>
 					</li>
 					<li class="last ">
-						<a href="/studiostare/manage/admin-leading-list.html" >
+						<a href="/manage/admin-leading-list.html" >
 							<i class="fa fa-th"></i>
 							<span class="title">
 								Leading page
@@ -113,7 +113,7 @@
 						</a>
 					</li>
 					<li class="last ">
-						<a href="/studiostare/manage/admin-admin.html" >
+						<a href="/manage/admin-admin.html" >
 							<i class="fa fa-gift"></i>
 							<span class="title">
 								Admin
@@ -284,24 +284,24 @@
 	</div>
 </div>
 <!-- END FOOTER -->
-<script src="/studiostare/manage-resource/assets/plugins/jquery-1.10.2.min.js" ></script>
-<script src="/studiostare/manage-resource/assets/plugins/jquery-migrate-1.2.1.min.js" ></script>
-<script src="/studiostare/manage-resource/assets/plugins/bootstrap/js/bootstrap.min.js" ></script>
-<script src="/studiostare/manage-resource/assets/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" ></script>
-<script src="/studiostare/manage-resource/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" ></script>
-<script src="/studiostare/manage-resource/assets/plugins/jquery.blockui.min.js" ></script>
-<script src="/studiostare/manage-resource/assets/plugins/jquery.cokie.min.js" ></script>
-<script src="/studiostare/manage-resource/assets/plugins/uniform/jquery.uniform.min.js" ></script>
+<script src="/manage-resource/assets/plugins/jquery-1.10.2.min.js" ></script>
+<script src="/manage-resource/assets/plugins/jquery-migrate-1.2.1.min.js" ></script>
+<script src="/manage-resource/assets/plugins/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/manage-resource/assets/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" ></script>
+<script src="/manage-resource/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" ></script>
+<script src="/manage-resource/assets/plugins/jquery.blockui.min.js" ></script>
+<script src="/manage-resource/assets/plugins/jquery.cokie.min.js" ></script>
+<script src="/manage-resource/assets/plugins/uniform/jquery.uniform.min.js" ></script>
 <!-- END CORE PLUGINS -->
 <!-- BEGIN PAGE LEVEL PLUGINS -->
-<script type="text/javascript" src="/studiostare/manage-resource/assets/plugins/select2/select2.min.js" ></script>
-<script type="text/javascript" src="/studiostare/manage-resource/assets/plugins/data-tables/jquery.dataTables.js" ></script>
-<script type="text/javascript" src="/studiostare/manage-resource/assets/plugins/data-tables/DT_bootstrap.js" ></script>
+<script type="text/javascript" src="/manage-resource/assets/plugins/select2/select2.min.js" ></script>
+<script type="text/javascript" src="/manage-resource/assets/plugins/data-tables/jquery.dataTables.js" ></script>
+<script type="text/javascript" src="/manage-resource/assets/plugins/data-tables/DT_bootstrap.js" ></script>
 <!-- END PAGE LEVEL PLUGINS -->
 <!-- BEGIN PAGE LEVEL SCRIPTS -->
-<script src="/studiostare/manage-resource/assets/scripts/core/app.js" ></script>
-<script src="/studiostare/manage-resource/assets/scripts/table-managed-video.js" ></script>
-<script src="/studiostare/manage-resource/assets/scripts/jquery.tablednd.js" ></script>
+<script src="/manage-resource/assets/scripts/core/app.js" ></script>
+<script src="/manage-resource/assets/scripts/table-managed-video.js" ></script>
+<script src="/manage-resource/assets/scripts/jquery.tablednd.js" ></script>
 <script>
 jQuery(document).ready(function() {       
    App.init();

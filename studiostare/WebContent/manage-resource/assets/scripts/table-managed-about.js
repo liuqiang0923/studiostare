@@ -70,12 +70,12 @@ var TableManaged = function () {
             
             $('#managetable_about a.edit').live('click', function (e) {
             	var id = $(this).parents('tr')[0].getElementsByTagName("input")[0].value;
-            	// window.location.href="/studiostare/manage/editAboutUs/" + id;
+            	// window.location.href="/manage/editAboutUs/" + id;
             	editAboutUs(id);
             });
             
             $('#managetable_about a.delete').live('click', function (e) {
-            	// window.location.href="/studiostare/manage/deleteAboutUs/{id}";
+            	// window.location.href="/manage/deleteAboutUs/{id}";
             	var id = $(this).parents('tr')[0].getElementsByTagName("input")[0].value;
             	deleteAboutUs(id);
             });
@@ -85,20 +85,20 @@ var TableManaged = function () {
             });
             
             function editAboutInfo(){
-            	window.location.href="/studiostare/manage/editAboutInfo";
+            	window.location.href="/manage/editAboutInfo";
             }
             
             function addAboutUs(){
-            	window.location.href="/studiostare/manage/addWho";
+            	window.location.href="/manage/addWho";
             }
             
             function editAboutUs(id){
-            	window.location.href="/studiostare/manage/editWho/" + id;
+            	window.location.href="/manage/editWho/" + id;
             }
             
             function deleteAboutUs(id){
             	$.ajax({
-            	    url: '/studiostare/manage/deleteWho/' + id,
+            	    url: '/manage/deleteWho/' + id,
             	    type: 'GET',
 //            	    dataType: 'json',
 //            	    data: "{\"name\":\"hmkcode\",\"id\":2}", 
@@ -107,7 +107,7 @@ var TableManaged = function () {
             	    success: function(res) {
             	    	if (res.result == "ok") {
 	        	        	alert("Delete succeed!");
-	        	        	window.location.href="/studiostare/manage/admin-about.html";
+	        	        	window.location.href="/manage/admin-about.html";
 	        	        } else {
 	        	        	alert("Deleted failed!");
 	        	        }

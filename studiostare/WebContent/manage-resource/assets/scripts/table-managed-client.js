@@ -69,27 +69,27 @@ var TableManaged = function () {
             
             $('#managetable_client a.edit').live('click', function (e) {
             	var id = $(this).parents('tr')[0].getElementsByTagName("input")[0].value;
-            	// window.location.href="/studiostare/manage/editClient/" + id;
+            	// window.location.href="/manage/editClient/" + id;
             	editClient(id);
             });
             
             $('#managetable_client a.delete').live('click', function (e) {
-            	// window.location.href="/studiostare/manage/deleteClient/{id}";
+            	// window.location.href="/manage/deleteClient/{id}";
             	var id = $(this).parents('tr')[0].getElementsByTagName("input")[0].value;
             	deleteClient(id);
             });
             
             function addClient(){
-            	window.location.href="/studiostare/manage/addClient";
+            	window.location.href="/manage/addClient";
             }
             
             function editClient(id){
-            	window.location.href="/studiostare/manage/editClient/" + id;
+            	window.location.href="/manage/editClient/" + id;
             }
             
             function deleteClient(id){
             	$.ajax({
-            	    url: '/studiostare/manage/deleteClient/' + id,
+            	    url: '/manage/deleteClient/' + id,
             	    type: 'GET',
 //            	    dataType: 'json',
 //            	    data: "{\"name\":\"hmkcode\",\"id\":2}", 
@@ -98,7 +98,7 @@ var TableManaged = function () {
             	    success: function(res) {
             	    	if (res.result == "ok") {
 	        	        	alert("Delete succeed!");
-	        	        	window.location.href="/studiostare/manage/admin-client-list.html";
+	        	        	window.location.href="/manage/admin-client-list.html";
 	        	        } else {
 	        	        	alert("Deleted failed!");
 	        	        }

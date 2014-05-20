@@ -67,27 +67,27 @@ var TableManaged = function () {
             
             $('#managetable_category a.edit').live('click', function (e) {
             	var id = $(this).parents('tr')[0].getElementsByTagName("input")[0].value;
-            	// window.location.href="/studiostare/manage/editcategory/" + id;
+            	// window.location.href="/manage/editcategory/" + id;
             	editCategory(id);
             });
             
             $('#managetable_category a.delete').live('click', function (e) {
-            	// window.location.href="/studiostare/manage/deletecategory/{id}";
+            	// window.location.href="/manage/deletecategory/{id}";
             	var id = $(this).parents('tr')[0].getElementsByTagName("input")[0].value;
             	deleteCategory(id);
             });
             
             function addCategory(){
-            	window.location.href="/studiostare/manage/addCategory";
+            	window.location.href="/manage/addCategory";
             }
             
             function editCategory(id){
-            	window.location.href="/studiostare/manage/editCategory/" + id;
+            	window.location.href="/manage/editCategory/" + id;
             }
             
             function deleteCategory(id){
             	$.ajax({
-            	    url: '/studiostare/manage/deleteCategory/' + id,
+            	    url: '/manage/deleteCategory/' + id,
             	    type: 'GET',
 //            	    dataType: 'json',
 //            	    data: "{\"name\":\"hmkcode\",\"id\":2}", 
@@ -96,7 +96,7 @@ var TableManaged = function () {
             	    success: function(res) {
             	    	if (res.result == "ok") {
 	        	        	alert("Delete succeed!");
-	        	        	window.location.href="/studiostare/manage/admin-category-list.html";
+	        	        	window.location.href="/manage/admin-category-list.html";
 	        	        } else {
 	        	        	alert("Deleted failed!");
 	        	        }

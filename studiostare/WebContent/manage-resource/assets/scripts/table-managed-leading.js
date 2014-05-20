@@ -123,47 +123,47 @@ var TableManaged = function () {
             
             $('#managetable_leading a.edit').live('click', function (e) {
             	var id = $(this).parents('tr')[0].getElementsByTagName("input")[0].value;
-            	// window.location.href="/studiostare/manage/editLeading/" + id;
+            	// window.location.href="/manage/editLeading/" + id;
             	editLeading(id);
             });
             
             $('#managetable_leading_word a.edit').live('click', function (e) {
             	var id = $(this).parents('tr')[0].getElementsByTagName("input")[0].value;
-            	// window.location.href="/studiostare/manage/editLeading/" + id;
+            	// window.location.href="/manage/editLeading/" + id;
             	editLeadingWord(id);
             });
             
             $('#managetable_leading a.delete').live('click', function (e) {
-            	// window.location.href="/studiostare/manage/deleteLeading/{id}";
+            	// window.location.href="/manage/deleteLeading/{id}";
             	var id = $(this).parents('tr')[0].getElementsByTagName("input")[0].value;
             	deleteLeading(id);
             });
             
             $('#managetable_leading_word a.delete').live('click', function (e) {
-            	// window.location.href="/studiostare/manage/deleteLeading/{id}";
+            	// window.location.href="/manage/deleteLeading/{id}";
             	var id = $(this).parents('tr')[0].getElementsByTagName("input")[0].value;
             	deleteLeading(id);
             });
             
             function addLeading(){
-            	window.location.href="/studiostare/manage/addLeading";
+            	window.location.href="/manage/addLeading";
             }
             
             function addLeadingWord(){
-            	window.location.href="/studiostare/manage/addLeadingWord";
+            	window.location.href="/manage/addLeadingWord";
             }
             
             function editLeading(id){
-            	window.location.href="/studiostare/manage/editLeading/" + id;
+            	window.location.href="/manage/editLeading/" + id;
             }
             
             function editLeadingWord(id){
-            	window.location.href="/studiostare/manage/editLeadingWord/" + id;
+            	window.location.href="/manage/editLeadingWord/" + id;
             }
             
             function deleteLeading(id){
             	$.ajax({
-            	    url: '/studiostare/manage/deleteLeading/' + id,
+            	    url: '/manage/deleteLeading/' + id,
             	    type: 'GET',
 //            	    dataType: 'json',
 //            	    data: "{\"name\":\"hmkcode\",\"id\":2}", 
@@ -172,7 +172,7 @@ var TableManaged = function () {
             	    success: function(res) {
             	    	if (res.result == "ok") {
 	        	        	alert("Delete succeed!");
-	        	        	window.location.href="/studiostare/manage/admin-leading-list.html";
+	        	        	window.location.href="/manage/admin-leading-list.html";
 	        	        } else {
 	        	        	alert("Deleted failed!");
 	        	        }
@@ -185,7 +185,7 @@ var TableManaged = function () {
             
             function deleteLeading(id){
             	$.ajax({
-            	    url: '/studiostare/manage/deleteLeadingWord/' + id,
+            	    url: '/manage/deleteLeadingWord/' + id,
             	    type: 'GET',
 //            	    dataType: 'json',
 //            	    data: "{\"name\":\"hmkcode\",\"id\":2}", 
@@ -194,7 +194,7 @@ var TableManaged = function () {
             	    success: function(res) {
             	    	if (res.result == "ok") {
 	        	        	alert("Delete succeed!");
-	        	        	window.location.href="/studiostare/manage/admin-leading-list.html";
+	        	        	window.location.href="/manage/admin-leading-list.html";
 	        	        } else {
 	        	        	alert("Deleted failed!");
 	        	        }
