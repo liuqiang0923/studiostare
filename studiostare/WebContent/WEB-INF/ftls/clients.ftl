@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<title>Studio Stare</title>
+<title>Studio Stare | Film Production in Shanghai</title>
 <meta name="description" content="" />
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <script src="js/libs/html5shiv.js"></script>
@@ -41,7 +41,7 @@
         </li>
       </ul>
     </nav>
-    <a href="/en/home/" class="logo"> <img src="img/logo.png" alt=""> </a> <span class="clearfix"></span> </div>
+    <a href="/work.html" class="logo"> <img src="img/logo.png" alt=""> </a> <span class="clearfix"></span> </div>
 </header>
 <div class="clientsbox">
   <div class="clientsbanner"> <img src='${(clientPic.officeImgPath)!"img/temp/clientsimg00.jpg"}'> </div>
@@ -49,7 +49,7 @@
     <div class="clientsnav">
 	  <#if clientList??>
 	  <#list clientList as client> 
-	  	<a href="client/videoOfClient/${(client.id)!""}">${(client.name)!""}</a>
+	  	<a href="studiostare/client/${(client.name)!""}">${(client.name)!""}</a>
 	  	<font> / </font>
 	  </#list>
 	  </#if>
@@ -60,7 +60,7 @@
 	  	</div>
 	  	<#if categoryList??>
 	  	<#list categoryList as category>
-	  		<a href="category/videoOfCategory/${(category.id)!""}">${(category.name)!""} </a>
+	  		<a href="studiostare/category/${(category.name)!""}">${(category.name)!""} </a>
 	  		<font> / </font> 
 	  	</#list>
 	    </#if> 

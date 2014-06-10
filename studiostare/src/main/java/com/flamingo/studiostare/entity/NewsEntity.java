@@ -18,6 +18,7 @@ public class NewsEntity implements Serializable {
 	private int userId;
 	private long twitterId;
 	private Date updateTime;
+	private String dateStr;
 	public int getId() {
 		return id;
 	}
@@ -102,5 +103,11 @@ public class NewsEntity implements Serializable {
 			return FileUtils.getFileName(getVideoPathOgg());
 		}
 		return "";
+	}
+	public String getDateStr() {
+		return dateStr;
+	}
+	public void setDateStr(String dateStr) {
+		this.dateStr = dateStr;
 	}
 }

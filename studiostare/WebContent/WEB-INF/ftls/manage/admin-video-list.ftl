@@ -199,8 +199,9 @@
 									 Name
 								</th>
 								<th>
-									 Img
+									 Video
 								</th>
+								<!--
 								<th>
 									 Mp4
 								</th>
@@ -210,6 +211,7 @@
 								<th>
 									 Ogg
 								</th>
+								-->
 								<th>
 									 Client
 								</th>
@@ -246,9 +248,11 @@
 								</td>
 								<td>${(video.name)!""}</td>
 								<td><img style="width:150px;height:150px;" src='${(video.imgPath)!""}'></img></td>
-								<td><video style="width:180px;height:150px;" src='${(video.videoPathMp4)!""}' preload="preload" controls="controls"></video></td>
-								<td><video style="width:180px;height:150px;" src='${(video.videoPathWebm)!""}' preload="preload" controls="controls"></video></td>
-								<td><video style="width:180px;height:150px;" src='${(video.videoPathOgg)!""}' preload="preload" controls="controls"></video></td>
+								<!--
+								<td><video style="width:180px;height:150px;" src='${(video.videoPathMp4)!""}' preload="none" controls="controls"></video></td>
+								<td><video style="width:180px;height:150px;" src='${(video.videoPathWebm)!""}' preload="none" controls="controls"></video></td>
+								<td><video style="width:180px;height:150px;" src='${(video.videoPathOgg)!""}' preload="none" controls="controls"></video></td>
+								-->
 								<td>${(video.client.name)!""}</td>
 								<td>${(video.category.name)!""}</td>
 								<!--

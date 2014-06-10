@@ -32,9 +32,9 @@ var TableManaged = function () {
                   { "bSearchable": false},
                   null,
                   { "bSortable": false, "bSearchable": false }, // { "bSortable": false, "sType": "text" },
-                  { "bSortable": false, "bSearchable": false },
-                  { "bSortable": false, "bSearchable": false },
-                  { "bSortable": false, "bSearchable": false },
+//                  { "bSortable": false, "bSearchable": false },
+//                  { "bSortable": false, "bSearchable": false },
+//                  { "bSortable": false, "bSearchable": false },
                   null,
                   null,
 //                  { "bSearchable": false},
@@ -46,7 +46,7 @@ var TableManaged = function () {
                     [15, 30, 50, "All"] // change per page values here
                 ],
                 // set the initial value
-                "iDisplayLength": 15,
+                "iDisplayLength": -1,
                 "sPaginationType": "bootstrap",
                 "oLanguage": {
                     "sLengthMenu": "_MENU_ records",

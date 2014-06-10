@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.flamingo.studiostare.dao.ICategoryDao;
 import com.flamingo.studiostare.entity.CategoryEntity;
+import com.flamingo.studiostare.entity.ClientEntity;
 import com.flamingo.studiostare.service.ICategoryService;
 
 @Service("categoryService")
@@ -40,6 +41,16 @@ public class CategoryServiceImpl implements ICategoryService {
 			categoryDao.insertCategory(categoryEntity);
 		else
 			categoryDao.updateCategory(categoryEntity);
+	}
+
+	@Override
+	public CategoryEntity getCategoryByName(String categoryName) {
+		CategoryEntity categoryEntity = new CategoryEntity();
+		categoryEntity.setName(categoryName);
+		List<CategoryEntity> categoryList = categoryDao.selectCategory(categoryEntity);
+		if(categoryList.size() != 0)
+			return categoryList.get(0);
+		return null;
 	}
 	
 }

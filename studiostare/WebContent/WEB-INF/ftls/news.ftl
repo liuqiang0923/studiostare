@@ -3,12 +3,13 @@
 <head>
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<title>Studio Stare</title>
+<title>Studio Stare | Film Production in Shanghai</title>
 <meta name="description" content="" />
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <script src="js/libs/html5shiv.js"></script>
 <script src="js/jquery.min.js"></script>
-<!-- video -->
+<script src="js/jquery.lazyload.min.js"></script>
+<!-- video --> 
 <link href="video-js.css" rel="stylesheet" type="text/css">
 <script src="js/video.js"></script>
 <script>videojs.options.flash.swf = "swf/video-js.swf";</script>
@@ -16,7 +17,7 @@
 <script src="../html5.js"></script>
 <![endif]-->
 <script src="js/blocksit.min.js"></script>
-<script src="js/blockanimate.js"></script>
+<script src="js/news.js"></script>
 <!-- ICONS -->
 <link rel="icon" type="image/png" href="favicon.png" />
 <link rel="icon" type="image/x-icon" href="favicon.ico" />
@@ -43,7 +44,7 @@
 				<li><a href="about.html">about</a><div>/</div></li>
 			</ul>
 		</nav>
-		<a href="/en/home/" class="logo"> <img src="img/logo.png" alt="">
+		<a href="/work.html" class="logo"> <img src="img/logo.png" alt="">
 		</a> <span class="clearfix"></span>
 	</div>
 </header>
@@ -53,22 +54,13 @@
     <#if newsList??>
   	<#list newsList as news>
   		<div class="grid">
-  			<#if (news.videoPathMp4)?? && (news.videoPathWebm)?? && (news.videoPathOgg)?? && news.videoPathMp4 != "" && (news.videoPathWebm)?? && (news.videoPathOgg)?? >
-  			<div class="imgholder">
+  			<#if (news.videoPathMp4)?? && ((news.videoPathWebm)?? || (news.videoPathOgg)??) && news.videoPathMp4 != "" && (news.videoPathWebm != "" || news.videoPathOgg != "") >
+  			<div class="imgholder" style="height:200px;">
   				<div class="videoplaybox">
-		          <video id="video-${(news.id)!""}" class="video-js vjs-default-skin" controls="controls" preload="preload" poster="${(news.photoPath)!""}" data-setup="{}">
-		          <!--
-		          <video controls="controls" preload="preload" poster="${(news.photoPath)!""}">
-		          -->
+		          <video id="video-${(news.id)!""}" class="video-js vjs-default-skin" controls="controls" preload="none" poster="${(news.photoPath)!""}" data-setup="{}">
 		          	<source src="${(news.videoPathMp4)!""}" type='video/mp4' />
 		            <source src="${(news.videoPathWebm)!""}" type='video/webm' />
 		            <source src="${(news.videoPathOgg)!""}" type='video/ogg' />
-		            <!--
-		            <video controls="controls" preload="none" poster="http://video-js.zencoder.com/oceans-clip.png">
-		            <source src="http://video-js.zencoder.com/oceans-clip.mp4" type='video/mp4' />
-            <source src="http://video-js.zencoder.com/oceans-clip.webm" type='video/webm' />
-            <source src="http://video-js.zencoder.com/oceans-clip.ogv" type='video/ogg' />
-            -->
 		            <track kind="captions" src="demo.captions.vtt" srclang="en" label="English"></track>
 		            <!-- Tracks need an ending tag thanks to IE9 -->
 		            <track kind="subtitles" src="demo.captions.vtt" srclang="en" label="English"></track>
@@ -84,10 +76,10 @@
 	      <#if (news.twitterId)?? && (news.twitterId) != 0>
 	      	<div class="imgholder01">
 		      <img src="img/twitter.jpg" class="twitter">
-		      <div class="date01">${(news.updateTime)?string("dd MMMM yyyy")}</div>
+		      <div class="date01">${(news.dateStr)!""}</div>
 		    </div>
 	      <#else>
-		     <div class="date">${(news.updateTime)?string("dd MMMM yyyy")}</div>
+		     <div class="date">${(news.dateStr)!""}</div>
 	      </#if>
 	      <div class="title">${(news.title)!""}<font class="medi"> &gt;</font></div>
 	      <#if (news.twitterId)?? && (news.twitterId) != 0>
@@ -137,7 +129,7 @@
 <div class="scroll_top"><a href="index.html" class="homebtn"></a><a onclick="scroll_top()"></a></div>
 </div>
 <script type="text/javascript">
-bottom_size();var checksize = 0,index = 0;
+	bottom_size();var checksize = 0,index = 0;
 	window.onresize = function(){ window.clearTimeout(time); var time = window.setTimeout(bottom_size,50);}
 	function bottom_size()
 	{

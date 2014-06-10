@@ -77,8 +77,7 @@
 	<servlet-mapping>
 		<servlet-name>dispatcher</servlet-name>
 		<url-pattern>/manage/*</url-pattern>
-		<url-pattern>/client/*</url-pattern>
-		<url-pattern>/category/*</url-pattern>
+		<url-pattern>/studiostare/*</url-pattern>
 		<url-pattern>/index.html</url-pattern>
 		<url-pattern>/work.html</url-pattern>
 		<url-pattern>/news.html</url-pattern>
@@ -86,46 +85,8 @@
 		<url-pattern>/about.html</url-pattern>
 	</servlet-mapping>
 
-	<servlet>
-		<servlet-name>freemarker</servlet-name>
-		<servlet-class>freemarker.ext.servlet.FreemarkerServlet</servlet-class>
-		<init-param>
-			<param-name>TemplatePath</param-name>
-			<param-value>/</param-value>
-		</init-param>
-		<init-param>
-			<param-name>NoCache</param-name>
-			<param-value>true</param-value>
-		</init-param>
-		<init-param>
-			<param-name>ContentType</param-name>
-			<param-value>text/html</param-value>
-		</init-param>
-		<init-param>
-			<param-name>template_update_delay</param-name>
-			<param-value>0</param-value>
-		</init-param>
-		<init-param>
-			<param-name>default_encoding</param-name>
-			<param-value>UTF-8</param-value>
-		</init-param>
-		<init-param>
-			<param-name>locale</param-name>
-			<param-value>en_US</param-value>
-		</init-param>
-		<init-param>
-			<param-name>number_format</param-name>
-			<param-value>0.##</param-value>
-		</init-param>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>freemarker</servlet-name>
-		<url-pattern>*.ftl</url-pattern>
-	</servlet-mapping>
-
 	<welcome-file-list>
-		<welcome-file>/index.ftl</welcome-file>
+		<welcome-file>/index.html</welcome-file>
 	</welcome-file-list>
 
 	<error-page>

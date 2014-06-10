@@ -17,80 +17,94 @@
 		<result property="updateTime" column="update_time" javaType="Date" />
 	</resultMap>
 
-	<select id="selectNewsById" parameterType="int" resultType="NewsEntity" resultMap="newsResultMap">
+	<select id="selectNewsById" parameterType="int" resultType="NewsEntity"
+		resultMap="newsResultMap">
 		select * from news where id = #{id}
 	</select>
-	
+
 	<insert id="insertNews" parameterType="NewsEntity">
-		insert into news (title, content, photo_path, video_path_mp4, video_path_webm, video_path_ogg, user_id, twitter_id)
-		values (#{title}, #{content}, #{photoPath}, #{videoPathMp4}, #{videoPathWebm}, #{videoPathOgg}, #{userId}, #{twitterId})
+		<if test="updateTime != null">
+			insert into news (title, content, photo_path, video_path_mp4,
+			video_path_webm, video_path_ogg, user_id, twitter_id, update_time)
+			values (#{title}, #{content}, #{photoPath}, #{videoPathMp4},
+			#{videoPathWebm}, #{videoPathOgg}, #{userId}, #{twitterId}, #{updateTime})
+		</if>
+		<if test="updateTime == null">
+			insert into news (title, content, photo_path, video_path_mp4,
+			video_path_webm, video_path_ogg, user_id, twitter_id)
+			values (#{title}, #{content}, #{photoPath}, #{videoPathMp4},
+			#{videoPathWebm}, #{videoPathOgg}, #{userId}, #{twitterId})
+		</if>
 	</insert>
-	
+
 	<update id="updateNews" parameterType="NewsEntity">
-		update news set 
-			title = #{title}, 
-			content = #{content}, 
-			photo_path = #{photoPath}, 
-			video_path_mp4 = #{videoPathMp4},
-			video_path_webm = #{videoPathWebm},
-			video_path_ogg = #{videoPathOgg}, 
-			update_time = #{updateTime} 
+		update news set
+		title = #{title},
+		content = #{content},
+		photo_path = #{photoPath},
+		video_path_mp4 = #{videoPathMp4},
+		video_path_webm = #{videoPathWebm},
+		video_path_ogg = #{videoPathOgg},
+		update_time = #{updateTime}
 		where id = #{id}
 	</update>
-	
+
 	<delete id="deleteNewsById" parameterType="int">
-		delete from news where id = #{id} 
+		delete from news where
+		id = #{id}
 	</delete>
-	
-	<select id="selectNews" parameterType="NewsEntity" resultType="NewsEntity" resultMap="newsResultMap">
-		select * from news where 1 = 1 
+
+	<select id="selectNews" parameterType="NewsEntity" resultType="NewsEntity"
+		resultMap="newsResultMap">
+		select * from news where 1 = 1
 		<if test="title != null and title != ''">
-			and title like '%${title}%' 
+			and title like '%${title}%'
 		</if>
 		<if test="content != null and content != ''">
-			and content like '%${content}%' 
+			and content like '%${content}%'
 		</if>
 		<if test="photoPath != null and photoPath != ''">
-			and photo_path like '%${photoPath}%' 
+			and photo_path like '%${photoPath}%'
 		</if>
 		<if test="videoPathMp4 != null and videoPathMp4 != ''">
-			and video_path_mp4 like '%${videoPathMp4}%' 
+			and video_path_mp4 like '%${videoPathMp4}%'
 		</if>
 		<if test="videoPathWebm != null and videoPathWebm != ''">
-			and video_path_webm like '%${videoPathWebm}%' 
+			and video_path_webm like '%${videoPathWebm}%'
 		</if>
 		<if test="videoPathOgg != null and videoPathOgg != ''">
-			and video_path_ogg like '%${videoPathOgg}%' 
+			and video_path_ogg like '%${videoPathOgg}%'
 		</if>
 		<if test="userId != 0">
-			and user_id = #{userId} 
+			and user_id = #{userId}
 		</if>
 		order by update_time desc
 	</select>
-	
+
 	<select id="getMaxTwitterId" resultType="java.lang.Long">
-		select max(twitter_id) from news
+		select max(twitter_id)
+		from news
 	</select>
-	
+
 	<delete id="deleteNews" parameterType="NewsEntity">
-		delete from news where 1 = 1 
+		delete from news where 1 = 1
 		<if test="title != null and title != ''">
-			and title like '%${title}%' 
+			and title like '%${title}%'
 		</if>
 		<if test="content != null and content != ''">
-			and content like '%${content}%' 
+			and content like '%${content}%'
 		</if>
 		<if test="photoPath != null and photoPath != ''">
-			and photo_path like '%${photoPath}%' 
+			and photo_path like '%${photoPath}%'
 		</if>
 		<if test="videoPath != null and videoPath != ''">
-			and video_path like '%${videoPath}%' 
+			and video_path like '%${videoPath}%'
 		</if>
 		<if test="userId != 0">
-			and user_id = #{userId} 
+			and user_id = #{userId}
 		</if>
 		<if test="twitterId != 0">
-			and twitter_id = #{twitterId} 
+			and twitter_id = #{twitterId}
 		</if>
 	</delete>
 

@@ -1,7 +1,7 @@
 <!doctype html><head>
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<title>Studio Stare</title>
+<title>Studio Stare | Film Production in Shanghai</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <link rel="stylesheet" href="css/lrtk.css">
 <link href="video-js.css" rel="stylesheet" type="text/css">
@@ -28,11 +28,131 @@ content="width=device-width, initial-scale=0.8, maximum-scale=0.8, minimum-scale
 $(function(){
 	$('#box').flexslider();
 })
-$(window).bind("scroll",function(){$("#box").slideUp("slow");});
+$(window).bind("scroll",function(){$("#box").slideUp("slow");var body=document.getElementById('body');body.style.display="block";});
 $(document).ready(function() {
 	var box=document.getElementById('box');
 	h=window.innerHeight;
 	box.style['height']=h+"px";
+	
+	String.format = function() {
+	    var s = arguments[0];
+	    for (var i = 0; i < arguments.length - 1; i++) {
+		    var reg = new RegExp("\\{" + i + "\\}", "g");
+		    s = s.replace(reg, arguments[i + 1]);
+	    }
+	    return s;
+	}
+	
+//	var qi = 0;
+//        var flag = true;
+//	$(window).scroll(function(){
+//		// 当滚动到最底部以上50像素时， 加载新内容
+//		if ($(document).height() - $(this).scrollTop() - $(this).height()<50){
+//                       if(!flag)
+//                                return;
+//                        flag = false;
+//			qi += 1;
+//			$.ajax({
+//				type: "GET",
+//				url: "/studiostare/video/" + qi,
+//				contentType: 'application/json;',
+//	        	mimeType: 'application/json;',
+//	        	success: function(res) {
+//		            if (res.result == "ok" && res.videos != null) {
+//		            	buildVideos(res.videos);
+//		   	        } else {
+//		   	        	alert("No more video!");
+//		   	        }
+//flag = true;
+//	      	    },
+//	        	error:function(data,status,er) {
+	        	//	alert("error: "+data+" status: "+status+" er:"+er);
+//flag = true;
+//	        	}
+//			});
+//		}
+//	});
+	
+	function buildVideos(result){
+		if(result.length==0)
+			return;
+			
+		var videoTemplate = '<video id="video-{0}" name="{1}" class="video-js vjs-default-skin" controls="controls" preload="none" poster="{2}" data-setup="{}"><source src="{3}" type="video/mp4" /><source src="{4}" type="video/webm" /><source src="{5}" type="video/ogg" /><track kind="captions" src="demo.captions.vtt" srclang="en" label="English"></track>Tracks need an ending tag thanks to IE9<track kind="subtitles" src="demo.captions.vtt" srclang="en" label="English"></track>Tracks need an ending tag thanks to IE9</video>';
+		var imgTemplate = '<img src="{0}" style="width:100%;"/>';
+		var shareTemplate = '<div class="sharebigbox"><div class="sharebox"><div class="shareicon" style="display: none;"><a href="javascript:shareToFacebook({0})"><img title="share to facebook" src="img/facebook.png" border="0" width="20" /></a><a href="javascript:shareToWeibo({0})"><img title="share to sina" src="img/sinaweibo.png" border="0" width="20" /></a><a href="javascript:shareToTwitter({0})"><img title="share to twitter" src="img/twitter.png" border="0" width="20" /></a> <a href="javascript:shareToLinkedin({0})"><img title="share to linkedin" src="img/linkedin.png" border="0" width="20" /></a></div><div class="sharefont"><img src="img/share.png"></div></div></div>';
+		for(var i=0;i<result.length;i++){
+			var video = result[i];
+			if(video == null)
+				continue;
+			var playdivdoc = document.createElement("div");
+			playdivdoc.setAttribute("id","videoplaybox-" + video.id);
+			playdivdoc.setAttribute("class","videoplaybigbox");
+			playdivdoc.setAttribute("style","display: none");
+			
+			var playboxdoc = document.createElement("div");
+			playboxdoc.setAttribute("class","videoplaybox");
+			var videoFlag = false;
+			if(video.videoPathMp4 != "" && video.videoPathWebm != ""){
+				var videoHtml = String.format(videoTemplate, video.id, video.name, video.imgPath, video.videoPathMp4, video.videoPathWebm, video.videoPathOgg);
+				playboxdoc.innerHTML += videoHtml;
+				videoFlag = true;
+			}else{
+				var imgHtml = String.format(imgTemplate, video.imgPath);
+				playboxdoc.innerHTML += videoHtml;
+			}
+			var shareHtml = String.format(shareTemplate, video.id);
+			playboxdoc.innerHTML += shareHtml;
+			playdivdoc.appendChild(playboxdoc);
+			
+			var infoboxdoc = document.createElement("div");
+			infoboxdoc.setAttribute("class","videoplayinfos");
+			var infoTemplate = '<div class="infos_left"><h1>{0}</h1><font> / </font><h2>{1}</h2></div><div class="infos_right">{2}</div>';
+			var infoHtml = String.format(infoTemplate, video.name, video.client.name, video.description);
+			infoboxdoc.innerHTML = infoHtml;
+			playdivdoc.appendChild(infoboxdoc);
+			$("#play").append(playdivdoc);
+			if(videoFlag){
+				videojs("video-" + video.id);
+			}
+			
+			var showdivdoc = document.createElement("div");
+			showdivdoc.setAttribute("class","videobigbox");
+			var showvideoTemplate = '<div class="videobox"><img src="{0}"></img><div class="playbox"><div class="playbtn" style="display: none;"><img src="img/play-button.png" onclick="playvideo({1});"></div></div></div>';
+			var showvideoHtml = String.format(showvideoTemplate,video.imgPath,video.id);
+			showdivdoc.innerHTML += showvideoHtml;
+			
+			var showinfoTemplate = '<div class="infos"><p class="title">{0}</p><p class="subtitle"><a href="studiostare/client/{1}" class="colorgreen">{1}</a><font>/</font><a href="studiostare/category/{2}" class="colorgray">{2}</a></p></div>';
+			var showinfoHtml = String.format(showinfoTemplate, video.name, video.client.name, video.category.name);
+			showdivdoc.innerHTML += showinfoHtml;
+			$("#body").append(showdivdoc);
+		}
+		var videoboxs=document.getElementsByClassName("videobox");
+		for (i=0;i<videoboxs.length;i++){
+			videoboxs[i].onmouseover=videobuttons_action;
+			videoboxs[i].onmouseout=videobuttons_move;
+			videoboxs[i].getElementsByClassName("playbtn")[0].style.cssText="display:block; opacity:0";
+		}
+		
+		var videoplayboxs=document.getElementsByClassName("videoplaybox");
+		for (i=0;i<videoplayboxs.length;i++){
+			videoplayboxs[i].onmouseover=sharebuttons_action;
+			videoplayboxs[i].onmouseout=sharebuttons_move;
+			videoplayboxs[i].getElementsByClassName("sharebigbox")[0].style.cssText="display:block; opacity:0";
+		}
+		function sharebuttons_action(){
+			$(this).find(".sharebigbox").stop(false,false).animate({opacity:1},300);
+		}
+		function sharebuttons_move(){
+			$(this).find(".sharebigbox").stop(false,false).animate({opacity:0},300);
+		}
+		
+                var warp_pro=document.getElementsByClassName("sharebox");
+                for (i=0;i<warp_pro.length;i++){
+                   warp_pro[i].onmouseover=sharebox_action;
+                   warp_pro[i].onmouseout=sharebox_move;
+                   warp_pro[i].getElementsByClassName("shareicon")[0].style.cssText= "display:none; height:0px";
+                 }
+	}
 });
 if((navigator.userAgent.match(/iPad/i))){ 
     document.write('<style>.video-js .vjs-tech{min-height:500px;}</style>'); 
@@ -85,15 +205,16 @@ box.style['height']=h+"px";
         </li>
       </ul>
     </nav>
-    <a href="/en/home/" class="logo"> <img src="img/logo.png" alt=""> </a> <span class="clearfix"></span> </div>
+    <a href="/work.html" class="logo"> <img src="img/logo.png" alt=""> </a> <span class="clearfix"></span> </div>
 </header>
 
+<div id="play">
 <#if videoList??>
 	<#list videoList as video>
 		<div id='videoplaybox-${(video.id)!""}' class="videoplaybigbox" style="display: none">
 			<div class="videoplaybox">
 				<#if (video.videoPathMp4) ?? && video.videoPathMp4 != "" && (video.videoPathWebm) ?? && video.videoPathWebm != "">
-					<video id='video-${(video.id)!""}' class="video-js vjs-default-skin" controls="controls" preload="preload" poster='${(video.imgPath)!""}' data-setup="{}">
+					<video id='video-${(video.id)!""}' name='${(video.name)!""}' class="video-js vjs-default-skin" controls="controls" preload="none" poster='${(video.imgPath)!""}' data-setup="{}">
 						<source src='${(video.videoPathMp4)!""}' type='video/mp4' />
 						<source src='${(video.videoPathWebm)!""}' type='video/webm' />
 						<source src='${(video.videoPathOgg)!""}' type='video/ogg' />
@@ -108,16 +229,16 @@ box.style['height']=h+"px";
 				<div class="sharebigbox">
 					<div class="sharebox">
 						<div class="shareicon" style="display: none;">
-							<a href="javascript:(function(){window.open('http://www.facebook.com/share.php?u='.concat(encodeURIComponent(location.href)),'_blank','width=450,height=400');})()">
+							<a href="javascript:shareToFacebook(${(video.id)!''})">
 								<img title="share to facebook" src="img/facebook.png" border="0" width="20" />
 							</a>
-							<a href="javascript:(function(){window.open('http://v.t.sina.com.cn/share/share.php?title='+encodeURIComponent(document.title)+'&url='+encodeURIComponent(location.href)+'&source=bookmark','_blank','width=450,height=400');})()">
+							<a href="javascript:shareToWeibo(${(video.id)!''})">
 								<img title="share to sina" src="img/sinaweibo.png" border="0" width="20" />
 							</a>
-							<a href="javascript:(function(){window.open('http://twitter.com/home/?status='.concat(encodeURIComponent(document.title)) .concat(' ') .concat(encodeURIComponent(location.href)),'_blank','width=450,height=400');})()">
+							<a href="javascript:shareToTwitter(${(video.id)!''})">
 								<img title="share to twitter" src="img/twitter.png" border="0" width="20" />
 							</a> 
-							<a href="javascript:(function(){window.open('http://www.linkedin.com/shareArticle?mini=true&title='+encodeURIComponent(document.title)+'&url='+encodeURIComponent(location.href)+'&source=bookmark','_blank','width=850,height=600');})()">
+							<a href="javascript:shareToLinkedin(${(video.id)!''})">
 								<img title="share to linkedin" src="img/linkedin.png" border="0" width="20" />
 							</a>
 						</div>
@@ -144,8 +265,8 @@ box.style['height']=h+"px";
 		</div>
 	</#list>
 	</#if>
-
-<div id="body"> 
+</div>
+<div id="body" style="display: none"> 
 	<#if videoList??>
 	<#list videoList as video>
 	<div class="videobigbox">
@@ -186,9 +307,9 @@ box.style['height']=h+"px";
 		<div class="infos">
 			<p class="title">${(video.name)!""}</p>
 			<p class="subtitle">
-				<a href='client/videoOfClient/${(video.client.id)!""}' class="colorgreen">${(video.client.name)!""}</a>
+				<a href='studiostare/client/${(video.client.name)!""}' class="colorgreen">${(video.client.name)!""}</a>
 		    	<font>/</font>
-			    <a href='category/videoOfCategory/${(video.category.id)!""}' class="colorgray">${(video.category.name)!""}</a>
+			    <a href='studiostare/category/${(video.category.name)!""}' class="colorgray">${(video.category.name)!""}</a>
 			</p>
 		</div>
 	</div>
@@ -258,6 +379,19 @@ var warp_pro=document.getElementsByClassName("sharebox");
 			$(this).find(".playbtn").stop(false,false).animate({opacity:0},300);
 		}
 		
+		var videoplayboxs=document.getElementsByClassName("videoplaybox");
+		for (i=0;i<videoplayboxs.length;i++){
+			videoplayboxs[i].onmouseover=sharebuttons_action;
+			videoplayboxs[i].onmouseout=sharebuttons_move;
+			videoplayboxs[i].getElementsByClassName("sharebigbox")[0].style.cssText="display:block; opacity:0";
+		}
+		function sharebuttons_action(){
+			$(this).find(".sharebigbox").stop(false,false).animate({opacity:1},300);
+		}
+		function sharebuttons_move(){
+			$(this).find(".sharebigbox").stop(false,false).animate({opacity:0},300);
+		}
+		
 		function hideAndStopAll(){
 			var videoboxes = document.getElementsByClassName("videoplaybigbox");
 			for(i=0;i<videoboxes.length;i++){
@@ -303,59 +437,30 @@ var warp_pro=document.getElementsByClassName("sharebox");
 			_V_("video-"+videoid).play();
 			}
 
-		function playvideo_old(src,title,subtitle){
-			var videodoc = document.createElement("video");
-			videodoc.className = "video-js vjs-default-skin";
-			videodoc.id = "example_video_1";
-			videodoc.poster = src + ".png";
-			videodoc.controls = "controls";
-			videodoc.autoplay = "autoplay";
-
-			var srcdoc1 = document.createElement("source");
-			srcdoc1.src = src + ".mp4";
-			srcdoc1.type = 'video/mp4';
-			videodoc.appendChild(srcdoc1);
-			var srcdoc2 = document.createElement("source");
-			srcdoc2.src = src + ".webm";
-			srcdoc2.type='video/webm';
-			videodoc.appendChild(srcdoc2);
-			var srcdoc3 = document.createElement("source");
-			srcdoc3.src = src + ".ogv";
-			srcdoc3.type='video/ogg';
-			videodoc.appendChild(srcdoc3);
-			var trackdoc1 = document.createElement("track");
-			trackdoc1.kind = "captions";
-			trackdoc1.src = "demo.captions.vtt";
-			trackdoc1.srclang="en";
-			trackdoc1.label="English";
-			videodoc.appendChild(trackdoc1);
-			var trackdoc2 = document.createElement("track");
-			trackdoc2.kind = "subtitles";
-			trackdoc2.src = "demo.captions.vtt";
-			trackdoc2.srclang="en";
-			trackdoc2.label="English";
-			videodoc.appendChild(trackdoc2);
-
-			var videos = document.getElementsByClassName("videoplaybox")[0].getElementsByTagName("video");
-			for(i = 0 ; i < videos.length; i++)
-				document.getElementsByClassName("videoplaybox")[0].removeChild(videos[i]);
-			document.getElementsByClassName("videoplaybox")[0].appendChild(videodoc);
-			document.getElementsByClassName("videoplaybigbox")[0].style.display="block";
-
-			var pdoc1 = document.createElement("p");
-			pdoc1.class = "title";
-			pdoc1.innerHTML= title;
-			var pdoc2 = document.createElement("p");
-			pdoc2.class = "subtitle";
-			pdoc2.innerHTML = subtitle;
-			//pdoc2.innerText=subtitle; 
-			/* var infos = document.getElementsByClassName("videoplayinfos")[0].getElementsByTagName("p");
-			for(j = 0 ; j < infos.length; j++)
-				document.getElementsByClassName("videoplayinfos")[0].removeChild(infos[j]); */
-			document.getElementsByClassName("videoplayinfos")[0].innerHTML = "";
-			document.getElementsByClassName("videoplayinfos")[0].appendChild(pdoc1);
-			document.getElementsByClassName("videoplayinfos")[0].appendChild(pdoc2);	
-			}
+		function shareToWeibo(videoid){
+			var videoname = document.title + " : " + $("#video-" + videoid).find("video").attr("name");
+			var urls = location.href.split("/");
+			videourl = "http://" + urls[2] + $("#video-" + videoid).find("video").attr("src");
+			window.open('http://v.t.sina.com.cn/share/share.php?title='+encodeURIComponent(videoname)+'&url='+encodeURIComponent(videourl)+'&source=bookmark','_blank','width=450,height=400');
+		}
+		function shareToFacebook(videoid){
+			var videoname = document.title + " : " + $("#video-" + videoid).find("video").attr("name");
+			var urls = location.href.split("/");
+			videourl = "http://" + urls[2] + $("#video-" + videoid).find("video").attr("src");
+			window.open('http://www.facebook.com/share.php?t='.concat(encodeURIComponent(videoname)).concat('&u=').concat(encodeURIComponent(videourl)),'_blank','width=450,height=400');
+		}
+		function shareToTwitter(videoid){
+			var videoname = document.title + " : " + $("#video-" + videoid).find("video").attr("name");
+			var urls = location.href.split("/");
+			videourl = "http://" + urls[2] + $("#video-" + videoid).find("video").attr("src");
+			window.open('http://twitter.com/home/?status='.concat(encodeURIComponent(videoname)) .concat(' ') .concat(encodeURIComponent(videourl)),'_blank','width=450,height=400');
+		}
+		function shareToLinkedin(videoid){
+			var videoname = document.title + " : " + $("#video-" + videoid).find("video").attr("name");
+			var urls = location.href.split("/");
+			videourl = "http://" + urls[2] + $("#video-" + videoid).find("video").attr("src");
+			window.open('http://www.linkedin.com/shareArticle?mini=true&title='+encodeURIComponent(videoname)+'&url='+encodeURIComponent(videourl)+'&source=bookmark','_blank','width=850,height=600');
+		}
 		
        </script> 
 <script type="text/javascript">

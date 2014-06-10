@@ -183,6 +183,7 @@ width: 100% !important;
 max-width: 476px !important;
 float:none !important;
 margin: 0 auto !important;
+height: auto !important;
 }
 .videobigbox{width:100% !important;margin: 0 auto 2em auto!important;float: none!important;}
 .vjs-paused,.vjs-playing{

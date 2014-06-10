@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<title>Studio Stare</title>
-<link rel="stylesheet" type="text/css" href="/studiostare/css/style.css">
-<link rel="stylesheet" href="/studiostare/css/lrtk.css">
-<link href="/studiostare/video-js.css" rel="stylesheet" type="text/css">
+<title>Studio Stare | Film Production in Shanghai</title>
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+<link rel="stylesheet" href="/css/lrtk.css">
+<link href="/video-js.css" rel="stylesheet" type="text/css">
 <!-- ICONS -->
-<link rel="icon" type="image/png" href="/studiostare/favicon.png" />
-<link rel="icon" type="image/x-icon" href="/studiostare/favicon.ico" />
+<link rel="icon" type="image/png" href="/favicon.png" />
+<link rel="icon" type="image/x-icon" href="/favicon.ico" />
 <!-- MOBILE META -->
 <meta name="viewport" content="width=device-width, initial-scale=0.8, maximum-scale=0.8, minimum-scale=0.8, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -34,14 +34,14 @@ if((navigator.userAgent.match(/iPhone/i))){
 	<div class="center">
 		<nav id="main_nav">
 			<ul>
-				<li><a href="/studiostare/work.html">work</a><div>/</div></li>
-				<li><a href="/studiostare/news.html">news</a><div>/</div></li>
-				<li><a href="/studiostare/clients.html" class="active">clients</a><div>/</div></li>
-				<li><a href="/studiostare/about.html">about</a><div>/</div></li>
+				<li><a href="/work.html">work</a><div>/</div></li>
+				<li><a href="/news.html">news</a><div>/</div></li>
+				<li><a href="/clients.html" class="active">clients</a><div>/</div></li>
+				<li><a href="/about.html">about</a><div>/</div></li>
 			</ul>
 			<div class="subnav">${(client.name)!""}${(category.name)!""}</div>
 		</nav>
-		<a href="/en/home/" class="logo"> <img src="/studiostare/img/logo.png" alt="">
+		<a href="/work.html" class="logo"> <img src="/img/logo.png" alt="">
 		</a> <span class="clearfix"></span>
 	</div>
 </header>
@@ -51,7 +51,7 @@ if((navigator.userAgent.match(/iPhone/i))){
 		<div id='videoplaybox-${(video.id)!""}' class="videoplaybigbox" style="display: none">
 			<div class="videoplaybox">
 				<#if (video.videoPathMp4) ?? && video.videoPathMp4 != "" && (video.videoPathWebm) ?? && video.videoPathWebm != "">
-					<video id='video-${(video.id)!""}' class="video-js vjs-default-skin" controls="controls" preload="preload" poster='${(video.imgPath)!""}' data-setup="{}">
+					<video id='video-${(video.id)!""}' name='${(video.name)!""}' class="video-js vjs-default-skin" controls="controls" preload="none" poster='${(video.imgPath)!""}' data-setup="{}">
 						<source src='${(video.videoPathMp4)!""}' type='video/mp4' />
 						<source src='${(video.videoPathWebm)!""}' type='video/webm' />
 						<source src='${(video.videoPathOgg)!""}' type='video/ogg' />
@@ -66,21 +66,21 @@ if((navigator.userAgent.match(/iPhone/i))){
 				<div class="sharebigbox">
 					<div class="sharebox">
 						<div class="shareicon" style="display: none;">
-							<a href="javascript:(function(){window.open('http://www.facebook.com/share.php?u='.concat(encodeURIComponent(location.href)),'_blank','width=450,height=400');})()">
-								<img title="share to facebook" src="/studiostare/img/facebook.png" border="0" width="20" />
+							<a href="javascript:shareToFacebook(${(video.id)!''})">
+								<img title="share to facebook" src="/img/facebook.png" border="0" width="20" />
 							</a>
-							<a href="javascript:(function(){window.open('http://v.t.sina.com.cn/share/share.php?title='+encodeURIComponent(document.title)+'&url='+encodeURIComponent(location.href)+'&source=bookmark','_blank','width=450,height=400');})()">
-								<img title="share to sina" src="/studiostare/img/sinaweibo.png" border="0" width="20" />
+							<a href="javascript:shareToWeibo(${(video.id)!''})">
+								<img title="share to sina" src="/img/sinaweibo.png" border="0" width="20" />
 							</a>
-							<a href="javascript:(function(){window.open('http://twitter.com/home/?status='.concat(encodeURIComponent(document.title)) .concat(' ') .concat(encodeURIComponent(location.href)),'_blank','width=450,height=400');})()">
-								<img title="share to twitter" src="/studiostare/img/twitter.png" border="0" width="20" />
+							<a href="javascript:shareToTwitter(${(video.id)!''})">
+								<img title="share to twitter" src="/img/twitter.png" border="0" width="20" />
 							</a> 
-							<a href="javascript:(function(){window.open('http://www.linkedin.com/shareArticle?mini=true&title='+encodeURIComponent(document.title)+'&url='+encodeURIComponent(location.href)+'&source=bookmark','_blank','width=850,height=600');})()">
-								<img title="share to linkedin" src="/studiostare/img/linkedin.png" border="0" width="20" />
+							<a href="javascript:shareToLinkedin(${(video.id)!''})">
+								<img title="share to linkedin" src="/img/linkedin.png" border="0" width="20" />
 							</a>
 						</div>
 						<div class="sharefont">
-							<img src="/studiostare/img/share.png">
+							<img src="/img/share.png">
 						</div>
 					</div>
 				</div>
@@ -112,28 +112,28 @@ if((navigator.userAgent.match(/iPhone/i))){
     <div class="videobox"> <img src="${(video.imgPath)!""}"></img>
     <!--
       <div class="sharebigbox">
-        <div class="sharebtn"><img src="/studiostare/img/screen.png"onclick="playvideofull('${(video.id)!""}');"></div>
+        <div class="sharebtn"><img src="/img/screen.png"onclick="playvideofull('${(video.id)!""}');"></div>
         <div class="sharebox">
           <div class="shareicon" style="display: none;"> 
           	<a href="javascript:(function(){window.open('http://www.facebook.com/share.php?u='.concat(encodeURIComponent(location.href)),'_blank','width=450,height=400');})()">
-							<img title="share to facebook" src="/studiostare/img/facebook.png" border="0" width="20" />
+							<img title="share to facebook" src="/img/facebook.png" border="0" width="20" />
 						</a>
 						<a href="javascript:(function(){window.open('http://v.t.sina.com.cn/share/share.php?title='+encodeURIComponent(document.title)+'&url='+encodeURIComponent(location.href)+'&source=bookmark','_blank','width=450,height=400');})()">
-							<img title="share to sina" src="/studiostare/img/sinaweibo.png" border="0" width="20" />
+							<img title="share to sina" src="/img/sinaweibo.png" border="0" width="20" />
 						</a>
 						<a href="javascript:(function(){window.open('http://twitter.com/home/?status='.concat(encodeURIComponent(document.title)) .concat(' ') .concat(encodeURIComponent(location.href)),'_blank','width=450,height=400');})()">
-							<img title="share to twitter" src="/studiostare/img/twitter.png" border="0" width="20" />
+							<img title="share to twitter" src="/img/twitter.png" border="0" width="20" />
 						</a> 
 						<a href="javascript:(function(){window.open('http://www.linkedin.com/shareArticle?mini=true&title='+encodeURIComponent(document.title)+'&url='+encodeURIComponent(location.href)+'&source=bookmark','_blank','width=850,height=600');})()">
-							<img title="share to linkedin" src="/studiostare/img/linkedin.png" border="0" width="20" />
+							<img title="share to linkedin" src="/img/linkedin.png" border="0" width="20" />
 						</a> 
           </div>
-          <div class="sharefont"> <img src="/studiostare/img/share.png"/></div>
+          <div class="sharefont"> <img src="/img/share.png"/></div>
         </div>
       </div>
       -->
       <div class="playbox">
-        <div class="playbtn" style="display: none;"> <img src="/studiostare/img/play-button.png" onclick="playvideo('${(video.id)!""}');"> </div>
+        <div class="playbtn" style="display: none;"> <img src="/img/play-button.png" onclick="playvideo('${(video.id)!""}');"> </div>
       </div>
     </div>
     <div class="subfontbox">
@@ -166,26 +166,26 @@ if((navigator.userAgent.match(/iPhone/i))){
 	    <div class="fllowus">
 	    	<h1>follow us</h1>
 		    <div class="fllowuslink">
-		      	<a target="_blank" href="https://www.facebook.com/studiostare">
-				   	<img src="/studiostare/img/facebook.jpg">
+		      	<a target="_blank" href="https://www.facebook.com">
+				   	<img src="/img/facebook.jpg">
 			    </a>
-			    <a target="_blank" href="https://vimeo.com/studiostare">
-			    	<img src="/studiostare/img/vimeo.jpg">
+			    <a target="_blank" href="https://vimeo.com">
+			    	<img src="/img/vimeo.jpg">
 			    </a>
 			    <a target="_blank" href="https://twitter.com/StudioStare">
-			    	<img src="/studiostare/img/twitter.jpg">
+			    	<img src="/img/twitter.jpg">
 			    </a>
 			    <a target="_blank" href="http://www.linkedin.com/company/2551588">
-				   	<img src="/studiostare/img/linkedin.jpg">
+				   	<img src="/img/linkedin.jpg">
 				</a>
 			 </div>
 		</div>
 	</div>
 </footer>
-<script src="/studiostare/js/libs/html5shiv.js"></script> 
-<script src="/studiostare/js/video.js"></script> 
-<script>videojs.options.flash.swf = "/studiostare/swf/video-js.swf";</script> 
-<script src="/studiostare/js/jquery.min.js"></script> 
+<script src="/js/libs/html5shiv.js"></script> 
+<script src="/js/video.js"></script> 
+<script>videojs.options.flash.swf = "/swf/video-js.swf";</script> 
+<script src="/js/jquery.min.js"></script> 
 <script>
 var warp_pro=document.getElementsByClassName("sharebox");
 	   for (i=0;i<warp_pro.length;i++){
@@ -312,7 +312,31 @@ var warp_pro=document.getElementsByClassName("sharebox");
 			document.getElementsByClassName("videoplayinfos")[0].appendChild(pdoc1);
 			document.getElementsByClassName("videoplayinfos")[0].appendChild(pdoc2);	
 			}
-		
+			
+		function shareToWeibo(videoid){
+			var videoname = document.title + " : " + $("#video-" + videoid).find("video").attr("name");
+			var urls = location.href.split("/");
+			videourl = "http://" + urls[2] + $("#video-" + videoid).find("video").attr("src");
+			window.open('http://v.t.sina.com.cn/share/share.php?title='+encodeURIComponent(videoname)+'&url='+encodeURIComponent(videourl)+'&source=bookmark','_blank','width=450,height=400');
+		}
+		function shareToFacebook(videoid){
+			var videoname = document.title + " : " + $("#video-" + videoid).find("video").attr("name");
+			var urls = location.href.split("/");
+			videourl = "http://" + urls[2] + $("#video-" + videoid).find("video").attr("src");
+			window.open('http://www.facebook.com/share.php?u='.concat(encodeURIComponent(videourl)),'_blank','width=450,height=400');
+		}
+		function shareToTwitter(videoid){
+			var videoname = document.title + " : " + $("#video-" + videoid).find("video").attr("name");
+			var urls = location.href.split("/");
+			videourl = "http://" + urls[2] + $("#video-" + videoid).find("video").attr("src");
+			window.open('http://twitter.com/home/?status='.concat(encodeURIComponent(videoname)) .concat(' ') .concat(encodeURIComponent(videourl)),'_blank','width=450,height=400');
+		}
+		function shareToLinkedin(videoid){
+			var videoname = document.title + " : " + $("#video-" + videoid).find("video").attr("name");
+			var urls = location.href.split("/");
+			videourl = "http://" + urls[2] + $("#video-" + videoid).find("video").attr("src");
+			window.open('http://www.linkedin.com/shareArticle?mini=true&title='+encodeURIComponent(videoname)+'&url='+encodeURIComponent(videourl)+'&source=bookmark','_blank','width=850,height=600');
+		}
        </script> 
 <script type="text/javascript">
 	bottom_size();

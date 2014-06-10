@@ -48,6 +48,8 @@ public class VideoServiceImpl implements IVideoService {
 			videoDao.insertVideo(videoEntity);
 		else{
 			oldVideo.setIndex(videoEntity.getIndex());
+			oldVideo.setCategory(videoEntity.getCategory());
+			oldVideo.setClient(videoEntity.getClient());
 			oldVideo.setName(videoEntity.getName());
 			oldVideo.setDescription(videoEntity.getDescription());
 			if(videoEntity.getImgPath() != null)
@@ -76,7 +78,7 @@ public class VideoServiceImpl implements IVideoService {
 	}
 	
 	@Override
-	public List<VideoEntity> getByClient(int id) {
+	public List<VideoEntity> getByClientId(int id) {
 		ClientEntity client = new ClientEntity();
 		client.setId(id);
 		VideoEntity video = new VideoEntity();
@@ -85,9 +87,23 @@ public class VideoServiceImpl implements IVideoService {
 	}
 	
 	@Override
-	public List<VideoEntity> getByCategory(int id) {
+	public List<VideoEntity> getByCategoryId(int id) {
 		CategoryEntity category = new CategoryEntity();
 		category.setId(id);
+		VideoEntity video = new VideoEntity();
+		video.setCategory(category);
+		return getByVideoEntity(video);
+	}
+	
+	@Override
+	public List<VideoEntity> getByClient(ClientEntity client) {
+		VideoEntity video = new VideoEntity();
+		video.setClient(client);
+		return getByVideoEntity(video);
+	}
+	
+	@Override
+	public List<VideoEntity> getByCategory(CategoryEntity category) {
 		VideoEntity video = new VideoEntity();
 		video.setCategory(category);
 		return getByVideoEntity(video);

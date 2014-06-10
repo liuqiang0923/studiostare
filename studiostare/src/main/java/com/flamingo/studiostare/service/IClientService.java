@@ -14,4 +14,6 @@ public interface IClientService {
 	
 	void save(ClientEntity clientEntity);
 	
+	ClientEntity getClientByName(String clientName);
+	
 }

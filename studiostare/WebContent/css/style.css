@@ -280,7 +280,7 @@ float: left;
 .manifesto dl dd{font: 0.79em/1.48em 'itcavantgardestd-bold';color:#747373; text-transform:Uppercase;}
 /*==========ABOUT END==========*/
 /*==========SUBNAV START==========*/
-.submain_imgbox{width:32%; float:left; margin: 0 2% 2em 0;overflow: hidden;}
+.submain_imgbox{width:32%; float:left; margin: 0 2% 1em 0;overflow: hidden;height: 12em;}
 .submain_imgbox:nth-child(3n){margin:0}
 .submain_imgbox:nth-last-child(1),.submain_imgbox:nth-last-child(2),.submain_imgbox:nth-last-child(3){margin-bottom:0;}
 {margin: 0 2% 0 0;}

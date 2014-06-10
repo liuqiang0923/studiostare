@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<title>Studio Stare</title>
+<title>Studio Stare | Film Production in Shanghai</title>
 <meta name="description" content="" />
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <script src="js/libs/html5shiv.js"></script>
@@ -34,7 +34,7 @@
 				<li><a href="about.html" class="active">about</a><div>/</div></li>
 			</ul>
 		</nav>
-		<a href="/en/home/" class="logo"> <img src="img/logo.png" alt="">
+		<a href="/work.html" class="logo"> <img src="img/logo.png" alt="">
 		</a> <span class="clearfix"></span>
 	</div>
 </header>

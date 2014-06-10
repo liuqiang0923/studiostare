@@ -42,4 +42,14 @@ public class ClientServiceImpl implements IClientService {
 			clientDao.updateClient(clientEntity);
 	}
 
+	@Override
+	public ClientEntity getClientByName(String clientName) {
+		ClientEntity clientEntity = new ClientEntity();
+		clientEntity.setName(clientName);
+		List<ClientEntity> clientList = clientDao.selectClient(clientEntity);
+		if(clientList.size() != 0)
+			return clientList.get(0);
+		return null;
+	}
+
 }

@@ -14,4 +14,6 @@ public interface ICategoryService {
 	
 	void save(CategoryEntity categoryEntity);
 	
+	CategoryEntity getCategoryByName(String categoryName);
+	
 }

@@ -20,53 +20,61 @@ import com.flamingo.studiostare.service.INewsService;
 
 /**
  * 定时获取Twitter信息
+ * 
  * @author liuqiang
  */
 public class TwitterJob extends QuartzJobBean {
-	
+
 	private INewsService newsService;
-	private static Long sinceTwitterId=0l;
+	private static Long sinceTwitterId = 0l;
 	private static boolean isInit = false;
 	private static boolean isExecuting = false;
-	
+
 	@Override
 	protected void executeInternal(JobExecutionContext arg0)
 			throws JobExecutionException {
 		try {
-			if (isExecuting) return;
+			if (isExecuting)
+				return;
 			isExecuting = true;
 			checkInit();
-			ResponseList<Status> userTimeline = getTwitterList(1, 1000, sinceTwitterId);
-			if (userTimeline == null || userTimeline.size() == 0) return;
+			ResponseList<Status> userTimeline = getTwitterList(1, 1000,
+					sinceTwitterId);
+			if (userTimeline == null || userTimeline.size() == 0)
+				return;
 			for (Status status : userTimeline) {
 				saveTwitter(status);
-				sinceTwitterId = status.getId();
+//				sinceTwitterId = status.getId();
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
+			setSinceTwitterId();
 			isExecuting = false;
 		}
 	}
-	
+
 	/**
 	 * 保存推文信息
+	 * 
 	 * @param status
 	 */
 	private void saveTwitter(Status status) {
 		NewsEntity news = new NewsEntity();
 		String twitterContent = status.getText();
 		// 截取6个字符为标题
-		news.setTitle(twitterContent.substring(0, twitterContent.length() > 6 ? 6 : twitterContent.length()));
+		news.setTitle(twitterContent.substring(0,
+				twitterContent.length() > 6 ? 6 : twitterContent.length()));
 		news.setContent(twitterContent);
 		news.setTwitterId(status.getId());
+		news.setUpdateTime(status.getCreatedAt());
 		if (status.getMediaEntities().length > 0) {
 			MediaEntity mediaEntity = status.getMediaEntities()[0];
 			news.setPhotoPath(FileUtils.saveFile(mediaEntity.getMediaURL()));
 		}
 		newsService.add(news);
 	}
-	
+
 	/**
 	 * 第一次加载sinceTwitterId
 	 */
@@ -77,32 +85,47 @@ public class TwitterJob extends QuartzJobBean {
 			isInit = true;
 		}
 	}
-	
+
 	private static TwitterFactory tf = null;
-	
+
 	private void initConfig() {
 		ConfigurationBuilder cb = new ConfigurationBuilder();
 		cb.setDebugEnabled(true)
-		  .setOAuthConsumerKey(ConfigUtils.get("oauth.consumerKey", "4U8S7dTMYM2RGWT1RbXSF7zh6"))
-		  .setOAuthConsumerSecret(ConfigUtils.get("oauth.consumerSecret", "M5yxGIe4SUiHfUPpDsXeDmAkcP7Jn0hzJhzPBGauDWBfAdGod2"))
-		  .setOAuthAccessToken(ConfigUtils.get("oauth.accessToken", "187217848-vDKCuq5v5uEXlTNmbTVx1XFmqmE160DbyNW3mZjk"))
-		  .setOAuthAccessTokenSecret(ConfigUtils.get("oauth.accessTokenSecret", "pqrLDzpWjdhFBkxcyXaxzQhVMN1V6imSGhgdSoobVxo6B"));
+				.setOAuthConsumerKey(
+						ConfigUtils.get("oauth.consumerKey",
+								"iy8PP14EtxMx8IAGeRm7TnOKJ"))
+				.setOAuthConsumerSecret(
+						ConfigUtils
+								.get("oauth.consumerSecret",
+										"99j3c6MZfk2lG80H2NywLLknNu36JTeLfTSSOAezaD9fjhA4dH"))
+				.setOAuthAccessToken(
+						ConfigUtils
+								.get("oauth.accessToken",
+										"2281798082-u1N50Qkbgegqhp446LFdrNVnoqO7yojjpgg6jdZ"))
+				.setOAuthAccessTokenSecret(
+						ConfigUtils
+								.get("oauth.accessTokenSecret",
+										"7D8GPGnpQrANvSOHYD390Ps8J11aGDNDDPfOZlkeGfywx"));
 		tf = new TwitterFactory(cb.build());
 	}
-	
+
 	/**
 	 * 从Twitter服务器中拉取Twitter信息
+	 * 
 	 * @param page
 	 * @param pageSize
 	 * @param sinceId
 	 * @return
 	 */
-	private ResponseList<Status> getTwitterList(int page, int pageSize, long sinceId) {
+	private ResponseList<Status> getTwitterList(int page, int pageSize,
+			long sinceId) {
 		try {
-			if (tf == null) return null;
-			Twitter twitter = tf.getInstance();//TwitterFactory.getSingleton();
+			if (tf == null)
+				return null;
+			Twitter twitter = tf.getInstance();// TwitterFactory.getSingleton();
 			Paging paging = new Paging(page, pageSize);
-			if (sinceId > 0) paging.sinceId(sinceId);
+			if (sinceId > 0)
+				paging.sinceId(sinceId);
 			ResponseList<Status> userTimeline = twitter.getUserTimeline(paging);
 			return userTimeline;
 		} catch (TwitterException e) {
@@ -110,26 +133,26 @@ public class TwitterJob extends QuartzJobBean {
 		}
 		return null;
 	}
-	
+
 	/**
 	 * 获取最后一条twitterID
+	 * 
 	 * @return
 	 */
 	private void setSinceTwitterId() {
-		if (sinceTwitterId == null || sinceTwitterId == 0l) {
-			sinceTwitterId = getSinceTwitterIdFromDb();
-			if (sinceTwitterId == null || sinceTwitterId == 0l) 
-				sinceTwitterId = getSinceTwitterIdFromTwitter();
-		}
+		sinceTwitterId = getSinceTwitterIdFromDb();
+		if (sinceTwitterId == null || sinceTwitterId == 0l)
+			sinceTwitterId = getSinceTwitterIdFromTwitter();
 	}
-	
+
 	private long getSinceTwitterIdFromDb() {
 		return newsService.getMaxTwitterId();
-//		return 0;
+		// return 0;
 	}
-	
+
 	/**
 	 * 获取最后一条Twitter信息ID
+	 * 
 	 * @return
 	 */
 	private long getSinceTwitterIdFromTwitter() {
@@ -137,7 +160,7 @@ public class TwitterJob extends QuartzJobBean {
 		if (twitterList != null && twitterList.size() > 0) {
 			Status status = twitterList.get(0);
 			System.out.println(status.getId());
-			//return status.getId();
+			// return status.getId();
 		}
 		return 0;
 	}
@@ -145,9 +168,9 @@ public class TwitterJob extends QuartzJobBean {
 	public INewsService getNewsService() {
 		return newsService;
 	}
+
 	public void setNewsService(INewsService newsService) {
 		this.newsService = newsService;
 	}
 
-	
 }

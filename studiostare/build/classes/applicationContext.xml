@@ -14,7 +14,8 @@
 		http://www.springframework.org/schema/tx 
 		http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 
-	<context:property-placeholder location="classpath:prop/mysql.properties" />
+	<!-- <context:property-placeholder location="classpath:prop/mysql.properties" /> -->
+	<context:property-placeholder location="file:/var/studiostare-config/mysql.properties" />
 
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="${jdbc.driver}" />

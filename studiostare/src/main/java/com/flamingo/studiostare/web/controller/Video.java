@@ -103,6 +103,7 @@ public class Video extends JsonAction {
 			@RequestParam(value="videoogg", required=false) MultipartFile videoogg,
 			HttpSession session){
 		try {
+			video.setType(0);
 			videoService.save(video, videoimg, videomp4, videowebm, videoogg);
 		} catch (Exception e) {
 			e.printStackTrace();

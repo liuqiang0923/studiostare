@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.flamingo.studiostare.entity.CategoryEntity;
+import com.flamingo.studiostare.entity.ClientEntity;
 import com.flamingo.studiostare.entity.VideoEntity;
 
 public interface IVideoService {
@@ -19,11 +21,15 @@ public interface IVideoService {
 
 	void delById(int videoId);
 
-	List<VideoEntity> getByClient(int id);
+	List<VideoEntity> getByClientId(int id);
 
-	List<VideoEntity> getByCategory(int id);
+	List<VideoEntity> getByCategoryId(int id);
 	
 	List<VideoEntity> getByVideoEntity(VideoEntity videoEntity);
 
 	List<VideoEntity> getAllActive();
+
+	List<VideoEntity> getByClient(ClientEntity client);
+
+	List<VideoEntity> getByCategory(CategoryEntity category);
 }

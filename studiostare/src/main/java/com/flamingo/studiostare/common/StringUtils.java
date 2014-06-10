@@ -8,6 +8,8 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class StringUtils {
 	/**
@@ -29,6 +31,7 @@ public class StringUtils {
 
 	/**
 	 * 获取给出的字符串首个非0数字字符的位置
+	 * 
 	 * @param value
 	 * @return 找不到返回-1
 	 */
@@ -46,8 +49,8 @@ public class StringUtils {
 	}
 
 	/**
-	 * 把给出的字符串加1
-	 * 该字符串由0～9这10个字符组成
+	 * 把给出的字符串加1 该字符串由0～9这10个字符组成
+	 * 
 	 * @param value
 	 * @return
 	 */
@@ -61,9 +64,10 @@ public class StringUtils {
 			String pre = value.substring(0, i);
 
 			int offset = value.length() - i;
-			value = String.valueOf(Long.parseLong(value.substring(i, value.length())) + 1);
+			value = String.valueOf(Long.parseLong(value.substring(i,
+					value.length())) + 1);
 			if (value.length() != offset) {
-				//进行了进1操作
+				// 进行了进1操作
 				value = pre.substring(0, i - 1) + value;
 			} else
 				value = pre + value;
@@ -76,7 +80,7 @@ public class StringUtils {
 		if (arr == null || arr.length == 0)
 			return "";
 
-		//		assume every object string is less than 5 chars
+		// assume every object string is less than 5 chars
 		StringBuffer bf = new StringBuffer(arr.length * 5);
 		for (int i = 0; i < arr.length; i++) {
 			if (arr[i] == null)
@@ -98,7 +102,8 @@ public class StringUtils {
 		return bf.toString();
 	}
 
-	public static final Map<String, String> split2map(String s, String delim1, String delim2) {
+	public static final Map<String, String> split2map(String s, String delim1,
+			String delim2) {
 		if (s == null || s.trim().length() == 0) {
 			return new HashMap<String, String>(0);
 		}
@@ -118,6 +123,7 @@ public class StringUtils {
 
 	/**
 	 * convert a map into "k1<delim1>v1<delim2>k2<delim1>v2", eg, "k1-v1,k2-v2"
+	 * 
 	 * @param map
 	 * @param delim1
 	 * @param delim2
@@ -162,13 +168,14 @@ public class StringUtils {
 
 	/**
 	 * parse the object into int, if fail, return -1
+	 * 
 	 * @param source
 	 * @return
 	 */
 	public static final int toInt(Object source) {
 		return toInt(source, -1);
 	}
-	
+
 	public static final float toFloat(Object source) {
 		String x = trim(source);
 		float result = 0;
@@ -176,13 +183,14 @@ public class StringUtils {
 		try {
 			result = Float.parseFloat(x);
 		} catch (Exception e) {
-			//ignore
+			// ignore
 		}
 		return result;
 	}
 
 	/**
 	 * parse the object into int, if fail, return 'defaultValue'
+	 * 
 	 * @param source
 	 * @param defaultValue
 	 * @return
@@ -194,25 +202,25 @@ public class StringUtils {
 		try {
 			result = Integer.parseInt(x);
 		} catch (Exception e) {
-			//ignore
+			// ignore
 		}
 		return result;
 	}
 
 	public static final Integer[] toIntArray(String values, String delim) {
 		values = trim(values);
-		if (values.length()<1) {
+		if (values.length() < 1) {
 			return new Integer[0];
 		}
-		
+
 		String[] pp = values.split(delim);
 		Integer[] result = new Integer[pp.length];
-		for (int i=0; i<pp.length; i++) {
+		for (int i = 0; i < pp.length; i++) {
 			result[i] = toInt(pp[i]);
 		}
 		return result;
 	}
-	
+
 	public static void trimLastChar(StringBuffer bf, char match) {
 		if (bf == null || bf.length() == 0)
 			return;
@@ -232,15 +240,15 @@ public class StringUtils {
 	}
 
 	/**
-	 *  判断某个字符是否为中文
+	 * 判断某个字符是否为中文
+	 * 
 	 * @param c
 	 * @return
 	 */
 	public static boolean isChinese(char c) {
 		/**
-		 *  1.GENERAL_PUNCTUATION 判断中文的“号
-		 *  2.CJK_SYMBOLS_AND_PUNCTUATION 判断中文的。号  
-		 *  3.HALFWIDTH_AND_FULLWIDTH_FORMS 判断中文的，号
+		 * 1.GENERAL_PUNCTUATION 判断中文的“号 2.CJK_SYMBOLS_AND_PUNCTUATION 判断中文的。号
+		 * 3.HALFWIDTH_AND_FULLWIDTH_FORMS 判断中文的，号
 		 */
 		Character.UnicodeBlock ub = Character.UnicodeBlock.of(c);
 		if (ub == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS
@@ -267,15 +275,16 @@ public class StringUtils {
 	}
 
 	/**
-	 * 该方法用于处理在HTML中显示的超长文字无法换行的问题, 采取在一段长文字中插入空格
-	 * 来使得在HTML中可以被浏览器进行换行处理. 像遇到一些连续的数字或英文, 浏览器不会
-	 * 对其打断换行, 导致页面显示混乱.
+	 * 该方法用于处理在HTML中显示的超长文字无法换行的问题, 采取在一段长文字中插入空格 来使得在HTML中可以被浏览器进行换行处理.
+	 * 像遇到一些连续的数字或英文, 浏览器不会 对其打断换行, 导致页面显示混乱.
+	 * 
 	 * @param content
-	 * @param charCountPerRow 每行容纳的文字个数
+	 * @param charCountPerRow
+	 *            每行容纳的文字个数
 	 * @return
 	 */
-	private static Set<Character> BREAKABLE_CHARS = new HashSet<Character>(Arrays
-			.asList(new Character[] { '-', '*', '%', '!', ' ' }));
+	private static Set<Character> BREAKABLE_CHARS = new HashSet<Character>(
+			Arrays.asList(new Character[] { '-', '*', '%', '!', ' ' }));
 
 	public static String breakWords(String content, int charCountPerRow) {
 		if (content == null || charCountPerRow < 1) {
@@ -287,7 +296,7 @@ public class StringUtils {
 		for (int i = 0; i < len; i++) {
 			char achar = content.charAt(i);
 			bf.append(achar);
-			
+
 			if (BREAKABLE_CHARS.contains(achar) || isChinese(achar)) {
 				// 发现一个支持换行的字符, 则重新计算
 				unbreakableCount = 0;
@@ -303,11 +312,12 @@ public class StringUtils {
 		}
 		return bf.toString();
 	}
-	
+
 	private static DecimalFormat df = new DecimalFormat("0.00");
-	
+
 	/**
 	 * 取小数点后两位
+	 * 
 	 * @param f
 	 * @return
 	 */
@@ -315,7 +325,24 @@ public class StringUtils {
 		return df.format(f);
 	}
 
+	public static String transSpeLetter(String str) {
+		if("".equals(str))
+			return "";
+		// 只允许字母和数字和.
+		 String regEx = "[^a-zA-Z0-9.]";
+		// 清除掉所有特殊字符
+//		String regEx = "[`~!@#$%^&*()+=|{}':;',\\[\\]<>/?~！@#￥%……&*（）——+|{}【】‘；：”“’。，、？ ]";
+		Pattern p = Pattern.compile(regEx);
+		Matcher m = p.matcher(str);
+		return m.replaceAll("").trim();
+	}
+
 	public static void main(String[] args) {
+		
+		String str = "D83@HVTF{O]MNS[NTF_B%QWa   { 23}中.jpg";
+		int i = str.lastIndexOf("abc");
+		System.out.println(StringUtils.transSpeLetter(str));
+		
 		StringBuffer bf = new StringBuffer("ab,");
 		trimLastChar(bf, ',');
 		System.out.println(bf);
